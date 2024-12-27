@@ -1,0 +1,22 @@
+{
+    "trivials": [
+        {
+            "name": "Qué coctel soy?",
+            "file": "quiensoy",
+            "desc": "Preguntas relacionadas con la década de los 80 (1981 a 1990)",
+            "lang": "es"
+        },
+        {
+            "name": "Nintendo",
+            "file": "nintendo",
+            "desc": "Preguntas sobre la historia de Nintendo",
+            "lang": "es"
+        },
+        {
+            "name": "General",
+            "file": "general_en",
+            "desc": "A little bit of everything",
+            "lang": "en"
+        }
+    ]
+}

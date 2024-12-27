@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<head>
+  <title>MegaTrivia</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#47C747" />
+  <link rel="icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="icon_ios.png">
+  <link rel="manifest" href="manifest.json">
+  <link href="fonts/fonts.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <div id="game" class="container">
+    <div id="header">
+      <img src="logo.svg" />
+    </div>
+    <div id="pages">
+      <div id="main" class="page active">
+        <div class="flex">
+          <button class="btn-green show-page" data-target="trivials-list" data-i18n="play"></button>
+          <button class="btn-blue show-page" data-target="top-ratings" data-i18n="records"></button>
+          <button class="btn-blue show-page" data-target="options" data-i18n="options"></button>
+          <button class="btn-red show-page" data-target="about" data-i18n="about"></button>
+        </div>
+      </div>
+      <!-- Selección de uno de los trivials -->
+      <div id="trivials-list" class="page">
+        <div class="page-header">
+          <h3 data-i18n="select-trivia"></h3>
+        </div>
+        <div class="page-body">
+          <div class="row">
+            <div id="trivia_selection" class="flex"></div>
+          </div>
+        </div>
+        <div class="page-footer">
+          <button class="btn-blue show-page" data-target="main" data-i18n="back"></button>
+        </div>
+      </div>
+      <!-- Puntuaciones máximas -->
+      <div id="top-ratings" class="page">
+        <div class="page-header">
+          <h3 data-i18n="records"></h3>
+        </div>
+        <div class="page-body">
+          <table id="best-scores" >
+            <thead>
+              <tr>
+                <th data-i18n="trivia"></th>
+                <th data-i18n="points" class="score-points"></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="page-footer">
+          <button class="btn-blue show-page" data-target="main" data-i18n="back"></button>
+        </div>
+      </div>
+      <!-- Información sobre MegaTrivia -->
+      <div id="about" class="page">
+        <div class="page-header">
+          <h3>MegaTrivia</h3>
+        </div>
+        <div class="page-body" data-i18n="about_html"></div>
+        <div class="page-footer">
+          <button class="btn-blue show-page" data-target="main" data-i18n="back"></button>
+        </div>
+      </div>
+      <!-- Si el jugador falla 3 preguntas o se terminan todas se muestra la cantidad de aciertos y fallos -->
+      <div id="gameover" class="page">
+        <div class="page-header">
+          <h2>GAME OVER</h2>
+        </div>
+        <div class="page-body">
+          <div id="game-over-text"></div>
+          <div id="new-record" data-i18n="new_record"></div>
+        </div>
+        <div class="page-footer">
+          <button class="btn-blue show-page" data-target="main" data-i18n="back"></button>
+        </div>
+      </div>
+      <div id="trivia" class="page">
+        <div id="cur-result" class="flex">
+          <div id="cur-question"></div>
+          <div id="acer-total"></div>
+          <div style="display: flex;">
+            <div id="cur-time">20</div>
+            <button id="back2home"></button>
+          </div>
+        </div>
+        <div id="trivia-question"></div>
+        <div id="trivia-answers"></div>
+      </div>
+
+      <div id="options" class="page">
+        <div class="page-header">
+          <h3 data-i18n="options"></h3>
+        </div>
+        <div class="page-body">
+          <div class="option">
+            <label data-i18n="lang"></label>
+            <select id="sel-lang" class="btn btn-blue">
+              <option value="en">English</option>
+              <option value="es">Español</option>
+            </select>
+          </div>
+
+          <div class="option">
+            <label data-i18n="time"></label>
+            <select id="sel-time" class="btn btn-blue">
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+              <option value="50">50</option>
+              <option value="60">60</option>
+            </select>
+          </div>
+          <div class="option">
+            <label class="checkbox">
+              <input type="checkbox" id="in-lang" />
+              <span data-i18n="only_in_lang"></span>
+            </label>
+          </div>
+        </div>
+        <div class="page-footer">
+          <button class="btn-green" id="save-options" data-i18n="save"></button>
+          <button class="btn-blue show-page" data-target="main" data-i18n="back"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/pequejs.min.js" type="text/javascript"></script>
+  <script src="js/trivia.js" type="module"></script>
+</body>
+</html>
