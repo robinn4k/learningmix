@@ -1,0 +1,22 @@
+{
+    "questions": [
+        {
+            "title": "30ml Cognac, 30 ml Crème de Cacao (Brown), 30 ml Fresh Cream ?",
+            "answers": [
+                "Angel Face",
+                "Americano",
+                "Aviation",
+                "Alexander"
+            ]
+        },
+        {
+            "title": "30 ml Bitter Campari, 30 ml Sweet Red Vermouth, A splash of Soda Water",
+            "answers": [
+                "Americano",
+                "Angel Face",
+                "Bee's Knees",
+                "Bellini"
+            ]
+        }
+    ]
+}

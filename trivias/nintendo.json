@@ -1,0 +1,85 @@
+{
+    "questions": [
+        {
+            "title": "¿En que año fue lanzada en Japón la Famicom?",
+            "answers": [
+                "1983",
+                "1981",
+                "1985",
+                "1989"
+            ]
+        },
+        {
+            "title": "¿Cual fue el nombre original de Súper Mario?",
+            "answers": [
+                "Jumpman",
+                "Link",
+                "Wario",
+                "Siempre fue su nombre"
+            ]
+        },
+        {
+            "title": "En 1986 Nintendo lanzo al mercado los primeros juegos de dos de sus grandes franquicias ¿cuales fueron?",
+            "answers": [
+                "Legend of Zelda y Metroid",
+                "Legend of Zelda y Super Mario Bros.",
+                "Super Mario Bros y Metroid",
+                "Super Mario Bros. y Donkey Kong"
+            ]
+        },
+        {
+            "title": "¿En que juego de la saga The legend of Zelda apareció por primera vez una Ocarina?",
+            "answers": [
+                "A Link to the past",
+                "Link's Awakeining",
+                "Ocarina of Time",
+                "Ledend of Zelda"
+            ]
+        },
+        {
+            "title": "¿A que consola se le conoció como El cerebro de la Bestia?",
+            "answers": [
+                "Super Nintendo",
+                "NES",
+                "Nintendo 64",
+                "Game Boy"
+            ]
+        },
+        {
+            "title": "¿En que año fue lanzada en Europa la primera Game Boy?",
+            "answers": [
+                "1990",
+                "1989",
+                "1991",
+                "1986"
+            ]
+        },
+        {
+            "title": "¿En que año se fundo Nintendo?",
+            "answers": [
+                "1889",
+                "1981",
+                "1977",
+                "1983"
+            ]
+        },
+        {
+            "title": "¿Cual fue el primer videojuego creado por Shigeru Miyamoto?",
+            "answers": [
+                "Donke Kong",
+                "Mario Bros",
+                "Super Mario bros.",
+                "Legend of Zelda"
+            ]
+        },
+        {
+            "title": "¿Cual fue la primera consola creada por Nintendo?",
+            "answers": [
+                "TV Color Game",
+                "Famicom/NES",
+                "Game & Watch",
+                "Game Boy"
+            ]
+        }
+    ]
+}
