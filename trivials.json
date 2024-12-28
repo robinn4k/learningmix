@@ -1,10 +1,10 @@
 {
     "trivials": [
         {
-            "name": "Qué coctel soy?",
+            "name": "Qué coctel soy? En inglés",
             "file": "quiensoy",
-            "desc": "Preguntas relacionadas con la década de los 80 (1981 a 1990)",
-            "lang": "es"
+            "desc": "Questionario sobre los clasico de IBA",
+            "lang": "en"
         },
         {
             "name": "Nintendo",

@@ -1,6 +1,7 @@
 {
     "questions": [
         {
+            
             "title": "30ml Cognac, 30 ml Crème de Cacao (Brown), 30 ml Fresh Cream ?",
             "answers": [
                 "Alexander",
@@ -9,14 +10,87 @@
                 "Angel Face"
             ]
         },
-        {
-            "title": "30 ml Bitter Campari, 30 ml Sweet Red Vermouth, A splash of Soda Water",
+        {  
+            "title": "30 ml Bitter Campari, 30 ml Sweet Red Vermouth and a splash of Soda Water",
             "answers": [
                 "Americano",
-                "Angel Face",
-                "Bee's Knees",
-                "Bellini"
+                "Negroni",
+                "Aviation",
+                "Angel Face"
             ]
+        },
+        {   
+            "title": "30 ml Gin, 30 ml Apricot Brandy, 30 ml Calvados",
+            "answers": [
+                "Angel Face",
+                "Americano",
+                "Aviation",
+                "Casino"
+            ]
+        },
+        {   
+            "title": "45 ml Gin, 15 ml Maraschino Luxardo, 15 ml Fresh Lemon Juice, 1 Bar Spoon Crème de Violette",
+            "answers": [
+                "Aviation",
+                "Americano",
+                "Bee's Knees",
+                "Angel Face"
+            ]
+        },
+        {   
+            "title": "52.5 ml Dry Gin, 2 teaspoons Honey Syrup, 22.5 ml Fresh Lemon Juice, 22.5 ml Fresh Orange Juice",
+            "answers": [
+                "Bee's Knees",
+                "Americano",
+                "Aviation",
+                "Angel Face"
+            ]
+        },
+        {   
+            "title": "100 ml Prosecco and 50 ml White Peach Puree",
+            "answers": [
+                "Alexander",
+                "Americano",
+                "Bellini",
+                "Angel Face"
+            ]
+        },
+        {   
+            "title": "30 ml White Rum, 30 ml Cognac, 30 ml Triple Sec, 20 ml Fresh Lemon Juice",
+            "answers": [
+                "Between the Sheets",
+                "Daiquiri",
+                "Aviation",
+                "Angel Face"
+            ]
+        },
+        {  
+            "title": "50 ml Vodka and 20 ml Coffee Liqueur",
+            "answers": [
+                "Black Russian",
+                "Americano",
+                "Aviation",
+                "Angel Face"
+            ]
+        },
+        {   
+            "title": "45 ml Vodka, 90 ml Tomato Juice, 15 ml Fresh Lemon Juice, 2 dashes Worcestershire Sauce and Tabasco, Celery Salt, Pepper (Up to taste)",
+            "answers": [
+                "Bloody Mary",
+                "Americano",
+                "Aviation",
+                "Angel Face"
+            ]
+        },
+        {   
+            "title": "45 ml Bourbon or Rye Whiskey, 30 ml Bitter Campari and 30 ml Sweet Red Vermouth",
+            "answers": [
+                "Boulevardier",
+                "Americano",
+                "Negroni",
+                "Angel Face"
+            ]
+        
         }
     ]
 }
