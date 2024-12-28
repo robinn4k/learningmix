@@ -1,7 +1,7 @@
 {
     "trivials": [
         {
-            "name": "Qué coctel soy? En inglés",
+            "name": "-Qué coctel soy? En inglés",
             "file": "quiensoy",
             "desc": "Questionario sobre los clasico de IBA",
             "lang": "en"
