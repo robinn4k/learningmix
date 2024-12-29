@@ -1,85 +1,843 @@
 {
     "questions": [
-        {
-            "title": "¿En que año fue lanzada en Japón la Famicom?",
-            "answers": [
-                "1983",
-                "1981",
-                "1985",
-                "1989"
-            ]
-        },
-        {
-            "title": "¿Cual fue el nombre original de Súper Mario?",
-            "answers": [
-                "Jumpman",
-                "Link",
-                "Wario",
-                "Siempre fue su nombre"
-            ]
-        },
-        {
-            "title": "En 1986 Nintendo lanzo al mercado los primeros juegos de dos de sus grandes franquicias ¿cuales fueron?",
-            "answers": [
-                "Legend of Zelda y Metroid",
-                "Legend of Zelda y Super Mario Bros.",
-                "Super Mario Bros y Metroid",
-                "Super Mario Bros. y Donkey Kong"
-            ]
-        },
-        {
-            "title": "¿En que juego de la saga The legend of Zelda apareció por primera vez una Ocarina?",
-            "answers": [
-                "A Link to the past",
-                "Link's Awakeining",
-                "Ocarina of Time",
-                "Ledend of Zelda"
-            ]
-        },
-        {
-            "title": "¿A que consola se le conoció como El cerebro de la Bestia?",
-            "answers": [
-                "Super Nintendo",
-                "NES",
-                "Nintendo 64",
-                "Game Boy"
-            ]
-        },
-        {
-            "title": "¿En que año fue lanzada en Europa la primera Game Boy?",
-            "answers": [
-                "1990",
-                "1989",
-                "1991",
-                "1986"
-            ]
-        },
-        {
-            "title": "¿En que año se fundo Nintendo?",
-            "answers": [
-                "1889",
-                "1981",
-                "1977",
-                "1983"
-            ]
-        },
-        {
-            "title": "¿Cual fue el primer videojuego creado por Shigeru Miyamoto?",
-            "answers": [
-                "Donke Kong",
-                "Mario Bros",
-                "Super Mario bros.",
-                "Legend of Zelda"
-            ]
-        },
-        {
-            "title": "¿Cual fue la primera consola creada por Nintendo?",
-            "answers": [
-                "TV Color Game",
-                "Famicom/NES",
-                "Game & Watch",
-                "Game Boy"
-            ]
-        }
+      {
+        "title": "¿Dónde se estableció la Asociación Internacional de Bartenders (IBA) el 24 de febrero de 1951?",
+        "answers": [
+          "Torquay, Reino Unido",
+          "París, Francia",
+          "Milán, Italia",
+          "Edimburgo, Reino Unido"
+        ]
+      },
+      {
+        "title": "¿Cuántos miembros fundadores tuvo la IBA al crearse en 1951?",
+        "answers": [
+          "Siete",
+          "Cinco",
+          "Diez",
+          "Doce"
+        ]
+      },
+      {
+        "title": "¿Quién fue el primer presidente de la IBA?",
+        "answers": [
+          "Bill Tarling",
+          "George Baker",
+          "Pietro Grandi",
+          "Kurt Sorensen"
+        ]
+      },
+      {
+        "title": "¿En qué fecha se constituyó formalmente la Asociación de Barmans Españoles (A.B.E.)?",
+        "answers": [
+          "15 de febrero de 1964",
+          "24 de febrero de 1951",
+          "28 de marzo de 1996",
+          "15 de febrero de 1976"
+        ]
+      },
+      {
+        "title": "¿Qué objetivo principal tenía la A.B.E. al constituirse según su Acta de Fundación?",
+        "answers": [
+          "Perfeccionamiento profesional y promoción turística",
+          "Crear una escuela de coctelería internacional",
+          "Fundar bares en todo el territorio nacional",
+          "Publicar una revista mensual especializada"
+        ]
+      },
+      {
+        "title": "¿En qué año fue admitida la A.B.E. como miembro de pleno derecho en la IBA?",
+        "answers": [
+          "1964",
+          "1951",
+          "1976",
+          "2003"
+        ]
+      },
+      {
+        "title": "¿En qué ciudad se organizó el I Concurso Nacional de Coctelería de la A.B.E. en 1964?",
+        "answers": [
+          "Palma de Mallorca",
+          "Barcelona",
+          "Sevilla",
+          "Madrid"
+        ]
+      },
+      {
+        "title": "¿En qué año la A.B.E. pasó a llamarse Federación de Asociaciones de Barmans Españoles (F.A.B.E.)?",
+        "answers": [
+          "1996",
+          "1964",
+          "1976",
+          "2009"
+        ]
+      },
+      {
+        "title": "¿Quién fue proclamado Campeón del Mundo con el cóctel “Mallorca” en el Concurso Mundial de Coctelería de 1967?",
+        "answers": [
+          "Enrique Bastante",
+          "Perico Chicote",
+          "Angelo Zola",
+          "George Baker"
+        ]
+      },
+      {
+        "title": "¿Quién asumió la presidencia de FABE en el año 2022?",
+        "answers": [
+          "Juan Carlos Muñoz Zapatero",
+          "José Dioni Fayos",
+          "Ramón Ramírez Fresneda",
+          "Félix Artalejo"
+        ]
+      },
+      {
+        "title": "¿Dónde se estableció la Asociación Internacional de Bartenders (IBA) el 24 de febrero de 1951?",
+        "answers": [
+          "Torquay, Reino Unido",
+          "París, Francia",
+          "Milán, Italia",
+          "Edimburgo, Reino Unido"
+        ]
+      },
+      {
+        "title": "¿Cuántos miembros fundadores tuvo la IBA al crearse en 1951?",
+        "answers": [
+          "Siete",
+          "Cinco",
+          "Diez",
+          "Doce"
+        ]
+      },
+      {
+        "title": "¿Quién fue el primer presidente de la IBA?",
+        "answers": [
+          "Bill Tarling",
+          "George Baker",
+          "Pietro Grandi",
+          "Kurt Sorensen"
+        ]
+      },
+      {
+        "title": "¿En qué fecha se constituyó formalmente la Asociación de Barmans Españoles (A.B.E.)?",
+        "answers": [
+          "15 de febrero de 1964",
+          "24 de febrero de 1951",
+          "28 de marzo de 1996",
+          "15 de febrero de 1976"
+        ]
+      },
+      {
+        "title": "¿Qué objetivo principal tenía la A.B.E. al constituirse según su Acta de Fundación?",
+        "answers": [
+          "Perfeccionamiento profesional y promoción turística",
+          "Crear una escuela de coctelería internacional",
+          "Fundar bares en todo el territorio nacional",
+          "Publicar una revista mensual especializada"
+        ]
+      },
+      {
+        "title": "¿En qué año fue admitida la A.B.E. como miembro de pleno derecho en la IBA?",
+        "answers": [
+          "1964",
+          "1951",
+          "1976",
+          "2003"
+        ]
+      },
+      {
+        "title": "¿En qué ciudad se organizó el I Concurso Nacional de Coctelería de la A.B.E. en 1964?",
+        "answers": [
+          "Palma de Mallorca",
+          "Barcelona",
+          "Sevilla",
+          "Madrid"
+        ]
+      },
+      {
+        "title": "¿En qué año la A.B.E. pasó a llamarse Federación de Asociaciones de Barmans Españoles (F.A.B.E.)?",
+        "answers": [
+          "1996",
+          "1964",
+          "1976",
+          "2009"
+        ]
+      },
+      {
+        "title": "¿Quién fue proclamado Campeón del Mundo con el cóctel “Mallorca” en el Concurso Mundial de Coctelería de 1967?",
+        "answers": [
+          "Enrique Bastante",
+          "Perico Chicote",
+          "Angelo Zola",
+          "George Baker"
+        ]
+      },
+      {
+        "title": "¿Quién asumió la presidencia de FABE en el año 2022?",
+        "answers": [
+          "Juan Carlos Muñoz Zapatero",
+          "José Dioni Fayos",
+          "Ramón Ramírez Fresneda",
+          "Félix Artalejo"
+        ]
+      },
+  
+      {
+        "title": "¿Cuántos años duró la presidencia de Angelo Zola en la IBA (1963-1976)?",
+        "answers": [
+          "14 años",
+          "10 años",
+          "15 años",
+          "12 años"
+        ]
+      },
+      {
+        "title": "¿Cuál fue el país de origen del primer presidente de la IBA, Bill Tarling?",
+        "answers": [
+          "Reino Unido",
+          "Italia",
+          "Suiza",
+          "Dinamarca"
+        ]
+      },
+      {
+        "title": "¿Qué país presidió Angelo Zola cuando fue presidente de la IBA?",
+        "answers": [
+          "Italia",
+          "Suiza",
+          "Reino Unido",
+          "Dinamarca"
+        ]
+      },
+      {
+        "title": "¿Cuántos países tenía la IBA en 1976, tras reclutar 23 nuevos miembros?",
+        "answers": [
+          "Treinta",
+          "Veintitrés",
+          "Cincuenta",
+          "Doce"
+        ]
+      },
+      {
+        "title": "¿Cuántos miembros (países) conforman la IBA en la actualidad (sin contar los 3 observadores)?",
+        "answers": [
+          "64",
+          "30",
+          "51",
+          "72"
+        ]
+      },
+      {
+        "title": "¿Quién fue uno de los miembros fundadores de la IBA y también su presidente de 1963 a 1976?",
+        "answers": [
+          "Angelo Zola",
+          "George Baker",
+          "Kurt Sorensen",
+          "Pietro Grandi"
+        ]
+      },
+      {
+        "title": "¿Cuál fue la primera nacionalidad de los 7 gremios fundadores de la IBA además del Reino Unido, Italia y Francia?",
+        "answers": [
+          "Dinamarca, Holanda, Suecia y Suiza",
+          "Alemania, Bélgica, Austria y Grecia",
+          "Portugal, España, Noruega y Polonia",
+          "Irlanda, Finlandia, Islandia y Bélgica"
+        ]
+      },
+      {
+        "title": "¿Quién fue el segundo presidente de la IBA tras Bill Tarling?",
+        "answers": [
+          "George Baker",
+          "George Sieve",
+          "Angelo Zola",
+          "Pietro Grandi"
+        ]
+      },
+      {
+        "title": "¿Quién fue presidente de la IBA después de George Baker?",
+        "answers": [
+          "George Sieve (Suiza)",
+          "Kurt Sorensen (Dinamarca)",
+          "Bill Tarling (Reino Unido)",
+          "Pietro Grandi (Italia)"
+        ]
+      },
+      {
+        "title": "¿En qué ciudad se celebró el meeting anual de la IBA en 1964, cuando se admitió a la A.B.E.?",
+        "answers": [
+          "Edimburgo",
+          "Milán",
+          "Torquay",
+          "Londres"
+        ]
+      },
+      {
+        "title": "¿Cuál era la gran oportunidad para la A.B.E. al incorporarse a la IBA en 1964?",
+        "answers": [
+          "Participar en concursos internacionales de coctelería",
+          "Poder fundar nuevos bares en Europa",
+          "Obtener ayudas económicas directas de la IBA",
+          "Organizar competiciones de flair bartending exclusivas"
+        ]
+      },
+      {
+        "title": "¿Qué famoso barman español impulsó la creación de la A.B.E.?",
+        "answers": [
+          "Pedro Chicote",
+          "Enrique Bastante",
+          "Pepe García Luque",
+          "Manolo Blanco"
+        ]
+      },
+      {
+        "title": "¿Cuál fue el principal objetivo de la A.B.E. al ser fundada, además de atender necesidades y problemas de la profesión?",
+        "answers": [
+          "Impulsar el turismo en España",
+          "Fundar la primera escuela de coctelería ibérica",
+          "Crear la Asociación Internacional de Barmans",
+          "Ganar todos los concursos mundiales"
+        ]
+      },
+      {
+        "title": "¿Quién presidía la IBA cuando la A.B.E. fue admitida en 1964?",
+        "answers": [
+          "Don Ángelo Zola",
+          "George Sieve",
+          "Bill Tarling",
+          "Kurt Sorensen"
+        ]
+      },
+      {
+        "title": "¿Qué innovador objetivo logró la A.B.E. en su I Concurso Nacional de Coctelería, organizado en 1964?",
+        "answers": [
+          "Clasificar a los tres primeros para competir internacionalmente",
+          "Crear el primer registro de cocteles españoles",
+          "Formar al primer equipo nacional de flair",
+          "Fundar un museo de coctelería en Palma"
+        ]
+      },
+      {
+        "title": "¿En qué año España empezó a participar con representante en las categorías de Classic y Flair en los Mundiales de Coctelería?",
+        "answers": [
+          "2003",
+          "1964",
+          "2017",
+          "1996"
+        ]
+      },
+      {
+        "title": "¿En qué ciudad tuvo lugar el Campeonato Mundial de Coctelería de 1967, organizado por la A.B.E.?",
+        "answers": [
+          "Palma de Mallorca",
+          "Madrid",
+          "Barcelona",
+          "Sevilla"
+        ]
+      },
+      {
+        "title": "¿Qué barman de la A.B.E. ganó el Campeonato Mundial de 1967?",
+        "answers": [
+          "Enrique Bastante",
+          "Perico Chicote",
+          "Pepe Dioni",
+          "Ramón Ramírez"
+        ]
+      },
+      {
+        "title": "¿Qué cóctel llevó a Enrique Bastante a la victoria en el Mundial de 1967?",
+        "answers": [
+          "Mallorca",
+          "Torcuay",
+          "Zola",
+          "Mediterráneo"
+        ]
+      },
+      {
+        "title": "¿En qué fecha exacta pasó la A.B.E. a llamarse F.A.B.E.?",
+        "answers": [
+          "28 de marzo de 1996",
+          "24 de febrero de 1951",
+          "15 de febrero de 1964",
+          "28 de marzo de 1976"
+        ]
+      },
+      {
+        "title": "¿Quién presidía la A.B.E. cuando se transformó en F.A.B.E. en 1996?",
+        "answers": [
+          "Félix Artalejo",
+          "José Dioni Fayos",
+          "Manolo Blanco",
+          "Pepe García Luque"
+        ]
+      },
+      {
+        "title": "¿Cuál fue el principal motivo de cambiar el nombre de A.B.E. a F.A.B.E.?",
+        "answers": [
+          "Representar a las Asociaciones regionales que pasaron de delegaciones a asociaciones",
+          "Atraer más patrocinadores internacionales",
+          "Obtener un reconocimiento legal ante la IBA",
+          "Unificar competencias de Classic y Flair"
+        ]
+      },
+      {
+        "title": "¿Quién fue el barman histórico de ABE Gipuzkoa que asumió la presidencia de la IBA en 2017?",
+        "answers": [
+          "José Dioni Fayos",
+          "Pepe García Luque",
+          "Félix Artalejo",
+          "Juan Carlos Muñoz Zapatero"
+        ]
+      },
+      {
+        "title": "¿Quién sucedió a José Dioni Fayos en la presidencia de FABE?",
+        "answers": [
+          "Ramón Ramírez Fresneda",
+          "Félix Artalejo",
+          "Pedro Chicote",
+          "Enrique Bastante"
+        ]
+      },
+      {
+        "title": "¿Qué cargo ostenta actualmente Ramón Ramírez Fresneda en la IBA?",
+        "answers": [
+          "Vicepresidente - Relaciones Públicas Comunicación",
+          "Presidente Honorífico",
+          "Tesorero General",
+          "Secretario General"
+        ]
+      },
+      {
+        "title": "¿Cuántas asociaciones componen actualmente la F.A.B.E. con la incorporación de ABB Fuerteventura?",
+        "answers": [
+          "21",
+          "17",
+          "15",
+          "30"
+        ]
+      },
+      {
+        "title": "¿Qué ciudad acoge la Asociación de Barmans de la que proviene el actual presidente de FABE, Juan Carlos Muñoz?",
+        "answers": [
+          "Madrid",
+          "Sevilla",
+          "Barcelona",
+          "Gipuzkoa"
+        ]
+      },
+      {
+        "title": "¿Cuál es la misión de la IBA según el texto?",
+        "answers": [
+          "Conectar, educar e inspirar a los bartenders del mundo",
+          "Elaborar normativas estrictas para certificar bartenders",
+          "Crear un sistema de puntuación global de coctelería",
+          "Vender productos de bar y licencias internacionales"
+        ]
+      },
+      {
+        "title": "¿Qué valores fundamentales promueve la IBA?",
+        "answers": [
+          "Pasión, Unidad y Legado",
+          "Éxito, Negocio y Marketing",
+          "Disciplina, Jerarquía y Tradición",
+          "Exclusividad, Moderación y Silencio"
+        ]
+      },
+      {
+        "title": "¿Qué dos líneas claras tenía la A.B.E. en sus inicios, según Chicote?",
+        "answers": [
+          "Perfeccionamiento profesional y promoción turística",
+          "Difusión de flair bartending y tecnología en bares",
+          "Exportar cócteles españoles y fundar bares internacionales",
+          "Incorporar mujeres bartenders y eliminar competencias"
+        ]
+      },
+      {
+        "title": "¿Qué profesional fue clave en la fundación de la A.B.E. y también un referente de la hostelería española?",
+        "answers": [
+          "Pedro Chicote",
+          "Ángelo Zola",
+          "Félix Artalejo",
+          "George Baker"
+        ]
+      },
+      {
+        "title": "¿Qué evento internacional se celebró en la ciudad escocesa de Edimburgo en 1964 que involucró a barmans españoles?",
+        "answers": [
+          "Campeonato Internacional de Coctelería",
+          "Congreso Mundial de la IBA",
+          "Encuentro de Barmans Tradicionales",
+          "Copa Europea de Flair"
+        ]
+      },
+      {
+        "title": "¿Qué presidente de la A.B.E. impulsó una visión de 17 años de trabajo, a menudo con recursos limitados?",
+        "answers": [
+          "Félix Artalejo",
+          "Perico Chicote",
+          "Ramón Ramírez Fresneda",
+          "Angelo Zola"
+        ]
+      },
+      {
+        "title": "¿Qué presidente nacional de la A.B.E. sucedió a Perico Chicote y trabajó para desarrollar esta profesión?",
+        "answers": [
+          "Manolo Blanco",
+          "José Dioni Fayos",
+          "Juan Carlos Muñoz",
+          "Ramón Ramírez"
+        ]
+      },
+      {
+        "title": "¿Qué presidente nacional, junto con Manolo Blanco, también contribuyó al crecimiento de la A.B.E. en décadas pasadas?",
+        "answers": [
+          "Pepe García Luque",
+          "George Baker",
+          "Félix Artalejo",
+          "Pedro Chicote"
+        ]
+      },
+      {
+        "title": "¿Qué institución pasó a llamarse 'Federación de Asociaciones de Barmans Españoles' en 1996?",
+        "answers": [
+          "Asociación de Barmans Españoles (A.B.E.)",
+          "Asociación de Barmans de Baleares",
+          "Asociación de Barmans de Madrid",
+          "Asociación Internacional de Bartenders"
+        ]
+      },
+      {
+        "title": "¿Qué presidente nacional de FABE impulsó su participación en instituciones y foros internacionales?",
+        "answers": [
+          "José Dioni Fayos",
+          "Juan Carlos Muñoz Zapatero",
+          "Félix Artalejo",
+          "Ramón Ramírez Fresneda"
+        ]
+      },
+      {
+        "title": "¿Qué labor fundamental realizan los barmans españoles en los Campeonatos Mundiales de Coctelería?",
+        "answers": [
+          "Mantener presencia, intercambiar conocimientos y representar a España",
+          "Controlar el acceso al concurso y regular los precios",
+          "Observar solamente y no competir",
+          "Actuar únicamente como jueces internacionales"
+        ]
+      },
+      {
+        "title": "¿Cuál fue la motivación de Pedro Chicote para fundar la A.B.E., según el texto?",
+        "answers": [
+          "Dar a la profesión la importancia que merece en la hostelería",
+          "Crear una marca de bebidas española",
+          "Abrir un bar temático en cada provincia",
+          "Transformar la IBA en una filial española"
+        ]
+      },
+      {
+        "title": "¿Qué dos presidentes nacionales de la A.B.E. ya desaparecidos trabajaron junto con Chicote para desarrollar la profesión?",
+        "answers": [
+          "Manolo Blanco y Pepe García Luque",
+          "Angelo Zola y Bill Tarling",
+          "Félix Artalejo y Ramón Ramírez",
+          "George Baker y George Sieve"
+        ]
+      },
+      {
+        "title": "¿Qué frase describe la contribución de los barmans españoles en la IBA a lo largo de las décadas?",
+        "answers": [
+          "Ocuparon puestos destacados en los Campeonatos Internacionales",
+          "Mantuvieron un rol secundario sin ganar reconocimientos",
+          "Se dedicaron sólo a la organización de eventos privados",
+          "Fueron excluidos de las competiciones mundiales por años"
+        ]
+      },
+      {
+        "title": "¿Quién fue el fundador de la A.B.E. y también uno de los primeros barmans en traspasar las fronteras españolas?",
+        "answers": [
+          "Don Pedro Chicote",
+          "Enrique Bastante",
+          "Félix Artalejo",
+          "Ramón Ramírez"
+        ]
+      },
+      {
+        "title": "¿Qué acontecimiento histórico sucedió en 2017 para FABE a nivel internacional?",
+        "answers": [
+          "José Dioni Fayos llegó a la presidencia de la IBA",
+          "Se inauguró la primera sede de FABE en Torquay",
+          "La IBA cambió su nombre a FABE-IBA",
+          "España dejó de participar en los Campeonatos Mundiales"
+        ]
+      },
+      {
+        "title": "¿Qué presidente de la FABE fue nombrado posteriormente Presidente Honorífico?",
+        "answers": [
+          "Félix Artalejo",
+          "Pepe Dioni",
+          "Ramón Ramírez Fresneda",
+          "Juan Carlos Muñoz Zapatero"
+        ]
+      },
+      {
+        "title": "¿Cómo se denomina el delegado de FlairBartenders dentro de la Junta Directiva de FABE?",
+        "answers": [
+          "Anthony Serra",
+          "David Arrebola",
+          "Burton E. Ruiz de Azua",
+          "Roberto León Pérez"
+        ]
+      },
+      {
+        "title": "¿Cuál de las siguientes personas cumple la función de 'Coordinador de eventos nacionales' en FABE?",
+        "answers": [
+          "Domingo Martín Fraile",
+          "Diana Díez",
+          "Sergio Freile",
+          "Francisco Pinto"
+        ]
+      },
+      {
+        "title": "¿Qué cargo desempeña actualmente Diana Díez en la Junta Directiva de FABE?",
+        "answers": [
+          "Community Manager",
+          "Vicepresidenta",
+          "Tesorera",
+          "Secretaría Adjunta"
+        ]
+      },
+      {
+        "title": "¿Cuál es el principal valor que mejor describe la labor de la IBA en la unión de los bartenders?",
+        "answers": [
+          "Unidad",
+          "Marketing",
+          "Competencia",
+          "Discreción"
+        ]
+      },
+      {
+        "title": "¿Qué relación especial comparten la A.B.E. (ahora FABE) y la IBA desde 1964?",
+        "answers": [
+          "FABE es miembro de pleno derecho de la IBA",
+          "La IBA depende orgánicamente de FABE",
+          "La FABE provee todas las bebidas para la IBA",
+          "La FABE no tiene vínculo oficial con la IBA"
+        ]
+      },
+      {
+        "title": "¿Qué frase mítica expresó Bill Tarling sobre la fundación de la IBA en 1951?",
+        "answers": [
+          "“Las generaciones futuras tendrán motivos para satisfacciones técnicas positivas y prestigio profesional.”",
+          "“El futuro de la coctelería está únicamente en el flair.”",
+          "“Debemos separar la coctelería de la gastronomía por completo.”",
+          "“Prohibido cooperar con otros gremios.”"
+        ]
+      },
+      {
+        "title": "¿Qué importancia tenía la hostelería para España, según el Acta de Fundación de la A.B.E.?",
+        "answers": [
+          "Era clave en el desarrollo turístico del país",
+          "Solo se veía como un sector de ocio sin relevancia",
+          "Se consideraba un ámbito únicamente para la realeza",
+          "Debía competir contra la industria textil"
+        ]
+      },
+      {
+        "title": "¿En qué año la IBA celebró su fundación, sentando las bases para la comunidad internacional de bartenders?",
+        "answers": [
+          "1951",
+          "1964",
+          "1976",
+          "1996"
+        ]
+      },
+      {
+        "title": "¿Cuál fue la visión de futuro que manifestó Bill Tarling para las generaciones de bartenders?",
+        "answers": [
+          "Mejorar el prestigio profesional y la amistad internacional",
+          "Eliminar por completo el uso de bebidas amargas",
+          "Privatizar la coctelería en clubes exclusivos",
+          "Desarrollar solo la coctelería molecular"
+        ]
+      },
+      {
+        "title": "¿Qué asociación española logró mostrar en 1967 su gran capacidad de organización y trayectoria profesional?",
+        "answers": [
+          "La A.B.E., durante el Concurso Mundial de Coctelería en Palma",
+          "La Asociación de Barmans de Baleares, en un congreso local",
+          "La IBA, con un taller de coctelería en Milán",
+          "La Asociación de Barmans de Madrid, con una cata de vinos"
+        ]
+      },
+      {
+        "title": "¿Quién fue el fundador que 'muy de cerca seguía los problemas de la hostelería española' antes de impulsar la A.B.E.?",
+        "answers": [
+          "Don Pedro Chicote",
+          "Enrique Bastante",
+          "Angelo Zola",
+          "Pepe Dioni"
+        ]
+      },
+      {
+        "title": "¿Cuál es la visión actual de la IBA, reflejada en el texto?",
+        "answers": [
+          "Seguir elevando los estándares y conocimientos de los bartenders a nivel internacional",
+          "Convertir la coctelería en un ámbito elitista al alcance de pocos",
+          "Obtener patrocinios y licencias para abrir bares en todo el mundo",
+          "Controlar estrictamente la fabricación de licores y destilados"
+        ]
+      },
+      {
+        "title": "¿Qué papel jugó la A.B.E. en la creación de delegaciones regionales que más tarde se unieron a la Federación?",
+        "answers": [
+          "Permitió que profesionales de diferentes lugares crearan grupos de barmans",
+          "Prohibió la formación de asociaciones territoriales independientes",
+          "Fomentó únicamente la creación de bares temáticos",
+          "Restringió la afiliación a solo tres regiones"
+        ]
+      },
+      {
+        "title": "¿Cómo describirías el crecimiento de la A.B.E. (hoy FABE) a lo largo de su historia?",
+        "answers": [
+          "Se extendió por toda España y consolidó delegaciones en numerosas ciudades",
+          "Se redujo únicamente a las Islas Baleares",
+          "Se enfocó en expandirse al extranjero, abandonando el territorio nacional",
+          "Jamás superó los diez miembros activos"
+        ]
+      },
+      {
+        "title": "¿Quién fue el barman que triunfó con su cóctel en la histórica competición mundial de 1967, representando a la A.B.E.?",
+        "answers": [
+          "Enrique Bastante",
+          "Pepe Dioni",
+          "Juan Carlos Muñoz",
+          "Manolo Blanco"
+        ]
+      },
+      {
+        "title": "¿Qué logro histórico de la FABE tuvo lugar en 2017 dentro de la IBA?",
+        "answers": [
+          "La presidencia recayó en un español, José Dioni Fayos",
+          "Se retiraron todos sus representantes de las competiciones",
+          "Se fusionó con la Asociación de Barmans de Italia",
+          "Se prohibió el uso de ingredientes locales en concursos"
+        ]
+      },
+      {
+        "title": "¿Qué presidente de la FABE fue clave para mantenerla activa durante épocas difíciles y con pocos recursos?",
+        "answers": [
+          "Félix Artalejo",
+          "Manolo Blanco",
+          "Pedro Chicote",
+          "Angelo Zola"
+        ]
+      },
+      {
+        "title": "¿Qué sección o categoría de competición internacional se sumó para España desde 2003?",
+        "answers": [
+          "Flair Bartending",
+          "Coctelería molecular",
+          "Concursos de café",
+          "Campeonatos de tiraje de cerveza"
+        ]
+      },
+      {
+        "title": "¿Cuál de estos aspectos NO corresponde a la visión ni valores de la IBA o FABE?",
+        "answers": [
+          "Aislar a los bartenders de otros países",
+          "Pasión por la coctelería",
+          "Unidad entre profesionales",
+          "Legado cultural"
+        ]
+      },
+      {
+        "title": "¿Qué importante cambio organizativo se produjo en la A.B.E. el 15 de febrero de 1964?",
+        "answers": [
+          "Se constituyó formalmente como asociación",
+          "Cambió su nombre a FABE",
+          "Adoptó un nuevo reglamento basado en la IBA",
+          "Aprobó la creación de un museo de barmans"
+        ]
+      },
+      {
+        "title": "¿Qué persona desempeña actualmente (2022 en adelante) el cargo de Tesorero en FABE?",
+        "answers": [
+          "Burton E. Ruiz de Azua",
+          "Ramón Ramírez",
+          "Pepe Dioni",
+          "Félix Artalejo"
+        ]
+      },
+      {
+        "title": "¿Qué destacado papel cumple el presidente honorífico dentro de FABE?",
+        "answers": [
+          "Aporta experiencia y asesoría tras haber sido presidente",
+          "Se encarga de redactar los estatutos",
+          "Organiza únicamente los concursos de flair",
+          "No tiene participación alguna"
+        ]
+      },
+      {
+        "title": "¿Qué logro alcanzó la A.B.E. en 1967 que se catalogó como uno de los mejores eventos de su tipo hasta la fecha?",
+        "answers": [
+          "Organizar el Concurso Mundial de Coctelería en Palma",
+          "Crear la Escuela Nacional de Barmans",
+          "Fundar la primera revista oficial de coctelería",
+          "Promulgar la ley de protección al bartender"
+        ]
+      },
+      {
+        "title": "¿Por qué fue relevante la entrada de España a la IBA en 1964 para los barmans nacionales?",
+        "answers": [
+          "Podían competir mundialmente y compartir conocimientos",
+          "Obtener visas de trabajo para Reino Unido",
+          "Eliminar el uso de vermut en las recetas clásicas",
+          "Vetar la presencia de otros países mediterráneos"
+        ]
+      },
+      {
+        "title": "¿Qué organismo internacional rige hoy en día la comunidad de bartenders a escala global?",
+        "answers": [
+          "IBA (International Bartender Association)",
+          "WHO (World Health Organization)",
+          "FAO (Food and Agriculture Organization)",
+          "IBA (International Boxing Association)"
+        ]
+      },
+      {
+        "title": "¿Cuál es la razón principal por la que FABE organiza campeonatos nacionales de coctelería?",
+        "answers": [
+          "Promover la profesionalidad y el intercambio de ideas entre barmans",
+          "Recaudar fondos para su sede principal",
+          "Disminuir la competitividad entre bartenders",
+          "Obligar a las marcas a patrocinar los eventos"
+        ]
+      },
+      {
+        "title": "¿Qué considera la FABE como un factor clave para la dignificación de la profesión del bartender en España?",
+        "answers": [
+          "Respeto y presencia institucional",
+          "Uso de bebidas solo nacionales",
+          "Restricción de la entrada de nuevos bartenders",
+          "Obligar a utilizar uniformes tradicionales"
+        ]
+      },
+      {
+        "title": "¿Cuál de estas personalidades NO figura en la actual Junta Directiva de FABE mencionada en el texto?",
+        "answers": [
+          "George Baker",
+          "Diana Díez",
+          "Roberto León Pérez",
+          "David Arrebola"
+        ]
+      },
+      {
+        "title": "¿Cómo definió Pedro Chicote la hostelería para un país como España, según el acta fundacional de la A.B.E.?",
+        "answers": [
+          "Una actividad con un claro objetivo de orientación turística",
+          "Un oficio sin futuro",
+          "Un sector secundario sin relevancia",
+          "Una profesión exclusiva para hoteles de lujo"
+        ]
+      }
     ]
-}
+  }
+  

@@ -1,19 +1,25 @@
 {
     "trivials": [
         {
-            "name": "-Qué coctel soy? En inglés",
+            "name": "What Am I?",
             "file": "quiensoy",
-            "desc": "Questionario sobre los clasico de IBA",
+            "desc": "IBA COCKTAILS",
             "lang": "en"
         },
         {
-            "name": "Nintendo",
+            "name": "Historia IBA Y FABE",
             "file": "nintendo",
-            "desc": "Preguntas sobre la historia de Nintendo",
+            "desc": "Preguntas sobre la historia de IBA, FABE",
             "lang": "es"
         },
         {
-            "name": "General",
+            "name": "Historia sobre cocteles",
+            "file": "historia",
+            "desc": "Preguntas sobre la historia de IBA, FABE",
+            "lang": "es"
+        },
+        {
+            "name": "Historia sobre bebidas",
             "file": "general_en",
             "desc": "A little bit of everything",
             "lang": "en"
