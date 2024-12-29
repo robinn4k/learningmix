@@ -148,10 +148,10 @@ function showRecords() {
   }
 }
 
-// Esta función es invocada cada vez que se vaya a hacer una nueva pregunta
+// Esta función es invocada cada vez que se vaya a hacer una nueva pregunta y preguntas fallidas maxima permitidas
 function newQuestion() {
   block_answers = false;
-  if (current_question <= questions.length - 1 && failed < 3) {
+  if (current_question <= questions.length - 1 && failed < 5) {
     seconds = options.time;
     $('#cur-time').text(seconds);
     $('#trivia-answers').empty();
