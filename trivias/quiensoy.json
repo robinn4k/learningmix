@@ -2,7 +2,7 @@
     "questions": [
         {
             
-            "title": "30ml Cognac, 30 ml Crème de Cacao (Brown), 30 ml Fresh Cream ?",
+            "title": "30ml Cognac, 30 ml Crème de Cacao (Brown), 30 ml Fresh Cream",
             "answers": [
                 "Alexander",
                 "Americano",
@@ -91,6 +91,108 @@
                 "Angel Face"
             ]
         
+        },
+// 10
+        {
+            
+            "title": "50 ml Gin, 25 ml Fresh Lemon Juice, 12.5 ml Sugar Syrup, 15 ml Crème de Mûre",
+            "answers": [
+                "Bramble",
+                "Americano",
+                "Aviation",
+                "Angel Face"
+            ]
+        },
+        {
+            
+            "title": "52.5 ml Brandy, 7.5 ml Maraschino Luxardo, 1 Bar Spoon Curacao, 15 ml Fresh Lemon Juice, 1 Bar Spoon Simple Syrup, 2 Dashes Aromatic Bitters",
+            "answers": [
+                "Brandy Crusta",
+                "Americano",
+                "Aviation",
+                "Angel Face"
+            ]
+        },
+        {
+            
+            "title": "60 ml Cachaça, 1 Lime cut into small wedges, 4 Teaspoons White Cane Sugar",
+            "answers": [
+                "Caipirinha",
+                "Americano",
+                "Aviation",
+                "Angel Face"
+            ]
+        },
+        {
+            
+            "title": "60 ml Cuban Aguardiente, 15 ml Fresh Lime Juice, 15 ml Raw Honey, 50 ml Water",
+            "answers": [
+                "Canchanchara",
+                "Americano",
+                "Aviation",
+                "Angel Face"
+            ]
+        },
+        {
+            
+            "title": "40 ml Gin, 20 ml Dry Vermouth, 10 ml Bitter Campari",
+            "answers": [
+                "Cardinale",
+                "Americano",
+                "Aviation",
+                "Angel Face"
+            ]
+        },
+        {
+            
+            "title": "40 ml Old Tom Gin, 10 ml Maraschino Luxardo, 10 ml Fresh Lemon Juice, 2 Dashes Orange Bitters",
+            "answers": [
+                "Casino",
+                "Americano",
+                "Aviation",
+                "Angel Face"
+            ]
+        },
+        {
+            
+            "title": "90 ml Chilled Champagne, 10 ml Cognac, 2 dashes Angostura Bitters, Few drops of Grand Marnier (optional), 1 Sugar Cube",
+            "answers": [
+                "Champagne Cocktail",
+                "Americano",
+                "Aviation",
+                "Angel Face"
+            ]
+        },
+        {
+            
+            "title": "45 ml Green Chartreuse, 30 ml Fresh Pineapple Juice, 22.5 ml Fresh Lime Juice, 15 ml Falernum",
+            "answers": [
+                "Chartreuse Swizzle",
+                "Americano",
+                "Aviation",
+                "Angel Face"
+            ]
+        },
+        {
+            
+            "title": "45 ml Gin, 15 ml Raspberry Syrup, 15 ml Fresh Lemon Juice, Few Drops of Egg White",
+            "answers": [
+                "Clover Club",
+                "Americano",
+                "Aviation",
+                "Angel Face"
+            ]
+        },
+        {
+            
+            "title": "30 ml Gin, 30 ml Cointreau, 30 ml Lillet Blanc, 30 ml Fresh Lemon Juice, 1 Dash Absinthe",
+            "answers": [
+                "Corpse Reviver #2",
+                "Americano",
+                "Aviation",
+                "Angel Face"
+            ]
         }
+        // 20
     ]
 }
