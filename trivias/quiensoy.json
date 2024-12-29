@@ -1,13 +1,13 @@
 {
     "questions": [
         {
-            
+            "_comment": "comment text goes here...",
             "title": "30ml Cognac, 30 ml Crème de Cacao (Brown), 30 ml Fresh Cream",
             "answers": [
                 "Alexander",
-                "Americano",
-                "Aviation",
-                "Angel Face"
+                "Panama",
+                "Grasshopper",
+                "Alejandro"
             ]
         },
         {  
@@ -15,16 +15,16 @@
             "answers": [
                 "Americano",
                 "Negroni",
-                "Aviation",
-                "Angel Face"
+                "Boulevardier",
+                "Milano-Torino"
             ]
         },
         {   
             "title": "30 ml Gin, 30 ml Apricot Brandy, 30 ml Calvados",
             "answers": [
                 "Angel Face",
-                "Americano",
-                "Aviation",
+                "Between the Sheets",
+                "Daiquiri",
                 "Casino"
             ]
         },
@@ -32,54 +32,54 @@
             "title": "45 ml Gin, 15 ml Maraschino Luxardo, 15 ml Fresh Lemon Juice, 1 Bar Spoon Crème de Violette",
             "answers": [
                 "Aviation",
-                "Americano",
-                "Bee's Knees",
-                "Angel Face"
+                "Clover Club",
+                "Corpse Reviver #2",
+                "Last Word"
             ]
         },
         {   
             "title": "52.5 ml Dry Gin, 2 teaspoons Honey Syrup, 22.5 ml Fresh Lemon Juice, 22.5 ml Fresh Orange Juice",
             "answers": [
                 "Bee's Knees",
-                "Americano",
-                "Aviation",
-                "Angel Face"
+                "Tom Collins",
+                "Southside",
+                "Gold Rush"
             ]
         },
         {   
             "title": "100 ml Prosecco and 50 ml White Peach Puree",
             "answers": [
                 "Bellini",
-                "Americano",
-                "Champagne Cocktail",
-                "Angel Face"
+                "Mimosa",
+                "Rossini",
+                "Kir Royal"
             ]
         },
         {   
             "title": "30 ml White Rum, 30 ml Cognac, 30 ml Triple Sec, 20 ml Fresh Lemon Juice",
             "answers": [
                 "Between the Sheets",
-                "Daiquiri",
-                "Aviation",
-                "Angel Face"
+                "Sidecar",
+                "Mai Tai",
+                "Daiquiri"
             ]
         },
         {  
             "title": "50 ml Vodka and 20 ml Coffee Liqueur",
             "answers": [
                 "Black Russian",
-                "Americano",
-                "Aviation",
-                "Angel Face"
+                "White Russian",
+                "Mudslide",
+                "Espresso Martini"
             ]
         },
         {   
             "title": "45 ml Vodka, 90 ml Tomato Juice, 15 ml Fresh Lemon Juice, 2 dashes Worcestershire Sauce and Tabasco, Celery Salt, Pepper (Up to taste)",
             "answers": [
                 "Bloody Mary",
-                "Americano",
-                "Aviation",
-                "Angel Face"
+                "Red Snapper",
+                "Michelada",
+                "Bloody Maria"
             ]
         },
         {   
@@ -88,19 +88,21 @@
                 "Boulevardier",
                 "Americano",
                 "Negroni",
-                "Angel Face"
+                "Manhattan"
             ]
         
         },
+
+
 
         {
             
             "title": "50 ml Gin, 25 ml Fresh Lemon Juice, 12.5 ml Sugar Syrup, 15 ml Crème de Mûre",
             "answers": [
                 "Bramble",
-                "Americano",
-                "Aviation",
-                "Angel Face"
+                "Gin Fizz",
+                "Clover Club",
+                "French 75"
             ]
         },
         {
@@ -108,9 +110,9 @@
             "title": "52.5 ml Brandy, 7.5 ml Maraschino Luxardo, 1 Bar Spoon Curacao, 15 ml Fresh Lemon Juice, 1 Bar Spoon Simple Syrup, 2 Dashes Aromatic Bitters",
             "answers": [
                 "Brandy Crusta",
-                "Americano",
-                "Aviation",
-                "Angel Face"
+                "Sidecar",
+                "Sazerac",
+                "Corpse Reviver #1"
             ]
         },
         {
@@ -118,9 +120,9 @@
             "title": "60 ml Cachaça, 1 Lime cut into small wedges, 4 Teaspoons White Cane Sugar",
             "answers": [
                 "Caipirinha",
-                "Americano",
-                "Aviation",
-                "Angel Face"
+                "Caipiroska",
+                "Daiquiri",
+                "Mojito"
             ]
         },
         {
@@ -128,9 +130,9 @@
             "title": "60 ml Cuban Aguardiente, 15 ml Fresh Lime Juice, 15 ml Raw Honey, 50 ml Water",
             "answers": [
                 "Canchanchara",
-                "Americano",
-                "Aviation",
-                "Angel Face"
+                "Daiquiri",
+                "Bee’s Knees",
+                "Hot Toddy"
             ]
         },
         {
@@ -139,8 +141,8 @@
             "answers": [
                 "Cardinale",
                 "Americano",
-                "Aviation",
-                "Angel Face"
+                "Negroni",
+                "Boulevardier"
             ]
         },
         {
@@ -148,9 +150,9 @@
             "title": "40 ml Old Tom Gin, 10 ml Maraschino Luxardo, 10 ml Fresh Lemon Juice, 2 Dashes Orange Bitters",
             "answers": [
                 "Casino",
-                "Americano",
+                "Martinez",
                 "Aviation",
-                "Angel Face"
+                "Clover Club"
             ]
         },
         {
@@ -158,9 +160,9 @@
             "title": "90 ml Chilled Champagne, 10 ml Cognac, 2 dashes Angostura Bitters, Few drops of Grand Marnier (optional), 1 Sugar Cube",
             "answers": [
                 "Champagne Cocktail",
-                "Americano",
-                "Aviation",
-                "Angel Face"
+                "Kir Royal",
+                "French 75",
+                "Bellini"
             ]
         },
         {
@@ -168,9 +170,9 @@
             "title": "45 ml Green Chartreuse, 30 ml Fresh Pineapple Juice, 22.5 ml Fresh Lime Juice, 15 ml Falernum",
             "answers": [
                 "Chartreuse Swizzle",
-                "Americano",
-                "Aviation",
-                "Angel Face"
+                "Last Word",
+                "Mai Tai",
+                "Jungle Bird"
             ]
         },
         {
@@ -178,9 +180,9 @@
             "title": "45 ml Gin, 15 ml Raspberry Syrup, 15 ml Fresh Lemon Juice, Few Drops of Egg White",
             "answers": [
                 "Clover Club",
-                "Americano",
-                "Aviation",
-                "Angel Face"
+                "French Martini",
+                "Pink Lady",
+                "Raspberry Sour"
             ]
         },
         {
@@ -188,11 +190,213 @@
             "title": "30 ml Gin, 30 ml Cointreau, 30 ml Lillet Blanc, 30 ml Fresh Lemon Juice, 1 Dash Absinthe",
             "answers": [
                 "Corpse Reviver #2",
-                "Americano",
-                "Aviation",
-                "Angel Face"
+                "Last Word",
+                "White Lady",
+                "Aviation"
             ]
+        },
+    
+
+
+        {
+            
+            "title": "40 ml Vodka Citron, 15 ml Cointreau, 15 ml Fresh Lime Juice, 30 ml Cranberry Juice",
+            "answers": [
+                "Cosmopolitan",
+                "Gin Fizz",
+                "Clover Club",
+                "French 75"
+            ]
+        },
+        {
+            
+            "title": "50 ml White Rum, 120 ml Cola, 10 ml Fresh Lime Juice",
+            "answers": [
+                "Cuba Libre",
+                "Sidecar",
+                "Sazerac",
+                "Corpse Reviver #1"
+            ]
+        },
+        {
+            
+            "title": "60 ml White Cuban Rum, 20 ml Fresh Lime Juice, 2 Bar Spoons Superfine Sugar",
+            "answers": [
+                "Daiquiri",
+                "Caipiroska",
+                "Casino",
+                "Mojito"
+            ]
+        },
+        {
+            
+            "title": "60 ml Goslings Rum, 100 ml Ginger Beer",
+            "answers": [
+                "Dark ‘N’ Stormy",
+                "Daiquiri",
+                "Bee’s Knees",
+                "Hot Toddy"
+            ]
+        },
+        {
+            
+            "title": "30 ml Gold Jamaican Rum, 15 ml Cuban Rum, 15 ml Passion Fruit Syrup, 15 ml Fresh Lime Juice, 15 ml Honey Syrup",
+            "answers": [
+                "Don’s Special Daiquiri",
+                "Americano",
+                "Negroni",
+                "Boulevardier"
+            ]
+        },
+        {
+            
+            "title": "60 ml Gin, 10 ml Dry Vermouth",
+            "answers": [
+                "Dry Martini",
+                "Martinez",
+                "Aviation",
+                "Clover Club"
+            ]
+        },
+        {
+            
+            "title": "50 ml Vodka, 30 ml Kahlúa, 10 ml Sugar Syrup, 1 Strong Espresso",
+            "answers": [
+                "Espresso Martini",
+                "Kir Royal",
+                "French 75",
+                "Bellini"
+            ]
+        },
+        {
+            
+            "title": "50 ml Fernet Branca and fill up with Cola",
+            "answers": [
+                "Fernandito",
+                "Last Word",
+                "Mai Tai",
+                "Jungle Bird"
+            ]
+        },
+        {
+            
+            "title": "30 ml Gin, 15 ml Fresh Lemon Juice, 15 ml Sugar Syrup, 60 ml Champagne",
+            "answers": [
+                "French 75",
+                "French Martini",
+                "Pink Lady",
+                "Raspberry Sour"
+            ]
+        },
+        {
+            
+            "title": "35 ml Cognac /n 35 ml Amaretto",
+            "answers": [
+                "French Connection",
+                "Last Word",
+                "White Lady",
+                "Aviation"
+            ]
+        },
+
+
+
+        {
+             "_comment": "30",
+            "title": "45 ml Vodka, 15 ml Raspberry Liqueur, 15 ml Fresh Pineapple Juice",
+            "answers": [
+                "French Martini",
+                "Panama",
+                "Grasshopper",
+                "Alejandro"
+            ]
+        },
+        {  
+            "title": "45 ml Bitter Campari, 120 ml Freshly Squeezed Orange Juice",
+            "answers": [
+                "Garibaldi",
+                "Negroni",
+                "Boulevardier",
+                "Milano-Torino"
+            ]
+        },
+        {   
+            "title": "60 ml Gin, 22.5 ml Freshly Squeezed Lemon Juice, 22.5 ml Sugar Syrup, 10 pcs Italian Basil Leaves",
+            "answers": [
+                "Gin Basil Smash",
+                "Between the Sheets",
+                "Daiquiri",
+                "Casino"
+            ]
+        },
+        {   
+            "title": "45 ml Gin, 30 ml Fresh Lemon Juice, 10 ml Simple Syrup, Splash of Soda Water",
+            "answers": [
+                "Gin Fizz",
+                "Clover Club",
+                "Corpse Reviver #2",
+                "Last Word"
+            ]
+        },
+        {   
+            "title": "45 ml Tequila 100% Agave, 30 ml Grand Marnier, 15 ml Fresh Lime Juice",
+            "answers": [
+                "Grand Margarita",
+                "Tom Collins",
+                "Southside",
+                "Gold Rush"
+            ]
+        },
+        {   
+            "title": "20 ml Crème de Cacao (White), 20 ml Crème de Menthe (Green), 20 ml Fresh Cream",
+            "answers": [
+                "Grasshopper",
+                "Mimosa",
+                "Rossini",
+                "Kir Royal"
+            ]
+        },
+        {   
+            "title": "45 ml London Dry Gin, 45 ml Sweet Red Vermouth, 7.5 ml Fernet",
+            "answers": [
+                "Hanky Panky",
+                "Sidecar",
+                "Mai Tai",
+                "Daiquiri"
+            ]
+        },
+        {  
+            "title": "60 ml Rum, 40 ml Grapefruit Juice, 15 ml Maraschino Luxardo, 15 ml Fresh Lime",
+            "answers": [
+                "Hemingway Specialn",
+                "White Russian",
+                "Mudslide",
+                "Espresso Martini"
+            ]
+        },
+        {   
+            "title": "40 ml Cognac, 120 ml Ginger Ale, Dash of Angostura Bitters (optional)",
+            "answers": [
+                "Horse’s Necky",
+                "Red Snapper",
+                "Michelada",
+                "Bloody Maria"
+            ]
+        },
+        {   
+            "title": "30 ml Ron Profundo Havana Club, 30 ml Ron Smoky Havana Club, 15 ml Licor Amaretto, 5 ml Licor Frangelico, 5 drops Maraschino Luxardo, 30 ml Passion Fruit Puree, 90 ml Fresh Pineapple Juice, 30 ml Fresh Lime Juice, 1 pc Ginger Slice",
+            "answers": [
+                "IBA Tiki",
+                "Americano",
+                "Negroni",
+                "Manhattan"
+            ]
+        
         }
+
+
+        
+
       
     ]
 }
