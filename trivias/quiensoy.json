@@ -2,7 +2,7 @@
     "questions": [
         {
             "_comment": "comment text goes here...",
-            "title": "30ml Cognac, 30 ml Crème de Cacao (Brown), 30 ml Fresh Cream",
+            "title": "30ml Cognac /n 30 ml Crème de Cacao (Brown) /n 30 ml Fresh Cream",
             "answers": [
                 "Alexander",
                 "Panama",
@@ -11,7 +11,7 @@
             ]
         },
         {  
-            "title": "30 ml Bitter Campari, 30 ml Sweet Red Vermouth and a splash of Soda Water",
+            "title": "30 ml Bitter Campari /n 30 ml Sweet Red Vermouth /n a splash of Soda Water",
             "answers": [
                 "Americano",
                 "Negroni",
@@ -20,7 +20,7 @@
             ]
         },
         {   
-            "title": "30 ml Gin, 30 ml Apricot Brandy, 30 ml Calvados",
+            "title": "30 ml Gin /n 30 ml Apricot Brandy /n 30 ml Calvados",
             "answers": [
                 "Angel Face",
                 "Between the Sheets",
