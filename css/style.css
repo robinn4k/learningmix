@@ -1,9 +1,9 @@
 :root {
-  --blue: #359595;
-  --blue-dark: #001E1E;
-  --green: #47C747;
+  --blue: #20229d;
+  --blue-dark: #161616;
+  --green: #29b729;
   --green-dark: #002800;
-  --red: #f95959;
+  --red: #f13434;
   --red-dark: #320000;
   --text: #e3e3e3;
 }
@@ -23,7 +23,7 @@ html{
 }
 
 body {
-  background-color: #233142;
+  background-color: #353333;
   color: var(--text);
     font-family: 'Open Sans', sans-serif;
 }

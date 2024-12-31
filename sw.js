@@ -1,22 +1,22 @@
 const CACHE_LIST = [
   "/",
-  "/index.html",
+  //"/index.html",
   "/favicon.svg",
   "/logo.svg",
-  "/trivials.json",
+  //"/trivials.json",
   "/js/pequejs.min.js",
   "/js/translate.js",
-  "/js/trivia.js",
+  //"/js/trivia.js",
   "/css/style.css",
   "/i18n/en.json",
   "/i18n/es.json",
-  "/trivias/crecienlos80.json",
+  //"/trivias/quiensoy.json",
   "/trivias/general_en.json",
   "/trivias/nintendo.json",
   "/flags/en.svg",
   "/flags/es.svg"
 ];
-const STATIC_CACHE_VERSION = `static-v1-23070400000`;
+const STATIC_CACHE_VERSION = `static-v1-23070400001`;
 const DEBUG = false;
 
 self.addEventListener('install', function(event) {

@@ -211,6 +211,8 @@ $('#trivia').on('click', '.question', function() {
   } else {
     failed++;
     $(this).addClass('btn-red');
+     // Destacamos la respuesta correcta
+     $('#trivia-answers .question[idresp="0"]').addClass('btn-green');
   }
 
   block_answers = true;
