@@ -1,0 +1,455 @@
+{
+    "questions": [
+      {
+        "title": "¿Dónde se cree que nació el cóctel Margarita en la década de 1930-1940?",
+        "answers": [
+          "Tijuana, México",
+          "Ciudad de México, México",
+          "Acapulco, México",
+          "Houston, Estados Unidos"
+        ]
+      },
+      {
+        "title": "¿Quién popularizó el Daiquiri al llevarlo a un famoso bar de La Habana a principios del siglo XX?",
+        "answers": [
+          "Constantino Ribalaigua Vert (Constante)",
+          "Victor Bergeron (Trader Vic)",
+          "Fernando Gallo Gil",
+          "Harry Craddock"
+        ]
+      },
+      {
+        "title": "¿En qué ciudad se atribuye la invención del Manhattan (alrededor de 1870)?",
+        "answers": [
+          "Nueva York (Manhattan Club)",
+          "Chicago",
+          "Boston",
+          "San Francisco"
+        ]
+      },
+      {
+        "title": "¿Qué anécdota famosa rodea la creación del Dry Martini según una versión de 1910?",
+        "answers": [
+          "Se preparó al estilo “Martinez” en el Hotel Knickerbocker y fue perfeccionado para John D. Rockefeller",
+          "Surgió como mezcla de vino tinto con ginebra que gustó a Winston Churchill",
+          "Fue un accidente al confundir vermut dulce con bitter de angostura",
+          "Se creó para un embajador italiano que odiaba el whisky"
+        ]
+      },
+      {
+        "title": "El Negroni se originó en Florencia en 1919. ¿Quién lo solicitó al barman como una variante del Americano?",
+        "answers": [
+          "El conde Camillo Negroni",
+          "El duque de Windsor",
+          "Giuseppe Cipriani",
+          "Ernest Hemingway"
+        ]
+      },
+      {
+        "title": "¿En qué famoso bar de La Habana se popularizó el Mojito en la década de 1930?",
+        "answers": [
+          "La Bodeguita del Medio",
+          "El Floridita",
+          "El Sloppy Joe’s",
+          "El Dos Hermanos"
+        ]
+      },
+      {
+        "title": "¿Cuál fue el primer gran referente que describió el Old Fashioned en una receta escrita (hacia 1880)?",
+        "answers": [
+          "El bartender del Pendennis Club (Louisville), introducido luego en Nueva York",
+          "El libro “Savoy Cocktail Book” de Harry Craddock",
+          "Ada Coleman, en el bar del Hotel Ritz de Londres",
+          "Victor Jules Bergeron, en su guía de coctelería polinesia"
+        ]
+      },
+      {
+        "title": "¿Quién fue considerado “el padre del cóctel Sazerac” al popularizarlo en Nueva Orleans a mediados del siglo XIX?",
+        "answers": [
+          "Antoine Peychaud",
+          "Jerry Thomas",
+          "Harry Johnson",
+          "Orsamus Willard"
+        ]
+      },
+      {
+        "title": "¿Qué anécdota rodea la creación del Sidecar a inicios del siglo XX?",
+        "answers": [
+          "Se dice que un capitán estadounidense llegaba al bar en un sidecar de motocicleta y pidió una mezcla con Cognac",
+          "Nació de un error al confundir brandy con ron en un hotel de París",
+          "Fue resultado de una competencia de barman en Londres con ginebra y Cointreau",
+          "Se creó para un banquete real en Mónaco, usando champán en vez de Cognac"
+        ]
+      },
+      {
+        "title": "¿En qué bar nació el cóctel Bellini (1948), uniendo prosecco y puré de melocotón?",
+        "answers": [
+          "Harry’s Bar en Venecia",
+          "King Cole Bar en Nueva York",
+          "Tijuana Race Track en Baja California",
+          "The Savoy Hotel en Londres"
+        ]
+      },
+      {
+        "title": "El White Russian cobró fama tras la película “The Big Lebowski” (1998), pero ¿en qué país se originó la idea?",
+        "answers": [
+          "Estados Unidos (inspirado en el Black Russian)",
+          "Rusia, para homenajear a la corte real",
+          "Francia, como mezcla de vodka y leche condensada",
+          "Inglaterra, bautizado así por Winston Churchill"
+        ]
+      },
+      {
+        "title": "¿Cuál es el supuesto origen del cóctel Bloody Mary, desarrollado en la década de 1920-1930?",
+        "answers": [
+          "Se cree que Fernand Petiot lo preparó en Harry’s New York Bar de París, bautizándolo “Bucket of Blood”",
+          "Lo creó una monja en un monasterio español para remediar resacas",
+          "Surgió en Chicago durante la Prohibición usando jugo de remolacha",
+          "Fue mezcla accidental de vermut y jugo de tomate en Londres"
+        ]
+      },
+      {
+        "title": "¿Con qué insólito relato se asocia la creación del cóctel Long Island Iced Tea (1970s)?",
+        "answers": [
+          "Se originó durante un concurso de cócteles en Long Island, mezclando varios licores y cola para imitar el té helado",
+          "Fue obra de un estudiante de la Universidad de Oxford que quiso disfrazar alcohol en un termo",
+          "Lo popularizó un pirata del Caribe que bebía té con ginebra y ron",
+          "Harry MacElhone lo incluyó por error en su menú al confundir licores marrones"
+        ]
+      },
+      {
+        "title": "¿Quién publicó en 1862 el libro “How to Mix Drinks or The Bon Vivant’s Companion”, referente en coctelería?",
+        "answers": [
+          "Jerry Thomas",
+          "Ada Coleman",
+          "Harry Craddock",
+          "David A. Embury"
+        ]
+      },
+      {
+        "title": "El Clover Club es un cóctel a base de ginebra, frambuesa y clara de huevo. ¿Dónde se hizo popular a inicios del XX?",
+        "answers": [
+          "En el Clover Club del Bellevue-Stratford Hotel (Filadelfia)",
+          "En el Waldorf Astoria de Nueva York",
+          "En el Bohemia Bar de Praga",
+          "En el Brown’s Hotel de Londres"
+        ]
+      },
+      {
+        "title": "El cóctel Mint Julep se asocia a un evento deportivo de EE. UU. desde finales del siglo XIX. ¿Cuál?",
+        "answers": [
+          "Las carreras de caballos del Kentucky Derby",
+          "El Grand Prix de Indianápolis",
+          "La final de la MLB World Series",
+          "El Rose Bowl de fútbol americano"
+        ]
+      },
+      {
+        "title": "¿Qué fecha aproximada se atribuye a la invención del Tom Collins (y su graciosa historia del “buscando a Tom Collins”)?",
+        "answers": [
+          "1874, durante una broma extendida en Nueva York",
+          "1850, ideado por un coronel británico en Calcuta",
+          "1905, en San Francisco tras el gran terremoto",
+          "1920, popularizado en Londres por Winston Churchill"
+        ]
+      },
+      {
+        "title": "El Aviation Cocktail (ginebra, marrasquino, limón, violeta) fue publicado en 1916 por Hugo Ensslin. ¿Dónde trabajaba?",
+        "answers": [
+          "En el Hotel Wallick de Nueva York",
+          "En la Real Academia de Coctelería de Viena",
+          "En el Hotel Savoy de Londres, bajo la tutela de Craddock",
+          "En el Ritz de París junto a Frank Meier"
+        ]
+      },
+      {
+        "title": "¿En qué ciudad se popularizó el Singapore Sling, de la mano de Ngiam Tong Boon en 1915?",
+        "answers": [
+          "Singapur (Raffles Hotel)",
+          "Hong Kong (Peninsula Hotel)",
+          "Kuala Lumpur (Selangor Club)",
+          "Tokio (Imperial Hotel)"
+        ]
+      },
+      {
+        "title": "¿A qué famoso escritor debe parte de su fama el Daiquiri, al frecuentar El Floridita en La Habana?",
+        "answers": [
+          "Ernest Hemingway",
+          "F. Scott Fitzgerald",
+          "Truman Capote",
+          "Graham Greene"
+        ]
+      },
+      {
+        "title": "Se dice que el cóctel Mai Tai se creó en 1944 en Oakland, California. ¿Por quién?",
+        "answers": [
+          "Victor Bergeron (Trader Vic)",
+          "Ernest Raymond Beaumont Gantt (Don the Beachcomber)",
+          "“Chick” Gene Gates",
+          "Joe Scialom (creador del Suffering Bastard)"
+        ]
+      },
+      {
+        "title": "El Cosmopolitan (vodka, Cointreau, limón y arándano) fue muy popular en la década de 1990. ¿Con qué serie se asocia?",
+        "answers": [
+          "“Sex and the City”",
+          "“Friends”",
+          "“Seinfeld”",
+          "“Buffy the Vampire Slayer”"
+        ]
+      },
+      {
+        "title": "¿Qué cóctel fue nombrado así en honor a una flor y creado en el hotel londinense Savoy alrededor de 1925?",
+        "answers": [
+          "El White Lady",
+          "El Four Flowers Punch",
+          "El Rose Royale",
+          "El Blue Bell"
+        ]
+      },
+      {
+        "title": "¿Dónde se originó el Hanky Panky (ginebra, vermut, Fernet)?",
+        "answers": [
+          "En el American Bar del Savoy Hotel (Ada Coleman)",
+          "En el Waldorf Astoria con Oscar Tschirky",
+          "En el Ritz de París, tras un reto de Auguste Escoffier",
+          "En Florencia, por la familia Negroni"
+        ]
+      },
+      {
+        "title": "¿Qué anécdota se cuenta sobre la creación del French 75 (champán, ginebra, limón, azúcar)?",
+        "answers": [
+          "Fue bautizado así porque el golpe se comparó al cañón francés 75 mm de la Primera Guerra Mundial",
+          "Surgió para honrar la liberación de París en 1944 mezclando sidra y aguardiente",
+          "Se ideó en Lyon para un general que detestaba el vermut y exigía champán",
+          "Harry Craddock lo nombró así por su bar preferido en la Rue 75 de París"
+        ]
+      },
+      {
+        "title": "El Ramos Gin Fizz, famoso por su consistencia espumosa, se creó en 1888 en Nueva Orleans por…",
+        "answers": [
+          "Henry C. Ramos",
+          "Ernest Gantt",
+          "Pedro Chicote",
+          "John Collins"
+        ]
+      },
+      {
+        "title": "¿Qué relación hay entre el Pisco Sour y el Hotel Maury en Lima (década de 1920)?",
+        "answers": [
+          "Se popularizó allí al ser preparado por el barman Víctor Morris y luego Eduardo “Gringo” Swayne",
+          "Nació en Chile y el Hotel Maury usaba pisco chileno solo como curiosidad",
+          "Se mezclaba con clara de huevo por error en un concurso local de la Colonia",
+          "El Pisco Sour era un brandy sour con jugo de tuna que sirvió un español exiliado"
+        ]
+      },
+      {
+        "title": "¿Qué curioso nombre le dio el barman Pat MacGarry a su creación con ron, piña y coco, previo a llamarse Piña Colada?",
+        "answers": [
+          "Coco Loco",
+          "Tropical Sunrise",
+          "Puerto Rican Dream",
+          "Caribe Bliss"
+        ]
+      },
+      {
+        "title": "El Martinez (considerado precursor del Martini) se menciona en la guía de Jerry Thomas. ¿En qué década se le atribuye?",
+        "answers": [
+          "1870s",
+          "1910s",
+          "1840s",
+          "1930s"
+        ]
+      },
+      {
+        "title": "¿Quién creó el Dark ’n’ Stormy a base de ron y ginger beer, siendo marca registrada en Bermudas?",
+        "answers": [
+          "Gosling Brothers (familia de ron en Bermudas)",
+          "Bacardi y el Bar El Faro",
+          "Un marinero británico anónimo que mezcló jengibre con brandy",
+          "Los fundadores del Mount Gay en Barbados"
+        ]
+      },
+      {
+        "title": "El Brandy Alexander surgió como variante del Alexander (gin). ¿Qué celebridad lo promocionó en la boda real de 1922?",
+        "answers": [
+          "El príncipe Jorge (duque de Kent) en Inglaterra",
+          "El expresidente Theodore Roosevelt en EE. UU.",
+          "La duquesa de Marlborough en Mónaco",
+          "El zar Nicolás II antes de su exilio"
+        ]
+      },
+      {
+        "title": "¿Quién dirigía el bar del Ritz de París cuando, en 1921, se habría popularizado el cóctel “Mimosa”?",
+        "answers": [
+          "Frank Meier",
+          "Colin Field",
+          "Fernand Petiot",
+          "Ada Coleman"
+        ]
+      },
+      {
+        "title": "¿Dónde se creó aproximadamente el Harvey Wallbanger (vodka, Galliano y zumo de naranja) en los 1950s o 60s?",
+        "answers": [
+          "Los Ángeles, por un barman llamado Donato “Duke” Antone",
+          "Nueva York, en el Waldorf Astoria",
+          "Miami Beach, en un hotel art déco",
+          "Niza, Francia, durante un festival de cine"
+        ]
+      },
+      {
+        "title": "¿En qué lugar nació el Tequila Sunrise original (tequila, crema de cassis, limón, soda) en los años 1930?",
+        "answers": [
+          "Hotel Arizona Biltmore (Phoenix)",
+          "Tijuana en el Caesar’s Palace",
+          "Ciudad de México, en el bar La Ópera",
+          "Monterrey, en un club de Jazz"
+        ]
+      },
+      {
+        "title": "El Gibson Cocktail es similar a un Martini pero se decora con cebollitas en lugar de aceitunas. ¿Qué se cuenta de su origen?",
+        "answers": [
+          "Lo habría inventado un ilustrador llamado Charles Dana Gibson, pidiendo cebollitas para distinguir su copa",
+          "Fue un experimento para reducir la acidez usando pepinillos",
+          "Surgió para aprovechar unas cebollas dulces del sur de España",
+          "Se concibió como un remedio medicinal para la gripe con genciana"
+        ]
+      },
+      {
+        "title": "Se dice que el Zombie (un potente cóctel Tiki) fue creado hacia 1934 por…",
+        "answers": [
+          "Don the Beachcomber (Ernest Gantt)",
+          "Trader Vic en su bar de Oakland",
+          "Joe Scialom en el Hotel Shepheard del Cairo",
+          "A. Coleman en el Hotel Savoy de Londres"
+        ]
+      },
+      {
+        "title": "¿Quién era Ada Coleman (“Coley”) famosa por el cóctel Hanky Panky y ser la primera jefa de bar en…?",
+        "answers": [
+          "El Savoy Hotel (American Bar, Londres)",
+          "El Ritz de París",
+          "El Embassy Club de Madrid",
+          "El Astoria Hotel de Bruselas"
+        ]
+      },
+      {
+        "title": "El cóctel Hemingway Special (Daiquirí modificado) se elaboraba sin azúcar y con pomelo. ¿En qué bar?",
+        "answers": [
+          "El Floridita, La Habana",
+          "El Sloppy Joe’s, Key West",
+          "El Harry’s Bar, París",
+          "El Tropicana, Las Vegas"
+        ]
+      },
+      {
+        "title": "Un barman del Harry’s Bar (París) creó el cóctel Monkey Gland usando ginebra y absenta. ¿Cómo se llamaba?",
+        "answers": [
+          "Harry MacElhone",
+          "Harry Craddock",
+          "Pete “Charles” Sines",
+          "Giuseppe Cipriani"
+        ]
+      },
+      {
+        "title": "¿Cuál es la leyenda del Origen del “Tequila Sour” con clara de huevo e inspiración en el Pisco Sour?",
+        "answers": [
+          "Fue una adaptación mexicana inspirada en la popularidad del Pisco Sour peruano de 1920-1930",
+          "Lo inventó un embajador chileno mezclando tequila con jugo de piña",
+          "Surgió en España durante la Guerra Civil y se llevó a México",
+          "Era un trago de ceremonia azteca con zumo de xoconostle"
+        ]
+      },
+      {
+        "title": "El Bloody Caesar (similar al Bloody Mary) se originó en Calgary (1969). ¿Con qué ingrediente peculiar?",
+        "answers": [
+          "Jugo de almejas (Clamato)",
+          "Whisky en vez de vodka",
+          "Zumo de pepino con sal de gusano",
+          "Tequila infusionado con jitomate"
+        ]
+      },
+      {
+        "title": "¿Cuál es el mito de la invención de la Caipirinha en Brasil?",
+        "answers": [
+          "Se cree que surgió como un remedio casero para la gripe que incluía cachaça, limón y miel",
+          "Era un licor indígena con hojas de coca y aguardiente",
+          "Fue creado por un monje portugués con brandy y anacardos",
+          "Lo trajo un corsario francés usando jugo de caña fermentado"
+        ]
+      },
+      {
+        "title": "¿Quién popularizó el cóctel Gin Basil Smash en Alemania (2008), añadiendo al canónico “Gin Smash” hojas de albahaca fresca?",
+        "answers": [
+          "Jörg Meyer (bar Le Lion, Hamburgo)",
+          "Stefan Gabányi (Múnich)",
+          "Tony Conigliaro (Londres)",
+          "Sasha Petraske (Milk & Honey, NY)"
+        ]
+      },
+      {
+        "title": "El Boulevardier es una variante del Negroni con bourbon. ¿Quién lo mencionó por primera vez en su libro “Barflies and Cocktails” (1927)?",
+        "answers": [
+          "Harry McElhone",
+          "David A. Embury",
+          "William Boothby",
+          "James Burrough"
+        ]
+      },
+      {
+        "title": "¿Cuál es el contexto aproximado de la primera mención escrita del Gin Tonic?",
+        "answers": [
+          "En la India colonial británica, siglo XIX, cuando se usaba la quinina como antipalúdico",
+          "En la taberna londinense “The Angel” en 1750",
+          "Surgió como mezcla de ginebra con sidra y gaseosa en Boston",
+          "Apareció por primera vez en un recetario romano del siglo IV"
+        ]
+      },
+      {
+        "title": "¿Qué relato acompaña la creación del Irish Coffee (café, whisky irlandés, azúcar y nata)?",
+        "answers": [
+          "Se sirvió a pasajeros varados en el aeropuerto de Foynes (Irlanda) para calentarlos en 1943",
+          "Lo inventó un cura misionero en Cork en 1900 para combatir el frío",
+          "Fue un experimento fallido de coctelería Tiki en Honolulu",
+          "Surgió de un reto entre bartenders en Dublín para mezclar té y whisky"
+        ]
+      },
+      {
+        "title": "El Vieux Carré (rye, coñac, vermut, benedictine, amargos) se atribuye a Walter Bergeron en 1930. ¿En qué lugar?",
+        "answers": [
+          "En el Hotel Monteleone de Nueva Orleans",
+          "En el Hotel St. Regis de Nueva York",
+          "En el Drake Hotel de Chicago",
+          "En el Palace Bar de San Francisco"
+        ]
+      },
+      {
+        "title": "¿Por qué se dice que el Screwdriver (vodka y jugo de naranja) obtuvo ese nombre?",
+        "answers": [
+          "Unos obreros petroleros en Oriente Medio revolvían la mezcla con un destornillador",
+          "Surgió en un restaurante de Londres que usaba un tornillo de ferretería como adorno",
+          "Era la bebida favorita de aviadores de la RAF que ajustaban piezas durante el brindis",
+          "Fue un invento de la NASA para los ingenieros en Cabo Cañaveral"
+        ]
+      },
+      {
+        "title": "El cóctel Americano (campari, vermut, soda). ¿Qué cambio sufrió para crear el Negroni?",
+        "answers": [
+          "Sustituir la soda por ginebra, a petición del conde Camillo Negroni",
+          "Añadir amargos aromáticos y reducir el vermut al mínimo",
+          "Cambiar el campari por ron oscuro y sumar azúcar",
+          "Usar licor de anís en lugar de vermut para dar un toque francés"
+        ]
+      },
+      {
+        "title": "¿Cuál es la anécdota más aceptada sobre la creación del Cuba Libre en La Habana hacia 1900?",
+        "answers": [
+          "Soldados norteamericanos mezclaron ron local con Coca-Cola y brindaron por “Cuba Libre” tras la guerra hispano-estadounidense",
+          "Fue un experimento del bar El Floridita que salió mal pero gustó a los turistas",
+          "Lo creó un cantinero japonés usando jarabe de caña y agua carbonatada",
+          "Se preparó por primera vez en Madrid con soda y ron caribeño"
+        ]
+      }
+    ]
+  }
+  
