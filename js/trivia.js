@@ -310,3 +310,7 @@ window.onload = () => {
       .catch(onErrorRegister)
   } else console.log('Your browser do not support service worker')
 }
+
+$('#version-text').on('click', function() {
+  window.location.reload();
+});

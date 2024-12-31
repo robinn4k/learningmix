@@ -16,7 +16,7 @@ const CACHE_LIST = [
   "/flags/en.svg",
   "/flags/es.svg"
 ];
-const STATIC_CACHE_VERSION = `static-v1-23070400001`;
+const STATIC_CACHE_VERSION = `Bartender'sTrivalv1.7`;
 const DEBUG = false;
 
 self.addEventListener('install', function(event) {
