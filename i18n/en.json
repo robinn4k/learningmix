@@ -1,6 +1,6 @@
 {
     "about": "About",
-    "about_html": "<p>MegaTrivia is a trivia game where you can choose between different trivia games, both created by me and contributed by other people.</p><p>The code for this project is licensed under GNU/GPL version 3 or newer.</p><a href='https://github.com/son-link/MegaTrivia' class='btn btn-green'>Source code</a><p>MegaTrivia &copy; 2013 - 2023 Alfonso Saavedra \"Son Link\".</p>",
+    "about_html": "<p>Bartender'sTrivia is a trivia-style game where you can choose from various categories, both created by me and contributed by others. The code for this project is licensed under the GNU/GPL, version 3 or later. This version has been modified for educational purposes, focusing on the world of mixology, including official recipes, historical facts, interesting data, events, and more related to bartending. <a href='https://github.com/robinn4k/learningmix' class='btn btn-green'>Source Code</a> Bartender'sTrivia © 2024 - 2025 Robin M. Ober @robinn4k.</p>",
     "back": "Back",
     "game_over": "You got {total_correct} question(s) right and {total_failed} wrong.",
     "lang": "Language",
