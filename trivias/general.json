@@ -1,0 +1,968 @@
+{
+    "questions": [
+      {
+        "title": "¿Qué grado alcohólico mínimo exige la legislación de la UE para calificar una bebida como espirituosa?",
+        "answers": [
+          "15%",
+          "17%",
+          "12%",
+          "20%"
+        ]
+      },
+      {
+        "title": "¿Cuál de las siguientes bebidas se obtiene de la destilación de vinos (uvas)?",
+        "answers": [
+          "Brandy",
+          "Calvados",
+          "Sake",
+          "Whisky"
+        ]
+      },
+      {
+        "title": "Según la definición de la UE, ¿qué tipo de bebidas se denominan 'bebidas espirituosas'?",
+        "answers": [
+          "Aquellas con un mínimo de 15% de alcohol y características organolépticas derivadas de su materia prima",
+          "Las que superan el 20% de alcohol y prescinden de envejecimiento en madera",
+          "Únicamente las fermentadas a partir de cereales y después sometidas a doble destilación",
+          "Las que carecen de componentes aromáticos y se consumen puras"
+        ]
+      },
+      {
+        "title": "¿Cuál de estas fases es fundamental en la obtención de las bebidas espirituosas a partir de mostos azucarados?",
+        "answers": [
+          "La destilación",
+          "La filtración a baja temperatura sin fermentación previa",
+          "El embotellado directo en depósitos presurizados",
+          "La congelación del jugo por debajo de 0 °C para clarificar"
+        ]
+      },
+      {
+        "title": "¿Qué materias primas son las más empleadas en la producción de bebidas espirituosas?",
+        "answers": [
+          "Cereales, frutas y otros productos agrícolas fermentables",
+          "Exclusivamente flores aromáticas y tubérculos exóticos",
+          "Subproductos lácteos fermentados a alto grado",
+          "Plantas silvestres maceradas en agua hasta la ebullición"
+        ]
+      },
+      {
+        "title": "Según el texto, ¿qué porcentaje de alcohol pueden alcanzar los denominados 'aguardientes simples'?",
+        "answers": [
+          "Entre 30% y 80%",
+          "Entre 15% y 25%",
+          "Entre 50% y 60% si se destilan a bajas temperaturas",
+          "Entre 80% y 95% si se envejecen en barrica"
+        ]
+      },
+      {
+        "title": "¿Cuál es el principal objetivo de la fermentación en la elaboración de bebidas espirituosas?",
+        "answers": [
+          "Transformar los azúcares en alcohol etílico",
+          "Crear un mosto con alto grado de metanol",
+          "Acidificar el mosto para estabilizar el pH",
+          "Aportar aromas ahumados mediante turba"
+        ]
+      },
+      {
+        "title": "¿Cómo se denomina el alcohol que supera el 96% de concentración tras un proceso de destilación y rectificación?",
+        "answers": [
+          "Alcohol rectificado",
+          "Aguardiente de pasta",
+          "Vodka aromático",
+          "Brandy de vino joven"
+        ]
+      },
+      {
+        "title": "¿Cuál de los siguientes productos se obtiene tras la deshidratación del alcohol, haciéndolo no apto para uso de boca?",
+        "answers": [
+          "Alcohol no potable (deshidratado)",
+          "Alcohol de vino de segunda fracción",
+          "Aguardiente de cereales con compuestos extra",
+          "Subproducto de la destilación de melaza (fusel)"
+        ]
+      },
+      {
+        "title": "En la destilación, ¿cómo se llaman las primeras sustancias que se evaporan y que suelen desecharse por sus aromas desagradables?",
+        "answers": [
+          "Cabezas",
+          "Esencias de condensación",
+          "Corazón sobrante",
+          "Extractos superiores"
+        ]
+      },
+      {
+        "title": "¿Qué nombre recibe la parte central o más pura de una destilación de bebida espirituosa?",
+        "answers": [
+          "Corazón",
+          "Primera extracción",
+          "Fracción residual",
+          "Aguardiente neutro"
+        ]
+      },
+      {
+        "title": "¿Cómo se conoce la porción final en la destilación, rica en alcoholes más pesados y compuestos menos volátiles?",
+        "answers": [
+          "Colas",
+          "Remanentes de espuma",
+          "Cabezas de segunda",
+          "Posos destilados"
+        ]
+      },
+      {
+        "title": "¿Qué término describe la pérdida de un 2-3% de volumen anual durante la crianza de ciertas bebidas espirituosas?",
+        "answers": [
+          "La merma (o ‘el impuesto de los ángeles’)",
+          "La decantación estática",
+          "El arrastre final de alambiques",
+          "La rotura de taninos en fase gaseosa"
+        ]
+      },
+      {
+        "title": "¿En qué zona principal de España se produce el 'Brandy de Jerez' bajo una denominación específica reconocida?",
+        "answers": [
+          "Jerez de la Frontera, El Puerto de Santa María y Sanlúcar de Barrameda",
+          "Priorat, Conca de Barberà y Terra Alta",
+          "Montilla-Moriles, Sierra de Málaga y Condado de Huelva",
+          "Ribeiro, Rías Baixas y Monterrei"
+        ]
+      },
+      {
+        "title": "¿Cómo se denomina la parte 'media' de la segunda destilación en alambique a la que se le atribuye la mayor calidad?",
+        "answers": [
+          "Holanda o corazón",
+          "Aguardiente residual",
+          "Fracción invertida",
+          "Melaza de caña rectificada"
+        ]
+      },
+      {
+        "title": "¿Cuál de estos ingredientes NO corresponde a las materias primas básicas del VODKA tradicional?",
+        "answers": [
+          "Enebro",
+          "Granos de cereal",
+          "Patata",
+          "Melaza"
+        ]
+      },
+      {
+        "title": "¿Qué palabra rusa significa 'agua', y dio origen a la denominación 'vodka' como diminutivo?",
+        "answers": [
+          "Voda",
+          "Zima",
+          "Bratva",
+          "Khora"
+        ]
+      },
+      {
+        "title": "¿Qué grado alcohólico mínimo exige la UE para un vodka comercializado como tal?",
+        "answers": [
+          "37,5%",
+          "32,5%",
+          "38,5%",
+          "35%"
+        ]
+      },
+      {
+        "title": "¿En el contexto de la ginebra, qué planta aporta el aroma dominante y da origen a su nombre?",
+        "answers": [
+          "El enebro (juniperus)",
+          "La baya de mirto",
+          "La flor de saúco",
+          "La raíz de cilantro"
+        ]
+      },
+      {
+        "title": "¿Cuál de estas afirmaciones describe mejor una London Gin según la normativa europea?",
+        "answers": [
+          "Es un tipo de gin destilado cuyo sabor a enebro debe ser predominante y no lleva más de 0,1 g/L de azúcar",
+          "Proviene de un único alambique discontinuo en Londres",
+          "Debe superar el 50% de alcohol y envejecer 6 meses en roble",
+          "Incluye siempre botánicos cítricos en su receta"
+        ]
+      },
+      {
+        "title": "¿De qué cereal debe obtenerse, como mínimo un 51%, el Bourbon Whiskey?",
+        "answers": [
+          "Maíz",
+          "Trigo",
+          "Malta de cebada",
+          "Centeno"
+        ]
+      },
+      {
+        "title": "¿Qué instrumento inventado por Aeneas Coffey en 1831 permitió la destilación continua?",
+        "answers": [
+          "Patent Still (o alambique de columna)",
+          "Columna Ferrand de doble etapa",
+          "Bobina de arrastre con ventilación",
+          "Alambique irlandés trifásico"
+        ]
+      },
+      {
+        "title": "¿Cuál es la diferencia clave entre un single malt y un blended whisky?",
+        "answers": [
+          "El single malt proviene de una única destilería, mientras el blended combina maltas y whiskies de grano de varias destilerías",
+          "El single malt no puede tener más de 35% de alcohol, mientras el blended sí",
+          "El single malt se obtiene con grano de maíz, el blended con trigo y centeno",
+          "El single malt se embotella sin filtrar, mientras el blended se clarifica"
+        ]
+      },
+      {
+        "title": "Para la legislación europea, ¿cuántos años al menos debe envejecer un whisky o whiskey en barricas de máximo 700 L?",
+        "answers": [
+          "3 años",
+          "2 años",
+          "5 años",
+          "No existe requisito de envejecimiento"
+        ]
+      },
+      {
+        "title": "En el proceso de malteado para fabricar whisky de cereales, ¿qué sucede primero al empapar el grano?",
+        "answers": [
+          "Germina y libera enzimas que convierten el almidón en azúcares",
+          "Se acidifica y produce notas cítricas",
+          "Empieza a desprender aromas ahumados sin fermentación",
+          "Se disuelve parte del gluten para dar textura al mosto"
+        ]
+      },
+      {
+        "title": "¿Qué whisky se caracteriza por su triple destilación y ausencia de turba en el secado de la malta?",
+        "answers": [
+          "Whiskey irlandés",
+          "Bourbon americano",
+          "Highland Single Malt",
+          "Whisky japonés de grano"
+        ]
+      },
+      {
+        "title": "¿Qué es el 'Tequila' según la normativa mexicana?",
+        "answers": [
+          "Un destilado a base de la planta Agave tequilana Weber variedad azul",
+          "Un subproducto de la melaza con mezcla de zumo de frutas",
+          "Un aguardiente de cereales con acabado en barricas de roble",
+          "Un licor dulce que exige maceración de hierbas locales"
+        ]
+      },
+      {
+        "title": "¿Qué zona de México abarca la mayor parte de la producción de Tequila?",
+        "answers": [
+          "El estado de Jalisco",
+          "La región de Michoacán norte",
+          "Los valles de Chihuahua",
+          "El altiplano de Querétaro"
+        ]
+      },
+      {
+        "title": "¿Cuál de estos procedimientos NO se utiliza en la elaboración del Tequila?",
+        "answers": [
+          "Destilación de melaza de caña",
+          "Horneado o cocción de la piña (agave)",
+          "Molienda del agave para extraer mosto",
+          "Doble destilación en alambique"
+        ]
+      },
+      {
+        "title": "¿De dónde se obtiene la materia prima principal para la elaboración del ron?",
+        "answers": [
+          "Del jugo o la melaza de la caña de azúcar",
+          "De la fermentación de flores tropicales",
+          "De la savia resinosa del abeto",
+          "De la pera fermentada y macerada en calor"
+        ]
+      },
+      {
+        "title": "¿En qué región histórica surgió con más fuerza el ron como parte de la economía en los siglos XVII y XVIII?",
+        "answers": [
+          "Las Antillas (Caribe)",
+          "Las islas británicas del Canal",
+          "El interior del norte de África",
+          "La península escandinava"
+        ]
+      },
+      {
+        "title": "¿Qué subproducto de la caña de azúcar se aprovecha para elaborar la mayoría de los rones industriales?",
+        "answers": [
+          "La melaza",
+          "Los tallos fibrosos llamados bagazo",
+          "El jugo fresco al 100% sin filtrado",
+          "Los residuos cristalizados con alto grado de fructosa"
+        ]
+      },
+      {
+        "title": "¿Cómo se llama el proceso de convertir en alcohol el azúcar presente en jugos o melazas antes de destilar?",
+        "answers": [
+          "Fermentación",
+          "Extracción por arrastre de aromas",
+          "Rectificación total",
+          "Reducción enzimática"
+        ]
+      },
+      {
+        "title": "En la destilación de ron, ¿qué aporta la 'destilación en alambique' frente a la 'destilación en columna'?",
+        "answers": [
+          "Un sabor más complejo y pesado, con mayor carácter",
+          "Una tasa de alcohol cercana al 99% sin matices",
+          "Elimina todas las impurezas y congéneres de fermentación",
+          "Reduce costes de producción en grandes volúmenes"
+        ]
+      },
+      {
+        "title": "¿Cuál de estos factores NO influye directamente en los matices aromáticos que adquiere el ron?",
+        "answers": [
+          "La adición de dióxido de carbono al final de la fermentación",
+          "La cepa de levadura utilizada",
+          "El método de destilación (alambique o columna)",
+          "El tiempo y tipo de envejecimiento"
+        ]
+      },
+      {
+        "title": "¿En cuál de estas bebidas se utiliza la 'turba' para aportar un aroma ahumado característico durante su proceso?",
+        "answers": [
+          "Whisky escocés (al secar la malta)",
+          "Ciertos licores de café",
+          "Tequila reposado",
+          "Ron agrícola caribeño"
+        ]
+      },
+      {
+        "title": "¿Por qué se tuestan los barriles de roble antes de usarlos en el envejecimiento de bebidas espirituosas?",
+        "answers": [
+          "Para romper la estructura de la madera y liberar compuestos aromáticos",
+          "Para evitar la absorción de alcohol por los poros",
+          "Para teñir el interior y aportar color artificial",
+          "Para esterilizar y eliminar cualquier aroma a fruta"
+        ]
+      },
+      {
+        "title": "¿Qué característico proceso extra del tequila lo diferencia de otros destilados de cereales?",
+        "answers": [
+          "La cocción de la piña (agave) en hornos",
+          "El secado con turba para darle notas ahumadas",
+          "El uso de levaduras silvestres tropicales",
+          "La triple destilación en alambiques de columna"
+        ]
+      },
+      {
+        "title": "¿Cuál de los siguientes NO es un subproceso habitual en la elaboración de la ginebra?",
+        "answers": [
+          "Malteado de cebada con humo de turba",
+          "Maceración de botánicos en alcohol neutro",
+          "Redestilación con presencia de bayas de enebro",
+          "Filtración para eliminar aceites e impurezas"
+        ]
+      },
+      {
+        "title": "En la producción de vodka, ¿cuál de estos factores busca obtener un perfil lo más neutro posible?",
+        "answers": [
+          "La filtración repetida (por ejemplo, con carbón activado)",
+          "La fermentación usando cepas ricas en ácido láctico",
+          "El envejecimiento en barricas por 2 años",
+          "La adición de hierbas aromáticas tras la destilación"
+        ]
+      },
+      {
+        "title": "¿Qué tipo de destilación permite la obtención de alcoholes con hasta un 94-95% de volumen?",
+        "answers": [
+          "Destilación continua en columnas (Patent Still)",
+          "Destilación inversa en alambiques subpresión",
+          "Destilación fraccionada discontinua en pot still",
+          "Arrastre de vapor con enfriamiento instantáneo"
+        ]
+      },
+      {
+        "title": "¿Cuál de estas bebidas utiliza de forma esencial el mosto de caña o la melaza para su creación?",
+        "answers": [
+          "Ron",
+          "Whisky de malta",
+          "Ginebra London Dry",
+          "Brandy con DO"
+        ]
+      },
+      {
+        "title": "¿Qué característica define a un 'Single Malt' escocés?",
+        "answers": [
+          "Proviene de una sola destilería y se elabora solo con cebada malteada",
+          "Está mezclado con otros whiskies de grano dentro de la misma zona geográfica",
+          "Debe proceder de varios alambiques, cada uno con distinto cereal",
+          "Contiene al menos 30% de turba para ahumar"
+        ]
+      },
+      {
+        "title": "¿Qué nombre recibe el proceso de calentar la mezcla fermentada para evaporar el alcohol y condensarlo?",
+        "answers": [
+          "Destilación",
+          "Oxidación controlada",
+          "Filtración tangencial",
+          "Sublimación inversa"
+        ]
+      },
+      {
+        "title": "¿Qué importancia tiene la cepa de levadura utilizada durante la fermentación de los mostos?",
+        "answers": [
+          "Aporta perfiles aromáticos y ritmos de fermentación distintos",
+          "No influye, pues todo el aroma se pierde en la destilación",
+          "Asegura la formación de más del 90% de metanol final",
+          "Determina la coloración oscura del destilado"
+        ]
+      },
+      {
+        "title": "¿Por qué se considera que el brandy se originó como 'aqua vitae' de la uva en la historia?",
+        "answers": [
+          "Porque se destilaba vino para obtener un alcohol con fines medicinales",
+          "Porque partía de maceraciones de hierbas dulces y frutos secos",
+          "Nació en la península itálica a partir de cereales malteados",
+          "Se desarrolló en laboratorios químicos para uso industrial"
+        ]
+      },
+      {
+        "title": "¿Cuál es una ventaja de la destilación en 'Pot Still' o alambique tradicional?",
+        "answers": [
+          "Se obtienen aguardientes más aromáticos y complejos",
+          "Se logra un grado de alcohol por encima del 98%",
+          "No requiere calentar la mezcla, sino enfriarla",
+          "Se procesan volúmenes muy grandes sin interrupción"
+        ]
+      },
+      {
+        "title": "En las bebidas espirituosas, ¿cómo se denomina la tendencia de absorber aromas y sabores de la madera durante la crianza?",
+        "answers": [
+          "Envejecimiento en barrica",
+          "Fusión organoléptica",
+          "Maceración hidrolítica",
+          "Pasteurización interna"
+        ]
+      },
+      {
+        "title": "¿Cuál de las siguientes opciones describe mejor el sistema de soleras y criaderas en el brandy de Jerez?",
+        "answers": [
+          "Un método de envejecimiento dinámico donde distintas filas de barricas se van mezclando",
+          "Una destilación a baja temperatura mediante columnas secuenciales",
+          "Un proceso de clarificación con gelatinas naturales",
+          "Un modo de fermentar el vino sin oxígeno"
+        ]
+      },
+      {
+        "title": "¿Qué caracteriza especialmente a un 'Brandy de Jerez Solera Gran Reserva' frente a un 'Solera' o 'Solera Reserva'?",
+        "answers": [
+          "Mayor tiempo de crianza y uso exclusivo de holandas de mejor calidad",
+          "Uso de uvas tintas fermentadas con levaduras salvajes",
+          "Adición de macerados de hierbas para equilibrar el color",
+          "Su envejecimiento se hace en barricas de whisky escocés"
+        ]
+      },
+      {
+        "title": "¿Cuál de estas bebidas suele requerir un proceso de envejecimiento de al menos 2 años en barricas nuevas de roble americano?",
+        "answers": [
+          "Bourbon Whiskey",
+          "Gin Old Tom",
+          "Vodka filtrado en carbón vegetal",
+          "Ron blanco agrícola"
+        ]
+      },
+      {
+        "title": "¿Qué requisito fundamental distingue a un 'destilado de vino' para poder llamarse brandy según la UE?",
+        "answers": [
+          "Que provenga de la destilación de vinos de uva y se envejezca en madera",
+          "Que se obtenga por maceración de cereales y frutas tropicales",
+          "Que se rectifique en columna hasta 98% y se rebaje a 20%",
+          "Que incluya azúcar caramelizada en una proporción mínima"
+        ]
+      },
+      {
+        "title": "¿Qué característica destaca en la obtención de holandas frente a los aguardientes de graduación más alta?",
+        "answers": [
+          "Se destilan a un grado menor (60-70%) y conservan más compuestos aromáticos",
+          "Se someten a congelación previa para eliminar impurezas",
+          "Se filtran por resinas especiales para neutralizar el sabor",
+          "Se extraen de la segunda fermentación láctica del vino"
+        ]
+      },
+      {
+        "title": "¿Cuál de estas bebidas se produce normalmente sin utilizar el sistema de soleras y criaderas?",
+        "answers": [
+          "Ron",
+          "Brandy de Jerez",
+          "Brandy solera gran reserva",
+          "Brandy de Jerez Reserva especial"
+        ]
+      },
+      {
+        "title": "¿Qué define una 'alquitara' en comparación con un alambique charentais?",
+        "answers": [
+          "Un método de destilación más simple y tradicional, generalmente discontinuo",
+          "Un sistema de columnas automatizadas de rectificación",
+          "Un proceso que integra el envejecimiento en el mismo recipiente",
+          "Un alambique con dos serpentines de cobre en paralelo"
+        ]
+      },
+      {
+        "title": "¿Por qué motivo se añaden pequeñas cantidades de azúcar caramelizada al brandy en algunos casos?",
+        "answers": [
+          "Para ajustar el color y endulzar ligeramente",
+          "Para sustituir la crianza en barrica y simular el envejecimiento",
+          "Para neutralizar trazas de metanol persistente",
+          "Para fermentar de nuevo y ganar graduación alcohólica"
+        ]
+      },
+      {
+        "title": "En la clasificación del Brandy de Jerez, ¿qué diferencia principal existe entre 'Solera' y 'Solera Reserva'?",
+        "answers": [
+          "Un periodo de envejecimiento mínimo diferente (6 meses vs 1 año)",
+          "La inclusión de un 10% de aguardientes de fruta",
+          "El uso de barricas con fondo de acero inoxidable",
+          "La prohibición de mezclar distintas holandas"
+        ]
+      },
+      {
+        "title": "¿Por qué las bebidas espirituosas como el brandy o el whisky pueden sufrir una 'merma' anual en barrica?",
+        "answers": [
+          "Por la evaporación parcial de alcohol y agua, conocida como 'parte de los ángeles'",
+          "Porque se inyecta vapor para bajar la graduación",
+          "Por la oxidación excesiva que solidifica etanol",
+          "Debido a la extracción forzada de taninos con ácido"
+        ]
+      },
+      {
+        "title": "¿Qué tipo de alcohol se obtiene a través de sacarificación y fermentación de granos enteros, según la UE?",
+        "answers": [
+          "Aguardiente de cereales",
+          "Alcohol sintético con destino industrial",
+          "Holandas de uva con alta graduación",
+          "Licor saborizado a base de maltosa"
+        ]
+      },
+      {
+        "title": "¿Qué resultado principal se busca al someter el alcohol a un proceso de rectificación tras la destilación?",
+        "answers": [
+          "Incrementar su pureza y grado alcohólico reduciendo impurezas",
+          "Aportar un color más oscuro y un sabor tostado",
+          "Rebajarlo a la mitad de su graduación inicial",
+          "Obtener resinas y sales minerales de la cuba"
+        ]
+      },
+      {
+        "title": "¿Cuál de estos procesos NO forma parte necesaria de la obtención del brandy a partir de vinos?",
+        "answers": [
+          "La extracción en frío del mosto sin fermentar",
+          "La destilación a grado inferior a 86% vol.",
+          "El envejecimiento en barricas de roble",
+          "La posible mezcla de distintas holandas"
+        ]
+      },
+      {
+        "title": "¿Qué diferencia crucial hay entre un whisky de grano y un whisky de malta?",
+        "answers": [
+          "El primero se elabora con mezclas de cereales (maíz, trigo, etc.), mientras el de malta usa cebada malteada",
+          "El de grano siempre se hace en pequeños alambiques discontinuos",
+          "El whisky de grano debe envejecer en barricas quemadas con turba",
+          "El de malta se obtiene a partir de remolacha o patata"
+        ]
+      },
+      {
+        "title": "¿Qué ocurre en la segunda destilación de un whisky de malta (Pot Still) con las cabezas y colas?",
+        "answers": [
+          "Se desechan o se redestilan para evitar sabores y aromas indeseados",
+          "Se mezclan con la fracción media para aumentar el volumen",
+          "Se usan como base para la fermentación de un nuevo lote",
+          "Se convierten en aditivos aromáticos que se añaden a otros barriles"
+        ]
+      },
+      {
+        "title": "En la elaboración del whisky, ¿cuál es la función de la diastasa liberada tras la germinación del cereal?",
+        "answers": [
+          "Convertir el almidón en azúcares fermentables",
+          "Realzar el color dorado al exponerlo al calor",
+          "Oxidar los compuestos sulfurosos del mosto",
+          "Conferir un aroma a madera quemada al cereal"
+        ]
+      },
+      {
+        "title": "¿Qué diferencia existe entre un whisky 'single cask' y un 'single malt' habitual?",
+        "answers": [
+          "El 'single cask' procede de una sola barrica concreta, mientras el 'single malt' puede mezclar varias barricas de la misma destilería",
+          "El 'single malt' nunca se somete a envejecimiento prolongado",
+          "El 'single cask' se obtiene a partir de grano de maíz, el 'single malt' de cebada",
+          "No existe requisito legal para llamarlo 'single cask'; es un mero término comercial"
+        ]
+      },
+      {
+        "title": "¿Qué papel juega la turba en algunos whiskies escoceses?",
+        "answers": [
+          "Aporta un carácter ahumado al secar la malta con su humo",
+          "Se mezcla con el mosto para elevar el grado alcohólico",
+          "Neutraliza el exceso de ácido láctico durante la fermentación",
+          "Permite clarificar el whisky tras la doble destilación"
+        ]
+      },
+      {
+        "title": "¿Cuál de estas afirmaciones describe mejor la maduración del whisky japonés?",
+        "answers": [
+          "Se inspira en la tradición escocesa, con atención al agua pura y la precisión tecnológica",
+          "No se envejece en roble, sino en cemento para evitar oxidaciones",
+          "Suele utilizar turba de marisma con yodo para sus maltas",
+          "La ley prohíbe mezclas con whiskies de otras destilerías"
+        ]
+      },
+      {
+        "title": "En los whiskies americanos, ¿qué define el 'Corn Whiskey' en contraposición al 'Bourbon'?",
+        "answers": [
+          "Debe tener al menos 80% de maíz y no exige barricas nuevas tostadas",
+          "Requiere un 51% de cebada malteada y doble filtrado",
+          "Ha de envejecer como mínimo 4 años en roble francés",
+          "Incluye siempre un toque de centeno sin fermentar"
+        ]
+      },
+      {
+        "title": "¿Cuál de las siguientes prácticas está **permitida** para elaborar gin destilado según la normativa UE?",
+        "answers": [
+          "Redestilar alcohol de origen agrícola con enebro y otros vegetales",
+          "Mezclar esencias artificiales de frutas rojas antes de fermentar",
+          "Aplicar turbo-maceración de 48 horas en cubas de cemento",
+          "Envejecer al menos 1 año en barricas de brandy"
+        ]
+      },
+      {
+        "title": "¿Qué diferencia hay entre la extracción de alcohol de patata y de cereales en la producción de vodka?",
+        "answers": [
+          "La patata requiere mayor proceso enzimático para descomponer el almidón",
+          "Las patatas no se cuecen, mientras que los cereales sí",
+          "Solo se puede lograr 30% de alcohol con patata sin rectificación",
+          "La patata tiene un almidón que fermenta a temperaturas de 0 °C"
+        ]
+      },
+      {
+        "title": "¿Cuál es el propósito de la filtración con carbón activo en la elaboración de algunos vodkas?",
+        "answers": [
+          "Eliminar impurezas y dotar al vodka de un perfil lo más neutro posible",
+          "Aportar un toque ahumado y color grisáceo",
+          "Transformar parte del alcohol en metanol para reducir costos",
+          "Prepararlo para el envejecimiento de dos años en roble americano"
+        ]
+      },
+      {
+        "title": "¿Qué se entiende por 'vodka aromatizado'?",
+        "answers": [
+          "Un vodka con sabor predominante distinto, agregado después de la destilación",
+          "Un aguardiente extraído de hierbas e infusiones florales con bajo grado",
+          "Un vodka puro envejecido sin añadir ingredientes",
+          "Aquel que se obtiene por triple columna y sin mezclar agua"
+        ]
+      },
+      {
+        "title": "¿De dónde se extrae principalmente el 'enebro' que da sabor a la ginebra?",
+        "answers": [
+          "De las bayas del arbusto Juniperus communis",
+          "De la semilla interna de ciprés mediterráneo",
+          "De una cepa híbrida de enebro y eucalipto",
+          "De la maceración de raíces dulces del bosque"
+        ]
+      },
+      {
+        "title": "¿Qué diferencia hay entre una 'London Dry Gin' y una 'Gin destilada' genérica?",
+        "answers": [
+          "La London Dry Gin no puede contener más de 0,1 g/L de azúcar y se produce con método muy específico",
+          "La Gin destilada está obligada a llevar maceración de hierbas durante 3 días",
+          "La London Dry Gin se fermenta en frío con botánicos frutales",
+          "La Gin destilada no emplea bayas de enebro, solo extracto de lúpulo"
+        ]
+      },
+      {
+        "title": "¿Cuál de estos matices describe mejor la elaboración de un tequila '100% agave'?",
+        "answers": [
+          "Se elabora exclusivamente con Agave tequilana Weber variedad azul, sin mezclar azúcares de otra fuente",
+          "Se obtiene a partir de melaza de caña combinada con jugo de agave al 50%",
+          "Se produce añadiendo hierbas cítricas en el alambique",
+          "No se hornea la piña y se filtra en frío antes de la fermentación"
+        ]
+      },
+      {
+        "title": "¿Por qué el jugo de caña (guarapo) fermentado da lugar a un ron distinto del que emplea melaza?",
+        "answers": [
+          "Porque conserva más componentes aromáticos del jugo fresco de la caña",
+          "Porque se mezcla con un porcentaje de cereales malteados",
+          "Porque se hierve a 200 ºC antes de su primer filtrado",
+          "Porque no se destila tras la fermentación, solo se clarifica"
+        ]
+      },
+      {
+        "title": "En la fabricación de ron, ¿qué se entiende por 'dunder' o vinaza que a veces se reintroduce?",
+        "answers": [
+          "Los restos del mosto fermentado y calentado que se agregan para aportar sabor",
+          "La fracción superior de la columna de rectificación final",
+          "Una resina de caña que elimina aromas frutales",
+          "Caramelo líquido con especias africanas"
+        ]
+      },
+      {
+        "title": "¿Cuál de los siguientes factores NO impacta directamente en el perfil aromático final de un ron?",
+        "answers": [
+          "La forma de etiquetar y sellar la botella",
+          "Las levaduras empleadas en la fermentación",
+          "La materia prima: melaza o jugo de caña",
+          "El tiempo y tipo de envejecimiento"
+        ]
+      },
+      {
+        "title": "¿Qué efecto produce la adición de 'caramelo' en algunos rones oscuros?",
+        "answers": [
+          "Aporta color más intenso sin variar apenas el sabor",
+          "Rebaja el grado alcohólico hasta 25% vol",
+          "Aumenta el dulzor a más de 100 g/L de azúcar residual",
+          "Convierte el ron en un licor amargo con notas de cacao"
+        ]
+      },
+      {
+        "title": "¿Qué define al llamado 'rhum agricole' de las Antillas Francesas?",
+        "answers": [
+          "Se elabora a partir del jugo de caña fermentado, no de melaza",
+          "Se envejece obligatoriamente en botas de Jerez",
+          "Debe incluir al menos un 30% de miel pura",
+          "Proviene de cebada con malteado parcial"
+        ]
+      },
+      {
+        "title": "En un whisky, ¿qué son los 'congéneres' mencionados en el proceso de destilación?",
+        "answers": [
+          "Sustancias volátiles que contribuyen al sabor y al aroma",
+          "Partículas metálicas disueltas por el cobre",
+          "La fracción más ligera y acuosa del destilado",
+          "Harina de cereal no fermentada en reposo"
+        ]
+      },
+      {
+        "title": "¿Por qué razón el brandy de Jerez debe envejecer en botas previamente envinadas con vino de Jerez?",
+        "answers": [
+          "Para obtener los matices que aporta la madera impregnada de vinos de Jerez",
+          "Para incrementar el grado alcohólico por impregnación de azúcares",
+          "Porque la ley exige una concentración de sal marina",
+          "Para convertirlo en un licor tipo anísado"
+        ]
+      },
+      {
+        "title": "¿Qué significa 'batch distillation' cuando hablamos de alambiques tradicionales?",
+        "answers": [
+          "Destilación discontinua por lotes, vaciando y llenando el alambique en cada ciclo",
+          "Rectificación continua con múltiples columnas y condensadores",
+          "Maceración de botánicos previa a la fermentación",
+          "Destilación a baja temperatura para eliminar congéneres"
+        ]
+      },
+      {
+        "title": "¿Cuál de estos puntos NO corresponde al proceso general de la elaboración del brandy?",
+        "answers": [
+          "Filtración con carbón para neutralizar completamente el sabor",
+          "Destilación de vino por alambique o columna",
+          "Mezcla de aguardientes de vino de distinta graduación",
+          "Envejecimiento en barricas de roble con posibilidad de caramelo"
+        ]
+      },
+      {
+        "title": "¿Por qué se recomienda el uso de calderas de cobre en la destilación tradicional?",
+        "answers": [
+          "Actúan como catalizador, ayudando a formar componentes aromáticos",
+          "Son más rápidas de calentar que las de arcilla o cerámica",
+          "Oxidan el alcohol para generar más volumen final",
+          "No retienen temperatura y facilitan la extracción de metanol"
+        ]
+      },
+      {
+        "title": "¿Qué efecto tiene el reposo prolongado de un ron blanco en tanques de acero sin ser envejecido en roble?",
+        "answers": [
+          "Permite estabilizar sabores y clarificar antes del embotellado",
+          "Aporta color dorado por oxidación controlada",
+          "Genera compuestos aromáticos similares al bourbon",
+          "Duplica la acidez total del destilado"
+        ]
+      },
+      {
+        "title": "¿Qué define al 'blended whiskey' más allá de la mezcla de varios whiskies de malta?",
+        "answers": [
+          "Suele combinar whiskies de malta con whiskies de grano para equilibrar costos y sabores",
+          "Se obtiene solo de una destilería que produce varios tipos de cebada",
+          "Carece de cualquier paso de envejecimiento y se embotella directo",
+          "Está prohibido destinarlo a la exportación según la normativa"
+        ]
+      },
+      {
+        "title": "¿Cómo influye la sobrepresión (7 bares) en algunos métodos modernos de cocción de cereales para whisky?",
+        "answers": [
+          "Acelera la gelatinización del almidón y facilita la sacarificación",
+          "Separa los azúcares de la cáscara y reduce la necesidad de filtrado",
+          "Evita cualquier formación de aromas primarios",
+          "No se utiliza sobrepresión en la producción de whisky"
+        ]
+      },
+      {
+        "title": "¿Qué es la 'malta verde' durante el malteado de la cebada para whisky?",
+        "answers": [
+          "El grano que acaba de germinar antes de ser secado",
+          "La cáscara residual de la cebada tras el tueste final",
+          "Cebada mezclada con lúpulo para aportarle amargor",
+          "La pasta que queda en el fondo de la cuba de germinación"
+        ]
+      },
+      {
+        "title": "¿Cuál de estos aspectos NO es característico en la elaboración tradicional del tequila 'blanco'?",
+        "answers": [
+          "Un envejecimiento mínimo de 2 años en barricas nuevas de roble",
+          "Uso exclusivo de agave azul",
+          "Doble destilación en alambique",
+          "Cocción de la piña del agave en hornos u autoclaves"
+        ]
+      },
+      {
+        "title": "¿Por qué se consideran superiores los brandis elaborados principalmente con holandas de alambique a 65-70º?",
+        "answers": [
+          "Conservan mayor riqueza aromática al destilarse a menor graduación",
+          "Se procesan más rápido y no requieren reposo final",
+          "Tienen menor cantidad de ésteres y se vuelven insípidos",
+          "No exigen envejecimiento en madera para comercializarse"
+        ]
+      },
+      {
+        "title": "¿En qué se diferencia el roble americano del roble europeo en la crianza de bebidas como el brandy o el whisky?",
+        "answers": [
+          "El roble americano aporta notas más dulces y vainilladas, el europeo más tánicas y robustas",
+          "El roble americano se usa solo para vinos blancos, el europeo para destilados",
+          "El roble europeo no permite el tostado interior de la barrica",
+          "El roble americano produce un color verdoso en el licor y el europeo, ámbar"
+        ]
+      },
+      {
+        "title": "¿Cuál de estos parámetros NO se regula en la normativa del brandy según la UE?",
+        "answers": [
+          "La presión atmosférica del lugar de envejecimiento",
+          "El tiempo mínimo de envejecimiento en madera",
+          "El grado alcohólico mínimo que debe presentar",
+          "La cantidad máxima de metanol permitido"
+        ]
+      },
+      {
+        "title": "¿Por qué el brandy de Jerez 'Solera' requiere un mínimo de 6 meses de envejecimiento en botas de menos de 1000 L?",
+        "answers": [
+          "Para captar aromas y matices característicos de la madera envinada",
+          "Porque por encima de 1000 L no se considera barrica apta según ley",
+          "Para que se oxide ligeramente y se vuelva incoloro",
+          "Porque no puede mezclarse con alcohol rectificado al final"
+        ]
+      },
+      {
+        "title": "¿Qué clase de ron resultará generalmente de un proceso en alambique discontinuo con fermentación lenta?",
+        "answers": [
+          "Un ron pesado y aromático",
+          "Un ron blanco neutro con 95% de grado",
+          "Un ron sin necesidad de añejamiento y color intenso",
+          "Un ron con baja acidez y sin matices frutales"
+        ]
+      },
+      {
+        "title": "¿Qué diferencia fundamental separa el 'Tequila Reposado' del 'Tequila Blanco'?",
+        "answers": [
+          "Un periodo de maduración en barricas de roble por al menos dos meses",
+          "La mezcla del mosto con cereales malteados",
+          "La fermentación especial con mohos en superficie",
+          "Se produce exclusivamente con agave silvestre"
+        ]
+      },
+      {
+        "title": "¿Cuál de estas definiciones se ajusta mejor al término 'Orujo' en el mundo de los aguardientes?",
+        "answers": [
+          "Aguardiente obtenido de la destilación de hollejos de uva",
+          "Alcohol neutro rectificado a partir de remolacha",
+          "Un compuesto aromático resultante de la destilación de sidra",
+          "Un licor dulce con hierbas maceradas a baja temperatura"
+        ]
+      },
+      {
+        "title": "¿Por qué motivo la mayoría de los vodkas se embotellan tras repetidas destilaciones y/o filtraciones?",
+        "answers": [
+          "Para buscar una pureza máxima y un sabor neutro",
+          "Para incrementar el grado alcohólico por encima del 80%",
+          "Para precipitar los sólidos y formar sedimentos visibles",
+          "Para dejar una base turbia adecuada para la crianza posterior"
+        ]
+      },
+      {
+        "title": "¿Qué define al 'Matured Gin' o 'Aged Gin' frente a las ginebras clásicas?",
+        "answers": [
+          "Se envejece durante un tiempo en barricas, aportando carácter adicional",
+          "Se filtra en frío para ser totalmente neutro y sin aromas",
+          "No lleva enebro, solo extractos de frutas cítricas",
+          "Debe alcanzar al menos 48% de alcohol sin dilución"
+        ]
+      },
+      {
+        "title": "¿Qué nombre se da al corazón de un aguardiente (brandy, whisky, etc.) que se conserva tras descartar cabezas y colas?",
+        "answers": [
+          "Espíritu o 'new make spirit'",
+          "Residuo final del alambique",
+          "Aceite esencial de segunda fracción",
+          "Aguardiente de arrastre"
+        ]
+      },
+      {
+        "title": "¿Cuál de estas opciones es una razón clave para el uso de levaduras distintas en la fermentación del ron?",
+        "answers": [
+          "Cada tipo de levadura aporta un perfil de ésteres y compuestos únicos",
+          "Las levaduras reducen la necesidad de envejecimiento posterior",
+          "Definen la extracción de colores verdes en la melaza",
+          "Permitirá no destilar y embotellar directamente"
+        ]
+      },
+      {
+        "title": "¿Qué condición hace que un whisky pueda considerarse 'bourbon' sin ser 'straight bourbon'?",
+        "answers": [
+          "Contener un mínimo de 51% de maíz pero envejecido menos de 2 años en barrica nueva",
+          "Provenir de varios estados y ser mezclado antes del embotellado",
+          "Pasar por un filtrado en frío con esencias florales",
+          "Distilarse únicamente en columnas de dos etapas"
+        ]
+      },
+      {
+        "title": "¿Cuál es el contenido típico de alcohol de una 'Holanda' empleada en la elaboración de brandy de Jerez?",
+        "answers": [
+          "Entre 60% y 70% vol.",
+          "50% vol.",
+          "90% vol.",
+          "15% vol."
+        ]
+      },
+      {
+        "title": "¿Qué circunstancia NO encaja con la elaboración de un vodka 'grain to bottle'?",
+        "answers": [
+          "Comprar alcohol ya rectificado a un proveedor externo",
+          "Moler y cocinar el cereal en las instalaciones del productor",
+          "Fermentar con levaduras elegidas para obtener un perfil concreto",
+          "Destilar cada lote de forma discontinua o en columna propia"
+        ]
+      },
+      {
+        "title": "En la destilación de whisky, ¿por qué se sube la temperatura a alrededor de 78 ºC en el alambique?",
+        "answers": [
+          "Porque el etanol hierve antes que el agua y se evapora",
+          "Para provocar la descomposición de azúcares complejos",
+          "Con el fin de esterilizar completamente el mosto",
+          "Debido a que a 78 ºC el gluten precipita"
+        ]
+      },
+      {
+        "title": "¿Qué define un 'Irish Malt Whiskey' frente al 'Pot Still Whiskey' irlandés?",
+        "answers": [
+          "Su receta emplea cebada 100% malteada sin mezclar con cebada cruda",
+          "Tiene la obligación de añadir un 25% de trigo para ser legal",
+          "Se almacena en barricas de Jerez por más de 4 años",
+          "Prescinde de la fermentación, usando solo jugo de malta"
+        ]
+      },
+      {
+        "title": "¿Cuál de estas técnicas NO es habitual en la destilación continua para ron y otros espirituosos?",
+        "answers": [
+          "Utilizar un alambique charentais con fuego directo",
+          "Contar con un 'analizador' y un 'rectificador' en dos columnas",
+          "Controlar el punto de extracción para mayor o menor pureza",
+          "Tener bandejas perforadas que separan fracciones por volatilidad"
+        ]
+      }
+    ]
+  }
+  

@@ -20,9 +20,9 @@
         },
         {
             "name": "Historia sobre bebidas",
-            "file": "general_en",
+            "file": "general",
             "desc": "A little bit of everything",
-            "lang": "en"
+            "lang": "es"
         }
     ]
 }
