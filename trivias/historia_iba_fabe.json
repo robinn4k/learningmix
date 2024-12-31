@@ -1,95 +1,6 @@
 {
     "questions": [
-      {
-        "title": "¿Dónde se estableció la Asociación Internacional de Bartenders (IBA) el 24 de febrero de 1951?",
-        "answers": [
-          "Torquay, Reino Unido",
-          "París, Francia",
-          "Milán, Italia",
-          "Edimburgo, Reino Unido"
-        ]
-      },
-      {
-        "title": "¿Cuántos miembros fundadores tuvo la IBA al crearse en 1951?",
-        "answers": [
-          "Siete",
-          "Cinco",
-          "Diez",
-          "Doce"
-        ]
-      },
-      {
-        "title": "¿Quién fue el primer presidente de la IBA?",
-        "answers": [
-          "Bill Tarling",
-          "George Baker",
-          "Pietro Grandi",
-          "Kurt Sorensen"
-        ]
-      },
-      {
-        "title": "¿En qué fecha se constituyó formalmente la Asociación de Barmans Españoles (A.B.E.)?",
-        "answers": [
-          "15 de febrero de 1964",
-          "24 de febrero de 1951",
-          "28 de marzo de 1996",
-          "15 de febrero de 1976"
-        ]
-      },
-      {
-        "title": "¿Qué objetivo principal tenía la A.B.E. al constituirse según su Acta de Fundación?",
-        "answers": [
-          "Perfeccionamiento profesional y promoción turística",
-          "Crear una escuela de coctelería internacional",
-          "Fundar bares en todo el territorio nacional",
-          "Publicar una revista mensual especializada"
-        ]
-      },
-      {
-        "title": "¿En qué año fue admitida la A.B.E. como miembro de pleno derecho en la IBA?",
-        "answers": [
-          "1964",
-          "1951",
-          "1976",
-          "2003"
-        ]
-      },
-      {
-        "title": "¿En qué ciudad se organizó el I Concurso Nacional de Coctelería de la A.B.E. en 1964?",
-        "answers": [
-          "Palma de Mallorca",
-          "Barcelona",
-          "Sevilla",
-          "Madrid"
-        ]
-      },
-      {
-        "title": "¿En qué año la A.B.E. pasó a llamarse Federación de Asociaciones de Barmans Españoles (F.A.B.E.)?",
-        "answers": [
-          "1996",
-          "1964",
-          "1976",
-          "2009"
-        ]
-      },
-      {
-        "title": "¿Quién fue proclamado Campeón del Mundo con el cóctel “Mallorca” en el Concurso Mundial de Coctelería de 1967?",
-        "answers": [
-          "Enrique Bastante",
-          "Perico Chicote",
-          "Angelo Zola",
-          "George Baker"
-        ]
-      },
-      {
-        "title": "¿Quién asumió la presidencia de FABE en el año 2022?",
-        "answers": [
-          "Juan Carlos Muñoz Zapatero",
-          "José Dioni Fayos",
-          "Ramón Ramírez Fresneda",
-          "Félix Artalejo"
-        ]
-      },
+      
       {
         "title": "¿Dónde se estableció la Asociación Internacional de Bartenders (IBA) el 24 de febrero de 1951?",
         "answers": [
@@ -332,15 +243,6 @@
           "Madrid",
           "Barcelona",
           "Sevilla"
-        ]
-      },
-      {
-        "title": "¿Qué barman de la A.B.E. ganó el Campeonato Mundial de 1967?",
-        "answers": [
-          "Enrique Bastante",
-          "Perico Chicote",
-          "Pepe Dioni",
-          "Ramón Ramírez"
         ]
       },
       {
