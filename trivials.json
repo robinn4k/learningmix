@@ -23,6 +23,12 @@
             "file": "general",
             "desc": "A little bit of everything",
             "lang": "es"
+        },
+        {
+          "name": "Todas las preguntas",
+          "file": "all",
+          "desc": "Las 20 preguntas mezcladas de todos",
+          "lang": "es"
         }
     ]
 }

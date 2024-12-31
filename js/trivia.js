@@ -99,8 +99,60 @@ $('#trivia_selection').on('click', '.trivia', function(e) {
     failed = 0;
     seconds = options.time;
     current_question = 0;
+    // ***** AQUÍ VALIDAMOS SI ES "all" *****
+    if (data.file === 'all') {
+      loadAllTrivias(20);  // Cargar todas las trivias y tomar 20 preguntas
+    } else {
+      loadTrivia(data.file);
+    }
   }
 });
+
+function loadAllTrivias(limit) {
+  let promises = [];
+
+  // 1. Recorremos la lista de trivials y creamos promesas para leer cada JSON
+  trivials.forEach(function(trivial) {
+    // Evitamos la “all”
+    if (trivial.file !== 'all') {
+      const file = trivial.file;
+
+      // Si el file no termina en .json, se lo añadimos 
+      // (depende de cómo lo tengas estructurado, a veces “historia_iba_fabe.json” ya viene con .json).
+      // Ajusta esto si es necesario:
+      let fileName = file.endsWith('.json') ? file : `${file}.json`;
+
+      // Creamos una promesa que envuelva la llamada AJAX
+      let p = new Promise((resolve, reject) => {
+        $().get(`trivias/${fileName}`, function(res) {
+          resolve(res.questions);
+        });
+      });
+
+      promises.push(p);
+    }
+  });
+
+  // 2. Esperamos a que se carguen todas las trivias
+  Promise.all(promises).then(function(results) {
+    // 3. results es un array de arrays de preguntas, los combinamos:
+    let merged = [];
+    results.forEach(r => merged = merged.concat(r));
+
+    // 4. Mezclamos
+    merged = shuffleArray(merged);
+
+    // 5. Tomamos sólo 'limit' preguntas (por defecto 20)
+    merged = merged.slice(0, limit);
+
+    // 6. Asignamos a questions del scope principal
+    questions = merged;
+
+    // 7. Llamamos a newQuestion() para que arranque el juego
+    newQuestion();
+  });
+}
+
 
 // Comprobamos si hay una nueva puntuación máxima de un trivial. Si no es así solo guarda la puntuación si se acertó al menos 3 preguntas
 function setMaxScores() {
