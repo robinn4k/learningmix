@@ -23,9 +23,16 @@ html{
 }
 
 body {
-  background-color: #353333;
+  background-color: #333333;
   color: var(--text);
     font-family: 'Open Sans', sans-serif;
+}
+
+@supports (env(safe-area-inset-top)) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }
 
 h1,
