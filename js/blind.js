@@ -120,6 +120,7 @@ export function answerBlind(selectedIndex) {
   if (ok) bs.correct++;
   bs.answered++;
   bs.index++;
+  bs.revealed = 1; // Reset clue count for the next question
   const done = bs.index >= bs.questions.length;
   return { correct: ok, correctIndex: q.answers.indexOf(q.name), selectedIndex, done, result: done ? { correct: bs.correct, total: bs.questions.length } : null, next: done ? null : _payload() };
 }

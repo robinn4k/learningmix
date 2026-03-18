@@ -72,6 +72,7 @@ async function saveScore({ roundId, roundTitle, score, corrects, wrongs }) {
           games: (data.games || 0) + 1,
           best: Math.max(data.best || 0, score),
           total: (data.total || 0) + score,
+          [`rounds.${roundId}`]: Math.max((data.rounds?.[roundId] || 0), score),
           name: user.name,
           lastSeen: Date.now()
         });
@@ -125,7 +126,15 @@ async function getUserStats() {
       const db = getDb();
       const { doc, getDoc } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
       const snap = await getDoc(doc(db, 'users', user.uid));
-      if (snap.exists()) return snap.data();
+      if (snap.exists()) {
+        const data = snap.data();
+        // If Firestore doc has no rounds yet (old user doc), fall back to local rounds
+        if (!data.rounds || Object.keys(data.rounds).length === 0) {
+          const local = getLocalUserStats();
+          data.rounds = local.rounds;
+        }
+        return data;
+      }
     } catch (e) {
       console.warn('Error al leer stats de Firestore:', e);
     }
