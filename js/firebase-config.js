@@ -27,13 +27,13 @@
  */
 
 export const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDgbIK3WTkUI2Yo0FiMAv3nEYAvj6L25ow",
+  authDomain: "dblearn-45fcc.firebaseapp.com",
+  projectId: "dblearn-45fcc",
+  storageBucket: "dblearn-45fcc.firebasestorage.app",
+  messagingSenderId: "111717730902",
+  appId: "1:111717730902:web:28987b3af458093eb849f7",
+  measurementId: "G-Y8K9C8RKPM"
 };
 
-// Cambiar a true cuando hayas configurado Firebase
-export const FIREBASE_ENABLED = false;
+export const FIREBASE_ENABLED = true;
