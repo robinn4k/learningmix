@@ -88,6 +88,36 @@
             <div class="stat-label">Rondas</div>
           </div>
         </div>
+        <div class="quick-modes-title">Modos de juego</div>
+        <div class="quick-modes-grid">
+          <button class="qm-btn" id="btn-daily">
+            <span class="qm-icon">📅</span>
+            <span class="qm-label">Reto Diario</span>
+            <span class="qm-badge" id="qm-daily-badge"></span>
+          </button>
+          <button class="qm-btn" id="btn-speed">
+            <span class="qm-icon">⚡</span>
+            <span class="qm-label">Velocidad</span>
+          </button>
+          <button class="qm-btn" id="btn-constructor">
+            <span class="qm-icon">🍹</span>
+            <span class="qm-label">Constructor</span>
+          </button>
+          <button class="qm-btn" id="btn-blind">
+            <span class="qm-icon">👃</span>
+            <span class="qm-label">Blind Tasting</span>
+          </button>
+          <button class="qm-btn" id="btn-fichas">
+            <span class="qm-icon">📖</span>
+            <span class="qm-label">Fichas IBA</span>
+          </button>
+          <button class="qm-btn" id="btn-achievements">
+            <span class="qm-icon">🏆</span>
+            <span class="qm-label">Logros</span>
+            <span class="qm-badge" id="qm-ach-badge"></span>
+          </button>
+        </div>
+
         <h2 class="section-title">Selecciona una Ronda</h2>
         <div class="rounds-grid" id="rounds-grid"></div>
       </div>
@@ -172,6 +202,152 @@
       </div>
       <div class="leaderboard-filters" id="leaderboard-filters"></div>
       <div class="leaderboard-list" id="leaderboard-list"></div>
+    </div>
+
+    <!-- ══ SPEED MODE ══ -->
+    <div id="view-speed" class="view">
+      <div class="app-header">
+        <button class="icon-btn quit-btn" id="btn-quit-speed">✕</button>
+        <h2 class="header-title">⚡ Modo Velocidad</h2>
+        <div class="speed-counter" id="speed-counter">0/0</div>
+      </div>
+      <div class="speed-timer-block">
+        <div class="speed-timer-val" id="speed-timer">60</div>
+        <div class="speed-timer-label">segundos</div>
+        <div class="speed-score" id="speed-score">0 pts</div>
+      </div>
+      <div class="question-card" style="margin:0 16px 12px">
+        <p class="question-text" id="speed-question"></p>
+      </div>
+      <div class="answers-grid speed-answers" id="speed-answers"></div>
+    </div>
+
+    <!-- ══ CONSTRUCTOR MODE ══ -->
+    <div id="view-constructor" class="view">
+      <div class="app-header">
+        <button class="icon-btn quit-btn" id="btn-quit-constructor">✕</button>
+        <h2 class="header-title">🍹 Constructor</h2>
+        <div class="quiz-q-counter"><span id="con-q-num">1</span><span class="quiz-q-total">/20</span></div>
+      </div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="con-progress"></div></div>
+      <div class="con-card" id="con-card">
+        <div class="con-card-label">¿Qué cóctel tiene estos ingredientes?</div>
+        <div class="con-meta" id="con-meta"></div>
+        <ul class="con-ingredients" id="con-ingredients"></ul>
+      </div>
+      <div class="answers-grid" id="con-answers"></div>
+      <div class="lesson-feedback" id="con-feedback">
+        <div class="lesson-feedback-top">
+          <div class="lesson-feedback-icon" id="con-fb-icon">✅</div>
+          <div class="lesson-feedback-text">
+            <div class="lesson-feedback-label" id="con-fb-label">¡Correcto!</div>
+          </div>
+        </div>
+        <button class="lesson-continue-btn" id="btn-con-continue">Continuar</button>
+      </div>
+    </div>
+
+    <!-- ══ BLIND TASTING ══ -->
+    <div id="view-blind" class="view">
+      <div class="app-header">
+        <button class="icon-btn quit-btn" id="btn-quit-blind">✕</button>
+        <h2 class="header-title">👃 Blind Tasting</h2>
+        <div class="quiz-q-counter"><span id="blind-q-num">1</span><span class="quiz-q-total">/18</span></div>
+      </div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="blind-progress"></div></div>
+      <div class="blind-clues-card" id="blind-clues-card">
+        <div class="blind-clues-label">Identifica el destilado por sus aromas y sabores:</div>
+        <ul class="blind-clues" id="blind-clues"></ul>
+        <button class="blind-reveal-btn" id="btn-blind-reveal">+ Revelar pista</button>
+      </div>
+      <div class="answers-grid" id="blind-answers"></div>
+      <div class="lesson-feedback" id="blind-feedback">
+        <div class="lesson-feedback-top">
+          <div class="lesson-feedback-icon" id="blind-fb-icon">✅</div>
+          <div class="lesson-feedback-text">
+            <div class="lesson-feedback-label" id="blind-fb-label">¡Correcto!</div>
+            <div class="lesson-feedback-exp" id="blind-fb-name"></div>
+          </div>
+        </div>
+        <button class="lesson-continue-btn" id="btn-blind-continue">Continuar</button>
+      </div>
+    </div>
+
+    <!-- ══ FICHAS IBA ══ -->
+    <div id="view-fichas" class="view">
+      <div class="app-header">
+        <button class="icon-btn" id="btn-back-fichas">←</button>
+        <h2 class="header-title">📖 Fichas IBA</h2>
+        <div class="header-spacer"></div>
+      </div>
+      <div class="fichas-search-wrap">
+        <input class="fichas-search" id="fichas-search" type="text" placeholder="Buscar cóctel...">
+      </div>
+      <div class="fichas-grid" id="fichas-grid"></div>
+    </div>
+
+    <!-- ══ FICHA DETAIL ══ -->
+    <div id="view-ficha-detail" class="view">
+      <div class="app-header">
+        <button class="icon-btn" id="btn-back-ficha-detail">←</button>
+        <h2 class="header-title" id="ficha-detail-name">Negroni</h2>
+        <div class="header-spacer"></div>
+      </div>
+      <div class="ficha-detail-body">
+        <div class="ficha-detail-hero" id="ficha-detail-hero">
+          <div class="ficha-detail-icon" id="ficha-detail-icon">🍊</div>
+          <div class="ficha-detail-cat" id="ficha-detail-cat"></div>
+        </div>
+        <div class="ficha-detail-section">
+          <div class="ficha-detail-row"><span class="ficha-lbl">🥃 Vaso</span><span class="ficha-val" id="fd-glass"></span></div>
+          <div class="ficha-detail-row"><span class="ficha-lbl">🔀 Método</span><span class="ficha-val" id="fd-method"></span></div>
+          <div class="ficha-detail-row"><span class="ficha-lbl">🌿 Garnish</span><span class="ficha-val" id="fd-garnish"></span></div>
+        </div>
+        <div class="ficha-detail-section">
+          <div class="ficha-section-title">Ingredientes</div>
+          <ul class="ficha-ingredients" id="fd-ingredients"></ul>
+        </div>
+        <div class="ficha-detail-section">
+          <div class="ficha-section-title">Historia</div>
+          <p class="ficha-story" id="fd-story"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ACHIEVEMENTS ══ -->
+    <div id="view-achievements" class="view">
+      <div class="app-header">
+        <button class="icon-btn" id="btn-back-achievements">←</button>
+        <h2 class="header-title">🏆 Logros</h2>
+        <div class="ach-count" id="ach-count">0/14</div>
+      </div>
+      <div class="ach-grid" id="ach-grid"></div>
+    </div>
+
+    <!-- ══ EXTRA RESULT (speed/constructor/blind) ══ -->
+    <div id="view-extra-result" class="view">
+      <div class="lesson-result-body">
+        <div class="lesson-result-emoji" id="er-emoji">🎉</div>
+        <h2 class="lesson-result-title" id="er-title">¡Bien hecho!</h2>
+        <div class="lesson-result-stats">
+          <div class="lr-stat">
+            <div class="lr-stat-val" id="er-correct">0</div>
+            <div class="lr-stat-label" id="er-correct-lbl">✅ Correctas</div>
+          </div>
+          <div class="lr-stat">
+            <div class="lr-stat-val" id="er-score">0</div>
+            <div class="lr-stat-label" id="er-score-lbl">⭐ Puntos</div>
+          </div>
+          <div class="lr-stat">
+            <div class="lr-stat-val" id="er-extra">—</div>
+            <div class="lr-stat-label" id="er-extra-lbl">📊 Info</div>
+          </div>
+        </div>
+        <div class="lesson-result-actions">
+          <button class="btn-primary" id="btn-er-again">🔄 Jugar de nuevo</button>
+          <button class="btn-ghost" id="btn-er-home">← Inicio</button>
+        </div>
+      </div>
     </div>
 
     <!-- ══ LEARN HUB ══ -->

@@ -1,0 +1,52 @@
+import { rounds } from './questions.js';
+
+const KEY = 'cq_daily';
+
+// Deterministic PRNG seeded by date integer (YYYYMMDD)
+function seededRng(seed) {
+  let s = seed >>> 0;
+  return () => {
+    s ^= s << 13; s ^= s >>> 17; s ^= s << 5;
+    return (s >>> 0) / 0x100000000;
+  };
+}
+
+function todaySeed() {
+  const d = new Date();
+  return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+}
+
+export function getDailyStatus() {
+  const today = new Date().toDateString();
+  try {
+    const data = JSON.parse(localStorage.getItem(KEY)) || {};
+    return { played: data.date === today, score: data.score || 0, corrects: data.corrects || 0 };
+  } catch { return { played: false, score: 0, corrects: 0 }; }
+}
+
+export function getDailyQuestions() {
+  const rng = seededRng(todaySeed());
+  const all = rounds.flatMap(r => r.questions);
+
+  // Seeded shuffle
+  const pool = [...all];
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+
+  return pool.slice(0, 10).map(q => {
+    const correct = q.a[0];
+    const answers = [...q.a];
+    // Seeded answer shuffle
+    for (let i = answers.length - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1));
+      [answers[i], answers[j]] = [answers[j], answers[i]];
+    }
+    return { question: q.q, answers, correctIndex: answers.indexOf(correct), explanation: q.exp };
+  });
+}
+
+export function saveDailyResult(score, corrects) {
+  localStorage.setItem(KEY, JSON.stringify({ date: new Date().toDateString(), score, corrects }));
+}

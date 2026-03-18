@@ -1,7 +1,13 @@
 import { initFirebase, signInWithGoogle, signInAsGuest, signOutUser, restoreSession, getCurrentUser, updateGuestName } from './auth.js';
-import { startRound, answerQuestion, abortRound, getRounds } from './quiz.js';
+import { startRound, startCustomRound, answerQuestion, abortRound, getRounds } from './quiz.js';
 import { saveScore, fetchLeaderboard, getUserStats } from './leaderboard.js';
 import { getLearnStats, getLevelInfo, getLearnRounds, startLesson, answerLesson, advanceLesson, abortLesson } from './learn.js';
+import { getDailyStatus, getDailyQuestions, saveDailyResult } from './daily.js';
+import { startSpeed, startSpeedTimer, answerSpeed, abortSpeed } from './speed.js';
+import { getAchievements, checkAchievements, updateStats, getStats } from './achievements.js';
+import { fichas } from './fichas.js';
+import { startConstructor, answerConstructor, abortConstructor } from './constructor.js';
+import { startBlind, answerBlind, revealNextClue, abortBlind } from './blind.js';
 
 // ─── DOM helpers ─────────────────────────────────────────────
 const $ = id => document.getElementById(id);
@@ -82,6 +88,26 @@ async function goToDashboard() {
   // Update learn banner streak
   const { streak } = getLearnStats();
   $('banner-streak').textContent = `🔥 ${streak}`;
+
+  // Daily challenge badge
+  const dailyStatus = getDailyStatus();
+  const dailyBadge = $('qm-daily-badge');
+  if (dailyStatus.played) {
+    dailyBadge.textContent = '✓';
+    dailyBadge.classList.add('show');
+    dailyBadge.style.background = 'var(--green)';
+  } else {
+    dailyBadge.classList.remove('show');
+  }
+
+  // Achievement badge (unlocked count)
+  const achList = getAchievements();
+  const achUnlocked = achList.filter(a => a.unlocked).length;
+  const achBadge = $('qm-ach-badge');
+  achBadge.textContent = achUnlocked;
+  achBadge.classList.toggle('show', achUnlocked > 0);
+  achBadge.style.background = 'var(--gold)';
+  achBadge.style.color = '#0d0508';
 
   // Render round cards
   renderRoundCards(stats);
@@ -213,6 +239,19 @@ async function handleRoundComplete({ round, score, timeBonus, corrects, wrongs, 
   }
   setLoading(false);
 
+  // Check achievements for quiz completion
+  if (!isDailyMode) {
+    const stats = getStats();
+    const roundsPlayed = (stats.roundsPlayed || 0) + 1;
+    const newly = checkAchievements({
+      totalGames: (stats.totalGames || 0) + 1,
+      perfectQuiz: corrects === 10 ? true : stats.perfectQuiz,
+      roundsPlayed,
+    });
+    showNewAchievements(newly);
+  }
+  isDailyMode = false;
+
   // Render results
   const pct = Math.round((corrects / 10) * 100);
   let emoji = '😢', title = '¡Sigue practicando!';
@@ -243,6 +282,340 @@ async function handleRoundComplete({ round, score, timeBonus, corrects, wrongs, 
   });
 
   showView('view-results');
+}
+
+// ─── ACHIEVEMENTS helper ──────────────────────────────────────
+function showNewAchievements(list) {
+  if (!list.length) return;
+  list.forEach((a, i) => {
+    setTimeout(() => toast(`🏆 Logro desbloqueado: ${a.icon} ${a.title}`, 'success'), i * 1500);
+  });
+}
+
+// ─── DAILY CHALLENGE ─────────────────────────────────────────
+let isDailyMode = false;
+
+function startDailyChallenge() {
+  const status = getDailyStatus();
+  if (status.played) {
+    toast(`Ya jugaste hoy: ${status.corrects}/10 · ${status.score} pts`, 'info');
+    return;
+  }
+
+  isDailyMode = true;
+  currentRoundId = 'daily';
+  showView('view-quiz');
+
+  const questions = getDailyQuestions();
+  const roundData = { id: 'daily', title: '📅 Reto del Día', questions };
+  startCustomRound(roundData, {
+    onQuestion: (q) => { renderQuestion({ ...q, _daily: true }); },
+    onTick: updateTimer,
+    onAnswer: handleAnswer,
+    onComplete: async (result) => {
+      saveDailyResult(result.score, result.corrects);
+      const newly = checkAchievements({
+        dailyPlayed: (getStats().dailyPlayed || 0) + 1,
+        dailyPerfect: result.corrects === 10 ? true : getStats().dailyPerfect,
+        totalGames: (getStats().totalGames || 0) + 1,
+      });
+      showNewAchievements(newly);
+      await handleRoundComplete(result);
+    }
+  });
+}
+
+// ─── SPEED MODE ───────────────────────────────────────────────
+let speedAnswered = false;
+
+function goToSpeedMode() {
+  speedAnswered = false;
+  const q = startSpeed();
+  showView('view-speed');
+  renderSpeedQuestion(q);
+  startSpeedTimer(
+    (t) => {
+      $('speed-timer').textContent = t;
+      $('speed-timer').classList.toggle('urgent', t <= 10);
+    },
+    (result) => {
+      const newly = checkAchievements({
+        speedMax: Math.max(getStats().speedMax || 0, result.answered),
+      });
+      showNewAchievements(newly);
+      showExtraResult({
+        emoji: result.answered >= 20 ? '⚡' : '🏁',
+        title: result.answered >= 20 ? '¡Velocista!' : '¡Tiempo!',
+        correct: result.correct,
+        correctLbl: '✅ Correctas',
+        score: result.score,
+        scoreLbl: '⭐ Puntos',
+        extra: result.answered,
+        extraLbl: '📊 Respondidas',
+        mode: 'speed',
+      });
+    }
+  );
+}
+
+function renderSpeedQuestion({ question, answers, index, total, correct, score }) {
+  $('speed-counter').textContent = `${correct}/${index}`;
+  $('speed-score').textContent = `${score} pts`;
+  $('speed-question').textContent = question;
+  const grid = $('speed-answers');
+  grid.innerHTML = '';
+  answers.forEach((ans, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.innerHTML = `<span class="answer-letter">${'ABCD'[i]}</span><span class="answer-text">${ans}</span>`;
+    btn.addEventListener('click', () => {
+      if (speedAnswered) return;
+      speedAnswered = true;
+      const res = answerSpeed(i);
+      if (!res) return;
+      // Flash feedback
+      document.querySelectorAll('#speed-answers .answer-btn').forEach((b, j) => {
+        b.disabled = true;
+        if (j === res.correctIndex) b.classList.add('correct');
+        else if (j === i && !res.correct) b.classList.add('wrong');
+      });
+      setTimeout(() => {
+        if (res.done) return; // timer will handle
+        speedAnswered = false;
+        renderSpeedQuestion(res.next);
+      }, 400);
+    });
+    grid.appendChild(btn);
+  });
+  speedAnswered = false;
+}
+
+// ─── CONSTRUCTOR MODE ─────────────────────────────────────────
+let conAnswered = false;
+
+function goToConstructorMode() {
+  const q = startConstructor();
+  conAnswered = false;
+  showView('view-constructor');
+  renderConstructorQuestion(q);
+}
+
+function renderConstructorQuestion({ ingredients, glass, method, answers, correctIndex, index, total }) {
+  $('con-q-num').textContent = index + 1;
+  const totalEl = document.querySelector('#view-constructor .quiz-q-total');
+  if (totalEl) totalEl.textContent = `/${total}`;
+  $('con-progress').style.width = `${((index + 1) / total) * 100}%`;
+  $('con-meta').innerHTML = `<span>🥃 ${glass}</span><span>🔀 ${method}</span>`;
+  const ul = $('con-ingredients');
+  ul.innerHTML = '';
+  ingredients.forEach(ing => { const li = document.createElement('li'); li.textContent = ing; ul.appendChild(li); });
+
+  const grid = $('con-answers');
+  grid.innerHTML = '';
+  const fb = $('con-feedback');
+  fb.className = 'lesson-feedback';
+  conAnswered = false;
+
+  answers.forEach((ans, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.innerHTML = `<span class="answer-letter">${'ABCD'[i]}</span><span class="answer-text">${ans}</span>`;
+    btn.addEventListener('click', () => {
+      if (conAnswered) return;
+      conAnswered = true;
+      const res = answerConstructor(i);
+      document.querySelectorAll('#con-answers .answer-btn').forEach((b, j) => {
+        b.disabled = true;
+        if (j === res.correctIndex) b.classList.add('correct');
+        else if (j === i && !res.correct) b.classList.add('wrong');
+      });
+      $('con-fb-icon').textContent = res.correct ? '✅' : '❌';
+      $('con-fb-label').textContent = res.correct ? '¡Correcto!' : `Era: ${answers[res.correctIndex]}`;
+      fb.className = `lesson-feedback show ${res.correct ? 'fb-correct' : 'fb-wrong'}`;
+      const continueBtn = $('btn-con-continue');
+      continueBtn.dataset.done = res.done ? '1' : '';
+      if (res.done) {
+        continueBtn.dataset.correct = res.result.correct;
+        continueBtn.dataset.total = res.result.total;
+      } else {
+        continueBtn.dataset.next = JSON.stringify(res.next);
+      }
+    });
+    grid.appendChild(btn);
+  });
+}
+
+function handleConstructorContinue() {
+  const btn = $('btn-con-continue');
+  if (btn.dataset.done === '1') {
+    const correct = parseInt(btn.dataset.correct);
+    const total = parseInt(btn.dataset.total);
+    showExtraResult({
+      emoji: correct >= total * 0.8 ? '🍹' : '📝',
+      title: correct >= total * 0.8 ? '¡Maestro Constructor!' : '¡Completado!',
+      correct, correctLbl: '✅ Correctas',
+      score: correct * 10, scoreLbl: '⭐ XP',
+      extra: `${correct}/${total}`, extraLbl: '📊 Resultado',
+      mode: 'constructor',
+    });
+    btn.dataset.done = '';
+  } else {
+    const nextData = btn.dataset.next ? JSON.parse(btn.dataset.next) : null;
+    if (nextData) renderConstructorQuestion(nextData);
+  }
+}
+
+// ─── BLIND TASTING ────────────────────────────────────────────
+let blindAnswered = false;
+let blindCurrentPayload = null;
+
+function goToBlindMode() {
+  const q = startBlind();
+  blindCurrentPayload = q;
+  blindAnswered = false;
+  showView('view-blind');
+  renderBlindQuestion(q);
+}
+
+function renderBlindQuestion({ clues, revealedClues, answers, correctIndex, index, total }) {
+  blindCurrentPayload = { clues, revealedClues, answers, correctIndex, index, total };
+  const totalEl = document.querySelector('#view-blind .quiz-q-total');
+  if (totalEl) totalEl.textContent = `/${total}`;
+  $('blind-q-num').textContent = index + 1;
+  $('blind-progress').style.width = `${((index + 1) / total) * 100}%`;
+
+  const ul = $('blind-clues');
+  ul.innerHTML = '';
+  clues.slice(0, revealedClues).forEach(c => {
+    const li = document.createElement('li'); li.textContent = c; ul.appendChild(li);
+  });
+
+  $('btn-blind-reveal').disabled = revealedClues >= clues.length;
+  const fb = $('blind-feedback');
+  fb.className = 'lesson-feedback';
+  blindAnswered = false;
+
+  const grid = $('blind-answers');
+  grid.innerHTML = '';
+  answers.forEach((ans, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.innerHTML = `<span class="answer-letter">${'ABCD'[i]}</span><span class="answer-text">${ans}</span>`;
+    btn.addEventListener('click', () => {
+      if (blindAnswered) return;
+      blindAnswered = true;
+      const res = answerBlind(i);
+      document.querySelectorAll('#blind-answers .answer-btn').forEach((b, j) => {
+        b.disabled = true;
+        if (j === res.correctIndex) b.classList.add('correct');
+        else if (j === i && !res.correct) b.classList.add('wrong');
+      });
+      $('blind-fb-icon').textContent = res.correct ? '✅' : '❌';
+      $('blind-fb-label').textContent = res.correct ? '¡Correcto!' : '¡Incorrecto!';
+      $('blind-fb-name').textContent = answers[res.correctIndex];
+      fb.className = `lesson-feedback show ${res.correct ? 'fb-correct' : 'fb-wrong'}`;
+      $('btn-blind-continue').dataset.done = res.done ? '1' : '';
+      if (res.done) {
+        $('btn-blind-continue').dataset.correct = res.result.correct;
+        $('btn-blind-continue').dataset.total = res.result.total;
+      } else {
+        $('btn-blind-continue').dataset.next = JSON.stringify(res.next);
+      }
+    });
+    grid.appendChild(btn);
+  });
+}
+
+function handleBlindContinue() {
+  const btn = $('btn-blind-continue');
+  if (btn.dataset.done === '1') {
+    const correct = parseInt(btn.dataset.correct);
+    const total = parseInt(btn.dataset.total);
+    showExtraResult({
+      emoji: correct >= total * 0.7 ? '👃' : '🍷',
+      title: correct >= total * 0.7 ? '¡Nariz de Oro!' : '¡Completado!',
+      correct, correctLbl: '✅ Identificados',
+      score: correct * 15, scoreLbl: '⭐ XP',
+      extra: `${correct}/${total}`, extraLbl: '📊 Resultado',
+      mode: 'blind',
+    });
+    btn.dataset.done = '';
+  } else {
+    const nextData = btn.dataset.next ? JSON.parse(btn.dataset.next) : null;
+    if (nextData) renderBlindQuestion(nextData);
+  }
+}
+
+// ─── FICHAS ───────────────────────────────────────────────────
+let fichasOpened = 0;
+
+function goToFichas() {
+  showView('view-fichas');
+  renderFichasGrid(fichas);
+}
+
+function renderFichasGrid(list) {
+  const grid = $('fichas-grid');
+  grid.innerHTML = '';
+  list.forEach(f => {
+    const card = document.createElement('div');
+    card.className = 'ficha-card';
+    card.style.setProperty('--ficha-color', f.color);
+    card.innerHTML = `<div class="ficha-card-icon">${f.icon}</div><div class="ficha-card-name">${f.name}</div><div class="ficha-card-cat">${f.category}</div>`;
+    card.addEventListener('click', () => openFichaDetail(f));
+    grid.appendChild(card);
+  });
+}
+
+function openFichaDetail(f) {
+  fichasOpened++;
+  const newly = checkAchievements({ fichasOpened: Math.max(getStats().fichasOpened || 0, fichasOpened) });
+  showNewAchievements(newly);
+
+  $('ficha-detail-name').textContent = f.name;
+  $('ficha-detail-hero').style.background = `linear-gradient(135deg, ${f.color}22, transparent)`;
+  $('ficha-detail-icon').textContent = f.icon;
+  $('ficha-detail-cat').textContent = f.category;
+  $('fd-glass').textContent = f.glass;
+  $('fd-method').textContent = f.method;
+  $('fd-garnish').textContent = f.garnish;
+  const ul = $('fd-ingredients');
+  ul.innerHTML = '';
+  f.ingredients.forEach(i => { const li = document.createElement('li'); li.textContent = i; ul.appendChild(li); });
+  $('fd-story').textContent = f.story;
+  showView('view-ficha-detail');
+}
+
+// ─── ACHIEVEMENTS VIEW ────────────────────────────────────────
+function goToAchievements() {
+  const list = getAchievements();
+  const unlocked = list.filter(a => a.unlocked).length;
+  $('ach-count').textContent = `${unlocked}/${list.length}`;
+  const grid = $('ach-grid');
+  grid.innerHTML = '';
+  list.forEach(a => {
+    const item = document.createElement('div');
+    item.className = `ach-item ${a.unlocked ? 'unlocked' : 'locked'}`;
+    item.innerHTML = `<div class="ach-icon">${a.icon}</div><div class="ach-info"><div class="ach-title">${a.title}</div><div class="ach-desc">${a.desc}</div></div>`;
+    grid.appendChild(item);
+  });
+  showView('view-achievements');
+}
+
+// ─── EXTRA RESULT ─────────────────────────────────────────────
+let extraResultMode = null;
+
+function showExtraResult({ emoji, title, correct, correctLbl, score, scoreLbl, extra, extraLbl, mode }) {
+  extraResultMode = mode;
+  $('er-emoji').textContent = emoji;
+  $('er-title').textContent = title;
+  $('er-correct').textContent = correct;
+  $('er-correct-lbl').textContent = correctLbl;
+  $('er-score').textContent = score;
+  $('er-score-lbl').textContent = scoreLbl;
+  $('er-extra').textContent = extra;
+  $('er-extra-lbl').textContent = extraLbl;
+  showView('view-extra-result');
 }
 
 // ─── LEARN HUB ───────────────────────────────────────────────
@@ -372,9 +745,22 @@ function showLessonResult({ passed, correct, total, xp, lives, round }) {
   $('btn-lr-continue').dataset.roundId = currentLessonRoundId;
 
   // Update banner streak on dashboard
-  const { streak } = getLearnStats();
+  const learnStats = getLearnStats();
   const bannerStreak = $('banner-streak');
-  if (bannerStreak) bannerStreak.textContent = `🔥 ${streak}`;
+  if (bannerStreak) bannerStreak.textContent = `🔥 ${learnStats.streak}`;
+
+  // Check lesson achievements
+  if (passed) {
+    const stats = getStats();
+    const lessonsCompleted = (stats.lessonsCompleted || 0) + 1;
+    const newly = checkAchievements({
+      lessonsCompleted,
+      perfectLesson: lives > 0 && lives === 3 ? true : stats.perfectLesson,
+      xp: learnStats.xp,
+      streak: learnStats.streak,
+    });
+    showNewAchievements(newly);
+  }
 
   showView('view-lesson-result');
 }
@@ -474,6 +860,54 @@ function bindEvents() {
   $('btn-play-again').addEventListener('click', () => startQuiz(currentRoundId));
   $('btn-leaderboard-results').addEventListener('click', () => goToLeaderboard('view-results'));
   $('btn-home-results').addEventListener('click', () => goToDashboard());
+
+  // Quick modes dashboard
+  $('btn-daily').addEventListener('click', () => startDailyChallenge());
+  $('btn-speed').addEventListener('click', () => goToSpeedMode());
+  $('btn-constructor').addEventListener('click', () => goToConstructorMode());
+  $('btn-blind').addEventListener('click', () => goToBlindMode());
+  $('btn-fichas').addEventListener('click', () => goToFichas());
+  $('btn-achievements').addEventListener('click', () => goToAchievements());
+
+  // Speed mode
+  $('btn-quit-speed').addEventListener('click', () => { if (confirm('¿Abandonar?')) { abortSpeed(); goToDashboard(); } });
+
+  // Constructor mode
+  $('btn-quit-constructor').addEventListener('click', () => { if (confirm('¿Abandonar?')) { abortConstructor(); goToDashboard(); } });
+  $('btn-con-continue').addEventListener('click', handleConstructorContinue);
+
+  // Blind tasting
+  $('btn-quit-blind').addEventListener('click', () => { if (confirm('¿Abandonar?')) { abortBlind(); goToDashboard(); } });
+  $('btn-blind-reveal').addEventListener('click', () => {
+    const q = revealNextClue();
+    if (!q) return;
+    blindCurrentPayload = q;
+    const ul = $('blind-clues');
+    ul.innerHTML = '';
+    q.clues.slice(0, q.revealedClues).forEach(c => { const li = document.createElement('li'); li.textContent = c; ul.appendChild(li); });
+    $('btn-blind-reveal').disabled = q.revealedClues >= q.clues.length;
+  });
+  $('btn-blind-continue').addEventListener('click', handleBlindContinue);
+
+  // Fichas
+  $('btn-back-fichas').addEventListener('click', () => goToDashboard());
+  $('btn-back-ficha-detail').addEventListener('click', () => goToFichas());
+  $('fichas-search').addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    renderFichasGrid(fichas.filter(f => f.name.toLowerCase().includes(q) || f.category.toLowerCase().includes(q)));
+  });
+
+  // Achievements
+  $('btn-back-achievements').addEventListener('click', () => goToDashboard());
+
+  // Extra result
+  $('btn-er-again').addEventListener('click', () => {
+    if (extraResultMode === 'speed') goToSpeedMode();
+    else if (extraResultMode === 'constructor') goToConstructorMode();
+    else if (extraResultMode === 'blind') goToBlindMode();
+    else goToDashboard();
+  });
+  $('btn-er-home').addEventListener('click', () => goToDashboard());
 
   // Learning mode
   $('btn-go-learn').addEventListener('click', () => goToLearnHub());
