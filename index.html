@@ -22,8 +22,8 @@
         <div class="login-logo">
           <div class="login-glass-icon">🍸</div>
           <h1 class="login-title">Stirio</h1>
-          <p class="login-tagline">Domina el arte del cóctel</p>
-          <p class="login-sub">Aprende · Pon a prueba tus conocimientos · Ranking global</p>
+          <p class="login-tagline" data-i18n="login.tagline">Domina el arte del cóctel</p>
+          <p class="login-sub" data-i18n="login.sub">Aprende · Pon a prueba tus conocimientos · Ranking global</p>
         </div>
         <div class="login-actions">
           <button id="btn-google-login" class="btn-google">
@@ -33,11 +33,11 @@
               <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
               <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
             </svg>
-            Iniciar sesión con Google
+            <span data-i18n="login.google">Iniciar sesión con Google</span>
           </button>
-          <button id="btn-guest-login" class="btn-guest">Continuar como invitado</button>
+          <button id="btn-guest-login" class="btn-guest" data-i18n="login.guest">Continuar como invitado</button>
         </div>
-        <p class="login-note">Inicia sesión con Google para guardar tus puntuaciones y aparecer en el ranking global</p>
+        <p class="login-note" data-i18n="login.note">Inicia sesión con Google para guardar tus puntuaciones y aparecer en el ranking global</p>
       </div>
     </div>
 
@@ -52,6 +52,7 @@
           </div>
         </div>
         <div class="header-right">
+          <button class="lang-toggle" id="btn-lang-toggle" title="EN / ES">ES</button>
           <button class="icon-btn" id="btn-leaderboard-header" title="Ranking">🏆</button>
           <button class="icon-btn" id="btn-logout" title="Opciones">⚙️</button>
         </div>
@@ -61,8 +62,8 @@
         <div class="learn-banner" id="btn-go-learn">
           <div class="learn-banner-icon">📚</div>
           <div class="learn-banner-info">
-            <div class="learn-banner-title">Modo Aprendizaje</div>
-            <div class="learn-banner-sub">Aprende paso a paso · 3 vidas por lección</div>
+            <div class="learn-banner-title" data-i18n="dashboard.learn_mode">Modo Aprendizaje</div>
+            <div class="learn-banner-sub" data-i18n="dashboard.learn_sub">Aprende paso a paso · 3 vidas por lección</div>
           </div>
           <div class="learn-banner-right">
             <span class="learn-banner-streak" id="banner-streak">🔥 0</span>
@@ -73,52 +74,52 @@
         <div class="stats-bar">
           <div class="stat-item">
             <div class="stat-value" id="stat-games">0</div>
-            <div class="stat-label">Partidas</div>
+            <div class="stat-label" data-i18n="dashboard.games">Partidas</div>
           </div>
           <div class="stat-item">
             <div class="stat-value" id="stat-best">0</div>
-            <div class="stat-label">Mejor</div>
+            <div class="stat-label" data-i18n="dashboard.best_label">Mejor</div>
           </div>
           <div class="stat-item">
             <div class="stat-value" id="stat-avg">0</div>
-            <div class="stat-label">Media</div>
+            <div class="stat-label" data-i18n="dashboard.avg">Media</div>
           </div>
           <div class="stat-item">
             <div class="stat-value" id="stat-rounds">0</div>
-            <div class="stat-label">Rondas</div>
+            <div class="stat-label" data-i18n="dashboard.rounds">Rondas</div>
           </div>
         </div>
-        <div class="quick-modes-title">Modos de juego</div>
+        <div class="quick-modes-title" data-i18n="dashboard.game_modes">Modos de juego</div>
         <div class="quick-modes-grid">
           <button class="qm-btn" id="btn-daily">
             <span class="qm-icon">📅</span>
-            <span class="qm-label">Reto Diario</span>
+            <span class="qm-label" data-i18n="dashboard.daily">Reto Diario</span>
             <span class="qm-badge" id="qm-daily-badge"></span>
           </button>
           <button class="qm-btn" id="btn-speed">
             <span class="qm-icon">⚡</span>
-            <span class="qm-label">Velocidad</span>
+            <span class="qm-label" data-i18n="dashboard.speed">Velocidad</span>
           </button>
           <button class="qm-btn" id="btn-constructor">
             <span class="qm-icon">🍹</span>
-            <span class="qm-label">Constructor</span>
+            <span class="qm-label" data-i18n="dashboard.constructor">Constructor</span>
           </button>
           <button class="qm-btn" id="btn-blind">
             <span class="qm-icon">👃</span>
-            <span class="qm-label">Blind Tasting</span>
+            <span class="qm-label" data-i18n="dashboard.blind">Blind Tasting</span>
           </button>
           <button class="qm-btn" id="btn-fichas">
             <span class="qm-icon">📖</span>
-            <span class="qm-label">Fichas IBA</span>
+            <span class="qm-label" data-i18n="dashboard.fichas">Fichas IBA</span>
           </button>
           <button class="qm-btn" id="btn-achievements">
             <span class="qm-icon">🏆</span>
-            <span class="qm-label">Logros</span>
+            <span class="qm-label" data-i18n="dashboard.achievements">Logros</span>
             <span class="qm-badge" id="qm-ach-badge"></span>
           </button>
         </div>
 
-        <h2 class="section-title">Selecciona una Ronda</h2>
+        <h2 class="section-title" data-i18n="dashboard.select_round">Selecciona una Ronda</h2>
         <div class="rounds-grid" id="rounds-grid"></div>
       </div>
     </div>
@@ -164,31 +165,31 @@
           <h2 class="results-title" id="results-title">¡Excelente!</h2>
           <div class="results-score-block">
             <span class="results-score-value" id="results-score-value">0</span>
-            <span class="results-score-label">puntos</span>
+            <span class="results-score-label" data-i18n="results.points">puntos</span>
           </div>
         </div>
         <div class="results-stats-row">
           <div class="result-stat">
             <div class="result-stat-icon">✅</div>
             <div class="result-stat-value" id="results-correct">0</div>
-            <div class="result-stat-label">Correctas</div>
+            <div class="result-stat-label" data-i18n="results.correct">Correctas</div>
           </div>
           <div class="result-stat">
             <div class="result-stat-icon">❌</div>
             <div class="result-stat-value" id="results-wrong">0</div>
-            <div class="result-stat-label">Incorrectas</div>
+            <div class="result-stat-label" data-i18n="results.incorrect">Incorrectas</div>
           </div>
           <div class="result-stat">
             <div class="result-stat-icon">⚡</div>
             <div class="result-stat-value" id="results-time-bonus">0</div>
-            <div class="result-stat-label">Bonus</div>
+            <div class="result-stat-label" data-i18n="results.bonus">Bonus</div>
           </div>
         </div>
         <div class="results-breakdown" id="results-breakdown"></div>
         <div class="results-actions">
-          <button id="btn-play-again" class="btn-primary">🔄 Jugar de nuevo</button>
-          <button id="btn-leaderboard-results" class="btn-secondary">🏆 Ver Ranking</button>
-          <button id="btn-home-results" class="btn-ghost">← Inicio</button>
+          <button id="btn-play-again" class="btn-primary" data-i18n="results.play_again">🔄 Jugar de nuevo</button>
+          <button id="btn-leaderboard-results" class="btn-secondary" data-i18n="results.view_ranking">🏆 Ver Ranking</button>
+          <button id="btn-home-results" class="btn-ghost" data-i18n="results.home">← Inicio</button>
         </div>
       </div>
     </div>
@@ -197,7 +198,7 @@
     <div id="view-leaderboard" class="view">
       <div class="app-header">
         <button class="icon-btn" id="btn-back-leaderboard">←</button>
-        <h2 class="header-title">🏆 Ranking Global</h2>
+        <h2 class="header-title" data-i18n="leaderboard.title">🏆 Ranking Global</h2>
         <div class="header-spacer"></div>
       </div>
       <div class="leaderboard-filters" id="leaderboard-filters"></div>
@@ -208,12 +209,12 @@
     <div id="view-speed" class="view">
       <div class="app-header">
         <button class="icon-btn quit-btn" id="btn-quit-speed">✕</button>
-        <h2 class="header-title">⚡ Modo Velocidad</h2>
+        <h2 class="header-title" data-i18n="speed.title">⚡ Modo Velocidad</h2>
         <div class="speed-counter" id="speed-counter">0/0</div>
       </div>
       <div class="speed-timer-block">
         <div class="speed-timer-val" id="speed-timer">60</div>
-        <div class="speed-timer-label">segundos</div>
+        <div class="speed-timer-label" data-i18n="speed.seconds">segundos</div>
         <div class="speed-score" id="speed-score">0 pts</div>
       </div>
       <div class="question-card" style="margin:0 16px 12px">
@@ -226,12 +227,12 @@
     <div id="view-constructor" class="view">
       <div class="app-header">
         <button class="icon-btn quit-btn" id="btn-quit-constructor">✕</button>
-        <h2 class="header-title">🍹 Constructor</h2>
+        <h2 class="header-title" data-i18n="constructor.title">🍹 Constructor</h2>
         <div class="quiz-q-counter"><span id="con-q-num">1</span><span class="quiz-q-total">/20</span></div>
       </div>
       <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="con-progress"></div></div>
       <div class="con-card" id="con-card">
-        <div class="con-card-label">¿Qué cóctel tiene estos ingredientes?</div>
+        <div class="con-card-label" data-i18n="constructor.question">¿Qué cóctel tiene estos ingredientes?</div>
         <div class="con-meta" id="con-meta"></div>
         <ul class="con-ingredients" id="con-ingredients"></ul>
       </div>
@@ -243,7 +244,7 @@
             <div class="lesson-feedback-label" id="con-fb-label">¡Correcto!</div>
           </div>
         </div>
-        <button class="lesson-continue-btn" id="btn-con-continue">Continuar</button>
+        <button class="lesson-continue-btn" id="btn-con-continue" data-i18n="constructor.continue">Continuar</button>
       </div>
     </div>
 
@@ -251,14 +252,14 @@
     <div id="view-blind" class="view">
       <div class="app-header">
         <button class="icon-btn quit-btn" id="btn-quit-blind">✕</button>
-        <h2 class="header-title">👃 Blind Tasting</h2>
+        <h2 class="header-title" data-i18n="blind.title">👃 Blind Tasting</h2>
         <div class="quiz-q-counter"><span id="blind-q-num">1</span><span class="quiz-q-total">/18</span></div>
       </div>
       <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="blind-progress"></div></div>
       <div class="blind-clues-card" id="blind-clues-card">
-        <div class="blind-clues-label">Identifica el destilado por sus aromas y sabores:</div>
+        <div class="blind-clues-label" data-i18n="blind.identify">Identifica el destilado por sus aromas y sabores:</div>
         <ul class="blind-clues" id="blind-clues"></ul>
-        <button class="blind-reveal-btn" id="btn-blind-reveal">+ Revelar pista</button>
+        <button class="blind-reveal-btn" id="btn-blind-reveal" data-i18n="blind.reveal">+ Revelar pista</button>
       </div>
       <div class="answers-grid" id="blind-answers"></div>
       <div class="lesson-feedback" id="blind-feedback">
@@ -269,7 +270,7 @@
             <div class="lesson-feedback-exp" id="blind-fb-name"></div>
           </div>
         </div>
-        <button class="lesson-continue-btn" id="btn-blind-continue">Continuar</button>
+        <button class="lesson-continue-btn" id="btn-blind-continue" data-i18n="blind.continue">Continuar</button>
       </div>
     </div>
 
@@ -277,11 +278,11 @@
     <div id="view-fichas" class="view">
       <div class="app-header">
         <button class="icon-btn" id="btn-back-fichas">←</button>
-        <h2 class="header-title">📖 Fichas IBA</h2>
+        <h2 class="header-title" data-i18n="fichas.title">📖 Fichas IBA</h2>
         <div class="header-spacer"></div>
       </div>
       <div class="fichas-search-wrap">
-        <input class="fichas-search" id="fichas-search" type="text" placeholder="Buscar cóctel...">
+        <input class="fichas-search" id="fichas-search" type="text" data-i18n-placeholder="fichas.search" placeholder="Buscar cóctel...">
       </div>
       <div class="fichas-grid" id="fichas-grid"></div>
     </div>
@@ -299,16 +300,16 @@
           <div class="ficha-detail-cat" id="ficha-detail-cat"></div>
         </div>
         <div class="ficha-detail-section">
-          <div class="ficha-detail-row"><span class="ficha-lbl">🥃 Vaso</span><span class="ficha-val" id="fd-glass"></span></div>
-          <div class="ficha-detail-row"><span class="ficha-lbl">🔀 Método</span><span class="ficha-val" id="fd-method"></span></div>
-          <div class="ficha-detail-row"><span class="ficha-lbl">🌿 Garnish</span><span class="ficha-val" id="fd-garnish"></span></div>
+          <div class="ficha-detail-row"><span class="ficha-lbl" data-i18n="fichas.glass">🥃 Vaso</span><span class="ficha-val" id="fd-glass"></span></div>
+          <div class="ficha-detail-row"><span class="ficha-lbl" data-i18n="fichas.method">🔀 Método</span><span class="ficha-val" id="fd-method"></span></div>
+          <div class="ficha-detail-row"><span class="ficha-lbl" data-i18n="fichas.garnish">🌿 Garnish</span><span class="ficha-val" id="fd-garnish"></span></div>
         </div>
         <div class="ficha-detail-section">
-          <div class="ficha-section-title">Ingredientes</div>
+          <div class="ficha-section-title" data-i18n="fichas.ingredients">Ingredientes</div>
           <ul class="ficha-ingredients" id="fd-ingredients"></ul>
         </div>
         <div class="ficha-detail-section">
-          <div class="ficha-section-title">Historia</div>
+          <div class="ficha-section-title" data-i18n="fichas.history">Historia</div>
           <p class="ficha-story" id="fd-story"></p>
         </div>
       </div>
@@ -318,7 +319,7 @@
     <div id="view-achievements" class="view">
       <div class="app-header">
         <button class="icon-btn" id="btn-back-achievements">←</button>
-        <h2 class="header-title">🏆 Logros</h2>
+        <h2 class="header-title" data-i18n="achievements.title">🏆 Logros</h2>
         <div class="ach-count" id="ach-count">0/14</div>
       </div>
       <div class="ach-grid" id="ach-grid"></div>
@@ -344,8 +345,8 @@
           </div>
         </div>
         <div class="lesson-result-actions">
-          <button class="btn-primary" id="btn-er-again">🔄 Jugar de nuevo</button>
-          <button class="btn-ghost" id="btn-er-home">← Inicio</button>
+          <button class="btn-primary" id="btn-er-again" data-i18n="results.play_again">🔄 Jugar de nuevo</button>
+          <button class="btn-ghost" id="btn-er-home" data-i18n="results.home">← Inicio</button>
         </div>
       </div>
     </div>
@@ -354,14 +355,14 @@
     <div id="view-learn-hub" class="view">
       <div class="app-header">
         <button class="icon-btn" id="btn-back-learn">←</button>
-        <h2 class="header-title">📚 Aprendizaje</h2>
+        <h2 class="header-title" data-i18n="learn.title">📚 Aprendizaje</h2>
         <div class="header-spacer"></div>
       </div>
       <div class="learn-hero">
         <div class="learn-hero-stats">
           <div class="learn-hero-stat">
             <div class="learn-hero-stat-val" id="learn-streak-val">0</div>
-            <div class="learn-hero-stat-label">🔥 Racha</div>
+            <div class="learn-hero-stat-label" data-i18n="learn.streak">🔥 Racha</div>
           </div>
           <div class="learn-hero-level">
             <div class="learn-level-badge" id="learn-level-badge">Nv. 1</div>
@@ -374,7 +375,7 @@
           </div>
         </div>
       </div>
-      <div class="learn-lessons-title">Elige una lección</div>
+      <div class="learn-lessons-title" data-i18n="learn.choose_lesson">Elige una lección</div>
       <div class="learn-lessons" id="learn-lessons"></div>
     </div>
 
@@ -405,7 +406,7 @@
             <div class="lesson-feedback-exp" id="lesson-feedback-exp"></div>
           </div>
         </div>
-        <button class="lesson-continue-btn" id="btn-lesson-continue">Continuar</button>
+        <button class="lesson-continue-btn" id="btn-lesson-continue" data-i18n="lesson.continue">Continuar</button>
       </div>
     </div>
 
@@ -417,21 +418,21 @@
         <div class="lesson-result-stats">
           <div class="lr-stat">
             <div class="lr-stat-val" id="lr-correct">0</div>
-            <div class="lr-stat-label">✅ Correctas</div>
+            <div class="lr-stat-label" data-i18n="lesson.correct_label">✅ Correctas</div>
           </div>
           <div class="lr-stat">
             <div class="lr-stat-val" id="lr-xp">+0</div>
-            <div class="lr-stat-label">⭐ XP ganado</div>
+            <div class="lr-stat-label" data-i18n="lesson.xp_earned">⭐ XP ganado</div>
           </div>
           <div class="lr-stat">
             <div class="lr-stat-val" id="lr-lives"></div>
-            <div class="lr-stat-label">Vidas restantes</div>
+            <div class="lr-stat-label" data-i18n="lesson.lives_remaining">Vidas restantes</div>
           </div>
         </div>
         <div class="lesson-result-actions">
-          <button class="btn-primary" id="btn-lr-continue">Siguiente lección</button>
-          <button class="btn-secondary" id="btn-lr-retry">Repetir lección</button>
-          <button class="btn-ghost" id="btn-lr-home">← Inicio</button>
+          <button class="btn-primary" id="btn-lr-continue" data-i18n="lesson.next">Siguiente lección</button>
+          <button class="btn-secondary" id="btn-lr-retry" data-i18n="lesson.retry">Repetir lección</button>
+          <button class="btn-ghost" id="btn-lr-home" data-i18n="lesson.home">← Inicio</button>
         </div>
       </div>
     </div>
@@ -445,7 +446,7 @@
   <div id="loading" class="loading-overlay hidden">
     <div class="loading-content">
       <div class="loading-spinner">🍸</div>
-      <div class="loading-text">Preparando cócteles...</div>
+      <div class="loading-text" data-i18n="loading.text">Preparando cócteles...</div>
     </div>
   </div>
 
