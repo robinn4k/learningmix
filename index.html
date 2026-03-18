@@ -57,6 +57,19 @@
         </div>
       </div>
       <div class="dashboard-body">
+        <!-- Learning mode banner -->
+        <div class="learn-banner" id="btn-go-learn">
+          <div class="learn-banner-icon">📚</div>
+          <div class="learn-banner-info">
+            <div class="learn-banner-title">Modo Aprendizaje</div>
+            <div class="learn-banner-sub">Aprende paso a paso · 3 vidas por lección</div>
+          </div>
+          <div class="learn-banner-right">
+            <span class="learn-banner-streak" id="banner-streak">🔥 0</span>
+            <span class="learn-banner-arrow">→</span>
+          </div>
+        </div>
+
         <div class="stats-bar">
           <div class="stat-item">
             <div class="stat-value" id="stat-games">0</div>
@@ -159,6 +172,92 @@
       </div>
       <div class="leaderboard-filters" id="leaderboard-filters"></div>
       <div class="leaderboard-list" id="leaderboard-list"></div>
+    </div>
+
+    <!-- ══ LEARN HUB ══ -->
+    <div id="view-learn-hub" class="view">
+      <div class="app-header">
+        <button class="icon-btn" id="btn-back-learn">←</button>
+        <h2 class="header-title">📚 Aprendizaje</h2>
+        <div class="header-spacer"></div>
+      </div>
+      <div class="learn-hero">
+        <div class="learn-hero-stats">
+          <div class="learn-hero-stat">
+            <div class="learn-hero-stat-val" id="learn-streak-val">0</div>
+            <div class="learn-hero-stat-label">🔥 Racha</div>
+          </div>
+          <div class="learn-hero-level">
+            <div class="learn-level-badge" id="learn-level-badge">Nv. 1</div>
+            <div class="learn-xp-bar"><div class="learn-xp-fill" id="learn-xp-fill"></div></div>
+            <div class="learn-xp-text" id="learn-xp-text">0 / 100 XP</div>
+          </div>
+          <div class="learn-hero-stat">
+            <div class="learn-hero-stat-val" id="learn-xp-val">0</div>
+            <div class="learn-hero-stat-label">⭐ XP</div>
+          </div>
+        </div>
+      </div>
+      <div class="learn-lessons-title">Elige una lección</div>
+      <div class="learn-lessons" id="learn-lessons"></div>
+    </div>
+
+    <!-- ══ LESSON ══ -->
+    <div id="view-lesson" class="view">
+      <div class="lesson-header">
+        <button class="icon-btn quit-btn" id="btn-quit-lesson">✕</button>
+        <div class="lesson-progress-wrap">
+          <div class="lesson-progress-bar">
+            <div class="lesson-progress-fill" id="lesson-progress-fill"></div>
+          </div>
+        </div>
+        <div class="lesson-lives" id="lesson-lives"></div>
+      </div>
+      <div class="lesson-body">
+        <div class="lesson-q-counter" id="lesson-q-counter">1 / 10</div>
+        <div class="question-card">
+          <p class="question-text" id="lesson-question"></p>
+        </div>
+        <div class="answers-grid" id="lesson-answers"></div>
+      </div>
+      <!-- Feedback panel slides from bottom -->
+      <div class="lesson-feedback" id="lesson-feedback">
+        <div class="lesson-feedback-top">
+          <div class="lesson-feedback-icon" id="lesson-feedback-icon">✅</div>
+          <div class="lesson-feedback-text">
+            <div class="lesson-feedback-label" id="lesson-feedback-label">¡Correcto!</div>
+            <div class="lesson-feedback-exp" id="lesson-feedback-exp"></div>
+          </div>
+        </div>
+        <button class="lesson-continue-btn" id="btn-lesson-continue">Continuar</button>
+      </div>
+    </div>
+
+    <!-- ══ LESSON RESULT ══ -->
+    <div id="view-lesson-result" class="view">
+      <div class="lesson-result-body">
+        <div class="lesson-result-emoji" id="lr-emoji">🎉</div>
+        <h2 class="lesson-result-title" id="lr-title">¡Lección completada!</h2>
+        <div class="lesson-result-stats">
+          <div class="lr-stat">
+            <div class="lr-stat-val" id="lr-correct">0</div>
+            <div class="lr-stat-label">✅ Correctas</div>
+          </div>
+          <div class="lr-stat">
+            <div class="lr-stat-val" id="lr-xp">+0</div>
+            <div class="lr-stat-label">⭐ XP ganado</div>
+          </div>
+          <div class="lr-stat">
+            <div class="lr-stat-val" id="lr-lives"></div>
+            <div class="lr-stat-label">Vidas restantes</div>
+          </div>
+        </div>
+        <div class="lesson-result-actions">
+          <button class="btn-primary" id="btn-lr-continue">Siguiente lección</button>
+          <button class="btn-secondary" id="btn-lr-retry">Repetir lección</button>
+          <button class="btn-ghost" id="btn-lr-home">← Inicio</button>
+        </div>
+      </div>
     </div>
 
   </div>
