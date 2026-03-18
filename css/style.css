@@ -509,6 +509,15 @@ img { display: block; max-width: 100%; }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 .toast.toast-error  { border-color: var(--red);   color: #f1948a; }
 .toast.toast-success { border-color: var(--green); color: #7dcea0; }
+.toast.toast-update {
+  border-color: var(--accent); color: var(--accent);
+  pointer-events: auto; cursor: pointer;
+  animation: pulse-border 1.5s ease-in-out infinite;
+}
+@keyframes pulse-border {
+  0%, 100% { box-shadow: 0 8px 32px rgba(0,0,0,.5); }
+  50%       { box-shadow: 0 8px 32px rgba(var(--accent-rgb, 212,175,55),.35); }
+}
 
 /* ══════════════════════════════════════════════════
    LOADING OVERLAY
