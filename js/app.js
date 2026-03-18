@@ -1,4 +1,4 @@
-import { initFirebase, signInWithApple, signInAsGuest, signOutUser, restoreSession, getCurrentUser, updateGuestName } from './auth.js';
+import { initFirebase, signInWithGoogle, signInAsGuest, signOutUser, restoreSession, getCurrentUser, updateGuestName } from './auth.js';
 import { startRound, answerQuestion, abortRound, getRounds } from './quiz.js';
 import { saveScore, fetchLeaderboard, getUserStats } from './leaderboard.js';
 
@@ -33,13 +33,13 @@ async function init() {
 
 // ─── LOGIN VIEW ───────────────────────────────────────────────
 function bindLoginEvents() {
-  $('btn-apple-login').addEventListener('click', async () => {
+  $('btn-google-login').addEventListener('click', async () => {
     setLoading(true);
     try {
-      await signInWithApple();
+      await signInWithGoogle();
       await goToDashboard();
     } catch (e) {
-      toast('Apple Sign In no está configurado aún. Usa el modo invitado o configura Firebase.', 'error');
+      toast('Google Sign In no está configurado aún. Usa el modo invitado o configura Firebase.', 'error');
     } finally {
       setLoading(false);
     }

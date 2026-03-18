@@ -162,17 +162,18 @@ img { display: block; max-width: 100%; }
 
 .login-actions { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
 
-.btn-apple {
+.btn-google {
   display: flex; align-items: center; justify-content: center; gap: 10px;
-  background: #fff; color: #000;
+  background: #fff; color: #3c4043;
   padding: 14px 24px; border-radius: var(--radius);
   font-size: 1rem; font-weight: 700;
   transition: transform .12s, box-shadow .2s;
   box-shadow: 0 4px 20px rgba(0,0,0,.4);
+  border: 1px solid #dadce0;
 }
-.btn-apple:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(0,0,0,.5); }
-.btn-apple:active { transform: scale(.97); }
-.apple-svg { width: 20px; height: 20px; flex-shrink: 0; }
+.btn-google:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(0,0,0,.5); background: #f8f8f8; }
+.btn-google:active { transform: scale(.97); }
+.google-svg { width: 20px; height: 20px; flex-shrink: 0; }
 
 .btn-guest {
   background: var(--surface2);
