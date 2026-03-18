@@ -18,7 +18,7 @@ const CACHE_LIST = [
   "/flags/en.svg",
   "/flags/es.svg"
 ];
-const STATIC_CACHE_VERSION = `Bartender'sTrivalv1.7`;
+const STATIC_CACHE_VERSION = `Bartender'sTrivalv1.8`;
 const DEBUG = false;
 
 self.addEventListener('install', function(event) {
@@ -64,6 +64,10 @@ self.addEventListener('activate', (event) => {
   }
 
   event.waitUntil(caches.keys().then(onSuccessCachesKeys))
+})
+
+self.addEventListener('message', (event) => {
+  if (event.data?.type === 'SKIP_WAITING') self.skipWaiting();
 })
 
 self.addEventListener('fetch', (event) => {
