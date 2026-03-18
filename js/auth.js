@@ -21,21 +21,21 @@ async function initFirebase() {
   }
 }
 
-// Login con Apple Sign In via Firebase
-async function signInWithApple() {
+// Login con Google Sign In via Firebase (GRATIS)
+async function signInWithGoogle() {
   if (!auth) throw new Error('Firebase no configurado. Configura firebase-config.js primero.');
-  const { OAuthProvider, signInWithPopup } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js');
-  const provider = new OAuthProvider('apple.com');
+  const { GoogleAuthProvider, signInWithPopup } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js');
+  const provider = new GoogleAuthProvider();
+  provider.addScope('profile');
   provider.addScope('email');
-  provider.addScope('name');
   const result = await signInWithPopup(auth, provider);
   const user = result.user;
   currentUser = {
     uid: user.uid,
-    name: user.displayName || user.email?.split('@')[0] || 'Jugador Apple',
+    name: user.displayName || user.email?.split('@')[0] || 'Jugador Google',
     email: user.email,
     photo: user.photoURL,
-    provider: 'apple',
+    provider: 'google',
     isGuest: false
   };
   saveUserLocal(currentUser);
@@ -98,7 +98,7 @@ function isFirebaseReady() { return !!auth; }
 
 export {
   initFirebase,
-  signInWithApple,
+  signInWithGoogle,
   signInAsGuest,
   signOutUser,
   restoreSession,
