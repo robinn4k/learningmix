@@ -49,7 +49,12 @@ export function answerSpeed(selectedIndex) {
   const ok = selectedIndex === q.correctIndex;
   if (ok) { ss.correct++; ss.score += PTS; }
   ss.answered++;
-  ss.index = (ss.index + 1) % ss.questions.length;
+  ss.index++;
+  // When pool exhausted, reshuffle for a fresh set (avoids immediate repetition)
+  if (ss.index >= ss.questions.length) {
+    ss.questions = allQuestions();
+    ss.index = 0;
+  }
   return { correct: ok, correctIndex: q.correctIndex, selectedIndex, next: _payload() };
 }
 
