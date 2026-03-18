@@ -28,6 +28,7 @@ const toast = (msg, type = 'info') => {
 // ─── INIT ─────────────────────────────────────────────────────
 async function init() {
   setLoading(true);
+  document.documentElement.lang = getLang();
   translateHTML();
   updateLangToggle();
   await initFirebase();
@@ -67,10 +68,10 @@ function bindLoginEvents() {
       await goToDashboard();
     } catch (e) {
       const msg = e?.code === 'auth/unauthorized-domain'
-        ? 'Dominio no autorizado en Firebase. Añade robinn4k.github.io en Authentication → Settings → Authorized domains.'
+        ? t('error.unauthorized_domain')
         : e?.code === 'auth/popup-blocked'
-        ? 'El navegador bloqueó el popup. Permite popups para este sitio.'
-        : 'Error al iniciar sesión con Google. Usa el modo invitado.';
+        ? t('error.popup_blocked')
+        : t('error.google_signin');
       toast(msg, 'error');
     } finally {
       setLoading(false);
@@ -103,7 +104,7 @@ async function goToDashboard() {
   $('stat-best').textContent = best;
   $('stat-avg').textContent = avg;
   $('stat-rounds').textContent = completedRounds;
-  $('user-best').textContent = `Mejor: ${best} pts`;
+  $('user-best').textContent = t('dashboard.best', { n: best });
 
   // Update learn banner streak
   const { streak } = getLearnStats();
@@ -131,6 +132,8 @@ async function goToDashboard() {
 
   // Render round cards
   renderRoundCards(stats);
+  translateHTML();
+  updateLangToggle();
   showView('view-dashboard');
 }
 
@@ -151,7 +154,7 @@ function renderRoundCards(stats) {
         <div class="round-title">${r.title}</div>
         <div class="round-subtitle">${r.subtitle}</div>
         <div class="round-stars">${stars}</div>
-        ${best > 0 ? `<div class="round-best">Mejor: ${best} pts</div>` : '<div class="round-best">¡Sin jugar!</div>'}
+        ${best > 0 ? `<div class="round-best">${t('dashboard.best', { n: best })}</div>` : `<div class="round-best">${t('dashboard.no_play')}</div>`}
       </div>
       <div class="round-arrow">→</div>
     `;
@@ -274,10 +277,10 @@ async function handleRoundComplete({ round, score, timeBonus, corrects, wrongs, 
 
   // Render results
   const pct = Math.round((corrects / 10) * 100);
-  let emoji = '😢', title = '¡Sigue practicando!';
-  if (pct >= 90) { emoji = '🏆'; title = '¡Maestro Bartender!'; }
-  else if (pct >= 70) { emoji = '🎉'; title = '¡Muy bien!'; }
-  else if (pct >= 50) { emoji = '👍'; title = '¡Buen intento!'; }
+  let emoji = '😢', title = t('results.keep_practicing');
+  if (pct >= 90) { emoji = '🏆'; title = t('results.master_bartender'); }
+  else if (pct >= 70) { emoji = '🎉'; title = t('results.very_good'); }
+  else if (pct >= 50) { emoji = '👍'; title = t('results.good_try'); }
 
   $('results-emoji').textContent = emoji;
   $('results-title').textContent = title;
