@@ -255,7 +255,7 @@ img { display: block; max-width: 100%; }
 /* ══════════════════════════════════════════════════
    QUIZ VIEW
 ══════════════════════════════════════════════════ */
-#view-quiz { background: var(--bg); }
+#view-quiz { background: var(--bg); overflow-y: auto; }
 
 .quiz-header {
   display: flex; align-items: center; justify-content: space-between;
