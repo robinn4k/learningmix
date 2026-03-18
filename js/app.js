@@ -340,5 +340,40 @@ function bindEvents() {
   });
 }
 
+// ─── SERVICE WORKER ───────────────────────────────────────────
+function registerSW() {
+  if (!('serviceWorker' in navigator)) return;
+
+  navigator.serviceWorker.register('sw.js').then(reg => {
+    // New SW waiting → show update toast
+    const promptUpdate = () => {
+      const el = $('toast');
+      el.textContent = 'Nueva versión disponible — toca para actualizar';
+      el.className = 'toast toast-update show';
+      clearTimeout(el._t);
+      el._ut = () => {
+        if (reg.waiting) {
+          reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+          navigator.serviceWorker.addEventListener('controllerchange', () => window.location.reload(), { once: true });
+        }
+      };
+      el.addEventListener('click', el._ut, { once: true });
+    };
+
+    if (reg.waiting) {
+      promptUpdate();
+    }
+
+    reg.addEventListener('updatefound', () => {
+      const newSW = reg.installing;
+      newSW.addEventListener('statechange', () => {
+        if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
+          promptUpdate();
+        }
+      });
+    });
+  }).catch(err => console.warn('SW registration failed:', err));
+}
+
 // ─── START ────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', () => { init(); registerSW(); });
