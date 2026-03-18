@@ -8,6 +8,7 @@ import { getAchievements, checkAchievements, updateStats, getStats } from './ach
 import { fichas } from './fichas.js';
 import { startConstructor, answerConstructor, abortConstructor } from './constructor.js';
 import { startBlind, answerBlind, revealNextClue, abortBlind } from './blind.js';
+import { getLang, setLang, t, translateHTML } from './lang.js';
 
 // ─── DOM helpers ─────────────────────────────────────────────
 const $ = id => document.getElementById(id);
@@ -27,6 +28,8 @@ const toast = (msg, type = 'info') => {
 // ─── INIT ─────────────────────────────────────────────────────
 async function init() {
   setLoading(true);
+  translateHTML();
+  updateLangToggle();
   await initFirebase();
   const user = restoreSession();
   if (user) {
@@ -36,6 +39,23 @@ async function init() {
   }
   setLoading(false);
   bindEvents();
+}
+
+function updateLangToggle() {
+  const btn = $('btn-lang-toggle');
+  if (btn) btn.textContent = getLang().toUpperCase();
+}
+
+function toggleLanguage() {
+  const newLang = getLang() === 'es' ? 'en' : 'es';
+  setLang(newLang);
+  translateHTML();
+  updateLangToggle();
+  // Re-render current view if on dashboard
+  const dashboard = $('view-dashboard');
+  if (dashboard && dashboard.classList.contains('active')) {
+    goToDashboard();
+  }
 }
 
 // ─── LOGIN VIEW ───────────────────────────────────────────────
@@ -833,6 +853,9 @@ async function renderLeaderboard(roundId) {
 // ─── EVENT BINDING ────────────────────────────────────────────
 function bindEvents() {
   bindLoginEvents();
+
+  // Language toggle
+  $('btn-lang-toggle').addEventListener('click', toggleLanguage);
 
   // Dashboard header
   $('btn-leaderboard-header').addEventListener('click', () => goToLeaderboard('view-dashboard'));
