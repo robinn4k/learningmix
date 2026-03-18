@@ -5,8 +5,6 @@ const CACHE_LIST = [
   "/logo.svg",
   "/trivials.json",
   "/js/pequejs.min.js",
-  "/js/translate.js",
-  "/js/trivia.js",
   "/css/style.css",
   "/i18n/en.json",
   "/i18n/es.json",
@@ -18,7 +16,7 @@ const CACHE_LIST = [
   "/flags/en.svg",
   "/flags/es.svg"
 ];
-const STATIC_CACHE_VERSION = `Bartender'sTrivalv1.8`;
+const STATIC_CACHE_VERSION = `Stirio-v1.9`;
 const DEBUG = false;
 
 self.addEventListener('install', function(event) {
