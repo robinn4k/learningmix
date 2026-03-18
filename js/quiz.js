@@ -187,4 +187,24 @@ function getState() {
   return { ...state };
 }
 
-export { startRound, answerQuestion, abortRound, getRounds, getState };
+// Starts a round with pre-prepared questions (e.g. daily challenge)
+function startCustomRound(roundData, callbacks) {
+  state = {
+    round: roundData,
+    questions: roundData.questions, // already prepared
+    currentIndex: 0,
+    score: 0,
+    timeBonus: 0,
+    corrects: 0,
+    wrongs: 0,
+    answers: [],
+    timer: null,
+    timeLeft: DEFAULT_TIME,
+    answered: false,
+    running: true
+  };
+  onComplete = callbacks.onComplete;
+  renderQuestion(callbacks);
+}
+
+export { startRound, startCustomRound, answerQuestion, abortRound, getRounds, getState };
