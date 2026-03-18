@@ -291,7 +291,7 @@ async function handleRoundComplete({ round, score, timeBonus, corrects, wrongs, 
 
   // Breakdown
   const bd = $('results-breakdown');
-  bd.innerHTML = '<h3 class="breakdown-title">Detalle de preguntas</h3>';
+  bd.innerHTML = `<h3 class="breakdown-title">${t('results.breakdown_title')}</h3>`;
   answers.forEach((ans, i) => {
     const item = document.createElement('div');
     item.className = 'breakdown-item ' + (ans.correct ? 'breakdown-correct' : 'breakdown-wrong');
@@ -304,6 +304,7 @@ async function handleRoundComplete({ round, score, timeBonus, corrects, wrongs, 
     bd.appendChild(item);
   });
 
+  translateHTML();
   showView('view-results');
 }
 
@@ -311,7 +312,7 @@ async function handleRoundComplete({ round, score, timeBonus, corrects, wrongs, 
 function showNewAchievements(list) {
   if (!list.length) return;
   list.forEach((a, i) => {
-    setTimeout(() => toast(`🏆 Logro desbloqueado: ${a.icon} ${a.title}`, 'success'), i * 1500);
+    setTimeout(() => toast(t('achievements.unlocked', { icon: a.icon, title: a.title }), 'success'), i * 1500);
   });
 }
 
@@ -321,7 +322,7 @@ let isDailyMode = false;
 function startDailyChallenge() {
   const status = getDailyStatus();
   if (status.played) {
-    toast(`Ya jugaste hoy: ${status.corrects}/10 · ${status.score} pts`, 'info');
+    toast(t('daily.already_played', { corrects: status.corrects, score: status.score }), 'info');
     return;
   }
 
@@ -330,7 +331,7 @@ function startDailyChallenge() {
   showView('view-quiz');
 
   const questions = getDailyQuestions();
-  const roundData = { id: 'daily', title: '📅 Reto del Día', questions };
+  const roundData = { id: 'daily', title: t('daily.title'), questions };
   startCustomRound(roundData, {
     onQuestion: (q) => { renderQuestion({ ...q, _daily: true }); },
     onTick: updateTimer,
@@ -355,11 +356,12 @@ function goToSpeedMode() {
   speedAnswered = false;
   const q = startSpeed();
   showView('view-speed');
+  translateHTML();
   renderSpeedQuestion(q);
   startSpeedTimer(
-    (t) => {
-      $('speed-timer').textContent = t;
-      $('speed-timer').classList.toggle('urgent', t <= 10);
+    (sec) => {
+      $('speed-timer').textContent = sec;
+      $('speed-timer').classList.toggle('urgent', sec <= 10);
     },
     (result) => {
       const newly = checkAchievements({
@@ -368,13 +370,13 @@ function goToSpeedMode() {
       showNewAchievements(newly);
       showExtraResult({
         emoji: result.answered >= 20 ? '⚡' : '🏁',
-        title: result.answered >= 20 ? '¡Velocista!' : '¡Tiempo!',
+        title: result.answered >= 20 ? t('speed.speedster') : t('speed.time_up'),
         correct: result.correct,
-        correctLbl: '✅ Correctas',
+        correctLbl: t('speed.correct_label'),
         score: result.score,
-        scoreLbl: '⭐ Puntos',
+        scoreLbl: t('speed.points_label'),
         extra: result.answered,
-        extraLbl: '📊 Respondidas',
+        extraLbl: t('speed.answered_label'),
         mode: 'speed',
       });
     }
@@ -420,6 +422,7 @@ function goToConstructorMode() {
   const q = startConstructor();
   conAnswered = false;
   showView('view-constructor');
+  translateHTML();
   renderConstructorQuestion(q);
 }
 
@@ -453,7 +456,7 @@ function renderConstructorQuestion({ ingredients, glass, method, answers, correc
         else if (j === i && !res.correct) b.classList.add('wrong');
       });
       $('con-fb-icon').textContent = res.correct ? '✅' : '❌';
-      $('con-fb-label').textContent = res.correct ? '¡Correcto!' : `Era: ${answers[res.correctIndex]}`;
+      $('con-fb-label').textContent = res.correct ? t('constructor.correct') : t('constructor.was', { name: answers[res.correctIndex] });
       fb.className = `lesson-feedback show ${res.correct ? 'fb-correct' : 'fb-wrong'}`;
       const continueBtn = $('btn-con-continue');
       continueBtn.dataset.done = res.done ? '1' : '';
@@ -475,10 +478,10 @@ function handleConstructorContinue() {
     const total = parseInt(btn.dataset.total);
     showExtraResult({
       emoji: correct >= total * 0.8 ? '🍹' : '📝',
-      title: correct >= total * 0.8 ? '¡Maestro Constructor!' : '¡Completado!',
-      correct, correctLbl: '✅ Correctas',
-      score: correct * 10, scoreLbl: '⭐ XP',
-      extra: `${correct}/${total}`, extraLbl: '📊 Resultado',
+      title: correct >= total * 0.8 ? t('constructor.master') : t('constructor.completed'),
+      correct, correctLbl: t('constructor.correct_label'),
+      score: correct * 10, scoreLbl: t('constructor.xp_label'),
+      extra: `${correct}/${total}`, extraLbl: t('constructor.result_label'),
       mode: 'constructor',
     });
     btn.dataset.done = '';
@@ -497,6 +500,7 @@ function goToBlindMode() {
   blindCurrentPayload = q;
   blindAnswered = false;
   showView('view-blind');
+  translateHTML();
   renderBlindQuestion(q);
 }
 
@@ -534,7 +538,7 @@ function renderBlindQuestion({ clues, revealedClues, answers, correctIndex, inde
         else if (j === i && !res.correct) b.classList.add('wrong');
       });
       $('blind-fb-icon').textContent = res.correct ? '✅' : '❌';
-      $('blind-fb-label').textContent = res.correct ? '¡Correcto!' : '¡Incorrecto!';
+      $('blind-fb-label').textContent = res.correct ? t('blind.correct') : t('blind.incorrect');
       $('blind-fb-name').textContent = answers[res.correctIndex];
       fb.className = `lesson-feedback show ${res.correct ? 'fb-correct' : 'fb-wrong'}`;
       $('btn-blind-continue').dataset.done = res.done ? '1' : '';
@@ -556,10 +560,10 @@ function handleBlindContinue() {
     const total = parseInt(btn.dataset.total);
     showExtraResult({
       emoji: correct >= total * 0.7 ? '👃' : '🍷',
-      title: correct >= total * 0.7 ? '¡Nariz de Oro!' : '¡Completado!',
-      correct, correctLbl: '✅ Identificados',
-      score: correct * 15, scoreLbl: '⭐ XP',
-      extra: `${correct}/${total}`, extraLbl: '📊 Resultado',
+      title: correct >= total * 0.7 ? t('blind.golden_nose') : t('blind.completed'),
+      correct, correctLbl: t('blind.identified_label'),
+      score: correct * 15, scoreLbl: t('blind.xp_label'),
+      extra: `${correct}/${total}`, extraLbl: t('blind.result_label'),
       mode: 'blind',
     });
     btn.dataset.done = '';
@@ -574,6 +578,7 @@ let fichasOpened = 0;
 
 function goToFichas() {
   showView('view-fichas');
+  translateHTML();
   renderFichasGrid(fichas);
 }
 
@@ -607,6 +612,7 @@ function openFichaDetail(f) {
   f.ingredients.forEach(i => { const li = document.createElement('li'); li.textContent = i; ul.appendChild(li); });
   $('fd-story').textContent = f.story;
   showView('view-ficha-detail');
+  translateHTML();
 }
 
 // ─── ACHIEVEMENTS VIEW ────────────────────────────────────────
@@ -623,6 +629,7 @@ function goToAchievements() {
     grid.appendChild(item);
   });
   showView('view-achievements');
+  translateHTML();
 }
 
 // ─── EXTRA RESULT ─────────────────────────────────────────────
@@ -639,6 +646,7 @@ function showExtraResult({ emoji, title, correct, correctLbl, score, scoreLbl, e
   $('er-extra').textContent = extra;
   $('er-extra-lbl').textContent = extraLbl;
   showView('view-extra-result');
+  translateHTML();
 }
 
 // ─── LEARN HUB ───────────────────────────────────────────────
@@ -648,7 +656,7 @@ function goToLearnHub() {
 
   $('learn-streak-val').textContent = streak;
   $('learn-xp-val').textContent = xp;
-  $('learn-level-badge').textContent = `Nv. ${lvl.level}`;
+  $('learn-level-badge').textContent = t('learn.level', { n: lvl.level });
   $('learn-xp-fill').style.width = `${lvl.pct}%`;
   $('learn-xp-text').textContent = `${lvl.cur} / ${lvl.need} XP`;
 
@@ -661,14 +669,14 @@ function goToLearnHub() {
     card.style.setProperty('--round-color', r.color);
     const progressPct = Math.min(100, completed * 10);
     card.innerHTML = `
-      ${mastered ? '<div class="lesson-card-badge">★ Dominado</div>' : ''}
+      ${mastered ? `<div class="lesson-card-badge">${t('learn.mastered')}</div>` : ''}
       <div class="lesson-card-icon">${r.icon}</div>
       <div class="lesson-card-info">
         <div class="lesson-card-title">${r.title}</div>
         <div class="lesson-card-sub">${r.subtitle}</div>
         <div class="lesson-card-progress">
           <div class="lesson-card-bar"><div class="lesson-card-bar-fill" style="width:${progressPct}%"></div></div>
-          <div class="lesson-card-count">${completed > 0 ? `${completed}× completada` : 'Sin completar'}</div>
+          <div class="lesson-card-count">${completed > 0 ? t('learn.times_completed', { n: completed }) : t('learn.not_completed')}</div>
         </div>
       </div>
     `;
@@ -677,6 +685,7 @@ function goToLearnHub() {
   });
 
   showView('view-learn-hub');
+  translateHTML();
 }
 
 // ─── LESSON ───────────────────────────────────────────────────
@@ -687,6 +696,7 @@ function beginLesson(roundId) {
   const q = startLesson(roundId);
   if (!q) return;
   showView('view-lesson');
+  translateHTML();
   renderLessonQuestion(q);
 }
 
@@ -740,7 +750,7 @@ function handleLessonAnswer(selectedIndex) {
   // Show feedback panel
   const fb = $('lesson-feedback');
   $('lesson-feedback-icon').textContent = correct ? '✅' : '❌';
-  $('lesson-feedback-label').textContent = correct ? '¡Correcto!' : '¡Incorrecto!';
+  $('lesson-feedback-label').textContent = correct ? t('lesson.correct') : t('lesson.incorrect');
   $('lesson-feedback-exp').textContent = explanation || '';
   fb.className = `lesson-feedback show ${correct ? 'fb-correct' : 'fb-wrong'}`;
 }
@@ -758,7 +768,7 @@ function handleLessonContinue() {
 
 function showLessonResult({ passed, correct, total, xp, lives, round }) {
   $('lr-emoji').textContent = passed ? (correct === total ? '🏆' : '🎉') : '💔';
-  $('lr-title').textContent = passed ? '¡Lección completada!' : '¡Sin vidas! Inténtalo de nuevo';
+  $('lr-title').textContent = passed ? t('lesson.completed') : t('lesson.no_lives');
   $('lr-correct').textContent = `${correct}/${total}`;
   $('lr-xp').textContent = passed ? `+${xp}` : '+0';
   $('lr-lives').textContent = passed ? Array.from({ length: lives || 0 }, () => '❤️').join('') || '—' : '💀';
@@ -786,6 +796,7 @@ function showLessonResult({ passed, correct, total, xp, lives, round }) {
   }
 
   showView('view-lesson-result');
+  translateHTML();
 }
 
 // ─── LEADERBOARD ─────────────────────────────────────────────
@@ -797,12 +808,13 @@ async function goToLeaderboard(fromView) {
   await renderLeaderboard(null);
   buildLeaderboardFilters();
   showView('view-leaderboard');
+  translateHTML();
   setLoading(false);
 }
 
 function buildLeaderboardFilters() {
   const bar = $('leaderboard-filters');
-  bar.innerHTML = '<button class="filter-btn active" data-filter="all">Todas</button>';
+  bar.innerHTML = `<button class="filter-btn active" data-filter="all">${t('leaderboard.all')}</button>`;
   const rounds = getRounds();
   rounds.forEach(r => {
     const btn = document.createElement('button');
@@ -831,20 +843,21 @@ async function renderLeaderboard(roundId) {
   list.innerHTML = '';
 
   if (scores.length === 0) {
-    list.innerHTML = '<div class="leaderboard-empty">No hay puntuaciones todavía.<br>¡Sé el primero!</div>';
+    list.innerHTML = `<div class="leaderboard-empty">${t('leaderboard.empty')}</div>`;
     return;
   }
 
   scores.forEach((entry, i) => {
     const isMe = user && entry.uid === user.uid;
     const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `#${i + 1}`;
-    const date = new Date(entry.date).toLocaleDateString('es-ES', { day: '2-digit', month: 'short' });
+    const dateLang = getLang() === 'en' ? 'en-US' : 'es-ES';
+    const date = new Date(entry.date).toLocaleDateString(dateLang, { day: '2-digit', month: 'short' });
     const item = document.createElement('div');
     item.className = 'leaderboard-entry' + (isMe ? ' leaderboard-me' : '');
     item.innerHTML = `
       <div class="lb-rank">${medal}</div>
       <div class="lb-info">
-        <div class="lb-name">${entry.name}${isMe ? ' <span class="lb-you">(Tú)</span>' : ''}</div>
+        <div class="lb-name">${entry.name}${isMe ? ` <span class="lb-you">${t('leaderboard.you')}</span>` : ''}</div>
         <div class="lb-meta">${entry.roundTitle} · ${date}</div>
       </div>
       <div class="lb-score">${entry.score} pts</div>
@@ -868,7 +881,7 @@ function bindEvents() {
       showView('view-login');
       return;
     }
-    if (confirm('¿Cerrar sesión?')) {
+    if (confirm(t('confirm.sign_out'))) {
       await signOutUser();
       showView('view-login');
     }
@@ -876,7 +889,7 @@ function bindEvents() {
 
   // Quiz controls
   $('btn-quit-quiz').addEventListener('click', () => {
-    if (confirm('¿Abandonar la partida?')) {
+    if (confirm(t('confirm.quit_game'))) {
       abortRound();
       goToDashboard();
     }
@@ -896,14 +909,14 @@ function bindEvents() {
   $('btn-achievements').addEventListener('click', () => goToAchievements());
 
   // Speed mode
-  $('btn-quit-speed').addEventListener('click', () => { if (confirm('¿Abandonar?')) { abortSpeed(); goToDashboard(); } });
+  $('btn-quit-speed').addEventListener('click', () => { if (confirm(t('confirm.quit'))) { abortSpeed(); goToDashboard(); } });
 
   // Constructor mode
-  $('btn-quit-constructor').addEventListener('click', () => { if (confirm('¿Abandonar?')) { abortConstructor(); goToDashboard(); } });
+  $('btn-quit-constructor').addEventListener('click', () => { if (confirm(t('confirm.quit'))) { abortConstructor(); goToDashboard(); } });
   $('btn-con-continue').addEventListener('click', handleConstructorContinue);
 
   // Blind tasting
-  $('btn-quit-blind').addEventListener('click', () => { if (confirm('¿Abandonar?')) { abortBlind(); goToDashboard(); } });
+  $('btn-quit-blind').addEventListener('click', () => { if (confirm(t('confirm.quit'))) { abortBlind(); goToDashboard(); } });
   $('btn-blind-reveal').addEventListener('click', () => {
     const q = revealNextClue();
     if (!q) return;
@@ -939,7 +952,7 @@ function bindEvents() {
   $('btn-go-learn').addEventListener('click', () => goToLearnHub());
   $('btn-back-learn').addEventListener('click', () => goToDashboard());
   $('btn-quit-lesson').addEventListener('click', () => {
-    if (confirm('¿Abandonar la lección?')) { abortLesson(); goToLearnHub(); }
+    if (confirm(t('confirm.quit_lesson'))) { abortLesson(); goToLearnHub(); }
   });
   $('btn-lesson-continue').addEventListener('click', () => handleLessonContinue());
   $('btn-lr-retry').addEventListener('click', () => beginLesson(currentLessonRoundId));
@@ -967,7 +980,7 @@ function registerSW() {
     // New SW waiting → show update toast
     const promptUpdate = () => {
       const el = $('toast');
-      el.textContent = 'Nueva versión disponible — toca para actualizar';
+      el.textContent = t('sw.update');
       el.className = 'toast toast-update show';
       clearTimeout(el._t);
       el._ut = () => {
