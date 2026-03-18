@@ -39,7 +39,12 @@ function bindLoginEvents() {
       await signInWithGoogle();
       await goToDashboard();
     } catch (e) {
-      toast('Google Sign In no está configurado aún. Usa el modo invitado o configura Firebase.', 'error');
+      const msg = e?.code === 'auth/unauthorized-domain'
+        ? 'Dominio no autorizado en Firebase. Añade robinn4k.github.io en Authentication → Settings → Authorized domains.'
+        : e?.code === 'auth/popup-blocked'
+        ? 'El navegador bloqueó el popup. Permite popups para este sitio.'
+        : 'Error al iniciar sesión con Google. Usa el modo invitado.';
+      toast(msg, 'error');
     } finally {
       setLoading(false);
     }
@@ -132,7 +137,6 @@ function renderQuestion({ index, total, question, answers, score }) {
   $('quiz-score').textContent = score;
   $('question-text').textContent = question;
   $('quiz-progress-fill').style.width = `${((index + 1) / total) * 100}%`;
-  $('btn-next-question').style.display = 'none';
 
   const grid = $('answers-grid');
   grid.innerHTML = '';
