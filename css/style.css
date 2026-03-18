@@ -78,6 +78,23 @@ img { display: block; max-width: 100%; }
 .header-title { font-size: 1.1rem; font-weight: 700; color: var(--gold); }
 .header-spacer { width: 40px; }
 
+/* ── Language Toggle ── */
+.lang-toggle {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .03em;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background .2s, transform .1s;
+}
+.lang-toggle:hover  { background: rgba(201,151,28,.15); }
+.lang-toggle:active { transform: scale(.92); }
+
 /* ── Icon Button ── */
 .icon-btn {
   width: 40px; height: 40px;
