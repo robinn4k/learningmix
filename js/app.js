@@ -1,6 +1,7 @@
 import { initFirebase, signInWithGoogle, signInAsGuest, signOutUser, restoreSession, getCurrentUser, updateGuestName } from './auth.js';
 import { startRound, answerQuestion, abortRound, getRounds } from './quiz.js';
 import { saveScore, fetchLeaderboard, getUserStats } from './leaderboard.js';
+import { getLearnStats, getLevelInfo, getLearnRounds, startLesson, answerLesson, advanceLesson, abortLesson } from './learn.js';
 
 // ─── DOM helpers ─────────────────────────────────────────────
 const $ = id => document.getElementById(id);
@@ -77,6 +78,10 @@ async function goToDashboard() {
   $('stat-avg').textContent = avg;
   $('stat-rounds').textContent = completedRounds;
   $('user-best').textContent = `Mejor: ${best} pts`;
+
+  // Update learn banner streak
+  const { streak } = getLearnStats();
+  $('banner-streak').textContent = `🔥 ${streak}`;
 
   // Render round cards
   renderRoundCards(stats);
@@ -240,6 +245,140 @@ async function handleRoundComplete({ round, score, timeBonus, corrects, wrongs, 
   showView('view-results');
 }
 
+// ─── LEARN HUB ───────────────────────────────────────────────
+function goToLearnHub() {
+  const { xp, streak } = getLearnStats();
+  const lvl = getLevelInfo(xp);
+
+  $('learn-streak-val').textContent = streak;
+  $('learn-xp-val').textContent = xp;
+  $('learn-level-badge').textContent = `Nv. ${lvl.level}`;
+  $('learn-xp-fill').style.width = `${lvl.pct}%`;
+  $('learn-xp-text').textContent = `${lvl.cur} / ${lvl.need} XP`;
+
+  const container = $('learn-lessons');
+  container.innerHTML = '';
+  getLearnRounds().forEach(r => {
+    const { completed, mastered } = r.progress;
+    const card = document.createElement('div');
+    card.className = 'lesson-card';
+    card.style.setProperty('--round-color', r.color);
+    const progressPct = Math.min(100, completed * 10);
+    card.innerHTML = `
+      ${mastered ? '<div class="lesson-card-badge">★ Dominado</div>' : ''}
+      <div class="lesson-card-icon">${r.icon}</div>
+      <div class="lesson-card-info">
+        <div class="lesson-card-title">${r.title}</div>
+        <div class="lesson-card-sub">${r.subtitle}</div>
+        <div class="lesson-card-progress">
+          <div class="lesson-card-bar"><div class="lesson-card-bar-fill" style="width:${progressPct}%"></div></div>
+          <div class="lesson-card-count">${completed > 0 ? `${completed}× completada` : 'Sin completar'}</div>
+        </div>
+      </div>
+    `;
+    card.addEventListener('click', () => beginLesson(r.id));
+    container.appendChild(card);
+  });
+
+  showView('view-learn-hub');
+}
+
+// ─── LESSON ───────────────────────────────────────────────────
+let currentLessonRoundId = null;
+
+function beginLesson(roundId) {
+  currentLessonRoundId = roundId;
+  const q = startLesson(roundId);
+  if (!q) return;
+  showView('view-lesson');
+  renderLessonQuestion(q);
+}
+
+function renderLessonQuestion({ index, total, question, answers, lives, maxLives }) {
+  $('lesson-q-counter').textContent = `${index + 1} / ${total}`;
+  $('lesson-question').textContent = question;
+  $('lesson-progress-fill').style.width = `${((index + 1) / total) * 100}%`;
+
+  // Lives
+  $('lesson-lives').innerHTML = Array.from({ length: maxLives }, (_, i) =>
+    `<span>${i < lives ? '❤️' : '🖤'}</span>`
+  ).join('');
+
+  // Answers
+  const grid = $('lesson-answers');
+  grid.innerHTML = '';
+  answers.forEach((ans, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.dataset.index = i;
+    btn.innerHTML = `<span class="answer-letter">${'ABCD'[i]}</span><span class="answer-text">${ans}</span>`;
+    btn.addEventListener('click', () => handleLessonAnswer(i));
+    grid.appendChild(btn);
+  });
+
+  // Hide feedback panel
+  const fb = $('lesson-feedback');
+  fb.className = 'lesson-feedback';
+}
+
+function handleLessonAnswer(selectedIndex) {
+  const result = answerLesson(selectedIndex);
+  if (!result) return;
+
+  const { correct, correctIndex, selectedIndex: si, explanation, lives, maxLives } = result;
+
+  // Mark buttons
+  document.querySelectorAll('#lesson-answers .answer-btn').forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === correctIndex) btn.classList.add('correct');
+    else if (i === si && !correct) btn.classList.add('wrong');
+  });
+
+  // Update lives display
+  const lv = $('lesson-lives');
+  if (lv) {
+    const icons = lv.querySelectorAll('span');
+    icons.forEach((sp, i) => { sp.textContent = i < lives ? '❤️' : '🖤'; });
+  }
+
+  // Show feedback panel
+  const fb = $('lesson-feedback');
+  $('lesson-feedback-icon').textContent = correct ? '✅' : '❌';
+  $('lesson-feedback-label').textContent = correct ? '¡Correcto!' : '¡Incorrecto!';
+  $('lesson-feedback-exp').textContent = explanation || '';
+  fb.className = `lesson-feedback show ${correct ? 'fb-correct' : 'fb-wrong'}`;
+}
+
+function handleLessonContinue() {
+  const result = advanceLesson();
+  if (!result) return;
+
+  if (result.done) {
+    showLessonResult(result);
+  } else {
+    renderLessonQuestion(result);
+  }
+}
+
+function showLessonResult({ passed, correct, total, xp, lives, round }) {
+  $('lr-emoji').textContent = passed ? (correct === total ? '🏆' : '🎉') : '💔';
+  $('lr-title').textContent = passed ? '¡Lección completada!' : '¡Sin vidas! Inténtalo de nuevo';
+  $('lr-correct').textContent = `${correct}/${total}`;
+  $('lr-xp').textContent = passed ? `+${xp}` : '+0';
+  $('lr-lives').textContent = passed ? Array.from({ length: lives || 0 }, () => '❤️').join('') || '—' : '💀';
+
+  // Store round id for retry/next
+  $('btn-lr-retry').dataset.roundId = currentLessonRoundId;
+  $('btn-lr-continue').dataset.roundId = currentLessonRoundId;
+
+  // Update banner streak on dashboard
+  const { streak } = getLearnStats();
+  const bannerStreak = $('banner-streak');
+  if (bannerStreak) bannerStreak.textContent = `🔥 ${streak}`;
+
+  showView('view-lesson-result');
+}
+
 // ─── LEADERBOARD ─────────────────────────────────────────────
 let currentFilter = null;
 
@@ -335,6 +474,22 @@ function bindEvents() {
   $('btn-play-again').addEventListener('click', () => startQuiz(currentRoundId));
   $('btn-leaderboard-results').addEventListener('click', () => goToLeaderboard('view-results'));
   $('btn-home-results').addEventListener('click', () => goToDashboard());
+
+  // Learning mode
+  $('btn-go-learn').addEventListener('click', () => goToLearnHub());
+  $('btn-back-learn').addEventListener('click', () => goToDashboard());
+  $('btn-quit-lesson').addEventListener('click', () => {
+    if (confirm('¿Abandonar la lección?')) { abortLesson(); goToLearnHub(); }
+  });
+  $('btn-lesson-continue').addEventListener('click', () => handleLessonContinue());
+  $('btn-lr-retry').addEventListener('click', () => beginLesson(currentLessonRoundId));
+  $('btn-lr-continue').addEventListener('click', () => {
+    const rounds = getLearnRounds();
+    const idx = rounds.findIndex(r => r.id === currentLessonRoundId);
+    const next = rounds[idx + 1];
+    if (next) beginLesson(next.id); else goToLearnHub();
+  });
+  $('btn-lr-home').addEventListener('click', () => goToLearnHub());
 
   // Leaderboard back
   $('btn-back-leaderboard').addEventListener('click', () => {
