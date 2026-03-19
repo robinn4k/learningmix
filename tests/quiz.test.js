@@ -12,7 +12,13 @@ const mockRound = {
 };
 
 vi.mock('../js/questions.js', () => ({
-  rounds: [mockRound]
+  rounds: [mockRound],
+  getLocalizedRounds: () => [mockRound]
+}));
+
+vi.mock('../js/lang.js', () => ({
+  getLang: () => 'en',
+  t: (k) => k,
 }));
 
 const { startRound, answerQuestion, abortRound, getState } = await import('../js/quiz.js');

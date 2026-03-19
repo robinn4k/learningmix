@@ -1,4 +1,5 @@
-import { rounds } from './questions.js';
+import { getLocalizedRounds } from './questions.js';
+import { getLang } from './lang.js';
 
 const TOTAL_TIME = 60;
 const PTS = 50;
@@ -6,7 +7,7 @@ const PTS = 50;
 let ss = null;
 
 function allQuestions() {
-  const q = rounds.flatMap(r => r.questions);
+  const q = getLocalizedRounds(getLang()).flatMap(r => r.questions);
   // Fisher-Yates shuffle
   for (let i = q.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

@@ -51,7 +51,10 @@ function updateLangToggle() {
 }
 
 function toggleLanguage() {
-  const newLang = getLang() === 'es' ? 'en' : 'es';
+  const langs = ['es', 'en', 'fr', 'pt'];
+  const current = getLang();
+  const idx = langs.indexOf(current);
+  const newLang = langs[(idx + 1) % langs.length];
   setLang(newLang);
   translateHTML();
   updateLangToggle();

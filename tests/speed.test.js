@@ -1,18 +1,26 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 // ─── Mock questions.js ────────────────────────────────────────
+const speedMockRounds = [
+  {
+    id: 1,
+    title: 'Speed Round',
+    questions: Array.from({ length: 20 }, (_, i) => ({
+      q: `SpeedQ${i}`,
+      a: [`Correct${i}`, `W1_${i}`, `W2_${i}`, `W3_${i}`],
+      exp: ''
+    }))
+  }
+];
+
 vi.mock('../js/questions.js', () => ({
-  rounds: [
-    {
-      id: 1,
-      title: 'Speed Round',
-      questions: Array.from({ length: 20 }, (_, i) => ({
-        q: `SpeedQ${i}`,
-        a: [`Correct${i}`, `W1_${i}`, `W2_${i}`, `W3_${i}`],
-        exp: ''
-      }))
-    }
-  ]
+  rounds: speedMockRounds,
+  getLocalizedRounds: () => speedMockRounds
+}));
+
+vi.mock('../js/lang.js', () => ({
+  getLang: () => 'en',
+  t: (k) => k,
 }));
 
 const { startSpeed, startSpeedTimer, answerSpeed, abortSpeed, getSpeedResult } = await import('../js/speed.js');

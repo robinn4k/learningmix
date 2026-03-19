@@ -10,23 +10,31 @@ vi.stubGlobal('localStorage', {
 });
 
 // ─── Mock questions.js ────────────────────────────────────────
+const dailyMockRounds = [
+  {
+    id: 1,
+    title: 'Round 1',
+    questions: Array.from({ length: 20 }, (_, i) => ({
+      q: `Q${i}`, a: [`A${i}`, `B${i}`, `C${i}`, `D${i}`], exp: `Exp${i}`
+    }))
+  },
+  {
+    id: 2,
+    title: 'Round 2',
+    questions: Array.from({ length: 20 }, (_, i) => ({
+      q: `Q2_${i}`, a: [`A2_${i}`, `B2_${i}`, `C2_${i}`, `D2_${i}`], exp: `Exp2_${i}`
+    }))
+  }
+];
+
 vi.mock('../js/questions.js', () => ({
-  rounds: [
-    {
-      id: 1,
-      title: 'Round 1',
-      questions: Array.from({ length: 20 }, (_, i) => ({
-        q: `Q${i}`, a: [`A${i}`, `B${i}`, `C${i}`, `D${i}`], exp: `Exp${i}`
-      }))
-    },
-    {
-      id: 2,
-      title: 'Round 2',
-      questions: Array.from({ length: 20 }, (_, i) => ({
-        q: `Q2_${i}`, a: [`A2_${i}`, `B2_${i}`, `C2_${i}`, `D2_${i}`], exp: `Exp2_${i}`
-      }))
-    }
-  ]
+  rounds: dailyMockRounds,
+  getLocalizedRounds: () => dailyMockRounds
+}));
+
+vi.mock('../js/lang.js', () => ({
+  getLang: () => 'en',
+  t: (k) => k,
 }));
 
 const { getDailyStatus, getDailyQuestions, saveDailyResult } = await import('../js/daily.js');
