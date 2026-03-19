@@ -1,5 +1,5 @@
 import { getLocalizedRounds } from './questions.js';
-import { getLang } from './lang.js';
+import { getLang, t } from './lang.js';
 
 const QUESTIONS_PER_ROUND = 10;
 const POINTS_PER_CORRECT = 100;
@@ -34,15 +34,16 @@ function shuffle(arr) {
 }
 
 // Prepara las preguntas de una ronda, barajando opciones
+// Compatible con multilingual objects {es, en, fr, pt, de} AND plain strings
 function prepareQuestions(roundData) {
   return shuffle(roundData.questions).slice(0, QUESTIONS_PER_ROUND).map(q => {
-    const correctAnswer = q.a[0];
-    const shuffledAnswers = shuffle(q.a);
+    const correctAnswer = q.a[0]; // keeps object reference for indexOf
+    const shuffledAnswers = shuffle(q.a); // shallow copy, same references
     return {
-      question: q.q,
-      answers: shuffledAnswers,
-      correctIndex: shuffledAnswers.indexOf(correctAnswer),
-      explanation: q.exp
+      question: q.q,         // multilingual object or string
+      answers: shuffledAnswers, // array of multilingual objects or strings
+      correctIndex: shuffledAnswers.indexOf(correctAnswer), // reference equality works
+      explanation: q.exp     // multilingual object or string
     };
   });
 }

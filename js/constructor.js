@@ -1,20 +1,21 @@
 import { fichas } from './fichas.js';
 
 // Generate questions: show ingredients → pick the cocktail name
+// Works with both plain string names and multilingual {es,en,fr,pt,de} name objects
 function buildQuestions() {
-  const names = fichas.map(f => f.name);
+  const names = fichas.map(f => f.name); // keep object references
 
   return fichas.map(f => {
-    // Wrong options: 3 other cocktail names
+    // Wrong options: 3 other name objects/strings (different references)
     const others = names.filter(n => n !== f.name).sort(() => Math.random() - 0.5).slice(0, 3);
     const answers = [f.name, ...others].sort(() => Math.random() - 0.5);
     return {
-      ingredients: f.ingredients,
-      glass: f.glass,
-      method: f.method,
-      correctName: f.name,
-      answers,
-      correctIndex: answers.indexOf(f.name),
+      ingredients: f.ingredients,  // array of multilingual objects or strings
+      glass: f.glass,               // multilingual object or string
+      method: f.method,             // multilingual object or string
+      correctName: f.name,          // multilingual object or string
+      answers,                      // array of name objects/strings
+      correctIndex: answers.indexOf(f.name), // reference equality
     };
   }).sort(() => Math.random() - 0.5);
 }
