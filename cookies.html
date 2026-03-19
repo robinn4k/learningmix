@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d0508">
+  <title>Política de Cookies · Stirio</title>
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="legal-page">
+
+  <div class="legal-page-header">
+    <a href="index.html" title="Volver">←</a>
+    <h1>🍪 Política de Cookies</h1>
+  </div>
+
+  <nav class="legal-nav">
+    <a href="legal.html">Aviso Legal</a>
+    <a href="privacidad.html">Privacidad</a>
+    <a href="cookies.html">Cookies</a>
+    <a href="legal.html#terms">Términos</a>
+  </nav>
+
+  <div class="legal-section">
+    <h2>¿Qué son las cookies?</h2>
+    <p>Son pequeños archivos que se almacenan en el dispositivo del usuario al visitar una web. Permiten recordar preferencias y analizar el comportamiento de navegación.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>Tipos de cookies utilizadas</h2>
+
+    <h3>Cookies técnicas (necesarias)</h3>
+    <p>Imprescindibles para el funcionamiento básico de la aplicación. No requieren consentimiento. Entre ellas:</p>
+    <ul>
+      <li><strong>stirio_cookie_consent</strong> — Guarda tu decisión sobre cookies analíticas.</li>
+      <li><strong>cq_lang</strong> — Idioma seleccionado.</li>
+      <li><strong>cq_user / cq_guest_id</strong> — Sesión de usuario local.</li>
+    </ul>
+
+    <h3>Cookies analíticas (opcionales)</h3>
+    <p>Se activan únicamente si el usuario acepta. Utilizamos <strong>Firebase Analytics / Google Analytics</strong> para medir el uso de la app de forma anónima:</p>
+    <ul>
+      <li>Número de visitas y sesiones.</li>
+      <li>Funcionalidades más utilizadas.</li>
+      <li>Tipo de dispositivo y navegador.</li>
+    </ul>
+    <p>Google puede procesar estos datos fuera de la UE. Más información en la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidad de Google</a>.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>Consentimiento</h2>
+    <p>Al acceder a la web, aparece un banner para aceptar o rechazar las cookies analíticas. Tu decisión se guarda en tu navegador y puedes cambiarla en cualquier momento.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>Gestionar tu consentimiento</h2>
+    <p>Puedes cambiar tu decisión aquí:</p>
+    <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+      <button id="btn-accept-cookies" class="cookie-btn-accept">Aceptar cookies analíticas</button>
+      <button id="btn-reject-cookies" class="cookie-btn-reject">Rechazar cookies analíticas</button>
+    </div>
+    <p id="consent-status" style="margin-top:12px; font-size:.8rem; color:var(--text-muted);"></p>
+  </div>
+
+  <div class="legal-section">
+    <h2>Configuración del navegador</h2>
+    <p>También puedes bloquear o eliminar cookies desde la configuración de tu navegador:</p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Chrome</a></li>
+      <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies" target="_blank" rel="noopener">Firefox</a></li>
+      <li><a href="https://support.apple.com/es-es/HT201265" target="_blank" rel="noopener">Safari</a></li>
+    </ul>
+  </div>
+
+  <p class="legal-footer-note">© 2026 Robin Michael Ober (@robinn4k) · Todos los derechos reservados</p>
+
+</div>
+
+<script>
+  const CONSENT_KEY = 'stirio_cookie_consent';
+  const status = document.getElementById('consent-status');
+
+  function updateStatus() {
+    const val = localStorage.getItem(CONSENT_KEY);
+    if (val === 'accepted') status.textContent = '✅ Has aceptado las cookies analíticas.';
+    else if (val === 'rejected') status.textContent = '❌ Has rechazado las cookies analíticas.';
+    else status.textContent = 'Sin decisión tomada aún.';
+  }
+
+  document.getElementById('btn-accept-cookies').addEventListener('click', () => {
+    localStorage.setItem(CONSENT_KEY, 'accepted');
+    updateStatus();
+  });
+
+  document.getElementById('btn-reject-cookies').addEventListener('click', () => {
+    localStorage.setItem(CONSENT_KEY, 'rejected');
+    updateStatus();
+  });
+
+  updateStatus();
+</script>
+</body>
+</html>
