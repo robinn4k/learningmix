@@ -40,6 +40,9 @@ async function init() {
   }
   setLoading(false);
   bindEvents();
+
+  window.addEventListener('offline', () => toast(t('offline.message'), 'error'));
+  window.addEventListener('online',  () => toast(t('online.message'),  'success'));
 }
 
 function updateLangToggle() {
@@ -252,7 +255,11 @@ function handleAnswer({ correct, correctIndex, selectedIndex, timeLeft, score, b
 }
 
 // ─── RESULTS ─────────────────────────────────────────────────
+let _lastScore = 0, _lastCorrects = 0;
+
 async function handleRoundComplete({ round, score, timeBonus, corrects, wrongs, answers, questions }) {
+  _lastScore = score;
+  _lastCorrects = corrects;
   // Save score
   setLoading(true);
   try {
@@ -306,6 +313,19 @@ async function handleRoundComplete({ round, score, timeBonus, corrects, wrongs, 
 
   translateHTML();
   showView('view-results');
+}
+
+// ─── SHARE ───────────────────────────────────────────────────
+async function shareResults() {
+  const text = t('results.share_text', { score: _lastScore, corrects: _lastCorrects });
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: 'Stirio 🍸', text, url: location.href });
+    } catch { /* user cancelled */ }
+  } else {
+    await navigator.clipboard.writeText(text).catch(() => {});
+    toast(text, 'info');
+  }
 }
 
 // ─── ACHIEVEMENTS helper ──────────────────────────────────────
@@ -658,7 +678,7 @@ function goToLearnHub() {
   $('learn-xp-val').textContent = xp;
   $('learn-level-badge').textContent = t('learn.level', { n: lvl.level });
   $('learn-xp-fill').style.width = `${lvl.pct}%`;
-  $('learn-xp-text').textContent = `${lvl.cur} / ${lvl.need} XP`;
+  $('learn-xp-text').textContent = lvl.maxLevel ? t('learn.max_level') : `${lvl.cur} / ${lvl.need} XP`;
 
   const container = $('learn-lessons');
   container.innerHTML = '';
@@ -897,6 +917,7 @@ function bindEvents() {
 
   // Results buttons
   $('btn-play-again').addEventListener('click', () => startQuiz(currentRoundId));
+  $('btn-share-results').addEventListener('click', shareResults);
   $('btn-leaderboard-results').addEventListener('click', () => goToLeaderboard('view-results'));
   $('btn-home-results').addEventListener('click', () => goToDashboard());
 

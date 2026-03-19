@@ -20,15 +20,19 @@ export function getLearnStats() {
 
 export function getLevelInfo(xp) {
   const steps = [0, 100, 250, 500, 900, 1500, 2500, 4000];
+  const maxLevel = steps.length;
   let level = 1;
   for (let i = 1; i < steps.length; i++) {
     if (xp >= steps[i]) level = i + 1; else break;
   }
-  const start = steps[Math.min(level - 1, steps.length - 1)];
-  const end   = steps[Math.min(level,     steps.length - 1)] || start + 1500;
+  if (level >= maxLevel) {
+    return { level: maxLevel, cur: steps[maxLevel - 1], need: steps[maxLevel - 1], pct: 100, maxLevel: true };
+  }
+  const start = steps[level - 1];
+  const end   = steps[level];
   const cur   = xp - start;
   const need  = end - start;
-  return { level, cur, need, pct: Math.min(100, Math.round((cur / need) * 100)) };
+  return { level, cur, need, pct: Math.min(100, Math.round((cur / need) * 100)), maxLevel: false };
 }
 
 export function getLearnRounds() {

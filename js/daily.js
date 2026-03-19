@@ -13,11 +13,15 @@ function seededRng(seed) {
 
 function todaySeed() {
   const d = new Date();
-  return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+  return d.getUTCFullYear() * 10000 + (d.getUTCMonth() + 1) * 100 + d.getUTCDate();
+}
+
+function todayUTC() {
+  return new Date().toISOString().slice(0, 10); // YYYY-MM-DD, UTC-consistent
 }
 
 export function getDailyStatus() {
-  const today = new Date().toDateString();
+  const today = todayUTC();
   try {
     const data = JSON.parse(localStorage.getItem(KEY)) || {};
     return { played: data.date === today, score: data.score || 0, corrects: data.corrects || 0 };
@@ -48,5 +52,5 @@ export function getDailyQuestions() {
 }
 
 export function saveDailyResult(score, corrects) {
-  localStorage.setItem(KEY, JSON.stringify({ date: new Date().toDateString(), score, corrects }));
+  localStorage.setItem(KEY, JSON.stringify({ date: todayUTC(), score, corrects }));
 }
