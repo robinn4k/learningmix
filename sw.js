@@ -3,20 +3,16 @@ const CACHE_LIST = [
   "/index.html",
   "/favicon.svg",
   "/logo.svg",
-  "/trivials.json",
-  "/js/pequejs.min.js",
   "/css/style.css",
-  "/i18n/en.json",
-  "/i18n/es.json",
   "/trivias/all.json",
   "/trivias/general.json",
   "/trivias/historia_cocteles.json",
-  "/trivias/quiensoy",
+  "/trivias/quiensoy.json",
   "/trivias/historia_iba_fabe.json",
   "/flags/en.svg",
   "/flags/es.svg"
 ];
-const STATIC_CACHE_VERSION = `Stirio-v1.9`;
+const STATIC_CACHE_VERSION = `Stirio-v2.0`;
 const DEBUG = false;
 
 self.addEventListener('install', function(event) {
