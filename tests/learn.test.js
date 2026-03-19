@@ -65,6 +65,28 @@ describe('getLevelInfo', () => {
     const info = getLevelInfo(50);
     expect(info.pct).toBeCloseTo(50, 0);
   });
+
+  it('returns level 8 at 4000 xp (max level)', () => {
+    expect(getLevelInfo(4000).level).toBe(8);
+  });
+
+  it('sets maxLevel:true at 4000 xp', () => {
+    expect(getLevelInfo(4000).maxLevel).toBe(true);
+  });
+
+  it('pct is 100 at max level', () => {
+    expect(getLevelInfo(4000).pct).toBe(100);
+  });
+
+  it('maxLevel:true for xp beyond 4000', () => {
+    expect(getLevelInfo(9999).maxLevel).toBe(true);
+    expect(getLevelInfo(9999).level).toBe(8);
+  });
+
+  it('maxLevel:false below max level', () => {
+    expect(getLevelInfo(0).maxLevel).toBe(false);
+    expect(getLevelInfo(3999).maxLevel).toBe(false);
+  });
 });
 
 // ─── Lesson flow ──────────────────────────────────────────────

@@ -51,6 +51,8 @@ const translations = {
     'results.play_again': '🔄 Jugar de nuevo',
     'results.view_ranking': '🏆 Ver Ranking',
     'results.home': '← Inicio',
+    'results.share': '📤 Compartir',
+    'results.share_text': '¡Conseguí {score} pts ({corrects}/10) en Stirio 🍸 ¿Puedes superarlo?',
 
     // Achievements
     'achievements.unlocked': '🏆 Logro desbloqueado: {icon} {title}',
@@ -113,6 +115,7 @@ const translations = {
     'learn.mastered': '★ Dominado',
     'learn.times_completed': '{n}× completada',
     'learn.not_completed': 'Sin completar',
+    'learn.max_level': '⭐ Nivel máximo',
 
     // Lesson
     'lesson.correct': '¡Correcto!',
@@ -138,6 +141,10 @@ const translations = {
 
     // Service worker
     'sw.update': 'Nueva versión disponible — toca para actualizar',
+
+    // Connectivity
+    'offline.message': '📶 Sin conexión — modo offline',
+    'online.message': '✅ Conexión restaurada',
   },
   en: {
     // Login view
@@ -187,6 +194,8 @@ const translations = {
     'results.play_again': '🔄 Play again',
     'results.view_ranking': '🏆 View Ranking',
     'results.home': '← Home',
+    'results.share': '📤 Share',
+    'results.share_text': 'I got {score} pts ({corrects}/10) on Stirio 🍸 Can you beat it?',
 
     // Achievements
     'achievements.unlocked': '🏆 Achievement unlocked: {icon} {title}',
@@ -249,6 +258,7 @@ const translations = {
     'learn.mastered': '★ Mastered',
     'learn.times_completed': '{n}× completed',
     'learn.not_completed': 'Not completed',
+    'learn.max_level': '⭐ Max level',
 
     // Lesson
     'lesson.correct': 'Correct!',
@@ -274,6 +284,10 @@ const translations = {
 
     // Service worker
     'sw.update': 'New version available — tap to update',
+
+    // Connectivity
+    'offline.message': '📶 No connection — offline mode',
+    'online.message': '✅ Connection restored',
   }
 };
 
