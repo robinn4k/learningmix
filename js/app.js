@@ -51,7 +51,7 @@ function updateLangToggle() {
 }
 
 function toggleLanguage() {
-  const langs = ['es', 'en', 'fr', 'pt'];
+  const langs = ['es', 'en', 'fr', 'pt', 'de'];
   const current = getLang();
   const idx = langs.indexOf(current);
   const newLang = langs[(idx + 1) % langs.length];
@@ -157,8 +157,8 @@ function renderRoundCards(stats) {
     card.innerHTML = `
       <div class="round-icon">${r.icon}</div>
       <div class="round-info">
-        <div class="round-title">${r.title}</div>
-        <div class="round-subtitle">${r.subtitle}</div>
+        <div class="round-title">${t(r.title)}</div>
+        <div class="round-subtitle">${t(r.subtitle)}</div>
         <div class="round-stars">${stars}</div>
         ${best > 0 ? `<div class="round-best">${t('dashboard.best', { n: best })}</div>` : `<div class="round-best">${t('dashboard.no_play')}</div>`}
       </div>
@@ -192,10 +192,11 @@ function startQuiz(roundId) {
 }
 
 function renderQuestion({ index, total, question, answers, score }) {
-  $('quiz-round-title').textContent = getRounds().find(r => r.id === currentRoundId)?.title || '';
+  const round = getRounds().find(r => r.id === currentRoundId);
+  $('quiz-round-title').textContent = round ? t(round.title) : '';
   $('quiz-q-current').textContent = index + 1;
   $('quiz-score').textContent = score;
-  $('question-text').textContent = question;
+  $('question-text').textContent = t(question);
   $('quiz-progress-fill').style.width = `${((index + 1) / total) * 100}%`;
 
   const grid = $('answers-grid');
@@ -204,7 +205,7 @@ function renderQuestion({ index, total, question, answers, score }) {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
     btn.dataset.index = i;
-    btn.innerHTML = `<span class="answer-letter">${'ABCD'[i]}</span><span class="answer-text">${ans}</span>`;
+    btn.innerHTML = `<span class="answer-letter">${'ABCD'[i]}</span><span class="answer-text">${t(ans)}</span>`;
     btn.addEventListener('click', () => {
       answerQuestion(i, {
         onQuestion: renderQuestion,
@@ -251,7 +252,7 @@ function handleAnswer({ correct, correctIndex, selectedIndex, timeLeft, score, b
   if (explanation) {
     const tip = document.createElement('div');
     tip.className = 'explanation-tip ' + (correct ? 'tip-correct' : 'tip-wrong');
-    tip.textContent = explanation;
+    tip.textContent = t(explanation);
     questionEl.parentNode.insertBefore(tip, questionEl.nextSibling);
     setTimeout(() => tip.remove(), 1800);
   }
@@ -266,7 +267,7 @@ async function handleRoundComplete({ round, score, timeBonus, corrects, wrongs, 
   // Save score
   setLoading(true);
   try {
-    await saveScore({ roundId: round.id, roundTitle: round.title, score, corrects, wrongs });
+    await saveScore({ roundId: round.id, roundTitle: t(round.title), score, corrects, wrongs });
   } catch (e) {
     console.warn('Error guardando puntuación:', e);
   }
@@ -308,7 +309,7 @@ async function handleRoundComplete({ round, score, timeBonus, corrects, wrongs, 
     item.innerHTML = `
       <span class="breakdown-num">${i + 1}</span>
       <span class="breakdown-icon">${ans.correct ? '✅' : '❌'}</span>
-      <span class="breakdown-q">${questions[i].question}</span>
+      <span class="breakdown-q">${t(questions[i].question)}</span>
       ${ans.correct ? `<span class="breakdown-bonus">+${ans.timeLeft * 5} bonus</span>` : ''}
     `;
     bd.appendChild(item);
@@ -409,13 +410,13 @@ function goToSpeedMode() {
 function renderSpeedQuestion({ question, answers, index, total, correct, score }) {
   $('speed-counter').textContent = `${correct}/${index}`;
   $('speed-score').textContent = `${score} pts`;
-  $('speed-question').textContent = question;
+  $('speed-question').textContent = t(question);
   const grid = $('speed-answers');
   grid.innerHTML = '';
   answers.forEach((ans, i) => {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
-    btn.innerHTML = `<span class="answer-letter">${'ABCD'[i]}</span><span class="answer-text">${ans}</span>`;
+    btn.innerHTML = `<span class="answer-letter">${'ABCD'[i]}</span><span class="answer-text">${t(ans)}</span>`;
     btn.addEventListener('click', () => {
       if (speedAnswered) return;
       speedAnswered = true;
@@ -454,10 +455,10 @@ function renderConstructorQuestion({ ingredients, glass, method, answers, correc
   const totalEl = document.querySelector('#view-constructor .quiz-q-total');
   if (totalEl) totalEl.textContent = `/${total}`;
   $('con-progress').style.width = `${((index + 1) / total) * 100}%`;
-  $('con-meta').innerHTML = `<span>🥃 ${glass}</span><span>🔀 ${method}</span>`;
+  $('con-meta').innerHTML = `<span>🥃 ${t(glass)}</span><span>🔀 ${t(method)}</span>`;
   const ul = $('con-ingredients');
   ul.innerHTML = '';
-  ingredients.forEach(ing => { const li = document.createElement('li'); li.textContent = ing; ul.appendChild(li); });
+  ingredients.forEach(ing => { const li = document.createElement('li'); li.textContent = t(ing); ul.appendChild(li); });
 
   const grid = $('con-answers');
   grid.innerHTML = '';
@@ -468,7 +469,7 @@ function renderConstructorQuestion({ ingredients, glass, method, answers, correc
   answers.forEach((ans, i) => {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
-    btn.innerHTML = `<span class="answer-letter">${'ABCD'[i]}</span><span class="answer-text">${ans}</span>`;
+    btn.innerHTML = `<span class="answer-letter">${'ABCD'[i]}</span><span class="answer-text">${t(ans)}</span>`;
     btn.addEventListener('click', () => {
       if (conAnswered) return;
       conAnswered = true;
@@ -479,7 +480,7 @@ function renderConstructorQuestion({ ingredients, glass, method, answers, correc
         else if (j === i && !res.correct) b.classList.add('wrong');
       });
       $('con-fb-icon').textContent = res.correct ? '✅' : '❌';
-      $('con-fb-label').textContent = res.correct ? t('constructor.correct') : t('constructor.was', { name: answers[res.correctIndex] });
+      $('con-fb-label').textContent = res.correct ? t('constructor.correct') : t('constructor.was', { name: t(answers[res.correctIndex]) });
       fb.className = `lesson-feedback show ${res.correct ? 'fb-correct' : 'fb-wrong'}`;
       const continueBtn = $('btn-con-continue');
       continueBtn.dataset.done = res.done ? '1' : '';
@@ -537,7 +538,7 @@ function renderBlindQuestion({ clues, revealedClues, answers, correctIndex, inde
   const ul = $('blind-clues');
   ul.innerHTML = '';
   clues.slice(0, revealedClues).forEach(c => {
-    const li = document.createElement('li'); li.textContent = c; ul.appendChild(li);
+    const li = document.createElement('li'); li.textContent = t(c); ul.appendChild(li);
   });
 
   $('btn-blind-reveal').disabled = revealedClues >= clues.length;
@@ -550,7 +551,7 @@ function renderBlindQuestion({ clues, revealedClues, answers, correctIndex, inde
   answers.forEach((ans, i) => {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
-    btn.innerHTML = `<span class="answer-letter">${'ABCD'[i]}</span><span class="answer-text">${ans}</span>`;
+    btn.innerHTML = `<span class="answer-letter">${'ABCD'[i]}</span><span class="answer-text">${t(ans)}</span>`;
     btn.addEventListener('click', () => {
       if (blindAnswered) return;
       blindAnswered = true;
@@ -562,7 +563,7 @@ function renderBlindQuestion({ clues, revealedClues, answers, correctIndex, inde
       });
       $('blind-fb-icon').textContent = res.correct ? '✅' : '❌';
       $('blind-fb-label').textContent = res.correct ? t('blind.correct') : t('blind.incorrect');
-      $('blind-fb-name').textContent = answers[res.correctIndex];
+      $('blind-fb-name').textContent = t(answers[res.correctIndex]);
       fb.className = `lesson-feedback show ${res.correct ? 'fb-correct' : 'fb-wrong'}`;
       $('btn-blind-continue').dataset.done = res.done ? '1' : '';
       if (res.done) {
@@ -612,7 +613,7 @@ function renderFichasGrid(list) {
     const card = document.createElement('div');
     card.className = 'ficha-card';
     card.style.setProperty('--ficha-color', f.color);
-    card.innerHTML = `<div class="ficha-card-icon">${f.icon}</div><div class="ficha-card-name">${f.name}</div><div class="ficha-card-cat">${f.category}</div>`;
+    card.innerHTML = `<div class="ficha-card-icon">${f.icon}</div><div class="ficha-card-name">${t(f.name)}</div><div class="ficha-card-cat">${t(f.category)}</div>`;
     card.addEventListener('click', () => openFichaDetail(f));
     grid.appendChild(card);
   });
@@ -623,17 +624,17 @@ function openFichaDetail(f) {
   const newly = checkAchievements({ fichasOpened: Math.max(getStats().fichasOpened || 0, fichasOpened) });
   showNewAchievements(newly);
 
-  $('ficha-detail-name').textContent = f.name;
+  $('ficha-detail-name').textContent = t(f.name);
   $('ficha-detail-hero').style.background = `linear-gradient(135deg, ${f.color}22, transparent)`;
   $('ficha-detail-icon').textContent = f.icon;
-  $('ficha-detail-cat').textContent = f.category;
-  $('fd-glass').textContent = f.glass;
-  $('fd-method').textContent = f.method;
-  $('fd-garnish').textContent = f.garnish;
+  $('ficha-detail-cat').textContent = t(f.category);
+  $('fd-glass').textContent = t(f.glass);
+  $('fd-method').textContent = t(f.method);
+  $('fd-garnish').textContent = t(f.garnish);
   const ul = $('fd-ingredients');
   ul.innerHTML = '';
-  f.ingredients.forEach(i => { const li = document.createElement('li'); li.textContent = i; ul.appendChild(li); });
-  $('fd-story').textContent = f.story;
+  f.ingredients.forEach(i => { const li = document.createElement('li'); li.textContent = t(i); ul.appendChild(li); });
+  $('fd-story').textContent = t(f.story);
   showView('view-ficha-detail');
   translateHTML();
 }
@@ -695,8 +696,8 @@ function goToLearnHub() {
       ${mastered ? `<div class="lesson-card-badge">${t('learn.mastered')}</div>` : ''}
       <div class="lesson-card-icon">${r.icon}</div>
       <div class="lesson-card-info">
-        <div class="lesson-card-title">${r.title}</div>
-        <div class="lesson-card-sub">${r.subtitle}</div>
+        <div class="lesson-card-title">${t(r.title)}</div>
+        <div class="lesson-card-sub">${t(r.subtitle)}</div>
         <div class="lesson-card-progress">
           <div class="lesson-card-bar"><div class="lesson-card-bar-fill" style="width:${progressPct}%"></div></div>
           <div class="lesson-card-count">${completed > 0 ? t('learn.times_completed', { n: completed }) : t('learn.not_completed')}</div>
@@ -725,7 +726,7 @@ function beginLesson(roundId) {
 
 function renderLessonQuestion({ index, total, question, answers, lives, maxLives }) {
   $('lesson-q-counter').textContent = `${index + 1} / ${total}`;
-  $('lesson-question').textContent = question;
+  $('lesson-question').textContent = t(question);
   $('lesson-progress-fill').style.width = `${((index + 1) / total) * 100}%`;
 
   // Lives
@@ -740,7 +741,7 @@ function renderLessonQuestion({ index, total, question, answers, lives, maxLives
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
     btn.dataset.index = i;
-    btn.innerHTML = `<span class="answer-letter">${'ABCD'[i]}</span><span class="answer-text">${ans}</span>`;
+    btn.innerHTML = `<span class="answer-letter">${'ABCD'[i]}</span><span class="answer-text">${t(ans)}</span>`;
     btn.addEventListener('click', () => handleLessonAnswer(i));
     grid.appendChild(btn);
   });
@@ -774,7 +775,7 @@ function handleLessonAnswer(selectedIndex) {
   const fb = $('lesson-feedback');
   $('lesson-feedback-icon').textContent = correct ? '✅' : '❌';
   $('lesson-feedback-label').textContent = correct ? t('lesson.correct') : t('lesson.incorrect');
-  $('lesson-feedback-exp').textContent = explanation || '';
+  $('lesson-feedback-exp').textContent = explanation ? t(explanation) : '';
   fb.className = `lesson-feedback show ${correct ? 'fb-correct' : 'fb-wrong'}`;
 }
 
@@ -843,7 +844,7 @@ function buildLeaderboardFilters() {
     const btn = document.createElement('button');
     btn.className = 'filter-btn';
     btn.dataset.filter = r.id;
-    btn.textContent = r.icon + ' ' + r.title;
+    btn.textContent = r.icon + ' ' + t(r.title);
     bar.appendChild(btn);
   });
   bar.addEventListener('click', async e => {
@@ -947,7 +948,7 @@ function bindEvents() {
     blindCurrentPayload = q;
     const ul = $('blind-clues');
     ul.innerHTML = '';
-    q.clues.slice(0, q.revealedClues).forEach(c => { const li = document.createElement('li'); li.textContent = c; ul.appendChild(li); });
+    q.clues.slice(0, q.revealedClues).forEach(c => { const li = document.createElement('li'); li.textContent = t(c); ul.appendChild(li); });
     $('btn-blind-reveal').disabled = q.revealedClues >= q.clues.length;
   });
   $('btn-blind-continue').addEventListener('click', handleBlindContinue);
@@ -957,7 +958,7 @@ function bindEvents() {
   $('btn-back-ficha-detail').addEventListener('click', () => goToFichas());
   $('fichas-search').addEventListener('input', (e) => {
     const q = e.target.value.toLowerCase();
-    renderFichasGrid(fichas.filter(f => f.name.toLowerCase().includes(q) || f.category.toLowerCase().includes(q)));
+    renderFichasGrid(fichas.filter(f => t(f.name).toLowerCase().includes(q) || t(f.category).toLowerCase().includes(q)));
   });
 
   // Achievements
