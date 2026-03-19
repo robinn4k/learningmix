@@ -1,4 +1,5 @@
-import { rounds } from './questions.js';
+import { getLocalizedRounds } from './questions.js';
+import { getLang } from './lang.js';
 
 const QUESTIONS_PER_ROUND = 10;
 const POINTS_PER_CORRECT = 100;
@@ -47,7 +48,7 @@ function prepareQuestions(roundData) {
 }
 
 function startRound(roundId, callbacks) {
-  const roundData = rounds.find(r => r.id === roundId);
+  const roundData = getLocalizedRounds(getLang()).find(r => r.id === roundId);
   if (!roundData) throw new Error('Ronda no encontrada: ' + roundId);
 
   state = {
@@ -180,7 +181,7 @@ function abortRound() {
 }
 
 function getRounds() {
-  return rounds;
+  return getLocalizedRounds(getLang());
 }
 
 function getState() {

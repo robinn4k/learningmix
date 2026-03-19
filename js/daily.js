@@ -1,4 +1,5 @@
-import { rounds } from './questions.js';
+import { getLocalizedRounds } from './questions.js';
+import { getLang } from './lang.js';
 
 const KEY = 'cq_daily';
 
@@ -30,7 +31,7 @@ export function getDailyStatus() {
 
 export function getDailyQuestions() {
   const rng = seededRng(todaySeed());
-  const all = rounds.flatMap(r => r.questions);
+  const all = getLocalizedRounds(getLang()).flatMap(r => r.questions);
 
   // Seeded shuffle
   const pool = [...all];

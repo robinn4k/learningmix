@@ -1,6 +1,7 @@
 // ─── Language Management Module ──────────────────────────────
 const STORAGE_KEY = 'stirio_lang';
 const DEFAULT_LANG = 'es';
+const SUPPORTED_LANGS = ['es', 'en', 'fr', 'pt'];
 
 const translations = {
   es: {
@@ -288,6 +289,292 @@ const translations = {
     // Connectivity
     'offline.message': '📶 No connection — offline mode',
     'online.message': '✅ Connection restored',
+  },
+  fr: {
+    // Login view
+    'login.tagline': "Maîtrisez l'art du cocktail",
+    'login.sub': 'Apprenez · Testez vos connaissances · Classement mondial',
+    'login.google': 'Se connecter avec Google',
+    'login.guest': 'Continuer en tant qu\'invité',
+    'login.note': 'Connectez-vous avec Google pour sauvegarder vos scores et apparaître dans le classement mondial',
+
+    // Login errors
+    'error.unauthorized_domain': 'Domaine non autorisé dans Firebase. Ajoutez robinn4k.github.io dans Authentication → Settings → Authorized domains.',
+    'error.popup_blocked': 'Le navigateur a bloqué le popup. Autorisez les popups pour ce site.',
+    'error.google_signin': 'Erreur lors de la connexion avec Google. Utilisez le mode invité.',
+
+    // Dashboard
+    'dashboard.best': 'Meilleur : {n} pts',
+    'dashboard.no_play': 'Non joué !',
+    'dashboard.games': 'Parties',
+    'dashboard.best_label': 'Meilleur',
+    'dashboard.avg': 'Moyenne',
+    'dashboard.rounds': 'Manches',
+    'dashboard.game_modes': 'Modes de jeu',
+    'dashboard.daily': 'Défi du Jour',
+    'dashboard.speed': 'Vitesse',
+    'dashboard.constructor': 'Constructeur',
+    'dashboard.blind': 'Dégustation à l\'Aveugle',
+    'dashboard.fichas': 'Fiches IBA',
+    'dashboard.achievements': 'Succès',
+    'dashboard.select_round': 'Sélectionnez une Manche',
+    'dashboard.learn_mode': 'Mode Apprentissage',
+    'dashboard.learn_sub': 'Apprenez pas à pas · 3 vies par leçon',
+
+    // Daily challenge
+    'daily.title': '📅 Défi du Jour',
+    'daily.already_played': 'Déjà joué aujourd\'hui : {corrects}/10 · {score} pts',
+
+    // Results
+    'results.keep_practicing': 'Continuez à pratiquer !',
+    'results.master_bartender': 'Maître Barman !',
+    'results.very_good': 'Très bien !',
+    'results.good_try': 'Bon essai !',
+    'results.breakdown_title': 'Détail des questions',
+    'results.points': 'points',
+    'results.correct': 'Correctes',
+    'results.incorrect': 'Incorrectes',
+    'results.bonus': 'Bonus',
+    'results.play_again': '🔄 Rejouer',
+    'results.view_ranking': '🏆 Voir le Classement',
+    'results.home': '← Accueil',
+    'results.share': '📤 Partager',
+    'results.share_text': 'J\'ai obtenu {score} pts ({corrects}/10) sur Stirio 🍸 Tu peux faire mieux ?',
+
+    // Achievements
+    'achievements.unlocked': '🏆 Succès débloqué : {icon} {title}',
+    'achievements.title': '🏆 Succès',
+
+    // Speed mode
+    'speed.title': '⚡ Mode Vitesse',
+    'speed.speedster': 'Rapide !',
+    'speed.time_up': 'Temps écoulé !',
+    'speed.correct_label': '✅ Correctes',
+    'speed.points_label': '⭐ Points',
+    'speed.answered_label': '📊 Répondues',
+    'speed.seconds': 'secondes',
+
+    // Constructor mode
+    'constructor.title': '🍹 Constructeur',
+    'constructor.question': 'Quel cocktail a ces ingrédients ?',
+    'constructor.correct': 'Correct !',
+    'constructor.was': 'C\'était : {name}',
+    'constructor.master': 'Maître Constructeur !',
+    'constructor.completed': 'Terminé !',
+    'constructor.correct_label': '✅ Correctes',
+    'constructor.xp_label': '⭐ XP',
+    'constructor.result_label': '📊 Résultat',
+    'constructor.continue': 'Continuer',
+
+    // Blind tasting
+    'blind.title': '👃 Dégustation à l\'Aveugle',
+    'blind.identify': 'Identifiez le spiritueux par ses arômes et saveurs :',
+    'blind.reveal': '+ Révéler un indice',
+    'blind.correct': 'Correct !',
+    'blind.incorrect': 'Incorrect !',
+    'blind.golden_nose': 'Nez d\'Or !',
+    'blind.completed': 'Terminé !',
+    'blind.identified_label': '✅ Identifiés',
+    'blind.xp_label': '⭐ XP',
+    'blind.result_label': '📊 Résultat',
+    'blind.continue': 'Continuer',
+
+    // Fichas
+    'fichas.title': '📖 Fiches IBA',
+    'fichas.search': 'Rechercher un cocktail...',
+    'fichas.glass': '🥃 Verre',
+    'fichas.method': '🔀 Méthode',
+    'fichas.garnish': '🌿 Garniture',
+    'fichas.ingredients': 'Ingrédients',
+    'fichas.history': 'Histoire',
+
+    // Leaderboard
+    'leaderboard.title': '🏆 Classement Mondial',
+    'leaderboard.all': 'Toutes',
+    'leaderboard.empty': 'Pas encore de scores.<br>Soyez le premier !',
+    'leaderboard.you': '(Vous)',
+
+    // Learn hub
+    'learn.title': '📚 Apprentissage',
+    'learn.streak': '🔥 Série',
+    'learn.level': 'Nv. {n}',
+    'learn.choose_lesson': 'Choisissez une leçon',
+    'learn.mastered': '★ Maîtrisé',
+    'learn.times_completed': '{n}× terminée',
+    'learn.not_completed': 'Non terminée',
+    'learn.max_level': '⭐ Niveau max',
+
+    // Lesson
+    'lesson.correct': 'Correct !',
+    'lesson.incorrect': 'Incorrect !',
+    'lesson.continue': 'Continuer',
+    'lesson.completed': 'Leçon terminée !',
+    'lesson.no_lives': 'Plus de vies ! Réessayez',
+    'lesson.next': 'Leçon suivante',
+    'lesson.retry': 'Refaire la leçon',
+    'lesson.home': '← Accueil',
+    'lesson.correct_label': '✅ Correctes',
+    'lesson.xp_earned': '⭐ XP gagné',
+    'lesson.lives_remaining': 'Vies restantes',
+
+    // Confirm dialogs
+    'confirm.quit_game': 'Quitter la partie ?',
+    'confirm.quit': 'Quitter ?',
+    'confirm.quit_lesson': 'Quitter la leçon ?',
+    'confirm.sign_out': 'Se déconnecter ?',
+
+    // Loading
+    'loading.text': 'Préparation des cocktails...',
+
+    // Service worker
+    'sw.update': 'Nouvelle version disponible — touchez pour mettre à jour',
+
+    // Connectivity
+    'offline.message': '📶 Hors connexion — mode hors ligne',
+    'online.message': '✅ Connexion rétablie',
+  },
+  pt: {
+    // Login view
+    'login.tagline': 'Domine a arte do cocktail',
+    'login.sub': 'Aprenda · Teste seus conhecimentos · Ranking global',
+    'login.google': 'Entrar com Google',
+    'login.guest': 'Continuar como convidado',
+    'login.note': 'Entre com Google para salvar suas pontuações e aparecer no ranking global',
+
+    // Login errors
+    'error.unauthorized_domain': 'Domínio não autorizado no Firebase. Adicione robinn4k.github.io em Authentication → Settings → Authorized domains.',
+    'error.popup_blocked': 'O navegador bloqueou o popup. Permita popups para este site.',
+    'error.google_signin': 'Erro ao entrar com Google. Use o modo convidado.',
+
+    // Dashboard
+    'dashboard.best': 'Melhor: {n} pts',
+    'dashboard.no_play': 'Não jogado!',
+    'dashboard.games': 'Partidas',
+    'dashboard.best_label': 'Melhor',
+    'dashboard.avg': 'Média',
+    'dashboard.rounds': 'Rodadas',
+    'dashboard.game_modes': 'Modos de jogo',
+    'dashboard.daily': 'Desafio Diário',
+    'dashboard.speed': 'Velocidade',
+    'dashboard.constructor': 'Construtor',
+    'dashboard.blind': 'Degustação às Cegas',
+    'dashboard.fichas': 'Fichas IBA',
+    'dashboard.achievements': 'Conquistas',
+    'dashboard.select_round': 'Selecione uma Rodada',
+    'dashboard.learn_mode': 'Modo Aprendizado',
+    'dashboard.learn_sub': 'Aprenda passo a passo · 3 vidas por lição',
+
+    // Daily challenge
+    'daily.title': '📅 Desafio do Dia',
+    'daily.already_played': 'Já jogou hoje: {corrects}/10 · {score} pts',
+
+    // Results
+    'results.keep_practicing': 'Continue praticando!',
+    'results.master_bartender': 'Mestre Bartender!',
+    'results.very_good': 'Muito bem!',
+    'results.good_try': 'Boa tentativa!',
+    'results.breakdown_title': 'Detalhe das perguntas',
+    'results.points': 'pontos',
+    'results.correct': 'Corretas',
+    'results.incorrect': 'Incorretas',
+    'results.bonus': 'Bônus',
+    'results.play_again': '🔄 Jogar novamente',
+    'results.view_ranking': '🏆 Ver Ranking',
+    'results.home': '← Início',
+    'results.share': '📤 Compartilhar',
+    'results.share_text': 'Consegui {score} pts ({corrects}/10) no Stirio 🍸 Você consegue superar?',
+
+    // Achievements
+    'achievements.unlocked': '🏆 Conquista desbloqueada: {icon} {title}',
+    'achievements.title': '🏆 Conquistas',
+
+    // Speed mode
+    'speed.title': '⚡ Modo Velocidade',
+    'speed.speedster': 'Velocista!',
+    'speed.time_up': 'Tempo!',
+    'speed.correct_label': '✅ Corretas',
+    'speed.points_label': '⭐ Pontos',
+    'speed.answered_label': '📊 Respondidas',
+    'speed.seconds': 'segundos',
+
+    // Constructor mode
+    'constructor.title': '🍹 Construtor',
+    'constructor.question': 'Qual cocktail tem estes ingredientes?',
+    'constructor.correct': 'Correto!',
+    'constructor.was': 'Era: {name}',
+    'constructor.master': 'Mestre Construtor!',
+    'constructor.completed': 'Concluído!',
+    'constructor.correct_label': '✅ Corretas',
+    'constructor.xp_label': '⭐ XP',
+    'constructor.result_label': '📊 Resultado',
+    'constructor.continue': 'Continuar',
+
+    // Blind tasting
+    'blind.title': '👃 Degustação às Cegas',
+    'blind.identify': 'Identifique o destilado pelos seus aromas e sabores:',
+    'blind.reveal': '+ Revelar pista',
+    'blind.correct': 'Correto!',
+    'blind.incorrect': 'Incorreto!',
+    'blind.golden_nose': 'Nariz de Ouro!',
+    'blind.completed': 'Concluído!',
+    'blind.identified_label': '✅ Identificados',
+    'blind.xp_label': '⭐ XP',
+    'blind.result_label': '📊 Resultado',
+    'blind.continue': 'Continuar',
+
+    // Fichas
+    'fichas.title': '📖 Fichas IBA',
+    'fichas.search': 'Buscar cocktail...',
+    'fichas.glass': '🥃 Copo',
+    'fichas.method': '🔀 Método',
+    'fichas.garnish': '🌿 Guarnição',
+    'fichas.ingredients': 'Ingredientes',
+    'fichas.history': 'História',
+
+    // Leaderboard
+    'leaderboard.title': '🏆 Ranking Global',
+    'leaderboard.all': 'Todas',
+    'leaderboard.empty': 'Nenhuma pontuação ainda.<br>Seja o primeiro!',
+    'leaderboard.you': '(Você)',
+
+    // Learn hub
+    'learn.title': '📚 Aprendizado',
+    'learn.streak': '🔥 Sequência',
+    'learn.level': 'Nv. {n}',
+    'learn.choose_lesson': 'Escolha uma lição',
+    'learn.mastered': '★ Dominado',
+    'learn.times_completed': '{n}× concluída',
+    'learn.not_completed': 'Não concluída',
+    'learn.max_level': '⭐ Nível máximo',
+
+    // Lesson
+    'lesson.correct': 'Correto!',
+    'lesson.incorrect': 'Incorreto!',
+    'lesson.continue': 'Continuar',
+    'lesson.completed': 'Lição concluída!',
+    'lesson.no_lives': 'Sem vidas! Tente novamente',
+    'lesson.next': 'Próxima lição',
+    'lesson.retry': 'Repetir lição',
+    'lesson.home': '← Início',
+    'lesson.correct_label': '✅ Corretas',
+    'lesson.xp_earned': '⭐ XP ganho',
+    'lesson.lives_remaining': 'Vidas restantes',
+
+    // Confirm dialogs
+    'confirm.quit_game': 'Abandonar a partida?',
+    'confirm.quit': 'Abandonar?',
+    'confirm.quit_lesson': 'Abandonar a lição?',
+    'confirm.sign_out': 'Sair?',
+
+    // Loading
+    'loading.text': 'Preparando cocktails...',
+
+    // Service worker
+    'sw.update': 'Nova versão disponível — toque para atualizar',
+
+    // Connectivity
+    'offline.message': '📶 Sem conexão — modo offline',
+    'online.message': '✅ Conexão restaurada',
   }
 };
 
@@ -298,9 +585,14 @@ export function getLang() {
 
 /** Set language and persist */
 export function setLang(lang) {
-  if (lang !== 'es' && lang !== 'en') return;
+  if (!SUPPORTED_LANGS.includes(lang)) return;
   localStorage.setItem(STORAGE_KEY, lang);
   document.documentElement.lang = lang;
+}
+
+/** Get list of supported languages */
+export function getSupportedLangs() {
+  return SUPPORTED_LANGS;
 }
 
 /**

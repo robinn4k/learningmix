@@ -20,7 +20,15 @@ const mockRound = {
   }))
 };
 
-vi.mock('../js/questions.js', () => ({ rounds: [mockRound] }));
+vi.mock('../js/questions.js', () => ({
+  rounds: [mockRound],
+  getLocalizedRounds: () => [mockRound]
+}));
+
+vi.mock('../js/lang.js', () => ({
+  getLang: () => 'en',
+  t: (k) => k,
+}));
 
 const { getLevelInfo, getLearnStats, startLesson, answerLesson, advanceLesson, abortLesson } = await import('../js/learn.js');
 

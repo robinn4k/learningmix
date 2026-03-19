@@ -1,4 +1,5 @@
-import { rounds } from './questions.js';
+import { getLocalizedRounds } from './questions.js';
+import { getLang } from './lang.js';
 
 // ─── Storage ──────────────────────────────────────────────────
 const KEY = 'cq_learn_data';
@@ -37,7 +38,7 @@ export function getLevelInfo(xp) {
 
 export function getLearnRounds() {
   const { rounds: prog } = getLearnStats();
-  return rounds.map(r => ({ ...r, progress: prog[r.id] || { completed: 0, mastered: false } }));
+  return getLocalizedRounds(getLang()).map(r => ({ ...r, progress: prog[r.id] || { completed: 0, mastered: false } }));
 }
 
 // ─── Streak ───────────────────────────────────────────────────
@@ -54,7 +55,7 @@ function touchStreak() {
 let ls = null;
 
 export function startLesson(roundId) {
-  const round = rounds.find(r => r.id === roundId);
+  const round = getLocalizedRounds(getLang()).find(r => r.id === roundId);
   if (!round) return null;
 
   const questions = [...round.questions]
