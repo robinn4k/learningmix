@@ -217,10 +217,12 @@ export const rounds = [
     questions: [
       { q: "Was sollten Bartender beim Umgang mit Gläsern vermeiden?", a: ["Den Glasrand berühren", "Ein Tablett benutzen", "Gläser mit einem Tuch polieren", "Gläser am Stiel halten"], exp: "Aus hygienischen Gründen darf man den Rand niemals berühren, da dort die Lippen des Gastes ansetzen." },
       { q: "Wie sollte ein Bartender mit Gästen interagieren?", a: ["Smalltalk führen und Empfehlungen geben", "Gäste ignorieren, bis sie bestellen", "Nur über die Karte sprechen", "Interaktion vermeiden"], exp: "Ein guter Bartender schafft eine angenehme Atmosphäre durch Interaktion und persönliche Beratung." },
+      { q: "Wie können Bartender das Gästeerlebnis verbessern?", a: ["Fachwissen nutzen, um Cocktails zu empfehlen", "Getränke so schnell wie möglich servieren", "Auf jede Bestellung Rabatte anbieten", "Die Namen aller Gäste auswendig lernen"], exp: "Bartender verbessern das Gästeerlebnis durch ihr Wissen und ihre Expertise, indem sie Cocktails empfehlen, die dem Geschmack der Gäste entsprechen." },
       { q: "Wer leitete die American Bar im Savoy von 1926 bis 1934?", a: ["Harry Craddock", "Jerry Thomas", "Dale DeGroff", "Dick Bradsell"], exp: "Harry Craddock war eine der prägendsten Figuren der Savoy-Geschichte." },
       { q: "Welches Buch veröffentlichte Harry Craddock 1930?", a: ["The Savoy Cocktail Book", "The Bartender's Guide", "The Fine Art of Mixing Drinks", "Vintage Spirits"], exp: "Es gilt bis heute als eine der wichtigsten Rezeptsammlungen der Welt." },
       { q: "Wer gilt als Vater der Tiki-Kultur?", a: ["Donn Beach", "Trader Vic", "Jerry Thomas", "Harry Craddock"], exp: "Donn Beach (Ernest Gantt) eröffnete 1933 die erste Tiki-Bar." },
       { q: "Welcher Drink wird Victor Bergeron (Trader Vic) zugeschrieben?", a: ["Mai Tai", "Zombie", "Piña Colada", "Singapore Sling"], exp: "Trader Vic kreierte den Mai Tai im Jahr 1944." },
+      { q: "Wofür ist Patrick Gavin Duffy bekannt?", a: ["Berühmten Persönlichkeiten Drinks zu servieren", "Den Cocktailshaker zu erfinden", "Das erste Bar-Handbuch zu schreiben", "Den Martini zu kreieren"], exp: "Patrick Gavin Duffy war dafür bekannt, berühmten Persönlichkeiten Drinks zu servieren, und war eine prominente Figur der New Yorker Bartender-Szene." },
       { q: "Welches Verhältnis für Sours nannte David Embury 1:2:8?", a: ["Zucker : Säure : Spirituose", "Säure : Zucker : Spirituose", "Eis : Saft : Alkohol", "Wasser : Sirup : Gin"], exp: "In seinem Buch (1948) schlug er dieses sehr trockene/starke Verhältnis vor." },
       { q: "Welche Auszeichnung erhielt Santiago Policastro?", a: ["Der Bär von Bern", "The Golden Shaker", "The Bartender's Medal", "IBA Lifetime Achievement"], exp: "Der 'Bear of Bern' ist eine prestigeträchtige Anerkennung in der Branche." }
     ]
@@ -232,12 +234,14 @@ export const rounds = [
     icon: "🌟",
     color: "#e74c3c",
     questions: [
+      { q: "Was gründete Pedro Chicote 1964?", a: ["Den Verband der spanischen Barkeeper (ABE)", "Die erste Cocktailschule Spaniens", "Die Madrider Bar-Akademie", "Den spanischen Spirituosenbeirat"], exp: "Pedro Chicote gründete 1964 den Verband der spanischen Barkeeper (ABE) und organisierte damit den Bartender-Beruf in Spanien." },
       { q: "Wer ist als 'King Cocktail' bekannt?", a: ["Dale DeGroff", "Jerry Thomas", "Harry Craddock", "Gary Regan"], exp: "Er belebte die klassische Bar-Kultur im Rainbow Room (New York) wieder." },
       { q: "Wer war Sasha Petraske?", a: ["Ein einflussreicher US-Mixologe", "Ein russischer Wodka-Brenner", "Ein französischer Sommelier", "Ein britischer Pub-Besitzer"], exp: "Er prägte die moderne Speakeasy-Bewegung entscheidend mit." },
       { q: "Welche Bar gründete Sasha Petraske 1999?", a: ["Milk & Honey", "Death & Co", "PDT", "Angel's Share"], exp: "Das 'Milk & Honey' setzte neue Maßstäbe für Qualität und Etikette." },
       { q: "Was war Petraskes Philosophie?", a: ["Weniger ist mehr", "Mehr ist mehr", "Schnelligkeit vor Qualität", "Innovation über Tradition"], exp: "Er setzte auf Schlichtheit, beste Zutaten und makellose Technik." },
       { q: "Wer ist als 'Dr. Cocktail' bekannt?", a: ["Ted Haigh", "Dave Arnold", "Robert Hess", "Jeffrey Morgenthaler"], exp: "Er ist berühmt für seine Forschung zu vergessenen Spirituosen und Rezepten." },
       { q: "Welche Bar eröffnete Audrey Saunders?", a: ["The Pegu Club", "Milk & Honey", "Death & Co", "Employees Only"], exp: "Der Pegu Club war eine der einflussreichsten Bars der 2000er in New York." },
+      { q: "Wofür setzt sich Robert Hess ein?", a: ["Handwerkliche Cocktails", "Speed Bartending", "Ausschließlich molekulare Mixologie", "Fertig gemischte Cocktails"], exp: "Robert Hess ist ein prominenter Verfechter handwerklicher Cocktails und korrekter Zubereitungstechniken." },
       { q: "Wofür ist Jeffrey Morgenthaler bekannt?", a: ["Fassgelagerte Cocktails", "Molekulare Garnituren", "Stickstoff-Drinks", "Essbare Gläser"], exp: "Er popularisierte das 'Barrel-Aging' von fertig gemischten Cocktails." },
       { q: "Welches Gerät nutzt Dave Arnold bevorzugt?", a: ["Zentrifugen", "3D-Drucker", "Laserschneider", "Ultraschallreiniger"], exp: "In seiner Bar 'Booker and Dax' nutzte er Hightech für neue Geschmackserlebnisse." }
     ]
@@ -251,8 +255,12 @@ export const rounds = [
     questions: [
       { q: "Was bedeutet 'Mise en place'?", a: ["Alles an seinem Platz", "Servierbereit", "Sauber und organisiert", "Vorbereitungszeit"], exp: "Es bezeichnet die komplette Vorbereitung des Arbeitsplatzes vor Beginn des Service." },
       { q: "Unterschied zwischen Garnish und Decoration?", a: ["Garnish beeinflusst den Geschmack; Decoration die Optik", "Es gibt keinen", "Garnish ist essbar; Decoration nicht", "Decoration ist immer Obst"], exp: "Die Garnitur ist funktional (Aroma), die Dekoration ist rein ästhetisch." },
+      { q: "Wie sollten die Hände in einer Bar gewaschen werden?", a: ["Mit heißem Wasser und Seife", "Nur mit kaltem Wasser", "Nur mit Desinfektionsmittel", "Mit einem trockenen Tuch"], exp: "Ordentliche Handhygiene erfordert das Waschen mit heißem Wasser und Seife, um Bakterien zu beseitigen und Lebensmittelsicherheit zu gewährleisten." },
       { q: "Wie sollten Chemikalien gelagert werden?", a: ["Getrennt von Lebensmitteln/Flüssigkeiten", "Neben den Spirituosen", "Unter dem Tresen", "Bei den Mixern"], exp: "Chemikalien müssen strikt getrennt gelagert werden, um Kontaminationen zu vermeiden." },
+      { q: "Wofür wird ein Hawthorne-Sieb verwendet?", a: ["Zum Abseihen von Feststoffen aus Cocktails", "Zum Abmessen von Flüssigkeiten", "Zum Zerstoßen von Eis", "Zum Öffnen von Flaschen"], exp: "Das Hawthorne-Sieb mit seiner charakteristischen Federspirale wird verwendet, um Feststoffe wie Eis und Früchte aus Cocktails abzuseihen." },
       { q: "Wozu dient ein Jigger?", a: ["Zum exakten Abmessen von Flüssigkeiten", "Zum Zerstoßen von Früchten", "Zum Umrühren", "Zum Abseihen"], exp: "Ein Jigger sichert die Konstanz der Rezepte und die Kostenkontrolle." },
+      { q: "Was macht ein Cocktailshaker?", a: ["Kühlt und mischt Cocktails mit Säften und Spirituosen", "Mischt nur Zutaten", "Karbonisiert das Getränk", "Filtert Verunreinigungen heraus"], exp: "Ein Cocktailshaker kühlt und mischt Cocktails, besonders solche mit Säften und Spirituosen, durch kräftiges Schütteln mit Eis." },
+      { q: "Was ist der Zweck eines Muddlers?", a: ["Zucker und Früchte zu zerstoßen", "Cocktails umzurühren", "Zutaten abzumessen", "Getränke abzuseihen"], exp: "Ein Muddler wird verwendet, um Zucker, Früchte und Kräuter zu zerstoßen und ihre Aromen und Säfte in den Cocktail freizusetzen." },
       { q: "Was ist typisch für eine Weinbar?", a: ["Fokus ausschließlich auf Weinprodukte", "Bietet alle Spirituosen an", "Ist immer in einem Hotel", "Muss einen Sommelier haben"], exp: "Das Sortiment konzentriert sich primär auf eine breite Weinauswahl." },
       { q: "Wie funktioniert eine 'Dispense Bar'?", a: ["Getränke werden über Servicepersonal serviert", "Direktverkauf am Tresen", "Über Automaten", "Per App-Bestellung"], exp: "Eine Dispense Bar bereitet Drinks für Kellner zu, es gibt keinen direkten Gästekontakt am Tresen." }
     ]
@@ -266,6 +274,7 @@ export const rounds = [
     questions: [
       { q: "Was ist ein Synonym für Saccharid?", a: ["Kohlenhydrat", "Protein", "Lipid", "Mineralstoff"], exp: "Saccharide bilden die chemische Familie der Kohlenhydrate (Zucker)." },
       { q: "Welcher Zucker wird am häufigsten in Drinks genutzt?", a: ["Saccharose", "Fruktose", "Glukose", "Laktose"], exp: "Saccharose (Haushaltszucker) ist der Standard für Sirupe und Cocktails." },
+      { q: "Was ist die Hauptfunktion von Glukose?", a: ["Energie bereitzustellen", "Geschmack hinzuzufügen", "Lebensmittel zu konservieren", "Getränke zu färben"], exp: "Glukose wird vom Körper hauptsächlich als Energiequelle genutzt und ist die einfachste Zuckerform." },
       { q: "Woraus wird Stevia gewonnen?", a: ["Blättern der Stevia-Pflanze", "Zuckerrohrwurzeln", "Maiskörnern", "Honigbienen"], exp: "Es ist ein natürlicher Süßstoff aus der in Südamerika heimischen Stevia rebaudiana." },
       { q: "Wie wird Matcha traditionell zubereitet?", a: ["Verrühren von Pulver mit heißem Wasser", "Ziehen lassen von Blättern", "In der Kaffeemaschine", "Kaltpressung"], exp: "Matcha-Teepulver wird mit einem Bambusbesen (Chasen) schaumig geschlagen." },
       { q: "Was ist ein Merkmal von schwarzem Tee?", a: ["100% oxidiert", "0% oxidiert", "50% oxidiert", "Fermentiert mit Bakterien"], exp: "Die vollständige Oxidation sorgt für die dunkle Farbe und das kräftige Aroma." },
@@ -285,9 +294,13 @@ export const rounds = [
       { q: "Wo fanden die frühesten Destillationen statt?", a: ["In China", "In Ägypten", "In Griechenland", "In Mesopotamien"], exp: "Früheste Belege für Destillationstechniken stammen aus dem antiken China." },
       { q: "Was ist Destillation?", a: ["Trennen von Flüssigkeiten durch Verdampfen und Kondensieren", "Vergären von Getreide", "Filtern von Unreinheiten", "Mischen von Spirituosen"], exp: "Der Prozess nutzt unterschiedliche Siedepunkte, um Alkohol zu konzentrieren." },
       { q: "Wer erfand das 'Alembic' (Alambic)?", a: ["Maria die Jüdin", "Jabir ibn Hayyan", "Aristoteles", "Hippokrates"], exp: "Maria die Jüdin gilt als Erfinderin dieses frühen Destillationsgeräts." },
+      { q: "Welche Destillationserfindung stammt aus dem 11. Jahrhundert?", a: ["Das gewendelte Kühlrohr", "Die Kupferbrennblase", "Die Kolonnenbrennblase", "Der Rückflusskühler"], exp: "Das gewendelte Kühlrohr wurde im 11. Jahrhundert erfunden und verbesserte die Effizienz der Destillation erheblich." },
+      { q: "Wofür steht der Begriff 'Wasser des Lebens'?", a: ["Der erste Begriff für destillierte Spirituosen", "Eine Art Weihwasser", "Reines Quellwasser zur Destillation", "Ein mittelalterliches Heilmittel"], exp: "'Wasser des Lebens' (aqua vitae auf Lateinisch, uisce beatha auf Gälisch) war der erste Begriff für destillierte Spirituosen." },
       { q: "Welches Metall ist am besten für die Destillation geeignet?", a: ["Kupfer", "Edelstahl", "Eisen", "Aluminium"], exp: "Kupfer entfernt Schwefelverbindungen und sorgt für einen sauberen Geschmack." },
       { q: "Wer dokumentierte als Erster das Brauen?", a: ["Die Ägypter", "Die Griechen", "Die Römer", "Die Chinesen"], exp: "Aufzeichnungen der Ägypter belegen die Bierherstellung vor Jahrtausenden." },
-      { q: "Wer führte den Hopfen beim Brauen ein?", a: ["Deutsche Mönche", "Englische Bauern", "Belgische Brauer", "Tschechische Händler"], exp: "Mönche im Mittelalter nutzten Hopfen zur Konservierung und für die Bitterkeit." }
+      { q: "Was war die frühe vergärbare Zuckerquelle beim Brauen?", a: ["Gerstenmalz", "Honig", "Weintrauben", "Zuckerrohr"], exp: "Gerstenmalz war die wichtigste vergärbare Zuckerquelle beim frühen Brauen von Bier." },
+      { q: "Wer führte den Hopfen beim Brauen ein?", a: ["Deutsche Mönche", "Englische Bauern", "Belgische Brauer", "Tschechische Händler"], exp: "Mönche im Mittelalter nutzten Hopfen zur Konservierung und für die Bitterkeit." },
+      { q: "Wann dauerte die Prohibition in den USA?", a: ["1920–1933", "1910–1925", "1925–1940", "1915–1930"], exp: "Die Prohibition in den USA dauerte von 1920 bis 1933 und verbot die Herstellung, den Verkauf und den Transport von Alkohol." }
     ]
   },
   {
@@ -300,6 +313,11 @@ export const rounds = [
       { q: "Wozu dient Hopfen im Bier?", a: ["Bitterkeit und Aroma", "Süße", "Erhöhung des Alkoholgehalts", "Klärung"], exp: "Hopfen ist das Gewürz des Bieres; er liefert Bitterstoffe und ätherische Öle." },
       { q: "Was passiert beim Mälzen?", a: ["Stärke wird in Zucker umgewandelt", "Zucker wird in Alkohol umgewandelt", "Wasser wird zu Dampf", "Proteine werden zu Aminosäuren"], exp: "Das Getreide wird zum Keimen gebracht, um Enzyme für den Stärkeabbau zu aktivieren." },
       { q: "Was zeichnet untergärige Hefe aus?", a: ["Sie sinkt nach der Gärung zu Boden", "Sie schwimmt oben", "Sie arbeitet bei Raumtemperatur", "Sie erzeugt fruchtige Aromen"], exp: "Untergärige Hefe (Lager) arbeitet bei niedrigen Temperaturen und sinkt nach unten." },
+      { q: "Was bewirkt die Reifung bei Bier?", a: ["Es wird milder und klarer", "Es wird bitterer", "Es wird stärker karbonisiert", "Die Farbe wird dunkler"], exp: "Die Reifung (Konditionierung) macht Bier milder und klarer, da sich die Aromen verbinden und Partikel absetzen." },
+      { q: "Was ist der Zweck der Pasteurisierung bei Bier?", a: ["Verlängerung der Haltbarkeit", "Verbesserung des Geschmacks", "Erhöhung des Alkoholgehalts", "Hinzufügen von Kohlensäure"], exp: "Die Pasteurisierung verlängert die Haltbarkeit von Bier, indem sie Bakterien und Hefen abtötet, die Verderb verursachen könnten." },
+      { q: "Was ist Bier?", a: ["Ein verderbliches Produkt aus Getreide, Hefen und Hopfen", "Ein destillierter Gerstengeist", "Ein vergorener Traubenwein", "Ein karbonisiertes Softdrink mit Alkohol"], exp: "Bier ist ein verderbliches Produkt aus Getreide (meist Gerste), Hefen, Hopfen und Wasser, hergestellt durch Gärung." },
+      { q: "Beste Lagertemperatur für Bier?", a: ["4°–21°C", "0°–2°C", "25°–30°C", "-5°–0°C"], exp: "Bier sollte je nach Sorte zwischen 4° und 21°C gelagert werden, um Qualität und Geschmack zu erhalten." },
+      { q: "Was zeigt ein dichter, ungleichmäßiger Schaum beim Bier?", a: ["Natürliche Karbonisierung", "Überkarbonisierung", "Abgestandenes Bier", "Künstliche Karbonisierung"], exp: "Ein dichter, ungleichmäßiger Schaum weist auf natürliche Karbonisierung hin, im Gegensatz zu den gleichmäßigen Blasen bei erzwungener Karbonisierung." },
       { q: "Warum werden dunkle Flaschen für Bier genutzt?", a: ["Schutz vor Lichtgeschmack", "Bier bleibt kälter", "Nur Ästhetik", "Schutz vor Sauerstoff"], exp: "UV-Licht zersetzt Hopfenstoffe, was zu einem unangenehmen 'skunkigen' Geschmack führt." },
       { q: "Ideale Serviertemperatur für europäisches Lager?", a: ["7° bis 9°C", "0° bis 3°C", "12° bis 15°C", "3° bis 5°C"], exp: "Bei dieser Temperatur entfalten sich Frische und Malzaromen optimal." }
     ]
@@ -314,8 +332,12 @@ export const rounds = [
       { q: "Welche Rebsortenfamilie wird primär für Wein genutzt?", a: ["Vitis vinifera", "Vitis labrusca", "Vitis rotundifolia", "Vitis riparia"], exp: "Vitis vinifera ist die europäische Edeltraube für Qualitätsweine." },
       { q: "Welche Traube ist für hohe Säure bekannt?", a: ["Sauvignon Blanc", "Muscat", "Gewürztraminer", "Viognier"], exp: "Sauvignon Blanc ist berühmt für Frische, Säure und grasige Noten." },
       { q: "Was bedeutet 'Vintage' beim Wein?", a: ["Das Jahr der Ernte", "Das Alter des Weinguts", "Die Qualitätsstufe", "Die Region"], exp: "Der Jahrgang gibt Aufschluss über die Wetterbedingungen der Saison." },
+      { q: "Welche dieser Trauben ist eine Rotweinsorte?", a: ["Merlot", "Chardonnay", "Riesling", "Sauvignon Blanc"], exp: "Merlot ist eine der beliebtesten Rotweintrauben der Welt, bekannt für ihren weichen, pflaumenartigen Charakter." },
+      { q: "Was ist der Zweck des Laubdachmanagements im Weinbau?", a: ["Die Sonneneinstrahlung zu regulieren", "Niederschlag zu verhindern", "Die Traubengröße zu erhöhen", "Die Erntezeit zu verkürzen"], exp: "Das Laubdachmanagement reguliert die Sonneneinstrahlung auf die Trauben und beeinflusst Reife, Aromareifung und Krankheitsvorbeugung." },
       { q: "Was bedeutet 'Blanc de Blancs'?", a: ["Weißwein aus weißen Trauben", "Weißwein aus roten Trauben", "Verschnittener Weißwein", "Nur die erste Pressung"], exp: "Meist bei Champagner (100% Chardonnay) verwendet." },
+      { q: "Aus welchen Trauben wird Blanc de Noirs hergestellt?", a: ["Pinot Noir und Pinot Meunier", "Chardonnay und Riesling", "Sauvignon Blanc und Sémillon", "Muscat und Viognier"], exp: "Blanc de Noirs ('Weiß aus Schwarzen') wird aus dunkelhäutigen Trauben hergestellt, hauptsächlich Pinot Noir und Pinot Meunier im Champagner." },
       { q: "Wofür steht AOC?", a: ["Appellation d'Origine Contrôlée", "Association of Oenological Control", "Appellation of Original Character", "Alliance of Organic Cellars"], exp: "Das französische System für kontrollierte Herkunft und Qualität." },
+      { q: "Welche französische Region ist für Schaumwein berühmt?", a: ["Champagne", "Bordeaux", "Burgund", "Loire-Tal"], exp: "Die Champagne ist die berühmteste französische Region für Schaumwein. Nur Schaumwein aus dieser Region darf Champagner heißen." },
       { q: "Welche Traube dominiert im Rioja?", a: ["Tempranillo", "Garnacha", "Graciano", "Mazuelo"], exp: "Tempranillo ist das Rückgrat der großen spanischen Weine." }
     ]
   },
@@ -329,8 +351,12 @@ export const rounds = [
       { q: "Welche Traube wird für süßen Sherry genutzt?", a: ["Pedro Ximenez", "Palomino Fino", "Muscat", "Tempranillo"], exp: "Die PX-Trauben werden sonnengetrocknet, um den Zucker zu konzentrieren." },
       { q: "Wie heißt das Verschnittsystem bei Sherry?", a: ["Solera-System", "Méthode champenoise", "Assemblage", "Cuvée-System"], exp: "Fässer verschiedener Altersstufen werden stetig miteinander verschnitten." },
       { q: "Wie reift Fino-Sherry?", a: ["Unter Florhefe", "In neuem Eichenholz", "Im Stahltank", "Oxidativ"], exp: "Die Florschicht schützt den Wein vor Sauerstoff und hält ihn hell und trocken." },
+      { q: "Welcher Madeira-Stil ist der trockenste?", a: ["Sercial", "Malmsey", "Bual", "Verdelho"], exp: "Sercial ist der trockenste Madeira-Stil mit hoher Säure und leichterem Körper." },
+      { q: "Was ist der Estufado-Prozess bei der Madeira-Produktion?", a: ["Erhitzen der Fässer zur Beschleunigung der Reifung", "Kältestabilisierung des Weins", "Aufspritung mit Brandy", "Verschneiden verschiedener Jahrgänge"], exp: "Estufado (oder Estufagem) ist der Prozess, Madeira in Fässern zu erhitzen, um die Reifung zu beschleunigen und seinen charakteristischen Karamellcharakter zu erzeugen." },
       { q: "Was sind Wermutweine?", a: ["Aromatisierte, aufgespritete Weine", "Destillierte Spirituosen", "Liköre", "Aperitif-Bitter"], exp: "Wermut ist Wein, der mit Kräutern (Wermutkraut) aromatisiert und mit Alkohol verstärkt wurde." },
+      { q: "Wer initiierte 1786 den Export von Wermut?", a: ["Antonio Benedetto Carpano", "Martini & Rossi", "Noilly Prat", "Cinzano"], exp: "Antonio Benedetto Carpano wird die Schöpfung des modernen Wermuts in Turin 1786 und die Initiierung seines kommerziellen Exports zugeschrieben." },
       { q: "Die essenzielle Zutat für Wermut ist...", a: ["Wermutkraut (Artemisia)", "Wacholder", "Anis", "Enzian"], exp: "Ohne Artemisia absinthium darf er gesetzlich nicht Wermut genannt werden." },
+      { q: "Zuckergehalt von Rosso-Wermut?", a: ["Bis zu 130 Gramm pro Liter", "Bis zu 50 Gramm pro Liter", "Bis zu 200 Gramm pro Liter", "Weniger als 30 Gramm pro Liter"], exp: "Rosso (süßer/roter) Wermut kann bis zu 130 Gramm Zucker pro Liter enthalten, was ihm seine charakteristische Süße verleiht." },
       { q: "Typischer Alkoholgehalt von Wermut?", a: ["16% - 22%", "8% - 12%", "25% - 30%", "35% - 40%"], exp: "Durch die Aufspritung liegt er höher als bei normalem Wein." }
     ]
   },
@@ -341,10 +367,15 @@ export const rounds = [
     icon: "🧊",
     color: "#3498db",
     questions: [
+      { q: "Wo wurde Wodka zuerst hergestellt?", a: ["Sowohl in Polen als auch in Russland", "Nur in Russland", "In Schweden", "In Finnland"], exp: "Sowohl Polen als auch Russland beanspruchen die Geburtsstätte des Wodkas, und der wahre Ursprung ist bis heute umstritten." },
       { q: "Was bedeutet das Wort 'Wodka'?", a: ["Wässerchen (kleines Wasser)", "Reiner Geist", "Klares Getränk", "Weißes Feuer"], exp: "Es ist die Verkleinerungsform von 'Voda' (Wasser)." },
       { q: "Mindest-ABV für Wodka in der EU?", a: ["37.5%", "40%", "35%", "42%"], exp: "Um als Wodka verkauft zu werden, muss er mindestens 37,5% Vol. haben." },
+      { q: "Was ist die wichtigste botanische Zutat in Gin?", a: ["Wacholderbeeren", "Koriandersamen", "Angelikawurzel", "Iriswurzel"], exp: "Wacholderbeeren sind die gesetzlich vorgeschriebene Schlüssel-Botanik in Gin und verleihen ihm seinen charakteristischen kiefernartigen Geschmack." },
+      { q: "Was muss London Dry Gin sein?", a: ["In traditioneller Brennblase ohne künstliche Aromen hergestellt", "Ausschließlich in London produziert", "In Eichenfässern gereift", "Mit Londoner Leitungswasser hergestellt"], exp: "London Dry Gin muss in einer traditionellen Brennblase mit natürlichen Botanika hergestellt werden, ohne künstliche Aromen oder Farben nach der Destillation." },
       { q: "Woraus wird Rum hergestellt?", a: ["Zuckerrohrsaft oder Melasse", "Maismaische", "Neutralalkohol", "Kartoffelstärke"], exp: "Die Basis ist immer das Produkt des Zuckerrohrs." },
+      { q: "Wo entstand Melasse-basierter Rum?", a: ["Barbados", "Jamaika", "Kuba", "Puerto Rico"], exp: "Barbados gilt als Ursprungsort der auf Melasse basierenden Rumherstellung mit der frühesten dokumentierten Rumdestillation." },
       { q: "Welches Land verbindet man mit 'Rhum Agricole'?", a: ["Martinique", "Jamaika", "Kuba", "Barbados"], exp: "Martinique hat eine eigene AOC für Rum aus frischem Saft." },
+      { q: "Was ist die Hauptzutat in Tequila?", a: ["Blaue Agave", "Mais", "Zuckerrohr", "Weizen"], exp: "Tequila muss aus mindestens 51% Blauer Weber-Agave (Agave tequilana) hergestellt werden, wobei 100% Agave-Tequilas die Premiumkategorie darstellen." },
       { q: "Was unterscheidet Cognac von anderem Brandy?", a: ["Herkunft aus der Region Cognac", "Mindestalter 10 Jahre", "Verwendung von Pinot Noir", "Dreifache Destillation"], exp: "Cognac ist eine geschützte Herkunft mit strengen Regeln." }
     ]
   },
@@ -355,10 +386,15 @@ export const rounds = [
     icon: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
     color: "#d35400",
     questions: [
+      { q: "Welche Haupttraube wird für Armagnac verwendet?", a: ["Ugni Blanc", "Colombard", "Folle Blanche", "Baco Blanc"], exp: "Ugni Blanc (auch als Trebbiano bekannt) ist die wichtigste Rebsorte bei der Armagnac-Produktion." },
       { q: "Wie wird Armagnac meist destilliert?", a: ["Einfach (kontinuierlich)", "Zweifach", "Dreifach", "Gar nicht"], exp: "Im Gegensatz zu Cognac wird Armagnac meist nur einmal im Alambic Armagnacais gebrannt." },
+      { q: "Was ist der früheste bekannte Hinweis auf die Whisky-Produktion?", a: ["Father Jon Cor", "Ein schottischer Mönch im Jahr 1200", "König James IV", "Robert Burns"], exp: "Der früheste dokumentierte Hinweis auf Whisky stammt aus dem Jahr 1494, als Malz an Father Jon Cor zur Herstellung von Aqua vitae geliefert wurde." },
       { q: "Mindestlagerzeit für Whisky in UK/EU?", a: ["3 Jahre", "2 Jahre", "5 Jahre", "1 Jahr"], exp: "Vor Ablauf von 3 Jahren darf das Destillat nicht 'Whisky' genannt werden." },
+      { q: "Was ist die Hauptzutat von Whisky?", a: ["Getreide", "Weintrauben", "Zuckerrohr", "Kartoffeln"], exp: "Whisky wird hauptsächlich aus Getreide wie Gerste, Mais, Roggen oder Weizen hergestellt, das gemaischt, vergoren und destilliert wird." },
       { q: "Wie oft wird Irish Whiskey meist destilliert?", a: ["Dreimal", "Zweimal", "Einmal", "Viermal"], exp: "Die dreifache Destillation macht ihn besonders mild." },
       { q: "Was ist Bourbon-Vorschrift?", a: ["Mindestens 51% Mais", "Mindestens 5 Jahre Lagerung", "Produktion nur in Kentucky", "Fässer aus Kiefernholz"], exp: "51% Mais und frische, ausgekohlte Eichenfässer sind Pflicht." },
+      { q: "Welche Art von Whisky produziert Japan?", a: ["Sowohl Single Malt als auch Blended", "Nur Single Malt", "Nur Blended", "Nur Grain Whisky"], exp: "Japan produziert sowohl Single Malt als auch Blended Whiskys, inspiriert von schottischen Traditionen, aber mit einer unverwechselbaren japanischen Note." },
+      { q: "Was ist der 'Angel's Share' bei der Spirituosenreifung?", a: ["Prozentsatz der durch Verdunstung verlorenen Spirituose", "Der erste Schluck aus einem neuen Fass", "Die Probe des Master Blenders", "Der Rückstand im Fass"], exp: "Der Angel's Share bezeichnet den Prozentsatz der Spirituose, der während der Reifung durch das Fass verdunstet, typischerweise 2–4% pro Jahr." },
       { q: "Was ist der Zweck des Blendings?", a: ["Konstanz und Charakter schaffen", "Kosten sparen", "Alkohol erhöhen", "Fehler kaschieren"], exp: "Master Blender mischen viele Fässer, damit das Produkt immer gleich schmeckt." }
     ]
   },
@@ -370,8 +406,13 @@ export const rounds = [
     color: "#1a237e",
     questions: [
       { q: "Was war vor 1800 das dominierende Mischgetränk?", a: ["Punch", "Bier", "Weinschorle", "Sodawasser"], exp: "Punch wurde in großen Schalen für Gruppen zubereitet." },
+      { q: "Wer gilt als erster prominenter Mixologe?", a: ["Jerry Thomas", "Harry Craddock", "Harry Johnson", "Orsini"], exp: "Jerry Thomas gilt als erster berühmter Bartender/Mixologe, bekannt für seine Showmanship und sein Buch 'The Bartender's Guide' von 1862." },
+      { q: "Wann wurde der Volstead Act verabschiedet?", a: ["1919", "1920", "1918", "1921"], exp: "Der Volstead Act wurde 1919 verabschiedet und war das Durchsetzungsinstrument für den 18. Zusatzartikel; die Prohibition begann 1920." },
       { q: "Was war ein 'Speakeasy'?", a: ["Illegale Kneipe während der Prohibition", "Ein Cocktail-Typ", "Gewerkschaftstreffen", "Eine Weinbar"], exp: "Man musste 'leise sprechen', um die Polizei nicht aufmerksam zu machen." },
+      { q: "Warum wurden Tiki-Restaurants in den 1930er Jahren populär?", a: ["Flucht in das Mysterium des Orients", "Günstiger Rum", "Promi-Empfehlungen", "Staatliche Förderung"], exp: "Tiki-Restaurants wurden in den 1930ern populär, weil sie eine exotische Flucht in das Mysterium des Orients und tropische Paradiese boten." },
+      { q: "Was braucht ein gut zubereiteter exotischer Drink?", a: ["Perfekte Ausgewogenheit der Aromen", "Die teuersten Zutaten", "Nur aufwändige Dekoration", "Ein Geheimrezept"], exp: "Ein gut zubereiteter exotischer Drink erfordert eine perfekte Balance der Aromen, bei der kein einzelnes Element die anderen überwältigt." },
       { q: "Was priorisieren moderne Bartender?", a: ["Konstanz und Qualität der Zutaten", "Schnelligkeit über alles", "Show-Techniken (Flair)", "Möglichst viele Zutaten"], exp: "Das Handwerk steht heute im Vordergrund." },
+      { q: "Was ist der erste Schritt bei der Cocktailzubereitung?", a: ["Den gewünschten Geschmack, Duft und Aussehen kennen", "Das Glas auswählen", "Die Garnitur aussuchen", "Die Zutaten abmessen"], exp: "Der erste Schritt bei der Cocktailzubereitung ist, den gewünschten Geschmack, Duft und das Aussehen zu kennen – eine klare Vision des Endprodukts zu haben." },
       { q: "Goldstandard für Säfte?", a: ["Frisch gepresst", "Pasteurisiert", "Konzentrat", "Pulver"], exp: "Frischer Saft bietet die beste Säure und Aromatik." },
       { q: "Warum bevorzugt man klares Eis?", a: ["Langsameres Schmelzen und Ästhetik", "Kühlt schneller", "Billiger", "Kein Geschmacksunterschied"], exp: "Klares Eis ist dichter, schmilzt langsamer und sieht im Drink brillant aus." }
     ]
@@ -384,9 +425,15 @@ export const rounds = [
     color: "#37474f",
     questions: [
       { q: "Folge von 'Over-serving' (zu viel Alkohol ausschenken)?", a: ["Rechtliche Haftung für den Bartender", "Nur eine Verwarnung", "Mehr Trinkgeld", "Keine Folgen"], exp: "Bartender können für Unfälle ihrer betrunkenen Gäste haftbar gemacht werden." },
+      { q: "Was ist ein Kernaspekt des verantwortungsvollen Alkoholausschanks?", a: ["Alkoholservierungen an betrunkene Gäste einschränken", "So viel servieren wie Gäste verlangen", "Nur am Eingang den Ausweis prüfen", "Stammgästen Freigetränke anbieten"], exp: "Verantwortungsvoller Ausschank beinhaltet das Einschränken oder Verweigern von Alkohol bei betrunkenen Gästen zur Sicherheit und Rechtskonformität." },
       { q: "Effekt von Alkohol auf die Hemmungen?", a: ["Unterdrückt die Kontrolle", "Verbessert die Kontrolle", "Kein Effekt", "Schärft das Urteilsvermögen"], exp: "Alkohol dämpft das Kontrollzentrum im Gehirn." },
+      { q: "Ab welchem BAC-Wert ist das Fahren in den meisten Ländern illegal?", a: [".08%", ".05%", ".10%", ".15%"], exp: "In den meisten US-amerikanischen Bundesstaaten ist ein Blutalkoholgehalt (BAC) von 0,08% die gesetzliche Grenze für das Fahren." },
+      { q: "Was trifft auf Alkohol (Ethanol) zu?", a: ["Ethanol kann zur Abhängigkeit führen", "Ethanol ist nicht süchtig machend", "Ethanol verbessert die Langzeitgesundheit", "Ethanol enthält keine Kalorien"], exp: "Ethanol ist ein Suchtmittel, das bei übermäßigem und langanhaltendem Konsum zu körperlicher und psychischer Abhängigkeit führen kann." },
       { q: "Wer sind die drei Stakeholder im Bar-Business?", a: ["Gäste, Betrieb, Mitarbeiter", "Besitzer, Lieferanten, Staat", "Bartender, Manager, Investoren", "Kunden, Banken, Konkurrenz"], exp: "Alle drei müssen im Einklang sein: Zufriedene Gäste, Profitabilität und Teamgeist." },
-      { q: "Warum sind Standard-Maße wichtig?", a: ["Kostenkontrolle und Konstanz", "Nur für das Gesetz", "Schnelligkeit", "Nur Optik"], exp: "Sie garantieren, dass der Drink immer gleich schmeckt und die Kalkulation stimmt." }
+      { q: "Wie viel Prozent der unzufriedenen Gäste beschweren sich tatsächlich?", a: ["4%", "25%", "50%", "75%"], exp: "Nur etwa 4% der unzufriedenen Gäste beschweren sich tatsächlich – der Rest geht einfach und kommt nicht wieder, was die Beschwerdebehandlung entscheidend macht." },
+      { q: "Was ist der Bruttogewinn?", a: ["Umsatz minus variable Kosten", "Gesamtumsatz vor Abzügen", "Nettogewinn nach allen Ausgaben", "Gesamte erhaltene Trinkgelder"], exp: "Der Bruttogewinn wird berechnet als Umsatz minus variable Kosten (Wareneinstandskosten)." },
+      { q: "Warum sind Standard-Maße wichtig?", a: ["Kostenkontrolle und Konstanz", "Nur für das Gesetz", "Schnelligkeit", "Nur Optik"], exp: "Sie garantieren, dass der Drink immer gleich schmeckt und die Kalkulation stimmt." },
+      { q: "Was umfasst die IBA-Kategorie 'Unforgettables'?", a: ["Klassiker, die den Test der Zeit bestanden haben", "Nur moderne Kreationen", "Ausschließlich alkoholfreie Cocktails", "Drinks erfunden nach 2000"], exp: "Die 'Unforgettables' sind die zeitlosen IBA-Klassiker, die als grundlegende Cocktails der Barkultur gelten." }
     ]
   },
   {
@@ -398,7 +445,12 @@ export const rounds = [
     questions: [
       { q: "Kategorie des 'Bramble'?", a: ["New Era", "Unforgettables", "Contemporary Classics", "Tiki Classics"], exp: "Der Bramble (Dick Bradsell, 80er) gehört zu den New Era Drinks." },
       { q: "Garnitur für einen Americano?", a: ["Orangenscheibe oder -zeste", "Zitronentwist", "Kirsche", "Olive"], exp: "Klassisch wird er mit Orange serviert." },
+      { q: "Wie wird ein Alexander zubereitet?", a: ["Schütteln und abseihen", "Direkt im Glas bauen", "Rühren und abseihen", "Mit Eis mixen"], exp: "Der Alexander-Cocktail wird durch Schütteln aller Zutaten mit Eis und Abseihen in ein Cocktailglas zubereitet." },
       { q: "Was ist im 'Between the Sheets'?", a: ["Cognac, Rum, Triple Sec, Zitrone", "Nur Rum", "Whisky und Gin", "Wodka und Pfirsich"], exp: "Eine Variante des Sidecars mit Rumzusatz." },
+      { q: "Zu welcher IBA-Kategorie gehört der Bloody Mary?", a: ["Contemporary Classics", "Unforgettables", "New Era", "Tiki Classics"], exp: "Der Bloody Mary ist als Contemporary Classic in der offiziellen IBA-Cocktailliste klassifiziert." },
+      { q: "Was zeichnet die Garnitur des Brandy Crusta aus?", a: ["Zuckerglas-Rand mit langer Zitronenschale", "Ein einfaches Zitronenrad", "Eine Kirsche am Cocktailspieß", "Ein Orangentwist"], exp: "Der Brandy Crusta zeichnet sich durch seinen gezuckerten Glasrand und eine lange, spiralförmige Zitronenschale aus, die das Glas innen auskleidet." },
+      { q: "Was ist die Hauptspirituose im Negroni?", a: ["Gin", "Wodka", "Campari", "Whisky"], exp: "Die Hauptspirituose des Negroni ist Gin, kombiniert mit gleichen Teilen Campari und süßem Wermut." },
+      { q: "Was ist die primäre Spirituose im Jungle Bird?", a: ["Schwarzer Rum (Blackstrap)", "Weißer Rum", "Bourbon", "Tequila"], exp: "Der Jungle Bird verwendet Blackstrap-Rum (dunkler Rum) als Hauptspirituose, kombiniert mit Campari, Ananassaft, Limettensaft und einfachem Sirup." },
       { q: "Welche Spirituose nutzt ein Tipperary?", a: ["Irish Whiskey", "Scotch", "Bourbon", "Rye"], exp: "Benannt nach dem irischen County, nutzt er Irish Whiskey, grünen Chartreuse und Wermut." },
       { q: "Optionale Zutat im Southside?", a: ["Eiweiß", "Soda", "Bitters", "Zuckersirup"], exp: "Eiweiß kann für eine seidige Textur hinzugefügt werden." }
     ]
