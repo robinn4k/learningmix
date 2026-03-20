@@ -1,3 +1,5 @@
+import { getDb, getCurrentUser, isFirebaseReady } from './auth.js';
+
 const KEY = 'cq_achievements';
 
 export const ALL = [
@@ -21,7 +23,35 @@ function load() {
   try { return JSON.parse(localStorage.getItem(KEY)) || { unlocked: [], stats: {} }; }
   catch { return { unlocked: [], stats: {} }; }
 }
-function save(d) { localStorage.setItem(KEY, JSON.stringify(d)); }
+
+function save(d) {
+  localStorage.setItem(KEY, JSON.stringify(d));
+  // Fire-and-forget cloud sync
+  syncToCloud(d);
+}
+
+async function syncToCloud(data) {
+  const user = getCurrentUser();
+  if (!isFirebaseReady() || !user || user.isGuest) return;
+  try {
+    const db = getDb();
+    const { doc, setDoc } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+    await setDoc(doc(db, 'users', user.uid), { achievements: data }, { merge: true });
+  } catch (e) { console.warn('achievements cloud sync failed:', e); }
+}
+
+export async function loadAchievementsFromCloud() {
+  const user = getCurrentUser();
+  if (!isFirebaseReady() || !user || user.isGuest) return;
+  try {
+    const db = getDb();
+    const { doc, getDoc } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+    const snap = await getDoc(doc(db, 'users', user.uid));
+    if (snap.exists() && snap.data().achievements) {
+      localStorage.setItem(KEY, JSON.stringify(snap.data().achievements));
+    }
+  } catch (e) { console.warn('achievements cloud load failed:', e); }
+}
 
 export function getAchievements() {
   const { unlocked } = load();
