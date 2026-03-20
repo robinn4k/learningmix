@@ -1,5 +1,5 @@
 // ─── Share Image Generator & Modal ───────────────────────────
-import { getLang } from './lang.js';
+import { getLang, t } from './lang.js';
 
 const CARD_W = 1080;
 const CARD_H = 1350;
@@ -86,7 +86,7 @@ export async function generateShareImage(data) {
 
   ctx.font = `700 72px ${fontStack}`;
   ctx.fillStyle = '#c9971c';
-  ctx.fillText('🍸 Stirio', CARD_W / 2, 120);
+  ctx.fillText('Stirio 🍸', CARD_W / 2, 120);
 
   // ── Gold separator line ──────────────────────────────────
   const line = ctx.createLinearGradient(0, 0, CARD_W, 0);
@@ -101,10 +101,11 @@ export async function generateShareImage(data) {
   ctx.lineTo(CARD_W - 80, 158);
   ctx.stroke();
 
-  // ── Category / Mode ─────────────────────────────────────
+  // ── Category / Mode (translate at render time for current language) ──
+  const categoryLabel = data.category ? t(data.category) : '';
   ctx.font = `400 46px ${fontStack}`;
   ctx.fillStyle = 'rgba(240,230,211,0.75)';
-  ctx.fillText(data.category || '', CARD_W / 2, 230);
+  ctx.fillText(categoryLabel, CARD_W / 2, 230);
 
   // ── Score label (small caps style) ──────────────────────
   ctx.font = `700 32px ${fontStack}`;
@@ -151,10 +152,11 @@ export async function generateShareImage(data) {
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
-    // Icon
-    ctx.font = '56px serif';
+    // Icon — reset fillStyle so emoji render at full opacity
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '64px serif';
     ctx.textAlign = 'center';
-    ctx.fillText(s.icon, cx + cardW / 2, cardY + 76);
+    ctx.fillText(s.icon, cx + cardW / 2, cardY + 80);
 
     // Value
     ctx.font = `700 52px ${fontStack}`;
