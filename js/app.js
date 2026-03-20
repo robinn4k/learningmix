@@ -272,7 +272,7 @@ async function handleRoundComplete({ round, score, timeBonus, corrects, wrongs, 
     total: 10,
     accuracy: Math.round((corrects / 10) * 100),
     timeBonus,
-    category: t(round.title),
+    category: round.title,          // raw multilingual object — translated at render time
     shareText: t('results.share_text', { score, corrects }),
   };
   // Save score
