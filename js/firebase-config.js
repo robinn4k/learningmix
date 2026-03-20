@@ -29,6 +29,7 @@
 export const firebaseConfig = {
   apiKey: "AIzaSyDgbIK3WTkUI2Yo0FiMAv3nEYAvj6L25ow",
   authDomain: "dblearn-45fcc.firebaseapp.com",
+  databaseURL: "https://dblearn-45fcc-default-rtdb.firebaseio.com",
   projectId: "dblearn-45fcc",
   storageBucket: "dblearn-45fcc.firebasestorage.app",
   messagingSenderId: "111717730902",
