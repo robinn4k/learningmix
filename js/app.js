@@ -9,6 +9,7 @@ import { fichas } from './fichas.js';
 import { startConstructor, answerConstructor, abortConstructor } from './constructor.js';
 import { startBlind, answerBlind, revealNextClue, abortBlind } from './blind.js';
 import { getLang, setLang, t, translateHTML } from './lang.js';
+import { showShareModal, closeShareModal } from './share.js';
 
 // ─── DOM helpers ─────────────────────────────────────────────
 const $ = id => document.getElementById(id);
@@ -260,10 +261,20 @@ function handleAnswer({ correct, correctIndex, selectedIndex, timeLeft, score, b
 
 // ─── RESULTS ─────────────────────────────────────────────────
 let _lastScore = 0, _lastCorrects = 0;
+let _lastShareData = null;
 
 async function handleRoundComplete({ round, score, timeBonus, corrects, wrongs, answers, questions }) {
   _lastScore = score;
   _lastCorrects = corrects;
+  _lastShareData = {
+    score,
+    corrects,
+    total: 10,
+    accuracy: Math.round((corrects / 10) * 100),
+    timeBonus,
+    category: t(round.title),
+    shareText: t('results.share_text', { score, corrects }),
+  };
   // Save score
   setLoading(true);
   try {
@@ -321,14 +332,8 @@ async function handleRoundComplete({ round, score, timeBonus, corrects, wrongs, 
 
 // ─── SHARE ───────────────────────────────────────────────────
 async function shareResults() {
-  const text = t('results.share_text', { score: _lastScore, corrects: _lastCorrects });
-  if (navigator.share) {
-    try {
-      await navigator.share({ title: 'Stirio 🍸', text, url: location.href });
-    } catch { /* user cancelled */ }
-  } else {
-    await navigator.clipboard.writeText(text).catch(() => {});
-    toast(text, 'info');
+  if (_lastShareData) {
+    await showShareModal(_lastShareData);
   }
 }
 
@@ -924,6 +929,13 @@ function bindEvents() {
   $('btn-share-results').addEventListener('click', shareResults);
   $('btn-leaderboard-results').addEventListener('click', () => goToLeaderboard('view-results'));
   $('btn-home-results').addEventListener('click', () => goToDashboard());
+
+  // Share modal close
+  $('btn-share-close').addEventListener('click', closeShareModal);
+  $('btn-share-close-2').addEventListener('click', closeShareModal);
+  $('share-modal').addEventListener('click', e => {
+    if (e.target === $('share-modal')) closeShareModal();
+  });
 
   // Quick modes dashboard
   $('btn-daily').addEventListener('click', () => startDailyChallenge());

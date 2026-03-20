@@ -438,6 +438,25 @@
       </div>
     </div>
 
+    <!-- ══ SHARE MODAL ══ -->
+    <div id="share-modal" class="share-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="share-modal-title">
+      <div class="share-modal-card">
+        <div class="share-modal-header">
+          <h3 class="share-modal-title" id="share-modal-title" data-i18n="share.title">Compartir resultado</h3>
+          <button class="icon-btn" id="btn-share-close" aria-label="Cerrar">✕</button>
+        </div>
+        <div class="share-preview-wrap">
+          <img id="share-preview-img" class="share-preview-img" alt="Vista previa" />
+          <div id="share-spinner" class="share-spinner">🍸</div>
+        </div>
+        <div class="share-modal-actions">
+          <button id="btn-share-download" class="btn-primary" data-i18n="share.download">⬇️ Descargar imagen</button>
+          <button id="btn-share-native" class="btn-secondary" data-i18n="share.share" style="display:none">📤 Compartir</button>
+          <button id="btn-share-close-2" class="btn-ghost" data-i18n="share.close">✕ Cerrar</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Toast notification -->
