@@ -2,102 +2,98 @@ export const rounds = [
   {
     id: 1,
     title: "IBA Klassiker",
-    subtitle: "Offizielle IBA Cocktails",
+    subtitle: "Offizielle IBA-Cocktails",
     icon: "🍸",
     color: "#c9971c",
     questions: [
-      { q: "Wie viele offizielle Cocktailkategorien erkennt die IBA an?", a: ["3", "2", "4", "5"], exp: "Die IBA erkennt 3 Kategorien an: 'The Unforgettables', 'Contemporary Classics' und 'New Era Drinks'." },
-      { q: "Welche Basisspirituose hat ein Negroni?", a: ["Gin", "Wodka", "Rum", "Whisky"], exp: "Der klassische Negroni besteht zu gleichen Teilen aus Gin, Campari und süßem Wermut." },
-      { q: "Welcher IBA-Cocktail enthält Tequila, Triple Sec und Limettensaft?", a: ["Margarita", "Cosmopolitan", "Daiquiri", "Gimlet"], exp: "Die Margarita ist einer der bekanntesten IBA-Cocktails, hergestellt aus Tequila, Triple Sec und Limette." },
-      { q: "Was ist die charakteristische Zutat eines Sazerac?", a: ["Ein Absinth-Rinse", "Trockener Wermut", "Orangenbitter", "Grenadinesirup"], exp: "Der Sazerac wird in einem Glas serviert, das mit Absinth ausgespült wurde, was ihm sein einzigartiges Aroma verleiht." },
-      { q: "Wofür steht IBA?", a: ["International Bartenders Association", "International Bar Alliance", "Institute of Beverage Arts", "International Brewing Academy"], exp: "IBA steht für International Bartenders Association, gegründet 1951." },
-      { q: "Welcher IBA-Cocktail wird mit Champagner und Cognac hergestellt?", a: ["Champagne Cocktail", "French 75", "Kir Royale", "Bellini"], exp: "Der klassische IBA Champagne Cocktail enthält Zuckerwürfel, Angostura Bitter, Cognac und Champagner." },
-      { q: "Welcher IBA-Cocktail enthält Campari, süßen Wermut und Gin?", a: ["Negroni", "Americano", "Boulevardier", "Aperol Spritz"], exp: "Der Negroni ist die perfekte Mischung aus Gin, Campari und süßem Wermut." },
-      { q: "Welcher IBA-Cocktail wird lang serviert mit Rum, Minze, Limette und Soda?", a: ["Mojito", "Caipirinha", "Dark and Stormy", "Ti' Punch"], exp: "Der kubanische Mojito ist einer der beliebtesten Cocktails der Welt." },
-      { q: "Welcher IBA-Cocktail enthält Wodka, Tomatensaft und Gewürze?", a: ["Bloody Mary", "Harvey Wallbanger", "Sea Breeze", "Cosmopolitan"], exp: "Die Bloody Mary ist ein klassischer Cocktail aus Wodka und Tomatensaft." },
-      { q: "Der IBA Dry Martini besteht aus Gin und...", a: ["Trockener Wermut", "Süßer Wermut", "Triple Sec", "Cointreau"], exp: "Der klassische Dry Martini kombiniert Gin mit trockenem Wermut." }
+      { q: "Wie viele offizielle Cocktail-Kategorien erkennt die IBA an?", a: ["3", "2", "4", "5"], exp: "Die IBA erkennt 3 Kategorien an: 'The Unforgettables', 'Contemporary Classics' und 'New Era Drinks'." },
+      { q: "Was ist die Basisspeise eines Negroni?", a: ["Gin", "Wodka", "Rum", "Whisky"], exp: "Der klassische Negroni besteht aus gleichen Teilen Gin, Campari und süßem Wermut." },
+      { q: "Welcher IBA-Cocktail enthält Tequila, Triple Sec und Limettensaft?", a: ["Margarita", "Cosmopolitan", "Daiquiri", "Gimlet"], exp: "Die Margarita ist einer der berühmtesten IBA-Cocktails, hergestellt aus Tequila, Triple Sec und Limette." },
+      { q: "Was ist die charakteristische Zutat eines Sazerac?", a: ["Ein Absinth-Rinse", "Trockener Wermut", "Orange Bitters", "Grenadine-Sirup"], exp: "Der Sazerac wird in einem mit Absinth ausgespülten Glas serviert, was ihm sein einzigartiges Aroma verleiht." },
+      { q: "Wofür steht die Abkürzung IBA?", a: ["International Bartenders Association", "International Bar Alliance", "Institute of Beverage Arts", "International Brewing Academy"], exp: "IBA steht für International Bartenders Association, gegründet im Jahr 1951." },
+      { q: "Welcher IBA-Cocktail wird mit Champagner und Cognac zubereitet?", a: ["Champagne Cocktail", "French 75", "Kir Royale", "Bellini"], exp: "Der klassische IBA Champagne Cocktail verwendet ein Stück Würfelzucker, Angostura Bitters, Cognac und Champagner." },
+      { q: "Welcher IBA-Cocktail besteht aus Campari, süßem Wermut und Gin?", a: ["Negroni", "Americano", "Boulevardier", "Aperol Spritz"], exp: "Der Negroni ist die perfekte Mischung aus Gin, Campari und süßem Wermut." },
+      { q: "Welcher IBA-Cocktail wird 'tall' mit Rum, Minze, Limette und Soda serviert?", a: ["Mojito", "Caipirinha", "Dark and Stormy", "Ti' Punch"], exp: "Der kubanische Mojito ist einer der weltweit beliebtesten Cocktails mit weißem Rum, Minze, Limette und Soda." },
+      { q: "Welcher IBA-Cocktail enthält Wodka, Tomatensaft und Gewürze?", a: ["Bloody Mary", "Harvey Wallbanger", "Sea Breeze", "Cosmopolitan"], exp: "Die Bloody Mary ist der ultimative belebende Cocktail aus Wodka und Tomatensaft." },
+      { q: "Der IBA Dry Martini besteht aus Gin und...", a: ["Trockenem Wermut", "Süßem Wermut", "Triple Sec", "Cointreau"], exp: "Der klassische IBA Dry Martini kombiniert Gin mit trockenem Wermut und wird mit einer Olive oder einer Zitronenzeste garniert." }
     ]
   },
-
   {
     id: 2,
     title: "Klassische Spirituosen",
-    subtitle: "Destillate der Welt",
+    subtitle: "Spirituosen der Welt",
     icon: "🥃",
     color: "#a0522d",
     questions: [
-      { q: "Welchen Mindestanteil an Mais muss Bourbon enthalten?", a: ["51%", "60%", "70%", "80%"], exp: "Bourbon muss mindestens 51% Mais enthalten." },
-      { q: "Aus welcher Pflanze wird Tequila hergestellt?", a: ["Blaue Agave", "Mezcal-Agave", "Maguey", "Nopal"], exp: "Tequila wird ausschließlich aus der blauen Agave hergestellt." },
-      { q: "Wie lange muss Scotch Whisky mindestens reifen?", a: ["3 Jahre", "5 Jahre", "10 Jahre", "1 Jahr"], exp: "Scotch muss mindestens 3 Jahre in Eichenfässern reifen." },
-      { q: "Was ist Cognac?", a: ["Ein französischer Weinbrand aus der Region Cognac", "Ein gereifter Rum", "Ein Calvados", "Ein Armagnac"], exp: "Cognac ist ein Weinbrand aus der Region Cognac in Frankreich." },
-      { q: "Was unterscheidet Mezcal von Tequila?", a: ["Mezcal kann aus verschiedenen Agaven hergestellt werden", "Mezcal ist süßer", "Tequila hat mehr Alkohol", "Nur die Region unterscheidet sie"], exp: "Mezcal kann aus vielen Agavensorten hergestellt werden." },
-      { q: "Was bedeutet ABV?", a: ["Alcohol By Volume", "Average Barrel Value", "Aged Barrel Vintage", "Alcohol Base Value"], exp: "ABV gibt den Alkoholgehalt in Prozent an." },
-      { q: "Welche Pflanze ist essenziell für Gin?", a: ["Wacholder", "Koriander", "Angelika", "Kardamom"], exp: "Gin muss Wacholder enthalten." },
-      { q: "Woraus wird Rum hergestellt?", a: ["Zuckerrohr", "Agave", "Gerste", "Mais"], exp: "Rum wird aus Zuckerrohr oder Melasse hergestellt." },
-      { q: "Welche typische Zutat hat Aquavit?", a: ["Kümmel oder Dill", "Wacholder", "Anis", "Fenchel"], exp: "Aquavit enthält typischerweise Kümmel oder Dill." },
-      { q: "Was ist Calvados?", a: ["Apfelbrand aus der Normandie", "Destillierter Cidre", "Apfelrum", "Birnenlikör"], exp: "Calvados ist ein geschützter Apfelbrand aus der Normandie." }
+      { q: "Wie hoch muss der Mindestanteil an Mais bei Bourbon sein?", a: ["51%", "60%", "70%", "80%"], exp: "Um als Bourbon klassifiziert zu werden, muss die Getreidemischung (Mash Bill) mindestens 51% Mais enthalten." },
+      { q: "Aus welcher Pflanze wird Tequila hergestellt?", a: ["Blaue Agave", "Mezcal Agave", "Maguey", "Nopal"], exp: "Tequila darf nur aus der Agave Tequilana Weber (blaue Varietät) in bestimmten Regionen Mexikos hergestellt werden." },
+      { q: "Wie viele Jahre muss Scotch Whisky mindestens reifen?", a: ["3 Jahre", "5 Jahre", "10 Jahre", "1 Jahr"], exp: "Das schottische Gesetz schreibt eine Mindestlagerung von 3 Jahren in Eichenfässern vor." },
+      { q: "Was ist Cognac?", a: ["Ein französischer Weinbrand aus der Region Cognac", "Ein gelagerter französischer Rum", "Ein gelagerter Calvados", "Ein Premium-Armagnac"], exp: "Cognac ist ein Weinbrand, der in der Region Cognac im französischen Departement Charente hergestellt wird." },
+      { q: "Wie unterscheidet sich Mezcal von Tequila?", a: ["Mezcal kann aus jeder Agave hergestellt werden; Tequila nur aus der blauen", "Mezcal ist süßer", "Tequila hat einen höheren Alkoholgehalt", "Sie unterscheiden sich nur durch die Region"], exp: "Mezcal kann aus mehr als 30 Agavenarten hergestellt werden, während Tequila exklusiv die blaue Agave nutzt." },
+      { q: "Was bedeutet ABV?", a: ["Alcohol By Volume (Alkoholgehalt)", "Average Barrel Value", "Aged Barrel Vintage", "Alcohol Base Value"], exp: "ABV steht für Alcohol By Volume und gibt den Prozentsatz an Ethanol in einem Getränk an." },
+      { q: "Welches Botanical ist in Gin unverzichtbar?", a: ["Wacholder", "Koriander", "Angelikawurzel", "Kardamom"], exp: "Gesetzlich muss Gin Wacholder (Juniperus communis) als vorherrschendes Botanical enthalten." },
+      { q: "Was ist der Rohstoff für Rum?", a: ["Zuckerrohr", "Agave", "Gerste", "Mais"], exp: "Rum wird aus Zuckerrohrsaft oder Melasse, einem Nebenprodukt der Zuckerherstellung, destilliert." },
+      { q: "Welches charakteristische Botanical enthält Aquavit?", a: ["Kümmel oder Dill", "Wacholder", "Anis", "Fenchel"], exp: "Skandinavischer Aquavit verdankt seinen markanten Geschmack Kümmel oder Dill." },
+      { q: "Was ist Calvados?", a: ["Apfelbrand aus der Normandie", "Destillierter Cidre aus der Bretagne", "Apfel-Rum aus der Karibik", "Birnenlikör aus dem Elsass"], exp: "Calvados ist eine geschützte Ursprungsbezeichnung für Apfelbrand (Cidre-Destillat) aus der Normandie, Frankreich." }
     ]
   },
-
   {
     id: 3,
-    title: "Bartechniken",
-    subtitle: "Die Kunst der Cocktailzubereitung",
+    title: "Bar-Techniken",
+    subtitle: "Die Kunst der Cocktail-Zubereitung",
     icon: "🔀",
     color: "#2980b9",
     questions: [
-      { q: "Was bedeutet 'Muddling'?", a: ["Zutaten im Glas zerdrücken", "Mit Eis shaken", "Abseihen", "Flambieren"], exp: "Muddling bedeutet, Zutaten wie Früchte oder Kräuter im Glas zu zerdrücken." },
-      { q: "Unterschied zwischen Shaken und Rühren?", a: ["Shaken bringt mehr Luft und Verdünnung", "Shaken kühlt besser", "Rühren ist schneller", "Kein Unterschied"], exp: "Shaken belüftet und verdünnt schneller." },
-      { q: "Was ist ein 'Dry Shake'?", a: ["Shaken ohne Eis", "Mit Trockeneis", "Ohne Alkohol", "In trockenem Shaker"], exp: "Dry Shake wird ohne Eis gemacht, oft für Eiweiß." },
-      { q: "Welche Technik erzeugt Schichten?", a: ["Floating", "Rolling", "Straining", "Muddling"], exp: "Floating erzeugt Schichten durch vorsichtiges Eingießen." },
-      { q: "Was bedeutet 'on the rocks'?", a: ["Auf Eiswürfeln serviert", "Ohne Eis", "Crushed Ice", "Eiskugel"], exp: "Der Drink wird direkt auf Eis serviert." },
-      { q: "Was ist 'Fat Washing'?", a: ["Spirituose mit Fett aromatisieren", "Glas reinigen", "Butter filtern", "Öl hinzufügen"], exp: "Fett wird mit Alkohol vermischt und später entfernt." },
-      { q: "Was bedeutet 'neat'?", a: ["Pur ohne Eis", "Mit Wasser", "Sehr kalt", "Mit Salz"], exp: "Spirituose pur serviert." },
-      { q: "Was ist 'Rolling'?", a: ["Sanftes Umgießen zwischen Gefäßen", "Kreisförmig shaken", "Shaker rollen", "Über Eisstein"], exp: "Rolling ist ein sanftes Mischen." },
-      { q: "Was bedeutet 'Zeste ausdrücken'?", a: ["Öle über dem Glas freisetzen", "Saft pressen", "Reiben", "Anzünden"], exp: "Aromatische Öle werden freigesetzt." },
-      { q: "Wie lange shaken für Kühlung?", a: ["10-15 Sekunden", "30-45", "5", "60"], exp: "10-15 Sekunden reichen aus." }
+      { q: "Was bedeutet 'Muddling' bei der Cocktail-Zubereitung?", a: ["Zutaten im Glas zerdrücken", "Mit Eis schütteln", "Das Getränk abseihen", "Den Cocktail flambieren"], exp: "Muddling bezeichnet das sanfte Zerdrücken von Früchten, Kräutern oder Zucker am Boden des Glases, um Aromen und Säfte freizusetzen." },
+      { q: "Was ist der Hauptunterschied zwischen Schütteln (Shaking) und Rühren (Stirring)?", a: ["Schütteln fügt mehr Luft und Verdünnung hinzu; Rühren ist subtiler", "Schütteln hält die Temperatur besser", "Rühren mischt schneller", "Es gibt keinen signifikanten Unterschied"], exp: "Schütteln belüftet den Drink und kühlt/verdünnt ihn schneller; Rühren ist für klare Drinks gedacht, die nicht trüb werden sollen." },
+      { q: "Was ist ein 'Dry Shake'?", a: ["Schütteln ohne Eis, meist mit Eiweiß", "Schütteln mit Trockeneis", "Schütteln ohne Alkohol", "Schütteln in einem trockenen Shaker"], exp: "Der Dry Shake (ohne Eis) wird verwendet, um Eiweiß oder Sahne zu emulgieren, bevor Eis hinzugefügt wird, um eine bessere Textur zu erzielen." },
+      { q: "Welche Technik beinhaltet das langsame Gießen über einen Löffel, um Schichten zu erzeugen?", a: ["Floating", "Rolling", "Straining", "Muddling"], exp: "Beim Floating (oder Layering) wird ein Barlöffel verwendet, um Flüssigkeiten vorsichtig zu schichten (Dichteunterschiede)." },
+      { q: "Was bedeutet es, einen Cocktail 'on the rocks' zu bestellen?", a: ["Serviert auf Eiswürfeln", "Ohne Eis, bei Raumtemperatur", "Mit zerstoßenem Eis (Crushed Ice)", "Mit einer Eiskugel"], exp: "'On the rocks' bedeutet, dass der Cocktail direkt über Eiswürfeln im Glas serviert wird." },
+      { q: "Was ist 'Fat Washing'?", a: ["Eine Spirituose mit Fett infundieren, um Geschmack zu verleihen", "Das Glas mit Fett reinigen", "Eine Filtrationstechnik mit Butter", "Kokosöl zum Cocktail hinzufügen"], exp: "Fat Washing ist eine Technik, bei der Fett (Butter, Speck etc.) mit einer Spirituose gemischt, eingefroren und dann gefiltert wird. Das Aroma bleibt zurück." },
+      { q: "Was bedeutet 'neat' bei einer Bestellung?", a: ["Die Spirituose pur, ohne Eis oder Mixer", "Mit ein wenig Wasser", "Eiskalt, aber ohne Eis", "Mit einer Prise Salz"], exp: "'Neat' bedeutet die Spirituose so wie sie ist: ungekühlt, ohne Eis, Wasser oder andere Zutaten." },
+      { q: "Was ist der Zweck von 'Rolling'?", a: ["Vorsichtiges Mischen durch Umgießen zwischen zwei Gefäßen", "Schütteln mit kreisender Bewegung", "Den Shaker über die Bar rollen", "Über einen Eisstein gießen"], exp: "Beim Rolling wird der Cocktail mehrfach vorsichtig von einem Behälter in den anderen gegossen, um ihn mit minimaler Verdünnung zu mischen." },
+      { q: "Was bedeutet 'Expressing' einer Zitruszeste?", a: ["Zeste über dem Glas drehen, um ätherische Öle freizusetzen", "Den Saft aus der Frucht pressen", "Die Schale über den Drink reiben", "Die Schale am Glas verbrennen"], exp: "Expressing bedeutet das Knicken/Drehen der Schale über dem Drink, damit die aromatischen Öle auf die Oberfläche sprühen." },
+      { q: "Wie viele Sekunden dauert es etwa, einen Cocktail im Shaker richtig zu kühlen?", a: ["10-15 Sekunden", "30-45 Sekunden", "5 Sekunden", "60 Sekunden"], exp: "Kräftiges Schütteln für 10-15 Sekunden reicht aus, um die richtige Kühlung und Verdünnung zu erreichen." }
     ]
   },
-    {
+  {
     id: 4,
-    title: "Gläser & Barwerkzeuge",
-    subtitle: "Das Equipment des Barkeepers",
+    title: "Gläser & Werkzeuge",
+    subtitle: "Das Equipment des Bartenders",
     icon: "🫗",
     color: "#27ae60",
     questions: [
-      { q: "Welches Glas wird für einen klassischen Martini verwendet?", a: ["Martiniglas", "Champagnerflöte", "Ballonglas", "Highballglas"], exp: "Der Martini wird in einem klassischen Cocktailglas serviert." },
-      { q: "Was ist ein Jigger?", a: ["Messbecher für genaue Mengen", "Feinsieb", "Barslöffel", "Shaker"], exp: "Ein Jigger ist das Standard-Messwerkzeug im Barbereich." },
-      { q: "Wofür wird ein Hawthorne Strainer verwendet?", a: ["Zum Abseihen von Eis und Fruchtstücken", "Zum Messen", "Zum Eis hinzufügen", "Zum Rühren"], exp: "Er hält Eis und feste Bestandteile zurück." },
-      { q: "Unterschied zwischen Flöte und Coupe?", a: ["Flöte erhält Kohlensäure besser", "Coupe nur für Champagner", "Kein Unterschied", "Flöte hat mehr Volumen"], exp: "Flöten erhalten die Kohlensäure besser." },
-      { q: "Standard Shotgröße im UK?", a: ["25 ml oder 35 ml", "20 ml", "50 ml", "30 ml"], exp: "In UK sind 25 ml üblich." },
-      { q: "Wofür wird ein Muddler verwendet?", a: ["Zutaten zerdrücken", "Rühren", "Messen", "Dekorieren"], exp: "Zum Zerdrücken von Früchten und Kräutern." },
-      { q: "Funktion eines Barslöffels?", a: ["Rühren und kleine Mengen messen", "Dekoration", "Zerdrücken", "ABV messen"], exp: "Zum Rühren und Dosieren." },
-      { q: "Was ist ein Boston Shaker?", a: ["Zweiteiliger Shaker", "Dreiteilig", "Für zwei Personen", "Für heiße Drinks"], exp: "Besteht aus zwei Teilen (Tin + Glas oder Tin)." },
-      { q: "In welchem Glas wird Cuba Libre serviert?", a: ["Highballglas", "Old Fashioned", "Martini", "Ballonglas"], exp: "Ein klassischer Longdrink im Highball." },
-      { q: "Was ist ein Julep Strainer?", a: ["Metallsieb ohne Feder", "Kleiner Hawthorne", "Feinsieb", "Shakerdeckel"], exp: "Wird im Rührglas verwendet." }
+      { q: "Welches Glas wird für einen klassischen Martini verwendet?", a: ["Martini-Glas (Cocktailschale)", "Champagnerflöte", "Ballonglas", "Highball-Glas"], exp: "Der Martini wird in einer Cocktailschale oder einem Martini-Glas mit der ikonischen V-Form und langem Stiel serviert." },
+      { q: "Was ist ein Jigger?", a: ["Ein Messbecher für exakte Mengen", "Ein feinmaschiges Sieb", "Ein langer Barlöffel", "Ein kleiner Shaker-Typ"], exp: "Ein Jigger ist das Standard-Messwerkzeug hinter der Bar, meist mit zwei Seiten (z.B. 2cl und 4cl)." },
+      { q: "Wofür wird ein Hawthorne-Strainer verwendet?", a: ["Abseihen von Drinks, wobei Eis und Fruchtstücke durch eine Feder zurückgehalten werden", "Messen des Volumens", "Eis ins Glas geben", "Zutaten im Shaker umrühren"], exp: "Der Hawthorne-Strainer hat eine Metallfeder, die Eis und Kräuter beim Ausgießen im Shaker zurückhält." },
+      { q: "Was ist der Unterschied zwischen einer Flöte (Flute) und einer Schale (Coupe)?", a: ["Die Flöte erhält die Kohlensäure besser; die Schale ist flach und breit", "Die Schale ist für Champagner; die Flöte für Sekt", "Sie sind austauschbar", "Die Flöte hat mehr Fassungsvermögen"], exp: "Die Flöte verlängert den Weg der Perlen und hält das Gas; die Coupe ist retro, breit und lässt Aromen zu, verliert aber schnell Kohlensäure." },
+      { q: "Was ist die Standardgröße für einen 'Shot' in Großbritannien?", a: ["25 ml oder 35 ml", "20 ml", "50 ml", "30 ml"], exp: "Im UK ist ein Standard-Shot 25 ml (oder 35 ml in Schottland), kann aber je nach Betrieb variieren." },
+      { q: "Wofür wird ein Muddler (Stößel) verwendet?", a: ["Zerdrücken von Früchten, Kräutern und Zucker im Glas", "Umrühren des Cocktails", "Abmessen von Zutaten", "Garnieren des Glasrands"], exp: "Ein Muddler aus Holz, Kunststoff oder Stahl dient dazu, Säfte und Öle aus frischen Zutaten freizusetzen." },
+      { q: "Was ist die Hauptfunktion eines langen Barlöffels?", a: ["Rühren von Cocktails und Abmessen kleiner Mengen", "Nur Dekoration", "Dient als kleiner Stößel", "Messen des Alkoholgehalts"], exp: "Der lange Löffel ermöglicht das Rühren in hohen Gläsern ohne Spritzer; sein Volumen (ca. 5ml) dient oft als Maßeinheit (BL)." },
+      { q: "Was ist ein 'Boston Shaker'?", a: ["Ein zweiteiliges System: Metallbecher + Glas oder zweiter Becher", "Ein dreiteiliger Shaker mit integriertem Sieb", "Ein Shaker für zwei Personen", "Ein spezieller Shaker für heiße Cocktails"], exp: "Der Boston Shaker besteht aus zwei Teilen, die ineinander verkeilt werden – ideal für schnelles Arbeiten." },
+      { q: "In welchem Glas wird ein Cuba Libre serviert?", a: ["Highball-Glas", "Old Fashioned Glas", "Martini-Glas", "Ballonglas"], exp: "Der Cuba Libre (Rum, Cola, Limette) wird in einem Highball-Glas (Longdrinkglas) mit ca. 250-350 ml serviert." },
+      { q: "Was ist ein Julep-Strainer?", a: ["Ein gelochtes Metallsieb ohne Feder für Rührgläser", "Ein kleinerer Hawthorne-Strainer", "Ein feines Sieb für Fruchtfleisch", "Der Deckel eines Shakers"], exp: "Der Julep-Strainer ist ein einfaches, gelochtes Sieb, das perfekt in ein Rührglas passt." }
     ]
   },
-
   {
     id: 5,
-    title: "Cocktailgeschichte",
+    title: "Cocktail-Geschichte",
     subtitle: "Ursprünge & Legenden",
     icon: "📜",
     color: "#8e44ad",
     questions: [
-      { q: "Wann wurde das erste Cocktailbuch veröffentlicht?", a: ["1862", "1920", "1880", "1910"], exp: "Jerry Thomas veröffentlichte 1862 das erste Cocktailbuch." },
-      { q: "Wie lange dauerte die Prohibition in den USA?", a: ["1920 bis 1933", "1915 bis 1930", "1925 bis 1940", "1910 bis 1925"], exp: "Die Prohibition dauerte von 1920 bis 1933." },
-      { q: "Wo erschien das Wort 'Cocktail' erstmals?", a: ["New Yorker Zeitung 1806", "London Times", "Paris Zeitung", "Boston Globe"], exp: "Erstmals 1806 in einer New Yorker Zeitung." },
-      { q: "Wer schrieb 'The Savoy Cocktail Book'?", a: ["Harry Craddock", "Jerry Thomas", "Dick Bradsell", "Dale DeGroff"], exp: "Harry Craddock veröffentlichte es 1930." },
-      { q: "In welchem Hotel wurde der Singapore Sling erfunden?", a: ["Raffles Hotel", "Marina Bay Sands", "Fullerton", "Capella"], exp: "Im Raffles Hotel in Singapur." },
-      { q: "Was war 'Bathtub Gin'?", a: ["Illegal hergestellter Gin", "Cocktail mit Soda", "Gereifter Gin", "Premium Gin"], exp: "Illegal während der Prohibition hergestellt." },
-      { q: "Goldenes Zeitalter der Cocktails?", a: ["1860-1920", "1950er", "1980er", "2010er"], exp: "Die Zeit vor der Prohibition." },
-      { q: "Wer ist Jerry Thomas?", a: ["Vater des Bartendings", "Erfinder Martini", "Negroni-Erfinder", "Sommelier"], exp: "Er gilt als Vater der Mixologie." },
-      { q: "Welche Bewegung brachte Cocktails zurück?", a: ["Craft Cocktail Bewegung", "Tapas Boom", "Craft Beer", "Natural Wine"], exp: "Ab 2000er Jahren." },
-      { q: "Wo wurde Aperol Spritz populär?", a: ["Venetien", "Mailand", "Rom", "Florenz"], exp: "In Venetien, Italien." }
+      { q: "In welchem Jahr wurde das erste anerkannte Cocktail-Rezeptbuch veröffentlicht?", a: ["1862", "1920", "1880", "1910"], exp: "'The Bartender's Guide' von Jerry Thomas erschien 1862 und gilt als das erste echte Cocktailbuch." },
+      { q: "Wie lange dauerte die Prohibition in den USA?", a: ["1920 bis 1933", "1915 to 1930", "1925 to 1940", "1910 to 1925"], exp: "Die Prohibition verbot Alkohol in den USA von Januar 1920 bis Dezember 1933." },
+      { q: "Wo erschien das Wort 'Cocktail' zum ersten Mal im Druck?", a: ["The Balance, New Yorker Zeitung, 1806", "The Times (London), 1820", "Le Monde (Paris), 1815", "The Boston Globe, 1800"], exp: "Die erste schriftliche Definition von 'Cocktail' erschien am 13. Mai 1806 in der Zeitung 'The Balance and Columbian Repository'." },
+      { q: "Wer schrieb 'The Savoy Cocktail Book' (1930)?", a: ["Harry Craddock", "Jerry Thomas", "Dick Bradsell", "Dale DeGroff"], exp: "Harry Craddock, Chef-Bartender der American Bar im Savoy Hotel in London, schrieb diesen Klassiker." },
+      { q: "In welchem Hotel in Singapur wurde der Singapore Sling erfunden?", a: ["Raffles Hotel", "Marina Bay Sands", "Fullerton Hotel", "Capella Singapore"], exp: "Der Singapore Sling wurde von Ngiam Tong Boon in der Long Bar des Raffles Hotels um 1915 kreiert." },
+      { q: "Was war 'Bathtub Gin' während der Prohibition?", a: ["Illegaler hausgemachter Gin", "Ein Cocktail mit Gin und Soda", "In Fässern gelagerter Gin", "Ein hochwertiger Craft-Gin"], exp: "Bathtub Gin war minderwertiger Alkohol, der in illegalen Destillerien (oft buchstäblich in Badewannen) mit Botanicals gemischt wurde." },
+      { q: "Was gilt als das 'Goldene Zeitalter' der Cocktails?", a: ["Viktorianische Ära / Pre-Prohibition (1860-1920)", "Die 1950er-60er", "Die 1980er", "Die 2010er"], exp: "Die Ära vor der Prohibition (1860-1920) gilt als das erste Goldene Zeitalter, in dem die Grundlagen der modernen Mixologie gelegt wurden." },
+      { q: "Als wer ist Jerry Thomas in der Bar-Geschichte bekannt?", a: ["Der Vater der amerikanischen Mixologie", "Der Erfinder des Martini", "Der Schöpfer des Negroni", "Der erste US-Sommelier"], exp: "Jerry Thomas, Autor des ersten Cocktailbuchs, wird als 'Father of American Mixology' verehrt." },
+      { q: "Welche Bewegung belebte die Craft-Cocktail-Szene im frühen 21. Jahrhundert wieder?", a: ["Die Craft Cocktail / Artisan Mixology Bewegung", "Der Tapas-Bar-Boom", "Die Craft-Beer-Revolution", "Die Naturwein-Bewegung"], exp: "Ab den 2000er Jahren besann sich die Szene wieder auf klassische Techniken und frische Zutaten ('Craft Cocktail Movement')." },
+      { q: "In welcher Stadt wurde der Aperol Spritz zum modernen Trendgetränk?", a: ["Venedig / Venetien, Italien", "Mailand, Italien", "Rom, Italien", "Florenz, Italien"], exp: "Aperol wurde 1919 in Padua erfunden; der Spritz ist eine tiefe Tradition der Region Venetien." }
     ]
   },
-
   {
     id: 6,
     title: "Tropen & Rum",
@@ -105,58 +101,56 @@ export const rounds = [
     icon: "🌴",
     color: "#e67e22",
     questions: [
-      { q: "Basisspirituose eines Mojito?", a: ["Weißer Rum", "Gereifter Rum", "Cachaça", "Gin"], exp: "Der Mojito basiert auf weißem Rum." },
-      { q: "Wo wurde die Piña Colada erfunden?", a: ["Puerto Rico", "Kuba", "Jamaika", "Kolumbien"], exp: "Nationalcocktail von Puerto Rico." },
-      { q: "Was bedeutet 'Mai Tai'?", a: ["Fantastisch!", "Sonnengetränk", "Nektar", "Friedenstrunk"], exp: "Heißt 'außergewöhnlich gut'." },
-      { q: "Woraus wird Cachaça hergestellt?", a: ["Frischer Zuckerrohrsaft", "Melasse", "Mais", "Maniok"], exp: "Direkt aus Zuckerrohrsaft." },
-      { q: "Unterschied Agricole vs industrieller Rum?", a: ["Saft vs Melasse", "Mehr Alkohol", "Länger gereift", "Nur Marke"], exp: "Agricole aus frischem Saft." },
-      { q: "Cocktail mit Cachaça, Limette und Zucker?", a: ["Caipirinha", "Caipiroska", "Mojito", "Daiquiri"], exp: "Brasiliens Nationalcocktail." },
-      { q: "Was ist Falernum?", a: ["Karibischer Sirup", "Kokoslikör", "Gewürzrum", "Bitter"], exp: "Sirup mit Limette, Mandel und Gewürzen." },
-      { q: "Berühmtester Tiki-Cocktail von Trader Vic?", a: ["Mai Tai", "Zombie", "Painkiller", "Jungle Bird"], exp: "1944 erfunden." },
-      { q: "Welcher Rum im Dark 'n' Stormy?", a: ["Dunkler Bermuda-Rum", "Weißer Rum", "Jamaika Rum", "Spiced Rum"], exp: "Typisch Gosling’s." },
-      { q: "Wichtige Zutat im Jungle Bird?", a: ["Campari", "Aperol", "Pfirsichlikör", "Blue Curaçao"], exp: "Gibt Bitterkeit und Tiefe." }
+      { q: "Was ist die Basis eines Mojito?", a: ["Weißer Rum", "Gereifter Rum", "Cachaça", "Gin"], exp: "Der klassische kubanische Mojito besteht aus weißem Rum, frischer Minze, Limette, Zucker und Soda." },
+      { q: "Wo wurde die Piña Colada erfunden?", a: ["Puerto Rico", "Kuba", "Jamaika", "Kolumbien"], exp: "Die Piña Colada ist das Nationalgetränk von Puerto Rico und wurde in den 1950ern in San Juan kreiert." },
+      { q: "Was bedeutet 'Mai Tai' auf Tahitisch?", a: ["Nicht von dieser Welt / Fantastisch!", "Getränk der Sonne", "Tropischer Nektar", "Toast des Friedens"], exp: "Mai Tai bedeutet 'ausgezeichnet'. Als Trader Vic ihn testete, sagte ein Gast: 'Mai Tai, Roa Ae' (Nicht von dieser Welt, der Beste)." },
+      { q: "Woraus wird brasilianischer Cachaça hergestellt?", a: ["Frischer Zuckerrohrsaft", "Zuckerrohrmelasse", "Mais", "Maniok"], exp: "Cachaça unterscheidet sich von Rum dadurch, dass er direkt aus frischem Saft und nicht aus Melasse destilliert wird." },
+      { q: "Was ist der Unterschied zwischen Rhum Agricole und industriellem Rum?", a: ["Agricole wird aus frischem Saft destilliert; industrieller aus Melasse", "Agricole hat mehr Alkohol", "Industrieller Rum lagert länger", "Sie unterscheiden sich nur durch die Marke"], exp: "Rhum Agricole nutzt frischen Saft (grasiges Profil); industrieller Rum nutzt Melasse (süßeres Profil)." },
+      { q: "Welcher Klassiker enthält Cachaça, Limette und Zucker?", a: ["Caipirinha", "Caipiroska", "Mojito", "Daiquiri"], exp: "Die Caipirinha ist Brasiliens Nationalcocktail: Cachaça, gestoßene Limetten, weißer Zucker und Crushed Ice." },
+      { q: "Was ist Falernum?", a: ["Ein karibischer Sirup mit Limette, Mandel und Nelke", "Ein jamaikanischer Kokoslikör", "Ein Spiced Rum aus Trinidad", "Ein tropischer Bitter aus Barbados"], exp: "Falernum ist ein unverzichtbarer Sirup oder Likör für Tiki-Drinks mit Noten von Limette, Mandel und Nelken." },
+      { q: "Was ist der berühmteste Tiki-Cocktail von Trader Vic?", a: ["Mai Tai", "Zombie", "Painkiller", "Jungle Bird"], exp: "Victor Bergeron 'Trader Vic' kreierte den Mai Tai 1944 in Oakland als Hommage an karibische Aromen." },
+      { q: "Welche Rumsorte wird für einen Dark 'n' Stormy verwendet?", a: ["Dunkler Bermuda-Rum (Gosling's)", "Kubanischer weißer Rum", "Jamaikanischer gelagerter Rum", "Barbados Spiced Rum"], exp: "Der Dark 'n' Stormy ist ein Markenzeichen von Gosling's aus Bermuda: Gosling's Black Seal Rum und Ginger Beer." },
+      { q: "Was ist die essenzielle Zutat in einem 'Jungle Bird'?", a: ["Campari", "Aperol", "Pfirsichlikör", "Blue Curaçao"], exp: "Der Jungle Bird (1978, Kuala Lumpur) kombiniert dunklen Rum, Campari, Ananassaft, Limette und Sirup." }
     ]
   },
-    {
+  {
     id: 7,
     title: "Gin & Tonic",
-    subtitle: "Die perfekte Botanical-Kombination",
+    subtitle: "Das perfekte Botanical",
     icon: "🌿",
     color: "#16a085",
     questions: [
-      { q: "Was ist London Dry Gin?", a: ["Gin ohne zugesetzten Zucker, mit natürlichen Botanicals destilliert", "Nur in London hergestellt", "Zitrusbetonter Gin", "Im Fass gereift"], exp: "London Dry ist ein Stil, kein Herkunftsort." },
-      { q: "Warum schmeckt Tonic Water bitter?", a: ["Enthält Chinin", "Eichenextrakt", "Bicarbonat", "Schwefelwasser"], exp: "Chinin sorgt für die Bitterkeit." },
-      { q: "Was ist Sloe Gin?", a: ["Ginlikör mit Schlehen", "Trockener Gin", "Leichter Gin", "Schottischer Gin"], exp: "Ein süßer Likör aus Schlehen." },
-      { q: "Unterschied Old Tom vs London Dry?", a: ["Old Tom ist süßer", "Mehr Botanicals", "Mehr Alkohol", "Schottisch"], exp: "Old Tom ist historisch süßer." },
-      { q: "Cocktail mit Gin, Zitrone, Zucker und Soda?", a: ["Tom Collins", "Gimlet", "Southside", "Aviation"], exp: "Ein klassischer Longdrink." },
-      { q: "Was ist Navy Strength Gin?", a: ["Mind. 57% Alkohol", "Im Fass gereift", "Nur Marineproduktion", "Mit Salz"], exp: "Historische Marine-Stärke." },
-      { q: "Was ist typisch für spanischen Gin Tonic?", a: ["Viele Botanicals", "Lavendel", "Pfeffer", "Kardamom"], exp: "Große Gläser und Garnishes." },
-      { q: "Welches Land konsumiert am meisten Gin pro Kopf?", a: ["Philippinen", "UK", "Spanien", "USA"], exp: "Philippinen führen weltweit." },
-      { q: "IBA Cocktail mit Gin und Cassis?", a: ["Keiner", "Gimlet", "Clover Club", "Bee's Knees"], exp: "Aviation enthält Veilchenlikör, nicht Cassis." },
-      { q: "Was ist Jenever?", a: ["Vorläufer von Gin", "Gewürzgin", "Aquavit", "Fassgin"], exp: "Malziger und weicher als Gin." }
+      { q: "Was ist London Dry Gin?", a: ["Ein Gin-Stil ohne Zuckerzusatz, destilliert mit natürlichen Botanicals", "Gin, der nur in London hergestellt wird", "Gin mit überwiegend Zitrusnoten", "Im Fass gelagerter Gin"], exp: "London Dry ist ein Stil (keine Herkunft), der eine Destillation mit natürlichen Zutaten und fast keinen Zuckerzusatz vorschreibt." },
+      { q: "Warum schmeckt Tonic Water bitter?", a: ["Es enthält Chinin, ursprünglich gegen Malaria", "Es enthält Eichenrindenextrakt", "Wegen des hohen Bikarbonatgehalts", "Es wird mit schwefelhaltigem Wasser hergestellt"], exp: "Chinin ist ein Alkaloid aus der Chinarinde; britische Soldaten in Indien nutzten es zur Malaria-Prophylaxe." },
+      { q: "Was ist Sloe Gin?", a: ["Ein Gin-Likör aus Schlehenbeeren", "Ein trockener Gin ohne Extra-Botanicals", "Ein alkoholarmer Gin", "Ein schottischer Craft-Gin"], exp: "Sloe Gin wird durch Mazeration von Schlehen in Gin und Zucker hergestellt; er ist süß, fruchtig und rot." },
+      { q: "Was ist der Unterschied zwischen Old Tom Gin und London Dry?", a: ["Old Tom ist etwas süßer; London Dry ist trocken", "Old Tom hat mehr Botanicals", "London Dry hat mehr Alkohol", "Old Tom stammt aus Schottland"], exp: "Old Tom Gin war im 18. Jh. beliebt und ist die Brücke zwischen dem malzigen Genever und dem trockenen London Dry." },
+      { q: "Welcher Klassiker enthält Gin, Zitronensaft, Zucker und Soda?", a: ["Tom Collins", "Gimlet", "Southside", "Aviation"], exp: "Der Tom Collins ist ein erfrischender Longdrink: Gin, Zitrone, Zuckersirup und Soda." },
+      { q: "Was macht 'Navy Strength Gin' besonders?", a: ["Er hat einen Alkoholgehalt von mindestens 57% Vol.", "Er reift in Marine-Fässern", "Er wird nur für die Admiralität hergestellt", "Er enthält Meersalz"], exp: "Navy Strength (57%) war die Stärke, bei der verschütteter Gin das Schießpulver auf Schiffen nicht unbrauchbar machte." },
+      { q: "Was ist typisch für den 'Spanish Style' Gin & Tonic?", a: ["Große Ballongläser, viel Eis und passende Botanicals", "Lavendel aus der Provence", "Nur rosa Pfefferkörner", "Grüner Kardamom"], exp: "Spanien löste die Gin-Tonic-Renaissance aus, indem man Copa-Gläser und auf die Botanicals abgestimmte Garnituren einführte." },
+      { q: "Welches Land hat den höchsten Gin-Verbrauch pro Kopf?", a: ["Philippinen", "Großbritannien", "Spanien", "USA"], exp: "Die Philippinen sind der weltweit größte Gin-Markt pro Kopf, dominiert von der Marke Ginebra San Miguel." },
+      { q: "Welcher IBA-Cocktail enthält Gin, Zitronensaft und Crème de Violette?", a: ["Aviation", "Gimlet", "Clover Club", "Bee's Knees"], exp: "Der Aviation enthält Gin, Crème de Violette (Veilchenlikör), Maraschino und Zitrone." },
+      { q: "Was ist Jenever (Genever)?", a: ["Der holländische Vorläufer von Gin, malziger und vollmundiger", "Ein deutscher Gewürzgin", "Ein holländischer Aquavit", "In Holland gereifter Gin"], exp: "Jenever ist der historische Vorfahre des Gin. Englische Soldaten nannten ihn im 17. Jh. 'Dutch Courage'." }
     ]
   },
-
   {
     id: 8,
     title: "Whisky & Bourbon",
-    subtitle: "Die Noblesse der Spirituosen",
+    subtitle: "Die Vornehmheit der Destillate",
     icon: "🥃",
     color: "#922b21",
     questions: [
-      { q: "Was bedeutet 'Single Malt'?", a: ["Eine Destillerie, gemälzte Gerste", "Einmal destilliert", "Ein Fass", "Nur Highlands"], exp: "Single Malt stammt aus einer Destillerie." },
-      { q: "Welcher US-Staat produziert 90% Bourbon?", a: ["Kentucky", "Tennessee", "Indiana", "Texas"], exp: "Kentucky ist das Zentrum." },
-      { q: "Was ist der 'Angel’s Share'?", a: ["Verdunsteter Alkohol im Fass", "Anteil des Destillateurs", "Erster Schnitt", "Rest im Kessel"], exp: "Verdunstung während Lagerung." },
-      { q: "Region für torfigen Whisky?", a: ["Islay", "Speyside", "Highlands", "Lowlands"], exp: "Islay ist berühmt für Rauchigkeit." },
-      { q: "Was unterscheidet Tennessee Whiskey?", a: ["Holzkohlefilterung", "Nur Herkunft", "Mehr Mais", "Nur Marke"], exp: "Lincoln County Process." },
-      { q: "Cocktail mit Rye, Wermut, Bitters?", a: ["Manhattan", "Old Fashioned", "Sazerac", "Whisky Sour"], exp: "Klassischer Manhattan." },
-      { q: "Was bedeutet 'Blended'?", a: ["Mischung verschiedener Whiskys", "Mit Wasser gemischt", "Verschiedene Jahre", "Verschiedene Hölzer"], exp: "Blend aus Malt und Grain." },
-      { q: "Was ist doppelte Destillation?", a: ["Zweifach gebrannt", "Zwei Fässer", "Zwei Destillate", "Zwei Gärungen"], exp: "Standard bei Scotch." },
-      { q: "Cocktail mit Bourbon, Zucker, Bitters?", a: ["Old Fashioned", "Whisky Sour", "Mint Julep", "Boulevardier"], exp: "Einer der ältesten Cocktails." },
-      { q: "Was zeichnet japanischen Whisky aus?", a: ["Präzision und Balance", "Nur Fuji-Wasser", "Kirschholz", "Reis"], exp: "Inspiriert von Schottland." }
+      { q: "Was bedeutet 'Single Malt' bei Scotch Whisky?", a: ["Aus einer einzigen Brennerei und aus gemälzter Gerste", "Nur einmal destilliert", "Aus einem einzigen unverschnittenen Fass", "Nur in den Highlands produziert"], exp: "Single Malt kommt aus einer einzigen Destillerie und wird ausschließlich aus gemälzter Gerste und Wasser hergestellt." },
+      { q: "Welcher US-Bundesstaat produziert über 90% des weltweiten Bourbons?", a: ["Kentucky", "Tennessee", "Indiana", "Texas"], exp: "Kentucky ist das Herz des Bourbons, Heimat von Marken wie Jim Beam, Buffalo Trace und Maker's Mark." },
+      { q: "Was ist der 'Angel's Share'?", a: ["Der Anteil an Alkohol, der während der Lagerung verdunstet", "Der Anteil, den der Brennmeister erhält", "Der Vorlauf der Destillation", "Die Flüssigkeit, die im Kessel bleibt"], exp: "Angel's Share (Schluck der Engel) nennt man den Teil, der jährlich (ca. 2-5%) durch die Holzporen des Fasses verdunstet." },
+      { q: "Welche schottische Region ist berühmt für torfige, rauchige Whiskys?", a: ["Islay", "Speyside", "Highlands", "Lowlands"], exp: "Islay ist bekannt für intensiv rauchige Whiskys wie Laphroaig, Ardbeg oder Lagavulin." },
+      { q: "Was unterscheidet Tennessee Whiskey von Bourbon?", a: ["Tennessee nutzt den 'Lincoln County Process' (Ahornkohle-Filterung)", "Tennessee wird in Tennessee und Bourbon in Kentucky gemacht", "Tennessee hat mehr Mais", "Sie unterscheiden sich nur im Namen"], exp: "Tennessee Whiskey wird vor der Lagerung langsam durch Ahornholzkohle gefiltert, was ihn besonders mild macht." },
+      { q: "Welcher Klassiker nutzt Rye Whiskey, süßen Wermut und Angostura?", a: ["Manhattan", "Old Fashioned", "Sazerac", "Whisky Sour"], exp: "Der Manhattan ist ein Klassiker: Rye oder Bourbon, süßer Wermut und Bitters, serviert mit einer Kirsche." },
+      { q: "Was bedeutet 'Blended' beim Whisky?", a: ["Mischung aus Malts und/oder Grains verschiedener Brennereien", "Mischung mit Wasser vor der Abfüllung", "Whisky aus verschiedenen Reifejahren", "In verschiedenen Holzarten gereift"], exp: "Blended Whisky kombiniert Destillate verschiedener Brennereien für einen konstanten Geschmack (z.B. Johnnie Walker)." },
+      { q: "Was ist 'Double Distillation' bei Scotch?", a: ["Zweifache Destillation in Kupferkesseln für mehr Reinheit", "Lagerung in zwei Fassarten", "Mischung zweier Destillate", "Gärung in zwei Phasen"], exp: "Die meisten Single Malts werden zweifach in Pot Stills destilliert, um Aromen zu konzentrieren und Unreinheiten zu entfernen." },
+      { q: "Welcher Cocktail enthält Bourbon, Zucker, Angostura und Orangenzeste?", a: ["Old Fashioned", "Whisky Sour", "Mint Julep", "Boulevardier"], exp: "Der Old Fashioned ist einer der ältesten Drinks: Zucker, Bitters, ein Spritzer Wasser, Bourbon oder Rye und Orange." },
+      { q: "Was macht japanischen Whisky besonders?", a: ["Präzision, Balance und schottische Technik mit eigenem Charakter", "Nur Wasser vom Berg Fuji", "Immer Reifung in Kirschholz", "Wird ausschließlich aus Reis gemacht"], exp: "Japanischer Whisky kombiniert schottische Tradition mit dem japanischen Streben nach Harmonie und Perfektion." }
     ]
   },
-
   {
     id: 9,
     title: "Moderne Mixologie",
@@ -164,38 +158,37 @@ export const rounds = [
     icon: "⚗️",
     color: "#1abc9c",
     questions: [
-      { q: "Was ist ein Aperol Spritz?", a: ["Aperol, Prosecco, Soda", "Campari, Wein", "Gin, Aperol", "Aperol, Wermut"], exp: "3-2-1 Rezept." },
-      { q: "Was ist molekulare Mixologie?", a: ["Wissenschaftliche Cocktailtechnik", "Nur Moleküle", "Ohne Eis", "Nur Wasser"], exp: "Techniken aus der Küche." },
-      { q: "Was ist ein Milk Punch?", a: ["Mit Milch geklärt", "Mit Milch serviert", "Milchshake", "Longdrink"], exp: "Klarer Cocktail durch Klärung." },
-      { q: "Was ist ein Shrub?", a: ["Essigsirup", "Minze", "Kräuteralkohol", "Ferment"], exp: "Säurequelle ohne Zitrus." },
-      { q: "Was ist 'Low & No'?", a: ["Wenig/kein Alkohol", "Wenig Zucker", "Wenige Zutaten", "Billig"], exp: "Trend zu alkoholfreien Drinks." },
-      { q: "Was ist Umami?", a: ["Herzhafter Geschmack", "Bitter", "Balance", "Alge"], exp: "Fünfte Geschmacksrichtung." },
-      { q: "Was ist ein Batch Cocktail?", a: ["Vorgemischt", "Ein Spirit", "Mehrschichtig", "Geteilt"], exp: "Für schnellen Service vorbereitet." },
-      { q: "Was ist die Nitro-Technik?", a: ["Stickstoff für Textur", "N2O", "Trockeneis", "Carbon"], exp: "Cremige Textur durch Stickstoff." },
-      { q: "Was ist Paper Plane?", a: ["Gleiche Teile Cocktail", "Gin-Drink", "Bourbon Mix", "Rye Drink"], exp: "Perfekte Balance." },
-      { q: "Was bedeutet Terroir?", a: ["Einfluss von Herkunft", "Reifung", "Wasser", "Ernte"], exp: "Einfluss von Boden und Klima." }
+      { q: "Was ist ein Aperol Spritz?", a: ["Aperol, Prosecco und Soda mit Orange", "Campari, Weißwein und Limette", "Aperol, Gin und Soda", "Aperol, Wermut und Eis"], exp: "Das Rezept folgt der 3-2-1 Regel: 3 Teile Prosecco, 2 Teile Aperol, 1 Teil Soda." },
+      { q: "Was ist molekulare Mixologie?", a: ["Anwendung von Wissenschaft und Gastronomietechniken auf Cocktails", "Mischen von reinen Alkoholmolekülen", "Eisfreie Cocktails durch Kryotechnik", "Cocktails nur aus Mineralwasser"], exp: "Hier werden Techniken wie Sphärisierung, Schäume oder flüssiger Stickstoff genutzt, um neue Texturen zu schaffen." },
+      { q: "Was ist ein 'Milk-Clarified' Cocktail?", a: ["Ein mit Milch geklärter Drink für eine seidige Textur", "Ein Drink, dem am Ende Frischmilch zugefügt wird", "Ein Smoothie aus Cocktail und Milch", "Ein Longdrink mit Magermilch"], exp: "Bei der Klärung fangen Milcheiweiße Trübstoffe ab. Das Ergebnis ist ein glasklarer, milder Drink (Milk Punch)." },
+      { q: "Was ist ein 'Shrub'?", a: ["Ein Sirup aus Essig, Früchten und Zucker", "Eine Art gemahlene Minze", "In Alkohol mazerierte Kräuter", "Fermentierter Fruchtsaft"], exp: "Ein Shrub bringt komplexe Säure und Frucht in den Drink, ohne auf Zitrusfrüchte angewiesen zu sein." },
+      { q: "Was ist die 'Low and No' Bewegung?", a: ["Trend zu alkoholarmer oder alkoholfreier Mixologie", "Cocktails mit wenig oder keinem Zucker", "Reduzierung der Zutaten auf ein Minimum", "Günstige Drinks ohne Marke"], exp: "Dieser Trend reagiert auf die Nachfrage nach gesünderen Alternativen und moderatem Konsum." },
+      { q: "Was bedeutet 'Umami' im Kontext von Cocktails?", a: ["Der fünfte Geschmack (herzhaft), der Tiefe verleiht", "Ein japanischer Bitter-Typ", "Technik zum Ausgleich von süß und bitter", "Ein Destillat aus Algen"], exp: "Umami wird durch Zutaten wie Sojasauce, Pilze oder Tomaten erreicht, um dem Drink Herzhaftigkeit zu geben." },
+      { q: "Was ist ein 'Batch Cocktail'?", a: ["Ein in großen Mengen vorab zubereiteter Drink", "Ein Drink mit nur einer Spirituose", "Ein Drink mit sichtbaren Schichten", "Ein Drink zum Teilen"], exp: "Batches werden vor dem Service gemischt und verdünnt, um in Stoßzeiten schnell und konstant servieren zu können." },
+      { q: "Was ist die 'Nitro'-Technik?", a: ["Verwendung von flüssigem Stickstoff für Textur oder Kälte", "Infundieren mit Lachgas (N2O)", "Verwendung von Trockeneis", "Ultraschnelle Kühlung mit Kohle"], exp: "Stickstoff sorgt für extreme Kälte (Dampfeffekt) oder bei Zapfanlagen für eine cremige Textur (wie bei Guinness)." },
+      { q: "Was charakterisiert den 'Paper Plane' Cocktail?", a: ["Gleiche Teile Bourbon, Aperol, Amaro Nonino und Zitronensaft", "Gin, Aperol, Prosecco und Zitrone", "Bourbon, Triple Sec, Campari und Limette", "Rye, Fernet, Aperol und Orangensaft"], exp: "Der Paper Plane (Sam Ross, 2008) ist ein modernes Meisterwerk der Balance aus vier gleichen Teilen." },
+      { q: "Was bedeutet 'Terroir' bei Spirituosen?", a: ["Einfluss von Geografie, Klima und Boden auf den Geschmack", "Die Lagertechnik vor Ort", "Nur die Wasserqualität", "Die Erntemethode"], exp: "Wie beim Wein prägt die Umgebung (Boden, Mikrobiom) den Rohstoff, besonders bei Tequila oder Rhum Agricole." }
     ]
   },
-    {
+  {
     id: 10,
     title: "Grand Master",
     subtitle: "Die letzte Herausforderung",
     icon: "👑",
     color: "#d4a017",
     questions: [
-      { q: "Was ist ein Negroni Sbagliato?", a: ["Mit Prosecco statt Gin", "Mit Wodka", "Mit Tonic", "Ohne Campari"], exp: "„Sbagliato“ bedeutet Fehler – Prosecco statt Gin." },
-      { q: "IBA Daiquiri Verhältnis?", a: ["6 cl Rum, 2 cl Triple Sec, 1.5 cl Limette", "3/3/1", "4.5/2.5/1.5", "2/1/0.5"], exp: "Offizielles IBA Rezept." },
-      { q: "Cocktail mit Rye und Cognac?", a: ["Vieux Carré", "Manhattan", "Sidecar", "Sazerac"], exp: "Klassiker aus New Orleans." },
-      { q: "Was ist Hanky Panky?", a: ["Gin, Wermut, Fernet", "Wodka, Kirsche", "Bourbon, Aperol", "Gin, Campari"], exp: "Von Ada Coleman erfunden." },
-      { q: "Was ist Crème de Violette?", a: ["Veilchenlikör", "Dessertcreme", "Beerensirup", "Bitter"], exp: "Gibt dem Aviation Farbe." },
-      { q: "Naked and Famous Zutaten?", a: ["Mezcal, Aperol, Chartreuse, Limette", "Tequila Mix", "Gin Mix", "Rye Mix"], exp: "Gleiche Teile Cocktail." },
-      { q: "Was ist Sphärifikation?", a: ["Flüssige Kugeln", "Eiskugel", "Schokolade", "Eisform"], exp: "Molekulare Technik." },
-      { q: "Wann ist Wermut extra dry?", a: ["<30g Zucker/L", "1 Monat", ">20%", "Ohne Botanicals"], exp: "Sehr wenig Zucker." },
-      { q: "Was macht Clover Club besonders?", a: ["Eiweißschaum", "4 Spirituosen", "4 Gläser", "4 Schichten"], exp: "Schaumige Textur." },
-      { q: "Erste Single Malt global?", a: ["Glenfiddich", "Macallan", "Laphroaig", "Balvenie"], exp: "1963 international vermarktet." }
+      { q: "Was ist ein Negroni Sbagliato?", a: ["Er nutzt Prosecco statt Gin; 'sbagliato' heißt 'falsch'", "Er nutzt Wodka statt Gin", "Er wird mit Gin Tonic aufgefüllt", "Ein Negroni ohne Campari"], exp: "Ein Bartender in der Bar Basso (Mailand) griff versehentlich zur Prosecco- statt zur Ginflasche – ein Geniestreich." },
+      { q: "Was ist das exakte IBA-Verhältnis für einen Daiquiri?", a: ["6 cl weißer Rum, 2 cl Zuckersirup, 1.5 cl Limettensaft", "3 cl Rum, 3 cl Limette, 1 cl Zucker", "4.5 cl Rum, 2.5 cl Limette, 1.5 cl Sirup", "2 oz Rum, 1 oz Limette, 0.5 oz Sirup"], exp: "Das offizielle IBA-Rezept: 6 cl weißer Rum, 2 cl Zuckersirup und 1,5 cl frischer Limettensaft." },
+      { q: "Welcher Cocktail enthält sowohl Rye Whiskey als auch Cognac?", a: ["Vieux Carré", "Manhattan", "Sidecar", "Sazerac"], exp: "Der Vieux Carré aus New Orleans kombiniert beide Spirituosen mit Wermut, Bénédictine und Bitters." },
+      { q: "Was ist ein Hanky Panky?", a: ["Gin, süßer Wermut und Fernet-Branca", "Wodka, Kirschlikör und Soda", "Bourbon, Aperol und Angostura", "Gin, Campari und Grapefruitsaft"], exp: "Erfunden von Ada Coleman im Savoy (ca. 1900): Gin, süßer Wermut und ein Spritzer Fernet." },
+      { q: "Was ist Crème de Violette?", a: ["Ein Veilchenlikör, essenziell für den Aviation", "Eine Dessertcreme mit Blumengeschmack", "Ein französischer Waldbeerensirup", "Ein österreichischer Veilchenbitter"], exp: "Dieser Likör gibt dem Aviation seine charakteristische blassblaue/lilane Farbe." },
+      { q: "Was sind die vier Zutaten des 'Naked and Famous'?", a: ["Mezcal, Aperol, Gelber Chartreuse und Limette zu gleichen Teilen", "Tequila, Campari, Cointreau und Limette", "Mezcal, Aperol, Fernet und Zitrone", "Gin, Gelber Chartreuse, Aperol und Grapefruit"], exp: "Kreiert 2011 von Joaquín Simó: Ein moderner Klassiker aus gleichen Teilen." },
+      { q: "Was ist 'Sphärisierung' in einem Cocktail?", a: ["Erzeugung von Flüssigkeitsperlen, die im Mund zerplatzen", "Servieren des Drinks in einer Eiskugel", "Präsentation in einer Schokoladenkugel", "Verwendung von 60mm Eiskugeln"], exp: "Mithilfe von Alginat und Kalzium entstehen Kapseln mit flüssigem Kern." },
+      { q: "Wann gilt ein Wermut als 'Extra Dry'?", a: ["Bei einem Zuckergehalt von weniger als 30g pro Liter", "Wenn er weniger als 1 Monat lagert", "Bei über 20% Alkoholgehalt", "Wenn er keine süßen Kräuter enthält"], exp: "Extra Dry Wermut ist die trockenste Kategorie mit sehr wenig Restzucker." },
+      { q: "Was macht den 'Clover Club' besonders?", a: ["Er enthält Eiweiß für eine schaumige Textur", "Er nutzt vier verschiedene Spirituosen", "Er wird in vier Gläsern gleichzeitig serviert", "Er hat vier farbige Schichten"], exp: "Gin, Zitrone, Himbeersirup und Eiweiß ergeben einen pinken, cremigen Klassiker." },
+      { q: "Welche schottische Destillerie füllte als erste Single Malt für den Weltmarkt ab?", a: ["Glenfiddich (1963)", "Macallan (1970)", "Laphroaig (1950)", "Balvenie (1973)"], exp: "Glenfiddich revolutionierte 1963 die Industrie, indem sie Single Malt als eigene Marke (statt nur für Blends) vermarkteten." }
     ]
   },
-
   {
     id: 11,
     title: "IBA Organisation & Service",
@@ -203,214 +196,211 @@ export const rounds = [
     icon: "🏛️",
     color: "#2c3e50",
     questions: [
-      { q: "Hauptmission der IBA?", a: ["Bartender verbinden & ausbilden", "Alkohol regulieren", "Nur Wettbewerbe", "Bars zertifizieren"], exp: "Fokus auf Ausbildung und Community." },
-      { q: "IBA Werte?", a: ["Einheit, Leidenschaft, Vermächtnis", "Tradition, Innovation", "Wissen, Profit", "Kreativität"], exp: "Offizielle Werte." },
-      { q: "Kurse im IBA Pyramidensystem?", a: ["10", "5", "8", "12"], exp: "Strukturierte Ausbildung." },
-      { q: "Ziel der IBA Academy?", a: ["Ausbildung weltweit", "Equipment verkaufen", "Lizenzieren", "Bücher"], exp: "Training und Wissen." },
-      { q: "Einsteigerkurs?", a: ["IBA Foundation Course", "Master", "Advanced", "Sommelier"], exp: "Für Anfänger." },
-      { q: "Dauer ICB Kurs?", a: ["40 Stunden", "20", "60", "80"], exp: "Praxis und Theorie." },
-      { q: "Wer darf Kurse geben?", a: ["Nach TTT Ausbildung", "Alle Mitglieder", "Nur Vorstand", "Jeder"], exp: "Mit entsprechender Qualifikation." },
-      { q: "Was ist am 24. Februar?", a: ["International Bartenders Day", "World Cocktail Day", "IBA Day", "Spirits Day"], exp: "Ehrung der Bartender." },
-      { q: "Bei Verstoß gegen Regeln?", a: ["Ausschluss möglich", "Warnung", "Wiederholung", "Strafe"], exp: "Ohne Rückerstattung." },
-      { q: "Ziel eines Bartenders?", a: ["Bestes Gasterlebnis", "Teure Drinks verkaufen", "Rezepte merken", "Schnelligkeit"], exp: "Gast steht im Mittelpunkt." }
+      { q: "Was ist die Hauptmission der IBA?", a: ["Bartender weltweit zu vernetzen, auszubilden und zu inspirieren", "Den globalen Alkoholverkauf zu regulieren", "Nur Wettbewerbe zu organisieren", "Bars zu zertifizieren"], exp: "Die Hauptmission ist die Förderung von Exzellenz im Berufsstand durch Bildung und Gemeinschaft." },
+      { q: "Was sind die Kernwerte der IBA?", a: ["Einheit, Leidenschaft, Vermächtnis", "Tradition, Innovation, Qualität", "Wissen, Service, Profit", "Kreativität, Schnelligkeit, Genauigkeit"], exp: "Die Werte 'Unity, Passion, Legacy' spiegeln das Engagement für die globale Bartending-Community wider." },
+      { q: "Wie viele Stufen hat die IBA-Ausbildungspyramide?", a: ["10", "5", "8", "12"], exp: "Die Pyramide besteht aus 10 Kursen, die einen strukturierten Bildungsweg bieten." },
+      { q: "Was ist der Zweck der IBA Academy?", a: ["Schulung und Wissensvermittlung für Bartender weltweit", "Verkauf von Bar-Equipment", "Lizensierung von Bars", "Herausgabe von Rezeptbüchern"], exp: "Die Academy soll die professionellen Standards durch fundierte Schulung erhöhen." },
+      { q: "Welcher Kurs ist für Anfänger gedacht?", a: ["IBA Foundation Course (IFC)", "IBA Master Course", "IBA Advanced Mixology", "IBA Sommelier Course"], exp: "Der IFC ist speziell für Einsteiger in den Beruf konzipiert." },
+      { q: "Wie lange dauert der ICB-Kurs?", a: ["40 Stunden", "20 Stunden", "60 Stunden", "80 Stunden"], exp: "Der ICB-Kurs umfasst 40 Stunden Theorie und Praxis." },
+      { q: "Wer darf IBA-Kurse leiten?", a: ["Absolventen des 'Train The Trainer' (TTT) Programms", "Jedes IBA-Mitglied", "Nur Vorstandsmitglieder", "Jeder mit einer Schanklizenz"], exp: "Nach dem TTT-Programm dürfen Experten, die mindestens 3 Kurse absolviert haben, lehren." },
+      { q: "Was wird am 24. Februar gefeiert?", a: ["International Bartenders Day", "World Cocktail Day", "IBA Foundation Day", "Global Spirits Day"], exp: "Der 24. Februar ehrt die Arbeit der Bartender weltweit." },
+      { q: "Was passiert bei einem Verstoß gegen den IBA-Kodex?", a: ["Ausschluss ohne Rückerstattung", "Eine Verwarnung", "Wiederholung des Kurses", "Eine Geldstrafe"], exp: "Studenten, die gegen die Verhaltensregeln verstoßen, können des Programms verwiesen werden." },
+      { q: "Was ist das primäre Ziel eines Bartenders?", a: ["Das ultimative Gasterlebnis schaffen", "Die teuersten Drinks verkaufen", "Alle Rezepte auswendig wissen", "So schnell wie möglich arbeiten"], exp: "Gastfreundschaft und Expertise dienen dazu, dem Gast einen perfekten Aufenthalt zu bereiten." }
     ]
   },
-
   {
     id: 12,
-    title: "Berühmte Bartender",
-    subtitle: "Legenden der Cocktailwelt",
+    title: "Legendäre Bartender",
+    subtitle: "Pioniere der Barwelt",
     icon: "🎩",
     color: "#7d3c98",
     questions: [
-      { q: "Was vermeiden beim Glas?", a: ["Rand berühren", "Tablett nutzen", "Polieren", "Am Stiel halten"], exp: "Hygiene ist entscheidend." },
-      { q: "Wie Gäste ansprechen?", a: ["Locker kommunizieren", "Ignorieren", "Nur Menü", "Kein Kontakt"], exp: "Interaktion verbessert Erfahrung." },
-      { q: "Wie Experience verbessern?", a: ["Empfehlungen geben", "Nur schnell servieren", "Rabatte", "Namen merken"], exp: "Fachwissen nutzen." },
-      { q: "Wer leitete Savoy Bar?", a: ["Harry Craddock", "Jerry Thomas", "DeGroff", "Bradsell"], exp: "1926–1934." },
-      { q: "Welches Buch 1930?", a: ["Savoy Cocktail Book", "Bartender Guide", "Mixing Drinks", "Vintage Cocktails"], exp: "Klassiker." },
-      { q: "Vater des Tiki?", a: ["Donn Beach", "Trader Vic", "Thomas", "Craddock"], exp: "Begründer der Tiki-Kultur." },
-      { q: "Trader Vic Cocktail?", a: ["Mai Tai", "Zombie", "Piña Colada", "Singapore Sling"], exp: "1944 erfunden." },
-      { q: "Patrick Gavin Duffy bekannt für?", a: ["Prominente bedienen", "Shaker erfinden", "Buch schreiben", "Martini"], exp: "Bekannter Bartender." },
-      { q: "Embury Verhältnis 1:2:8?", a: ["Sour", "Old Fashioned", "Martini", "Manhattan"], exp: "Klassische Struktur." },
-      { q: "Auszeichnung Policastro?", a: ["Bear of Bern", "Golden Shaker", "Medal", "IBA Award"], exp: "Prestige-Auszeichnung." }
+      { q: "Was sollten Bartender beim Umgang mit Gläsern vermeiden?", a: ["Den Glasrand berühren", "Ein Tablett benutzen", "Gläser mit einem Tuch polieren", "Gläser am Stiel halten"], exp: "Aus hygienischen Gründen darf man den Rand niemals berühren, da dort die Lippen des Gastes ansetzen." },
+      { q: "Wie sollte ein Bartender mit Gästen interagieren?", a: ["Smalltalk führen und Empfehlungen geben", "Gäste ignorieren, bis sie bestellen", "Nur über die Karte sprechen", "Interaktion vermeiden"], exp: "Ein guter Bartender schafft eine angenehme Atmosphäre durch Interaktion und persönliche Beratung." },
+      { q: "Wer leitete die American Bar im Savoy von 1926 bis 1934?", a: ["Harry Craddock", "Jerry Thomas", "Dale DeGroff", "Dick Bradsell"], exp: "Harry Craddock war eine der prägendsten Figuren der Savoy-Geschichte." },
+      { q: "Welches Buch veröffentlichte Harry Craddock 1930?", a: ["The Savoy Cocktail Book", "The Bartender's Guide", "The Fine Art of Mixing Drinks", "Vintage Spirits"], exp: "Es gilt bis heute als eine der wichtigsten Rezeptsammlungen der Welt." },
+      { q: "Wer gilt als Vater der Tiki-Kultur?", a: ["Donn Beach", "Trader Vic", "Jerry Thomas", "Harry Craddock"], exp: "Donn Beach (Ernest Gantt) eröffnete 1933 die erste Tiki-Bar." },
+      { q: "Welcher Drink wird Victor Bergeron (Trader Vic) zugeschrieben?", a: ["Mai Tai", "Zombie", "Piña Colada", "Singapore Sling"], exp: "Trader Vic kreierte den Mai Tai im Jahr 1944." },
+      { q: "Welches Verhältnis für Sours nannte David Embury 1:2:8?", a: ["Zucker : Säure : Spirituose", "Säure : Zucker : Spirituose", "Eis : Saft : Alkohol", "Wasser : Sirup : Gin"], exp: "In seinem Buch (1948) schlug er dieses sehr trockene/starke Verhältnis vor." },
+      { q: "Welche Auszeichnung erhielt Santiago Policastro?", a: ["Der Bär von Bern", "The Golden Shaker", "The Bartender's Medal", "IBA Lifetime Achievement"], exp: "Der 'Bear of Bern' ist eine prestigeträchtige Anerkennung in der Branche." }
     ]
   },
-    {
+  {
     id: 13,
-    title: "Moderne Bartender-Pioniere",
-    subtitle: "Innovatoren der zeitgenössischen Mixologie",
+    title: "Moderne Pioniere",
+    subtitle: "Innovatoren der Gegenwart",
     icon: "🌟",
     color: "#e74c3c",
     questions: [
-      { q: "Was gründete Pedro Chicote 1964?", a: ["Spanischer Barkeeper-Verband", "Cocktailschule", "Bar Academy", "Spirituosenrat"], exp: "Er gründete die Asociación de Barman Españoles." },
-      { q: "Wer ist 'King Cocktail'?", a: ["Dale DeGroff", "Jerry Thomas", "Craddock", "Gary Regan"], exp: "Bekannt für Wiederbelebung klassischer Cocktails." },
-      { q: "Wer ist Sasha Petraske?", a: ["US-Mixologe", "Wodka-Produzent", "Sommelier", "Pub-Besitzer"], exp: "Einflussreicher Bartender." },
-      { q: "Welche Bar gründete er?", a: ["Milk & Honey", "Death & Co", "PDT", "Angel's Share"], exp: "1999 in NYC." },
-      { q: "Seine Philosophie?", a: ["Weniger ist mehr", "Mehr ist mehr", "Schnelligkeit", "Innovation"], exp: "Fokus auf Qualität." },
-      { q: "Wer ist 'Dr. Cocktail'?", a: ["Ted Haigh", "Dave Arnold", "Hess", "Morgenthaler"], exp: "Experte für Cocktailgeschichte." },
-      { q: "Wofür steht Robert Hess?", a: ["Craft Cocktails", "Speed Bartending", "Molekular", "Pre-mix"], exp: "Qualität und Technik." },
-      { q: "Welche Bar eröffnete Audrey Saunders?", a: ["Pegu Club", "Milk & Honey", "Death & Co", "Employees Only"], exp: "Einflussreiche Bar in NYC." },
-      { q: "Innovation von Morgenthaler?", a: ["Barrel Aging", "Molekular", "Nitro", "Gläser"], exp: "Reifung im Fass." },
-      { q: "High-Tech von Dave Arnold?", a: ["Zentrifugen", "3D Druck", "Laser", "Ultraschall"], exp: "Innovative Techniken." }
+      { q: "Wer ist als 'King Cocktail' bekannt?", a: ["Dale DeGroff", "Jerry Thomas", "Harry Craddock", "Gary Regan"], exp: "Er belebte die klassische Bar-Kultur im Rainbow Room (New York) wieder." },
+      { q: "Wer war Sasha Petraske?", a: ["Ein einflussreicher US-Mixologe", "Ein russischer Wodka-Brenner", "Ein französischer Sommelier", "Ein britischer Pub-Besitzer"], exp: "Er prägte die moderne Speakeasy-Bewegung entscheidend mit." },
+      { q: "Welche Bar gründete Sasha Petraske 1999?", a: ["Milk & Honey", "Death & Co", "PDT", "Angel's Share"], exp: "Das 'Milk & Honey' setzte neue Maßstäbe für Qualität und Etikette." },
+      { q: "Was war Petraskes Philosophie?", a: ["Weniger ist mehr", "Mehr ist mehr", "Schnelligkeit vor Qualität", "Innovation über Tradition"], exp: "Er setzte auf Schlichtheit, beste Zutaten und makellose Technik." },
+      { q: "Wer ist als 'Dr. Cocktail' bekannt?", a: ["Ted Haigh", "Dave Arnold", "Robert Hess", "Jeffrey Morgenthaler"], exp: "Er ist berühmt für seine Forschung zu vergessenen Spirituosen und Rezepten." },
+      { q: "Welche Bar eröffnete Audrey Saunders?", a: ["The Pegu Club", "Milk & Honey", "Death & Co", "Employees Only"], exp: "Der Pegu Club war eine der einflussreichsten Bars der 2000er in New York." },
+      { q: "Wofür ist Jeffrey Morgenthaler bekannt?", a: ["Fassgelagerte Cocktails", "Molekulare Garnituren", "Stickstoff-Drinks", "Essbare Gläser"], exp: "Er popularisierte das 'Barrel-Aging' von fertig gemischten Cocktails." },
+      { q: "Welches Gerät nutzt Dave Arnold bevorzugt?", a: ["Zentrifugen", "3D-Drucker", "Laserschneider", "Ultraschallreiniger"], exp: "In seiner Bar 'Booker and Dax' nutzte er Hightech für neue Geschmackserlebnisse." }
     ]
   },
-
   {
     id: 14,
-    title: "Barbetrieb & Tools",
-    subtitle: "Ausrüstung, Hygiene & Bararten",
+    title: "Betrieb & Werkzeuge",
+    subtitle: "Equipment, Hygiene & Bar-Typen",
     icon: "🍶",
     color: "#2ecc71",
     questions: [
-      { q: "Was bedeutet 'Mise en place'?", a: ["Alles an seinem Platz", "Servierbereit", "Sauber", "Vorbereitung"], exp: "Organisation vor Service." },
-      { q: "Unterschied Garnitur vs Deko?", a: ["Geschmack vs Optik", "Gleich", "Essbar vs nicht", "Frucht"], exp: "Garnitur beeinflusst Geschmack." },
-      { q: "Hände waschen wie?", a: ["Warmwasser + Seife", "Kalt", "Nur Desinfektion", "Handtuch"], exp: "Hygienestandard." },
-      { q: "Chemikalien lagern?", a: ["Getrennt", "Neben Spirituosen", "Unter Bar", "Bei Mixern"], exp: "Sicherheitsmaßnahme." },
-      { q: "Hawthorne Strainer Zweck?", a: ["Abseihen", "Messen", "Eis zerdrücken", "Flaschen öffnen"], exp: "Filtert feste Bestandteile." },
-      { q: "Messwerkzeug?", a: ["Jigger", "Muddler", "Löffel", "Strainer"], exp: "Standardmaß." },
-      { q: "Shaker Funktion?", a: ["Kühlen und mischen", "Nur mischen", "Karbonisieren", "Filtern"], exp: "Durch Eisbewegung." },
-      { q: "Muddler Zweck?", a: ["Zerdrücken", "Rühren", "Messen", "Filtern"], exp: "Aromen extrahieren." },
-      { q: "Was ist eine Weinbar?", a: ["Fokus auf Wein", "Alle Spirituosen", "Immer Hotel", "Sommelier Pflicht"], exp: "Spezialisierung auf Wein." },
-      { q: "Dispense Bar Service?", a: ["Über Servicepersonal", "Direkt", "Automat", "App"], exp: "Nicht direkt an Gäste." }
+      { q: "Was bedeutet 'Mise en place'?", a: ["Alles an seinem Platz", "Servierbereit", "Sauber und organisiert", "Vorbereitungszeit"], exp: "Es bezeichnet die komplette Vorbereitung des Arbeitsplatzes vor Beginn des Service." },
+      { q: "Unterschied zwischen Garnish und Decoration?", a: ["Garnish beeinflusst den Geschmack; Decoration die Optik", "Es gibt keinen", "Garnish ist essbar; Decoration nicht", "Decoration ist immer Obst"], exp: "Die Garnitur ist funktional (Aroma), die Dekoration ist rein ästhetisch." },
+      { q: "Wie sollten Chemikalien gelagert werden?", a: ["Getrennt von Lebensmitteln/Flüssigkeiten", "Neben den Spirituosen", "Unter dem Tresen", "Bei den Mixern"], exp: "Chemikalien müssen strikt getrennt gelagert werden, um Kontaminationen zu vermeiden." },
+      { q: "Wozu dient ein Jigger?", a: ["Zum exakten Abmessen von Flüssigkeiten", "Zum Zerstoßen von Früchten", "Zum Umrühren", "Zum Abseihen"], exp: "Ein Jigger sichert die Konstanz der Rezepte und die Kostenkontrolle." },
+      { q: "Was ist typisch für eine Weinbar?", a: ["Fokus ausschließlich auf Weinprodukte", "Bietet alle Spirituosen an", "Ist immer in einem Hotel", "Muss einen Sommelier haben"], exp: "Das Sortiment konzentriert sich primär auf eine breite Weinauswahl." },
+      { q: "Wie funktioniert eine 'Dispense Bar'?", a: ["Getränke werden über Servicepersonal serviert", "Direktverkauf am Tresen", "Über Automaten", "Per App-Bestellung"], exp: "Eine Dispense Bar bereitet Drinks für Kellner zu, es gibt keinen direkten Gästekontakt am Tresen." }
     ]
   },
-
   {
     id: 15,
     title: "Tee, Kaffee & Zucker",
-    subtitle: "Grundlagen der Barzutaten",
+    subtitle: "Heißgetränke & Süßungsmittel",
     icon: "☕",
     color: "#6d4c41",
     questions: [
-      { q: "Synonym für Saccharid?", a: ["Kohlenhydrat", "Protein", "Fett", "Mineral"], exp: "Chemische Familie der Zucker." },
-      { q: "Häufigster Zucker?", a: ["Saccharose", "Fructose", "Glucose", "Lactose"], exp: "Haushaltszucker." },
-      { q: "Primäre Funktion von Glucose?", a: ["Energie liefern", "Geschmack", "Konservierung", "Farbe"], exp: "Grundenergiequelle." },
-      { q: "Stevia Herkunft?", a: ["Pflanzenblätter", "Zuckerrohr", "Mais", "Bienen"], exp: "Natürlicher Süßstoff." },
-      { q: "Matcha Zubereitung?", a: ["Aufschlagen mit Wasser", "Ziehzeit", "Maschine", "Pressen"], exp: "Traditionell mit Bambusbesen." },
-      { q: "Eigenschaft schwarzer Tee?", a: ["100% oxidiert", "0%", "50%", "Fermentiert"], exp: "Starker Geschmack." },
-      { q: "Ursprung Kaffee?", a: ["Äthiopien", "Brasilien", "Kolumbien", "Jemen"], exp: "Historischer Ursprung." },
-      { q: "Häufigste Kaffeesorte?", a: ["Arabica", "Robusta", "Liberica", "Excelsa"], exp: "Dominierende Sorte." },
-      { q: "Was ist Crema?", a: ["Schaum auf Espresso", "Rückstand", "Milchschaum", "Zucker"], exp: "Zeichen guter Extraktion." },
-      { q: "Was ist Ristretto?", a: ["Konzentrierter Espresso", "Doppelt", "Mit Wasser", "Cold Brew"], exp: "Intensiver Geschmack." }
+      { q: "Was ist ein Synonym für Saccharid?", a: ["Kohlenhydrat", "Protein", "Lipid", "Mineralstoff"], exp: "Saccharide bilden die chemische Familie der Kohlenhydrate (Zucker)." },
+      { q: "Welcher Zucker wird am häufigsten in Drinks genutzt?", a: ["Saccharose", "Fruktose", "Glukose", "Laktose"], exp: "Saccharose (Haushaltszucker) ist der Standard für Sirupe und Cocktails." },
+      { q: "Woraus wird Stevia gewonnen?", a: ["Blättern der Stevia-Pflanze", "Zuckerrohrwurzeln", "Maiskörnern", "Honigbienen"], exp: "Es ist ein natürlicher Süßstoff aus der in Südamerika heimischen Stevia rebaudiana." },
+      { q: "Wie wird Matcha traditionell zubereitet?", a: ["Verrühren von Pulver mit heißem Wasser", "Ziehen lassen von Blättern", "In der Kaffeemaschine", "Kaltpressung"], exp: "Matcha-Teepulver wird mit einem Bambusbesen (Chasen) schaumig geschlagen." },
+      { q: "Was ist ein Merkmal von schwarzem Tee?", a: ["100% oxidiert", "0% oxidiert", "50% oxidiert", "Fermentiert mit Bakterien"], exp: "Die vollständige Oxidation sorgt für die dunkle Farbe und das kräftige Aroma." },
+      { q: "Woher stammt Kaffee ursprünglich?", a: ["Äthiopien", "Brasilien", "Kolumbien", "Jemen"], exp: "Die Legende besagt, dass Hirten in Äthiopien die belebende Wirkung entdeckten." },
+      { q: "Was ist die am häufigsten angebaute Kaffeesorte?", a: ["Arabica", "Robusta", "Liberica", "Excelsa"], exp: "Arabica macht etwa 60-70% der weltweiten Produktion aus." },
+      { q: "Was ist die 'Crema' beim Espresso?", a: ["Die goldbraune Schaumschicht obenauf", "Der Kaffeesatz", "Zugefügter Milchschaum", "Gelöster Zucker"], exp: "Die Crema entsteht durch Druck und Öle; sie zeigt Frische und Qualität an." },
+      { q: "Was ist ein Ristretto?", a: ["Ein Espresso mit weniger Wasser (konzentrierter)", "Ein doppelter Espresso", "Ein Espresso mit extra Wasser", "Ein kalt gebrühter Espresso"], exp: "Die Wassermenge wird reduziert, was zu einem intensiveren Geschmack führt." }
     ]
   },
-    {
+  {
     id: 16,
-    title: "Service & Gästemanagement",
-    subtitle: "Professionelles Verhalten an der Bar",
-    icon: "🤝",
-    color: "#34495e",
+    title: "Destillation & Braugeschichte",
+    subtitle: "Ursprünge von Spirituosen & Bier",
+    icon: "⚗️",
+    color: "#795548",
     questions: [
-      { q: "Wichtigste Priorität eines Bartenders?", a: ["Gasterlebnis", "Gewinn", "Geschwindigkeit", "Show"], exp: "Der Gast steht immer im Mittelpunkt." },
-      { q: "Wie mit Beschwerden umgehen?", a: ["Ruhig und lösungsorientiert", "Ignorieren", "Diskutieren", "Vermeiden"], exp: "Professionelles Verhalten ist entscheidend." },
-      { q: "Was ist Upselling?", a: ["Hochwertigere Produkte empfehlen", "Rabatte geben", "Schneller servieren", "Mehr Eis"], exp: "Steigert Umsatz und Erlebnis." },
-      { q: "Warum Namen merken?", a: ["Personalisierung", "Kontrolle", "Abrechnung", "Marketing"], exp: "Verbessert Bindung zum Gast." },
-      { q: "Wie Blickkontakt nutzen?", a: ["Aufmerksamkeit zeigen", "Vermeiden", "Nur beim Kassieren", "Ignorieren"], exp: "Signalisiert Präsenz." },
-      { q: "Was ist Multitasking an der Bar?", a: ["Mehrere Aufgaben gleichzeitig", "Nur Getränke machen", "Nur kassieren", "Nur reden"], exp: "Effizienz im Service." },
-      { q: "Wie lange warten lassen?", a: ["So kurz wie möglich", "5 Minuten", "10 Minuten", "Egal"], exp: "Schneller Service ist wichtig." },
-      { q: "Was ist Körpersprache?", a: ["Nonverbale Kommunikation", "Sprache", "Musik", "Dekor"], exp: "Wichtiger Teil der Interaktion." },
-      { q: "Wie Vertrauen aufbauen?", a: ["Kompetenz zeigen", "Ignorieren", "Übertreiben", "Nur verkaufen"], exp: "Fachwissen überzeugt." },
-      { q: "Was bedeutet Diskretion?", a: ["Privatsphäre respektieren", "Alles teilen", "Ignorieren", "Notieren"], exp: "Sehr wichtig im Service." }
+      { q: "Wo fanden die frühesten Destillationen statt?", a: ["In China", "In Ägypten", "In Griechenland", "In Mesopotamien"], exp: "Früheste Belege für Destillationstechniken stammen aus dem antiken China." },
+      { q: "Was ist Destillation?", a: ["Trennen von Flüssigkeiten durch Verdampfen und Kondensieren", "Vergären von Getreide", "Filtern von Unreinheiten", "Mischen von Spirituosen"], exp: "Der Prozess nutzt unterschiedliche Siedepunkte, um Alkohol zu konzentrieren." },
+      { q: "Wer erfand das 'Alembic' (Alambic)?", a: ["Maria die Jüdin", "Jabir ibn Hayyan", "Aristoteles", "Hippokrates"], exp: "Maria die Jüdin gilt als Erfinderin dieses frühen Destillationsgeräts." },
+      { q: "Welches Metall ist am besten für die Destillation geeignet?", a: ["Kupfer", "Edelstahl", "Eisen", "Aluminium"], exp: "Kupfer entfernt Schwefelverbindungen und sorgt für einen sauberen Geschmack." },
+      { q: "Wer dokumentierte als Erster das Brauen?", a: ["Die Ägypter", "Die Griechen", "Die Römer", "Die Chinesen"], exp: "Aufzeichnungen der Ägypter belegen die Bierherstellung vor Jahrtausenden." },
+      { q: "Wer führte den Hopfen beim Brauen ein?", a: ["Deutsche Mönche", "Englische Bauern", "Belgische Brauer", "Tschechische Händler"], exp: "Mönche im Mittelalter nutzten Hopfen zur Konservierung und für die Bitterkeit." }
     ]
   },
-
   {
     id: 17,
-    title: "Wein & Schaumwein",
-    subtitle: "Eleganz im Glas",
-    icon: "🍷",
-    color: "#c0392b",
-    questions: [
-      { q: "Was ist Brut?", a: ["Trocken", "Süß", "Halbtrocken", "Sehr süß"], exp: "Sehr wenig Restzucker." },
-      { q: "Haupttraube für Champagner?", a: ["Chardonnay", "Tempranillo", "Merlot", "Syrah"], exp: "Eine der drei Hauptsorten." },
-      { q: "Was ist Tannin?", a: ["Gerbstoff", "Zucker", "Säure", "Alkohol"], exp: "Sorgt für Struktur." },
-      { q: "Dekantieren warum?", a: ["Belüften", "Kühlen", "Süßen", "Filtern"], exp: "Verbessert Aroma." },
-      { q: "Prosecco Herkunft?", a: ["Italien", "Frankreich", "Spanien", "Deutschland"], exp: "Region Venetien." },
-      { q: "Was ist Cava?", a: ["Spanischer Schaumwein", "Wein", "Likör", "Spirituose"], exp: "Traditionelle Methode." },
-      { q: "Rosé entsteht wie?", a: ["Kurzer Schalenkontakt", "Mischung", "Gärung", "Filtration"], exp: "Leichte Farbe." },
-      { q: "Was ist Sommelier?", a: ["Weinexperte", "Koch", "Bartender", "Manager"], exp: "Spezialist für Wein." },
-      { q: "Was ist Vintage?", a: ["Jahrgang", "Reifung", "Region", "Marke"], exp: "Erntejahr." },
-      { q: "Was bedeutet trocken?", a: ["Wenig Zucker", "Kein Alkohol", "Warm", "Sauer"], exp: "Niedriger Restzucker." }
-    ]
-  },
-
-  {
-    id: 18,
-    title: "Bier & Fermentation",
-    subtitle: "Von der Braukunst zur Bar",
+    title: "Bierwissen",
+    subtitle: "Brauen, Lagerung & Service",
     icon: "🍺",
     color: "#f39c12",
     questions: [
-      { q: "4 Grundzutaten Bier?", a: ["Wasser, Malz, Hopfen, Hefe", "Zucker, Wasser", "Mais, Hefe", "Reis"], exp: "Reinheitsprinzip." },
-      { q: "Was ist Ale?", a: ["Obergärig", "Untergärig", "Stark", "Leicht"], exp: "Warme Gärung." },
-      { q: "Was ist Lager?", a: ["Untergärig", "Obergärig", "Sauer", "Stark"], exp: "Kalte Gärung." },
-      { q: "Was macht Hopfen?", a: ["Bitterkeit & Aroma", "Süße", "Farbe", "Alkohol"], exp: "Wichtige Zutat." },
-      { q: "Was ist IPA?", a: ["Hopfenbetontes Bier", "Leicht", "Sauer", "Dunkel"], exp: "India Pale Ale." },
-      { q: "Was ist Stout?", a: ["Dunkles Bier", "Hell", "Sauer", "Leicht"], exp: "Röstige Noten." },
-      { q: "Was ist Fermentation?", a: ["Umwandlung Zucker → Alkohol", "Erhitzen", "Filtern", "Kühlen"], exp: "Grundprozess." },
-      { q: "Was ist Craft Beer?", a: ["Kleine Brauereien", "Industrie", "Billig", "Import"], exp: "Handwerkliche Produktion." },
-      { q: "Was ist Schaumkrone?", a: ["Bierschaum", "Hefe", "Zucker", "Hopfen"], exp: "Schützt Aroma." },
-      { q: "Was ist ABV bei Bier?", a: ["Alkoholgehalt", "Bitterkeit", "Farbe", "Dichte"], exp: "Prozent Alkohol." }
+      { q: "Wozu dient Hopfen im Bier?", a: ["Bitterkeit und Aroma", "Süße", "Erhöhung des Alkoholgehalts", "Klärung"], exp: "Hopfen ist das Gewürz des Bieres; er liefert Bitterstoffe und ätherische Öle." },
+      { q: "Was passiert beim Mälzen?", a: ["Stärke wird in Zucker umgewandelt", "Zucker wird in Alkohol umgewandelt", "Wasser wird zu Dampf", "Proteine werden zu Aminosäuren"], exp: "Das Getreide wird zum Keimen gebracht, um Enzyme für den Stärkeabbau zu aktivieren." },
+      { q: "Was zeichnet untergärige Hefe aus?", a: ["Sie sinkt nach der Gärung zu Boden", "Sie schwimmt oben", "Sie arbeitet bei Raumtemperatur", "Sie erzeugt fruchtige Aromen"], exp: "Untergärige Hefe (Lager) arbeitet bei niedrigen Temperaturen und sinkt nach unten." },
+      { q: "Warum werden dunkle Flaschen für Bier genutzt?", a: ["Schutz vor Lichtgeschmack", "Bier bleibt kälter", "Nur Ästhetik", "Schutz vor Sauerstoff"], exp: "UV-Licht zersetzt Hopfenstoffe, was zu einem unangenehmen 'skunkigen' Geschmack führt." },
+      { q: "Ideale Serviertemperatur für europäisches Lager?", a: ["7° bis 9°C", "0° bis 3°C", "12° bis 15°C", "3° bis 5°C"], exp: "Bei dieser Temperatur entfalten sich Frische und Malzaromen optimal." }
     ]
   },
-
+  {
+    id: 18,
+    title: "Wein-Grundlagen",
+    subtitle: "Trauben, Regionen & Herstellung",
+    icon: "🍷",
+    color: "#8e24aa",
+    questions: [
+      { q: "Welche Rebsortenfamilie wird primär für Wein genutzt?", a: ["Vitis vinifera", "Vitis labrusca", "Vitis rotundifolia", "Vitis riparia"], exp: "Vitis vinifera ist die europäische Edeltraube für Qualitätsweine." },
+      { q: "Welche Traube ist für hohe Säure bekannt?", a: ["Sauvignon Blanc", "Muscat", "Gewürztraminer", "Viognier"], exp: "Sauvignon Blanc ist berühmt für Frische, Säure und grasige Noten." },
+      { q: "Was bedeutet 'Vintage' beim Wein?", a: ["Das Jahr der Ernte", "Das Alter des Weinguts", "Die Qualitätsstufe", "Die Region"], exp: "Der Jahrgang gibt Aufschluss über die Wetterbedingungen der Saison." },
+      { q: "Was bedeutet 'Blanc de Blancs'?", a: ["Weißwein aus weißen Trauben", "Weißwein aus roten Trauben", "Verschnittener Weißwein", "Nur die erste Pressung"], exp: "Meist bei Champagner (100% Chardonnay) verwendet." },
+      { q: "Wofür steht AOC?", a: ["Appellation d'Origine Contrôlée", "Association of Oenological Control", "Appellation of Original Character", "Alliance of Organic Cellars"], exp: "Das französische System für kontrollierte Herkunft und Qualität." },
+      { q: "Welche Traube dominiert im Rioja?", a: ["Tempranillo", "Garnacha", "Graciano", "Mazuelo"], exp: "Tempranillo ist das Rückgrat der großen spanischen Weine." }
+    ]
+  },
   {
     id: 19,
-    title: "Alkoholfreie Getränke",
-    subtitle: "Mocktails & Alternativen",
-    icon: "🍹",
-    color: "#27ae60",
+    title: "Südweine & Wermut",
+    subtitle: "Sherry, Madeira, Port & Wermut",
+    icon: "🍾",
+    color: "#c0392b",
     questions: [
-      { q: "Was ist ein Mocktail?", a: ["Alkoholfreier Cocktail", "Mit wenig Alkohol", "Fruchtsaft", "Smoothie"], exp: "Ohne Alkohol." },
-      { q: "Was ist Kombucha?", a: ["Fermentierter Tee", "Saft", "Sirup", "Likör"], exp: "Leicht spritzig." },
-      { q: "Was ist Cold Brew?", a: ["Kalt extrahierter Kaffee", "Heiß", "Mit Milch", "Mit Zucker"], exp: "Lange Extraktion." },
-      { q: "Was ist Cordial?", a: ["Sirup", "Likör", "Saft", "Wasser"], exp: "Konzentrierte Basis." },
-      { q: "Was ist Shrub?", a: ["Essigbasiert", "Zucker", "Alkohol", "Frucht"], exp: "Säurequelle." },
-      { q: "Was ist Tonic?", a: ["Chininhaltig", "Süß", "Still", "Heiß"], exp: "Bitter." },
-      { q: "Was ist Soda?", a: ["Karbonisiertes Wasser", "Saft", "Sirup", "Alkohol"], exp: "Neutral." },
-      { q: "Was ist Infusion?", a: ["Aromen extrahieren", "Mischen", "Kühlen", "Filtern"], exp: "Durch Ziehen lassen." },
-      { q: "Was ist Garnitur?", a: ["Dekoration + Aroma", "Nur Optik", "Nur Geschmack", "Frucht"], exp: "Beides wichtig." },
-      { q: "Trend bei Mocktails?", a: ["Komplexität", "Einfach", "Süß", "Billig"], exp: "Wie Cocktails aufgebaut." }
+      { q: "Welche Traube wird für süßen Sherry genutzt?", a: ["Pedro Ximenez", "Palomino Fino", "Muscat", "Tempranillo"], exp: "Die PX-Trauben werden sonnengetrocknet, um den Zucker zu konzentrieren." },
+      { q: "Wie heißt das Verschnittsystem bei Sherry?", a: ["Solera-System", "Méthode champenoise", "Assemblage", "Cuvée-System"], exp: "Fässer verschiedener Altersstufen werden stetig miteinander verschnitten." },
+      { q: "Wie reift Fino-Sherry?", a: ["Unter Florhefe", "In neuem Eichenholz", "Im Stahltank", "Oxidativ"], exp: "Die Florschicht schützt den Wein vor Sauerstoff und hält ihn hell und trocken." },
+      { q: "Was sind Wermutweine?", a: ["Aromatisierte, aufgespritete Weine", "Destillierte Spirituosen", "Liköre", "Aperitif-Bitter"], exp: "Wermut ist Wein, der mit Kräutern (Wermutkraut) aromatisiert und mit Alkohol verstärkt wurde." },
+      { q: "Die essenzielle Zutat für Wermut ist...", a: ["Wermutkraut (Artemisia)", "Wacholder", "Anis", "Enzian"], exp: "Ohne Artemisia absinthium darf er gesetzlich nicht Wermut genannt werden." },
+      { q: "Typischer Alkoholgehalt von Wermut?", a: ["16% - 22%", "8% - 12%", "25% - 30%", "35% - 40%"], exp: "Durch die Aufspritung liegt er höher als bei normalem Wein." }
     ]
   },
-
   {
     id: 20,
-    title: "Sensorik & Geschmack",
-    subtitle: "Die Wissenschaft des Genusses",
-    icon: "👅",
-    color: "#9b59b6",
+    title: "Spirituosen: Wodka, Gin & Rum",
+    subtitle: "Grundlagen der Weltspirituosen",
+    icon: "🧊",
+    color: "#3498db",
     questions: [
-      { q: "5 Geschmacksrichtungen?", a: ["Süß, sauer, salzig, bitter, umami", "4", "3", "6"], exp: "Grundlagen der Sensorik." },
-      { q: "Was ist Aroma?", a: ["Geruch + Geschmack", "Nur Geruch", "Nur Geschmack", "Farbe"], exp: "Kombination Wahrnehmung." },
-      { q: "Was ist Balance?", a: ["Ausgewogenheit", "Stärke", "Süße", "Säure"], exp: "Schlüssel im Cocktail." },
-      { q: "Was ist Körper?", a: ["Mundgefühl", "Geschmack", "Geruch", "Farbe"], exp: "Textur im Mund." },
-      { q: "Was ist Finish?", a: ["Nachgeschmack", "Start", "Mitte", "Geruch"], exp: "Bleibender Eindruck." },
-      { q: "Was ist Intensität?", a: ["Stärke Wahrnehmung", "Farbe", "Preis", "Größe"], exp: "Wie stark etwas ist." },
-      { q: "Was ist Komplexität?", a: ["Viele Aromen", "Einfach", "Kurz", "Lang"], exp: "Vielfalt im Geschmack." },
-      { q: "Was ist Harmonie?", a: ["Zusammenspiel", "Kontrast", "Stärke", "Süße"], exp: "Gute Balance." },
-      { q: "Was ist Textur?", a: ["Gefühl im Mund", "Geruch", "Farbe", "Preis"], exp: "Wichtig für Erlebnis." },
-      { q: "Was ist Temperaturwirkung?", a: ["Beeinflusst Geschmack", "Keine Wirkung", "Nur kalt", "Nur warm"], exp: "Sehr wichtig." }
+      { q: "Was bedeutet das Wort 'Wodka'?", a: ["Wässerchen (kleines Wasser)", "Reiner Geist", "Klares Getränk", "Weißes Feuer"], exp: "Es ist die Verkleinerungsform von 'Voda' (Wasser)." },
+      { q: "Mindest-ABV für Wodka in der EU?", a: ["37.5%", "40%", "35%", "42%"], exp: "Um als Wodka verkauft zu werden, muss er mindestens 37,5% Vol. haben." },
+      { q: "Woraus wird Rum hergestellt?", a: ["Zuckerrohrsaft oder Melasse", "Maismaische", "Neutralalkohol", "Kartoffelstärke"], exp: "Die Basis ist immer das Produkt des Zuckerrohrs." },
+      { q: "Welches Land verbindet man mit 'Rhum Agricole'?", a: ["Martinique", "Jamaika", "Kuba", "Barbados"], exp: "Martinique hat eine eigene AOC für Rum aus frischem Saft." },
+      { q: "Was unterscheidet Cognac von anderem Brandy?", a: ["Herkunft aus der Region Cognac", "Mindestalter 10 Jahre", "Verwendung von Pinot Noir", "Dreifache Destillation"], exp: "Cognac ist eine geschützte Herkunft mit strengen Regeln." }
     ]
   },
-
   {
     id: 21,
-    title: "Finale",
-    subtitle: "Ultimatives Barwissen",
-    icon: "🏆",
-    color: "#f1c40f",
+    title: "Whisky & Brandy",
+    subtitle: "Gereifte Destillate",
+    icon: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    color: "#d35400",
     questions: [
-      { q: "Was macht einen perfekten Cocktail aus?", a: ["Balance, Qualität, Technik", "Preis", "Größe", "Stärke"], exp: "Kombination aus allem." },
-      { q: "Wichtigste Fähigkeit?", a: ["Gastorientierung", "Geschwindigkeit", "Rezepte", "Verkauf"], exp: "Service steht im Fokus." },
-      { q: "Was ist Konsistenz?", a: ["Gleichbleibende Qualität", "Menge", "Preis", "Farbe"], exp: "Wiederholbarkeit." },
-      { q: "Was ist Präzision?", a: ["Exaktes Arbeiten", "Schnell", "Grob", "Kreativ"], exp: "Messgenauigkeit." },
-      { q: "Was ist Kreativität?", a: ["Neue Ideen", "Kopieren", "Standard", "Routine"], exp: "Innovation." },
-      { q: "Was ist Professionalität?", a: ["Verhalten & Auftreten", "Kleidung", "Werkzeug", "Bar"], exp: "Gesamtbild." },
-      { q: "Was ist Leidenschaft?", a: ["Engagement", "Routine", "Arbeit", "Stress"], exp: "Treibt Qualität." },
-      { q: "Was ist Wissen?", a: ["Kenntnisse", "Praxis", "Theorie", "Alles"], exp: "Grundlage." },
-      { q: "Was ist Erfahrung?", a: ["Praxis über Zeit", "Theorie", "Lesen", "Training"], exp: "Lernen durch Tun." },
-      { q: "Was ist Erfolg?", a: ["Zufriedene Gäste", "Profit", "Awards", "Ruhm"], exp: "Gastzufriedenheit." }
+      { q: "Wie wird Armagnac meist destilliert?", a: ["Einfach (kontinuierlich)", "Zweifach", "Dreifach", "Gar nicht"], exp: "Im Gegensatz zu Cognac wird Armagnac meist nur einmal im Alambic Armagnacais gebrannt." },
+      { q: "Mindestlagerzeit für Whisky in UK/EU?", a: ["3 Jahre", "2 Jahre", "5 Jahre", "1 Jahr"], exp: "Vor Ablauf von 3 Jahren darf das Destillat nicht 'Whisky' genannt werden." },
+      { q: "Wie oft wird Irish Whiskey meist destilliert?", a: ["Dreimal", "Zweimal", "Einmal", "Viermal"], exp: "Die dreifache Destillation macht ihn besonders mild." },
+      { q: "Was ist Bourbon-Vorschrift?", a: ["Mindestens 51% Mais", "Mindestens 5 Jahre Lagerung", "Produktion nur in Kentucky", "Fässer aus Kiefernholz"], exp: "51% Mais und frische, ausgekohlte Eichenfässer sind Pflicht." },
+      { q: "Was ist der Zweck des Blendings?", a: ["Konstanz und Charakter schaffen", "Kosten sparen", "Alkohol erhöhen", "Fehler kaschieren"], exp: "Master Blender mischen viele Fässer, damit das Produkt immer gleich schmeckt." }
+    ]
+  },
+  {
+    id: 22,
+    title: "Bar-Techniken & Eis",
+    subtitle: "Vom Punch zur Moderne",
+    icon: "📖",
+    color: "#1a237e",
+    questions: [
+      { q: "Was war vor 1800 das dominierende Mischgetränk?", a: ["Punch", "Bier", "Weinschorle", "Sodawasser"], exp: "Punch wurde in großen Schalen für Gruppen zubereitet." },
+      { q: "Was war ein 'Speakeasy'?", a: ["Illegale Kneipe während der Prohibition", "Ein Cocktail-Typ", "Gewerkschaftstreffen", "Eine Weinbar"], exp: "Man musste 'leise sprechen', um die Polizei nicht aufmerksam zu machen." },
+      { q: "Was priorisieren moderne Bartender?", a: ["Konstanz und Qualität der Zutaten", "Schnelligkeit über alles", "Show-Techniken (Flair)", "Möglichst viele Zutaten"], exp: "Das Handwerk steht heute im Vordergrund." },
+      { q: "Goldstandard für Säfte?", a: ["Frisch gepresst", "Pasteurisiert", "Konzentrat", "Pulver"], exp: "Frischer Saft bietet die beste Säure und Aromatik." },
+      { q: "Warum bevorzugt man klares Eis?", a: ["Langsameres Schmelzen und Ästhetik", "Kühlt schneller", "Billiger", "Kein Geschmacksunterschied"], exp: "Klares Eis ist dichter, schmilzt langsamer und sieht im Drink brillant aus." }
+    ]
+  },
+  {
+    id: 23,
+    title: "Verantwortung & Management",
+    subtitle: "Ethik, Recht & Business",
+    icon: "⚖️",
+    color: "#37474f",
+    questions: [
+      { q: "Folge von 'Over-serving' (zu viel Alkohol ausschenken)?", a: ["Rechtliche Haftung für den Bartender", "Nur eine Verwarnung", "Mehr Trinkgeld", "Keine Folgen"], exp: "Bartender können für Unfälle ihrer betrunkenen Gäste haftbar gemacht werden." },
+      { q: "Effekt von Alkohol auf die Hemmungen?", a: ["Unterdrückt die Kontrolle", "Verbessert die Kontrolle", "Kein Effekt", "Schärft das Urteilsvermögen"], exp: "Alkohol dämpft das Kontrollzentrum im Gehirn." },
+      { q: "Wer sind die drei Stakeholder im Bar-Business?", a: ["Gäste, Betrieb, Mitarbeiter", "Besitzer, Lieferanten, Staat", "Bartender, Manager, Investoren", "Kunden, Banken, Konkurrenz"], exp: "Alle drei müssen im Einklang sein: Zufriedene Gäste, Profitabilität und Teamgeist." },
+      { q: "Warum sind Standard-Maße wichtig?", a: ["Kostenkontrolle und Konstanz", "Nur für das Gesetz", "Schnelligkeit", "Nur Optik"], exp: "Sie garantieren, dass der Drink immer gleich schmeckt und die Kalkulation stimmt." }
+    ]
+  },
+  {
+    id: 24,
+    title: "IBA Details",
+    subtitle: "Spezifische Rezepte & Details",
+    icon: "🏆",
+    color: "#ff6f00",
+    questions: [
+      { q: "Kategorie des 'Bramble'?", a: ["New Era", "Unforgettables", "Contemporary Classics", "Tiki Classics"], exp: "Der Bramble (Dick Bradsell, 80er) gehört zu den New Era Drinks." },
+      { q: "Garnitur für einen Americano?", a: ["Orangenscheibe oder -zeste", "Zitronentwist", "Kirsche", "Olive"], exp: "Klassisch wird er mit Orange serviert." },
+      { q: "Was ist im 'Between the Sheets'?", a: ["Cognac, Rum, Triple Sec, Zitrone", "Nur Rum", "Whisky und Gin", "Wodka und Pfirsich"], exp: "Eine Variante des Sidecars mit Rumzusatz." },
+      { q: "Welche Spirituose nutzt ein Tipperary?", a: ["Irish Whiskey", "Scotch", "Bourbon", "Rye"], exp: "Benannt nach dem irischen County, nutzt er Irish Whiskey, grünen Chartreuse und Wermut." },
+      { q: "Optionale Zutat im Southside?", a: ["Eiweiß", "Soda", "Bitters", "Zuckersirup"], exp: "Eiweiß kann für eine seidige Textur hinzugefügt werden." }
     ]
   }
 ];
