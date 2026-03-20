@@ -12,6 +12,16 @@ import { getLang, setLang, t, translateHTML } from './lang.js';
 import { loadAchievementsFromCloud } from './achievements.js';
 import { loadLearnFromCloud } from './learn.js';
 import { showShareModal, closeShareModal } from './share.js';
+import {
+  initRivals, isRivalsReady, ensureAnonymousAuth,
+  setPresence, removePresence, listenOnlineCount,
+  prepareDuelQuestions, calcScore, QUESTIONS_PER_DUEL,
+  createFriendRoom, joinByCode,
+  joinQueue, leaveQueue, listenForMatch, clearMatchNotif,
+  listenRoom, startRoom, registerPlayerDisconnect,
+  submitAnswer as rtdbSubmitAnswer, finishGame, leaveRoom
+} from './rivals.js';
+import { getLocalizedRounds } from './questions.js';
 
 // ─── DOM helpers ─────────────────────────────────────────────
 const $ = id => document.getElementById(id);
@@ -35,6 +45,7 @@ async function init() {
   translateHTML();
   updateLangToggle();
   await initFirebase();
+  await initRivals();
   const user = restoreSession();
   if (user) {
     await Promise.all([loadAchievementsFromCloud(), loadLearnFromCloud()]);
@@ -948,6 +959,7 @@ function bindEvents() {
   $('btn-blind').addEventListener('click', () => goToBlindMode());
   $('btn-fichas').addEventListener('click', () => goToFichas());
   $('btn-achievements').addEventListener('click', () => goToAchievements());
+  $('btn-duel').addEventListener('click', () => goToDuelMenu());
 
   // Speed mode
   $('btn-quit-speed').addEventListener('click', () => { if (confirm(t('confirm.quit'))) { abortSpeed(); goToDashboard(); } });
@@ -1010,6 +1022,550 @@ function bindEvents() {
     const from = $('btn-back-leaderboard').dataset.from || 'view-dashboard';
     if (from === 'view-results') showView('view-results');
     else goToDashboard();
+  });
+
+  bindDuelEvents();
+}
+
+// ══════════════════════════════════════════════════════════════
+// ─── RIVALS / DUEL MODE ───────────────────────────────────────
+// ══════════════════════════════════════════════════════════════
+
+let duelState = {
+  roomId: null,
+  slot: null,        // 'p1' | 'p2'
+  myUid: null,
+  myName: null,
+  mode: null,        // 'friend-host' | 'friend-join' | 'random'
+  code: null,
+  questions: [],
+  currentQ: 0,
+  score: 0,
+  timer: null,
+  timeLeft: 20,
+  answered: false,
+  unsubRoom: null,
+  unsubOnline: null,
+  unsubMatch: null,
+};
+
+function resetDuelState() {
+  if (duelState.timer) clearInterval(duelState.timer);
+  if (typeof duelState.unsubRoom === 'function') duelState.unsubRoom();
+  if (typeof duelState.unsubOnline === 'function') duelState.unsubOnline();
+  if (typeof duelState.unsubMatch === 'function') duelState.unsubMatch();
+  duelState = {
+    roomId: null, slot: null, myUid: null, myName: null,
+    mode: null, code: null, questions: [], currentQ: 0, score: 0,
+    timer: null, timeLeft: 20, answered: false,
+    unsubRoom: null, unsubOnline: null, unsubMatch: null,
+  };
+}
+
+// ─── Duel Menu ────────────────────────────────────────────────
+
+async function goToDuelMenu() {
+  if (!isRivalsReady()) {
+    toast(t('duel.no_connection'), 'error');
+    return;
+  }
+
+  resetDuelState();
+  showView('view-duel');
+
+  const user = getCurrentUser();
+  // Get or create a real Firebase UID (anonymous for guests)
+  let uid;
+  if (user.isGuest) {
+    uid = await ensureAnonymousAuth();
+    if (!uid) { toast(t('duel.no_connection'), 'error'); return; }
+  } else {
+    uid = user.uid;
+  }
+  duelState.myUid = uid;
+  duelState.myName = user.name;
+
+  // Set presence
+  await setPresence(uid, user.name);
+
+  // Listen for online count
+  duelState.unsubOnline = await listenOnlineCount(n => {
+    const el = $('duel-online-count');
+    if (el) el.textContent = t('duel.online_count', { n });
+  });
+}
+
+async function leaveDuelMenu() {
+  if (duelState.myUid) await removePresence(duelState.myUid);
+  resetDuelState();
+  goToDashboard();
+}
+
+// ─── Duel Lobby ───────────────────────────────────────────────
+
+function showLobbySection(mode) {
+  ['lobby-host-section', 'lobby-join-section', 'lobby-random-section'].forEach(id => {
+    const el = $(id);
+    if (el) el.classList.add('hidden');
+  });
+  if (mode === 'friend-host')  $('lobby-host-section').classList.remove('hidden');
+  if (mode === 'friend-join')  $('lobby-join-section').classList.remove('hidden');
+  if (mode === 'random')       $('lobby-random-section').classList.remove('hidden');
+}
+
+async function goToDuelLobby(mode) {
+  if (!duelState.myUid) {
+    toast(t('duel.no_connection'), 'error');
+    return;
+  }
+
+  duelState.mode = mode;
+  showView('view-duel-lobby');
+  showLobbySection(mode);
+
+  // Reset player slots UI
+  $('lobby-p1-name').textContent = duelState.myName;
+  $('lobby-p2-name').textContent = t('duel.waiting_opponent');
+  $('lobby-p2-avatar').textContent = '❓';
+  $('lobby-p2-name').closest('.lobby-player-slot').classList.remove('joined');
+  $('btn-start-duel').classList.add('hidden');
+
+  // Prepare questions from a random round
+  const rounds = getLocalizedRounds(getLang());
+  const randomRound = rounds[Math.floor(Math.random() * rounds.length)];
+  const questions = prepareDuelQuestions(randomRound);
+
+  if (mode === 'friend-host') {
+    setLoading(true);
+    try {
+      const { roomId, code } = await createFriendRoom(duelState.myUid, duelState.myName, questions);
+      duelState.roomId = roomId;
+      duelState.slot = 'p1';
+      duelState.code = code;
+      $('lobby-code-display').textContent = code;
+      setLoading(false);
+
+      // Register disconnect handler
+      await registerPlayerDisconnect(roomId, 'p1');
+
+      // Listen for p2 to join
+      duelState.unsubRoom = await listenRoom(roomId, room => {
+        if (!room) return;
+        const p2 = room.players?.p2;
+        if (p2 && !p2.disconnected) {
+          $('lobby-p2-name').textContent = p2.name;
+          $('lobby-p2-avatar').textContent = '👤';
+          $('lobby-p2-name').closest('.lobby-player-slot').classList.add('joined');
+          $('btn-start-duel').classList.remove('hidden');
+        }
+        if (room.status === 'playing') {
+          startDuelGame(room);
+        }
+      });
+    } catch (e) {
+      setLoading(false);
+      toast(t('duel.no_connection'), 'error');
+    }
+
+  } else if (mode === 'friend-join') {
+    // Wait for user to enter code — no async action yet
+
+  } else if (mode === 'random') {
+    setLoading(true);
+    try {
+      const result = await joinQueue(duelState.myUid, duelState.myName, questions);
+      setLoading(false);
+
+      if (!result.waiting) {
+        // Immediately matched
+        duelState.roomId = result.roomId;
+        duelState.slot = result.slot;
+        await registerPlayerDisconnect(result.roomId, result.slot);
+        duelState.unsubRoom = await listenRoom(result.roomId, room => {
+          if (!room) return;
+          handleRandomRoomUpdate(room);
+        });
+      } else {
+        // Waiting in queue — listen for match notification
+        duelState.slot = 'p1';
+        duelState.unsubMatch = await listenForMatch(duelState.myUid, async ({ roomId }) => {
+          if (typeof duelState.unsubMatch === 'function') { duelState.unsubMatch(); duelState.unsubMatch = null; }
+          await clearMatchNotif(duelState.myUid);
+          duelState.roomId = roomId;
+          await registerPlayerDisconnect(roomId, 'p1');
+          duelState.unsubRoom = await listenRoom(roomId, room => {
+            if (!room) return;
+            handleRandomRoomUpdate(room);
+          });
+        });
+      }
+    } catch (e) {
+      setLoading(false);
+      toast(t('duel.no_connection'), 'error');
+    }
+  }
+}
+
+function handleRandomRoomUpdate(room) {
+  const p1 = room.players?.p1;
+  const p2 = room.players?.p2;
+  const opponentData = duelState.slot === 'p1' ? p2 : p1;
+  const lobbyEl = $('lobby-p2-name');
+  if (opponentData && !opponentData.disconnected && lobbyEl) {
+    lobbyEl.textContent = opponentData.name;
+    $('lobby-p2-avatar').textContent = '👤';
+    const rivalSlot = lobbyEl.closest('.lobby-player-slot');
+    if (rivalSlot) rivalSlot.classList.add('joined');
+  }
+  if (room.status === 'playing') {
+    startDuelGame(room);
+  }
+}
+
+async function handleJoinByCode() {
+  const code = ($('lobby-code-input').value || '').trim().toUpperCase();
+  if (code.length !== 6) { toast(t('duel.invalid_code'), 'error'); return; }
+
+  setLoading(true);
+  try {
+    const result = await joinByCode(duelState.myUid, duelState.myName, code);
+    setLoading(false);
+
+    if (result === null) { toast(t('duel.invalid_code'), 'error'); return; }
+    if (result === 'full') { toast(t('duel.room_full'), 'error'); return; }
+    if (result === 'self') { toast(t('duel.invalid_code'), 'error'); return; }
+
+    duelState.roomId = result;
+    duelState.slot = 'p2';
+    $('lobby-code-input').value = '';
+
+    await registerPlayerDisconnect(result, 'p2');
+
+    // Show lobby waiting for start signal
+    showLobbySection('friend-join');
+    duelState.unsubRoom = await listenRoom(result, room => {
+      if (!room) return;
+      const p1 = room.players?.p1;
+      if (p1) {
+        $('lobby-p2-name').textContent = duelState.myName;
+        $('lobby-p1-name').textContent = p1.name;
+      }
+      if (p1?.disconnected) {
+        toast(t('duel.rival_left'), 'error');
+        cleanupAndGoToDuelMenu();
+        return;
+      }
+      if (room.status === 'playing') {
+        startDuelGame(room);
+      }
+    });
+  } catch (e) {
+    setLoading(false);
+    toast(t('duel.no_connection'), 'error');
+  }
+}
+
+async function handleStartDuel() {
+  if (!duelState.roomId) return;
+  try {
+    await startRoom(duelState.roomId);
+  } catch (e) {
+    toast(t('duel.no_connection'), 'error');
+  }
+}
+
+// ─── Duel Game ────────────────────────────────────────────────
+
+function startDuelGame(roomData) {
+  // Stop the lobby room listener
+  if (typeof duelState.unsubRoom === 'function') {
+    duelState.unsubRoom();
+    duelState.unsubRoom = null;
+  }
+
+  // Load questions from room (shared by room creator)
+  if (roomData?.questions) {
+    duelState.questions = Array.isArray(roomData.questions)
+      ? roomData.questions
+      : Object.values(roomData.questions);
+  }
+
+  // Set opponent name from room data
+  const opponentSlot = duelState.slot === 'p1' ? 'p2' : 'p1';
+  const opp = roomData?.players?.[opponentSlot];
+  if (opp) $('duel-rival-name').textContent = opp.name || t('duel.waiting_opponent');
+
+  // Subscribe to live score updates
+  let resultShown = false;
+  listenRoom(duelState.roomId, room => {
+    if (!room || resultShown) return;
+
+    const oppNow = room.players?.[opponentSlot];
+    if (oppNow) {
+      $('duel-rival-score').textContent = oppNow.score || 0;
+      if (oppNow.disconnected) {
+        resultShown = true;
+        toast(t('duel.rival_left'), 'error');
+        stopDuelTimer();
+        finishGame(duelState.roomId).catch(() => {});
+        showDuelResult(duelState.score, oppNow.score || 0, oppNow.name || '?');
+        return;
+      }
+    }
+
+    const me = room.players?.[duelState.slot];
+    if (room.status === 'finished' && me && duelState.currentQ >= QUESTIONS_PER_DUEL) {
+      resultShown = true;
+      const myScore = me.score || 0;
+      const oppScore = oppNow?.score || 0;
+      const oppName = oppNow?.name || t('duel.waiting_opponent');
+      stopDuelTimer();
+      showDuelResult(myScore, oppScore, oppName);
+    }
+  }).then(unsub => { duelState.unsubRoom = unsub; });
+
+  showView('view-duel-game');
+  $('duel-me-name').textContent = duelState.myName;
+  duelState.currentQ = 0;
+  duelState.score = 0;
+  duelState.answered = false;
+
+  renderDuelQuestion();
+}
+
+function renderDuelQuestion() {
+  const q = duelState.questions[duelState.currentQ];
+  if (!q) return;
+
+  duelState.answered = false;
+  duelState.timeLeft = 20;
+
+  // Progress
+  const pct = (duelState.currentQ / QUESTIONS_PER_DUEL) * 100;
+  $('duel-progress-fill').style.width = pct + '%';
+  $('duel-q-num').textContent = duelState.currentQ + 1;
+
+  // Timer display
+  $('duel-timer-num').textContent = duelState.timeLeft;
+  $('duel-timer-num').classList.remove('urgent');
+
+  // Question text
+  $('duel-question').textContent = typeof q.question === 'object'
+    ? (q.question[getLang()] ?? q.question.en ?? q.question.es ?? '')
+    : q.question;
+
+  // Answers
+  const grid = $('duel-answers');
+  grid.innerHTML = '';
+  const labels = ['A', 'B', 'C', 'D'];
+  q.answers.forEach((ans, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    const ansText = typeof ans === 'object' ? (ans[getLang()] ?? ans.en ?? ans.es ?? '') : ans;
+    btn.innerHTML = `<span class="answer-letter">${labels[i]}</span><span class="answer-text">${ansText}</span>`;
+    btn.addEventListener('click', () => handleDuelAnswer(i));
+    grid.appendChild(btn);
+  });
+
+  // Score display
+  $('duel-me-score').textContent = duelState.score;
+
+  startDuelTimer();
+}
+
+function startDuelTimer() {
+  stopDuelTimer();
+  duelState.timer = setInterval(() => {
+    duelState.timeLeft--;
+    $('duel-timer-num').textContent = duelState.timeLeft;
+    if (duelState.timeLeft <= 5) $('duel-timer-num').classList.add('urgent');
+    if (duelState.timeLeft <= 0) {
+      stopDuelTimer();
+      if (!duelState.answered) handleDuelTimeout();
+    }
+  }, 1000);
+}
+
+function stopDuelTimer() {
+  clearInterval(duelState.timer);
+  duelState.timer = null;
+}
+
+async function handleDuelAnswer(selectedIndex) {
+  if (duelState.answered) return;
+  stopDuelTimer();
+  duelState.answered = true;
+
+  const q = duelState.questions[duelState.currentQ];
+  const correct = selectedIndex === q.correctIndex;
+  const points = calcScore(correct, duelState.timeLeft);
+  duelState.score += points;
+
+  // Visual feedback on answer buttons
+  const btns = $('duel-answers').querySelectorAll('.answer-btn');
+  btns.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === q.correctIndex) btn.classList.add('correct');
+    else if (i === selectedIndex && !correct) btn.classList.add('wrong');
+  });
+
+  // Bump my score display
+  $('duel-me-score').textContent = duelState.score;
+  const scoreEl = $('duel-me-score');
+  scoreEl.classList.add('bump');
+  setTimeout(() => scoreEl.classList.remove('bump'), 200);
+
+  // Sync to Firebase
+  rtdbSubmitAnswer(duelState.roomId, duelState.slot, duelState.currentQ, correct, duelState.timeLeft, duelState.score)
+    .catch(() => {});
+
+  // Advance after brief pause
+  setTimeout(() => advanceDuelQuestion(), 1200);
+}
+
+async function handleDuelTimeout() {
+  duelState.answered = true;
+
+  const q = duelState.questions[duelState.currentQ];
+  const btns = $('duel-answers').querySelectorAll('.answer-btn');
+  btns.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === q.correctIndex) btn.classList.add('correct');
+  });
+
+  rtdbSubmitAnswer(duelState.roomId, duelState.slot, duelState.currentQ, false, 0, duelState.score)
+    .catch(() => {});
+
+  setTimeout(() => advanceDuelQuestion(), 1200);
+}
+
+async function advanceDuelQuestion() {
+  duelState.currentQ++;
+  if (duelState.currentQ >= QUESTIONS_PER_DUEL) {
+    // All questions done — signal finish; result shown via listenRoom
+    await finishGame(duelState.roomId).catch(() => {});
+    return;
+  }
+  renderDuelQuestion();
+}
+
+// ─── Duel Result ──────────────────────────────────────────────
+
+function showDuelResult(myScore, oppScore, oppName) {
+  if (typeof duelState.unsubRoom === 'function') duelState.unsubRoom();
+
+  let icon, title;
+  if (myScore > oppScore) { icon = '🏆'; title = t('duel.victory'); }
+  else if (myScore < oppScore) { icon = '😔'; title = t('duel.defeat'); }
+  else { icon = '🤝'; title = t('duel.tie'); }
+
+  $('duel-result-icon').textContent = icon;
+  $('duel-result-title').textContent = title;
+
+  $('duel-final-me-label').textContent = duelState.myName;
+  $('duel-final-me-score').textContent = myScore + ' pts';
+  $('duel-final-rival-label').textContent = oppName;
+  $('duel-final-rival-score').textContent = oppScore + ' pts';
+
+  // Highlight winner
+  $('duel-final-me').classList.toggle('winner', myScore >= oppScore && myScore > 0);
+  $('duel-final-rival').classList.toggle('winner', oppScore > myScore);
+
+  showView('view-duel-result');
+}
+
+function cleanupAndGoToDuelMenu() {
+  if (duelState.roomId && duelState.slot) {
+    leaveRoom(duelState.roomId, duelState.slot).catch(() => {});
+  }
+  if (duelState.myUid) {
+    leaveQueue(duelState.myUid).catch(() => {});
+  }
+  resetDuelState();
+  goToDuelMenu();
+}
+
+// ─── Duel Event Bindings (called from bindEvents) ─────────────
+
+function bindDuelEvents() {
+  $('btn-back-duel').addEventListener('click', () => leaveDuelMenu());
+
+  $('btn-challenge-friend').addEventListener('click', () => {
+    // Show sub-mode choice: host or join
+    goToDuelLobby('friend-host');
+  });
+
+  $('btn-random-rival').addEventListener('click', () => goToDuelLobby('random'));
+
+  $('btn-back-duel-lobby').addEventListener('click', async () => {
+    if (duelState.myUid) await leaveQueue(duelState.myUid).catch(() => {});
+    if (duelState.roomId && duelState.slot) {
+      await leaveRoom(duelState.roomId, duelState.slot).catch(() => {});
+    }
+    resetDuelState();
+    goToDuelMenu();
+  });
+
+  // Inside lobby: friend-join mode — the host button switches to "enter code" flow
+  // We reuse lobby, but show join section via a secondary approach:
+  // btn-challenge-friend opens host mode. User can switch to join mode
+  // by clicking the lobby back button (returns to duel menu) then choosing manually.
+  // For simplicity, the lobby "join" section is only shown when p2 enters code
+  // which is triggered from a special context.
+  // Actually: btn-challenge-friend → host mode (show code)
+  //           A separate button "Unirse con código" would be nice, but to keep
+  //           existing button count, we handle join from the lobby host section itself:
+  //           The lobby also shows a "Tengo un código" option in the host section.
+  // For now, the flow is: host creates → shares code → joiner navigates to lobby-join.
+  // We'll add a toggle inside the lobby to switch between host/join.
+  // This is handled via btn-challenge-friend → goToDuelLobby('friend-host'),
+  // and a "¿Tienes un código?" link in the lobby will call goToDuelLobby('friend-join').
+
+  // Switch between host and join modes in lobby
+  $('btn-switch-to-join').addEventListener('click', async () => {
+    // Cancel current host room and switch to join mode
+    if (duelState.roomId && duelState.slot === 'p1') {
+      await leaveRoom(duelState.roomId, 'p1').catch(() => {});
+      duelState.roomId = null;
+      duelState.code = null;
+      duelState.slot = null;
+    }
+    if (typeof duelState.unsubRoom === 'function') { duelState.unsubRoom(); duelState.unsubRoom = null; }
+    showLobbySection('friend-join');
+    $('lobby-code-input').value = '';
+    $('lobby-code-input').focus();
+  });
+  $('btn-switch-to-host').addEventListener('click', () => goToDuelLobby('friend-host'));
+
+  $('btn-join-code').addEventListener('click', () => handleJoinByCode());
+  $('lobby-code-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') handleJoinByCode();
+  });
+
+  $('btn-copy-code').addEventListener('click', () => {
+    const code = duelState.code;
+    if (!code) return;
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(code).then(() => toast(t('duel.code_copied'), 'success'));
+    } else {
+      // Fallback: select the code display text
+      const range = document.createRange();
+      range.selectNodeContents($('lobby-code-display'));
+      window.getSelection()?.removeAllRanges();
+      window.getSelection()?.addRange(range);
+      toast(t('duel.code_copied'), 'success');
+    }
+  });
+
+  $('btn-start-duel').addEventListener('click', () => handleStartDuel());
+
+  $('btn-duel-rematch').addEventListener('click', () => {
+    resetDuelState();
+    goToDuelMenu();
+  });
+  $('btn-duel-home').addEventListener('click', () => {
+    resetDuelState();
+    goToDashboard();
   });
 }
 
