@@ -61,8 +61,13 @@ async function saveScore({ roundId, roundTitle, score, corrects, wrongs }) {
   if (isFirebaseReady() && !user.isGuest) {
     try {
       const db = getDb();
-      const { collection, addDoc, doc, setDoc, getDoc, updateDoc } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
-      await addDoc(collection(db, 'scores'), entry);
+      const { collection, doc, setDoc, getDoc, updateDoc } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+      // Use deterministic doc ID so each player has at most one entry per round (best score)
+      const scoreRef = doc(db, 'scores', `${user.uid}_${roundId}`);
+      const existing = await getDoc(scoreRef);
+      if (!existing.exists() || score > existing.data().score) {
+        await setDoc(scoreRef, entry);
+      }
       // Update user document
       const userRef = doc(db, 'users', user.uid);
       const userDoc = await getDoc(userRef);
@@ -89,6 +94,14 @@ async function saveScore({ roundId, roundTitle, score, corrects, wrongs }) {
 
 // --- FETCH LEADERBOARD ---
 
+function deduplicateByPlayer(scores) {
+  const byPlayer = {};
+  scores.forEach(s => {
+    if (!byPlayer[s.uid] || s.score > byPlayer[s.uid].score) byPlayer[s.uid] = s;
+  });
+  return Object.values(byPlayer).sort((a, b) => b.score - a.score).slice(0, 20);
+}
+
 async function fetchLeaderboard(roundId = null) {
   // Try Firestore first
   if (isFirebaseReady()) {
@@ -97,12 +110,12 @@ async function fetchLeaderboard(roundId = null) {
       const { collection, query, where, orderBy, limit, getDocs } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
       let q;
       if (roundId) {
-        q = query(collection(db, 'scores'), where('roundId', '==', roundId), orderBy('score', 'desc'), limit(20));
+        q = query(collection(db, 'scores'), where('roundId', '==', roundId), orderBy('score', 'desc'), limit(100));
       } else {
-        q = query(collection(db, 'scores'), orderBy('score', 'desc'), limit(20));
+        q = query(collection(db, 'scores'), orderBy('score', 'desc'), limit(100));
       }
       const snap = await getDocs(q);
-      return snap.docs.map(d => d.data());
+      return deduplicateByPlayer(snap.docs.map(d => d.data()));
     } catch (e) {
       console.warn('Error al leer Firestore, usando local:', e);
     }
@@ -111,7 +124,7 @@ async function fetchLeaderboard(roundId = null) {
   // Fallback: local
   let scores = getLocalScores();
   if (roundId) scores = scores.filter(s => s.roundId === roundId);
-  return scores.slice(0, 20);
+  return deduplicateByPlayer(scores);
 }
 
 // --- USER STATS ---

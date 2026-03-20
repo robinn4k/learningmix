@@ -9,6 +9,8 @@ import { fichas } from './fichas.js';
 import { startConstructor, answerConstructor, abortConstructor } from './constructor.js';
 import { startBlind, answerBlind, revealNextClue, abortBlind } from './blind.js';
 import { getLang, setLang, t, translateHTML } from './lang.js';
+import { loadAchievementsFromCloud } from './achievements.js';
+import { loadLearnFromCloud } from './learn.js';
 import { showShareModal, closeShareModal } from './share.js';
 
 // ─── DOM helpers ─────────────────────────────────────────────
@@ -35,6 +37,7 @@ async function init() {
   await initFirebase();
   const user = restoreSession();
   if (user) {
+    await Promise.all([loadAchievementsFromCloud(), loadLearnFromCloud()]);
     await goToDashboard();
   } else {
     showView('view-login');
@@ -72,6 +75,7 @@ function bindLoginEvents() {
     setLoading(true);
     try {
       await signInWithGoogle();
+      await Promise.all([loadAchievementsFromCloud(), loadLearnFromCloud()]);
       await goToDashboard();
     } catch (e) {
       const msg = e?.code === 'auth/unauthorized-domain'

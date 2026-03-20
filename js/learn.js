@@ -1,5 +1,6 @@
 import { getLocalizedRounds } from './questions.js';
 import { getLang } from './lang.js';
+import { getDb, getCurrentUser, isFirebaseReady } from './auth.js';
 
 // ─── Storage ──────────────────────────────────────────────────
 const KEY = 'cq_learn_data';
@@ -11,6 +12,30 @@ function getData() {
 
 function setData(data) {
   localStorage.setItem(KEY, JSON.stringify(data));
+  syncLearnToCloud(data);
+}
+
+async function syncLearnToCloud(data) {
+  const user = getCurrentUser();
+  if (!isFirebaseReady() || !user || user.isGuest) return;
+  try {
+    const db = getDb();
+    const { doc, setDoc } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+    await setDoc(doc(db, 'users', user.uid), { learnData: data }, { merge: true });
+  } catch (e) { console.warn('learn cloud sync failed:', e); }
+}
+
+export async function loadLearnFromCloud() {
+  const user = getCurrentUser();
+  if (!isFirebaseReady() || !user || user.isGuest) return;
+  try {
+    const db = getDb();
+    const { doc, getDoc } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+    const snap = await getDoc(doc(db, 'users', user.uid));
+    if (snap.exists() && snap.data().learnData) {
+      localStorage.setItem(KEY, JSON.stringify(snap.data().learnData));
+    }
+  } catch (e) { console.warn('learn cloud load failed:', e); }
 }
 
 // ─── Stats ────────────────────────────────────────────────────
