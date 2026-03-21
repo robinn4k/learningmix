@@ -12,7 +12,7 @@ const CACHE_LIST = [
   "/flags/en.svg",
   "/flags/es.svg"
 ];
-const STATIC_CACHE_VERSION = `Stirio-v2.0`;
+const STATIC_CACHE_VERSION = `Stirio-v2.1`;
 const DEBUG = false;
 
 self.addEventListener('install', function(event) {
