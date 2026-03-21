@@ -1048,10 +1048,12 @@ let duelState = {
   unsubRoom: null,
   unsubOnline: null,
   unsubMatch: null,
+  matchTimeout: null,
 };
 
 function resetDuelState() {
   if (duelState.timer) clearInterval(duelState.timer);
+  if (duelState.matchTimeout) clearTimeout(duelState.matchTimeout);
   if (typeof duelState.unsubRoom === 'function') duelState.unsubRoom();
   if (typeof duelState.unsubOnline === 'function') duelState.unsubOnline();
   if (typeof duelState.unsubMatch === 'function') duelState.unsubMatch();
@@ -1059,7 +1061,7 @@ function resetDuelState() {
     roomId: null, slot: null, myUid: null, myName: null,
     mode: null, code: null, questions: [], currentQ: 0, score: 0,
     timer: null, timeLeft: 20, answered: false,
-    unsubRoom: null, unsubOnline: null, unsubMatch: null,
+    unsubRoom: null, unsubOnline: null, unsubMatch: null, matchTimeout: null,
   };
 }
 
@@ -1086,14 +1088,19 @@ async function goToDuelMenu() {
   duelState.myUid = uid;
   duelState.myName = user.name;
 
-  // Set presence
-  await setPresence(uid, user.name);
+  try {
+    // Set presence
+    await setPresence(uid, user.name);
 
-  // Listen for online count
-  duelState.unsubOnline = await listenOnlineCount(n => {
-    const el = $('duel-online-count');
-    if (el) el.textContent = t('duel.online_count', { n });
-  });
+    // Listen for online count
+    duelState.unsubOnline = await listenOnlineCount(n => {
+      const el = $('duel-online-count');
+      if (el) el.textContent = t('duel.online_count', { n });
+    });
+  } catch (e) {
+    // Non-fatal: presence/counter may fail but duel menu remains usable
+    console.warn('Rivals presence error:', e);
+  }
 }
 
 async function leaveDuelMenu() {
@@ -1121,17 +1128,8 @@ async function goToDuelLobby(mode) {
   }
 
   duelState.mode = mode;
-  showView('view-duel-lobby');
-  showLobbySection(mode);
 
-  // Reset player slots UI
-  $('lobby-p1-name').textContent = duelState.myName;
-  $('lobby-p2-name').textContent = t('duel.waiting_opponent');
-  $('lobby-p2-avatar').textContent = '❓';
-  $('lobby-p2-name').closest('.lobby-player-slot').classList.remove('joined');
-  $('btn-start-duel').classList.add('hidden');
-
-  // Prepare questions from a random round
+  // Prepare questions from a random round (before any async op)
   const rounds = getLocalizedRounds(getLang());
   const randomRound = rounds[Math.floor(Math.random() * rounds.length)];
   const questions = prepareDuelQuestions(randomRound);
@@ -1143,13 +1141,19 @@ async function goToDuelLobby(mode) {
       duelState.roomId = roomId;
       duelState.slot = 'p1';
       duelState.code = code;
+
+      // Only transition to lobby after successful room creation
+      showView('view-duel-lobby');
+      showLobbySection('friend-host');
+      $('lobby-p1-name').textContent = duelState.myName;
+      $('lobby-p2-name').textContent = t('duel.waiting_opponent');
+      $('lobby-p2-avatar').textContent = '❓';
+      $('lobby-p2-name').closest('.lobby-player-slot').classList.remove('joined');
+      $('btn-start-duel').classList.add('hidden');
       $('lobby-code-display').textContent = code;
       setLoading(false);
 
-      // Register disconnect handler
       await registerPlayerDisconnect(roomId, 'p1');
-
-      // Listen for p2 to join
       duelState.unsubRoom = await listenRoom(roomId, room => {
         if (!room) return;
         const p2 = room.players?.p2;
@@ -1169,12 +1173,28 @@ async function goToDuelLobby(mode) {
     }
 
   } else if (mode === 'friend-join') {
-    // Wait for user to enter code — no async action yet
+    // Transition immediately — no async op until user submits a code
+    showView('view-duel-lobby');
+    showLobbySection('friend-join');
+    $('lobby-p1-name').textContent = duelState.myName;
+    $('lobby-p2-name').textContent = t('duel.waiting_opponent');
+    $('lobby-p2-avatar').textContent = '❓';
+    $('lobby-p2-name').closest('.lobby-player-slot').classList.remove('joined');
+    $('btn-start-duel').classList.add('hidden');
 
   } else if (mode === 'random') {
     setLoading(true);
     try {
       const result = await joinQueue(duelState.myUid, duelState.myName, questions);
+
+      // Only transition to lobby after successful queue join
+      showView('view-duel-lobby');
+      showLobbySection('random');
+      $('lobby-p1-name').textContent = duelState.myName;
+      $('lobby-p2-name').textContent = t('duel.waiting_opponent');
+      $('lobby-p2-avatar').textContent = '❓';
+      $('lobby-p2-name').closest('.lobby-player-slot').classList.remove('joined');
+      $('btn-start-duel').classList.add('hidden');
       setLoading(false);
 
       if (!result.waiting) {
@@ -1187,9 +1207,18 @@ async function goToDuelLobby(mode) {
           handleRandomRoomUpdate(room);
         });
       } else {
-        // Waiting in queue — listen for match notification
+        // Waiting in queue — listen for match notification with 30s timeout
         duelState.slot = 'p1';
+        duelState.matchTimeout = setTimeout(async () => {
+          if (typeof duelState.unsubMatch === 'function') { duelState.unsubMatch(); duelState.unsubMatch = null; }
+          await leaveQueue(duelState.myUid).catch(() => {});
+          resetDuelState();
+          goToDuelMenu();
+          toast(t('duel.no_rivals_found'), 'info');
+        }, 30_000);
+
         duelState.unsubMatch = await listenForMatch(duelState.myUid, async ({ roomId }) => {
+          clearTimeout(duelState.matchTimeout); duelState.matchTimeout = null;
           if (typeof duelState.unsubMatch === 'function') { duelState.unsubMatch(); duelState.unsubMatch = null; }
           await clearMatchNotif(duelState.myUid);
           duelState.roomId = roomId;

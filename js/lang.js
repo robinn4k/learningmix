@@ -150,6 +150,7 @@ const translations = {
     'duel.medium': '😤 Normal',
     'duel.hard': '🔥 Difícil',
     'duel.or': 'o',
+    'duel.no_rivals_found': 'No hay rivales disponibles. Inténtalo más tarde.',
   },
   en: {
     'login.tagline': 'Master the art of cocktails',
@@ -297,6 +298,7 @@ const translations = {
     'duel.medium': '😤 Normal',
     'duel.hard': '🔥 Hard',
     'duel.or': 'or',
+    'duel.no_rivals_found': 'No rivals available. Try again later.',
   },
   fr: {
     'login.tagline': "Maîtrisez l'art du cocktail",
@@ -444,6 +446,7 @@ const translations = {
     'duel.medium': '😤 Normal',
     'duel.hard': '🔥 Difficile',
     'duel.or': 'ou',
+    'duel.no_rivals_found': 'Aucun rival disponible. Réessayez plus tard.',
   },
   pt: {
     'login.tagline': 'Domine a arte do cocktail',
@@ -591,6 +594,7 @@ const translations = {
     'duel.medium': '😤 Normal',
     'duel.hard': '🔥 Difícil',
     'duel.or': 'ou',
+    'duel.no_rivals_found': 'Nenhum rival disponível. Tente mais tarde.',
   },
   de: {
     'login.tagline': 'Meistere die Kunst des Cocktails',
@@ -738,6 +742,7 @@ const translations = {
     'duel.medium': '😤 Normal',
     'duel.hard': '🔥 Schwer',
     'duel.or': 'oder',
+    'duel.no_rivals_found': 'Keine Rivalen verfügbar. Versuche es später.',
   },
 };
 
