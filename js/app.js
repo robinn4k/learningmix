@@ -450,7 +450,6 @@ function renderSpeedQuestion({ question, answers, index, total, correct, score }
         else if (j === i && !res.correct) b.classList.add('wrong');
       });
       setTimeout(() => {
-        if (res.done) return; // timer will handle
         speedAnswered = false;
         renderSpeedQuestion(res.next);
       }, 400);

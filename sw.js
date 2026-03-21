@@ -70,7 +70,8 @@ self.addEventListener('fetch', (event) => {
 
   const onSuccessFetch = response => {
     if (CACHE_LIST.includes(new URL(event.request.url).pathname)) return response
-      const onSuccessDynamicCacheOpen = cache => {
+
+    const onSuccessDynamicCacheOpen = cache => {
       cache.put(event.request.url, response.clone())
       return response
     }
