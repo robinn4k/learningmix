@@ -1562,3 +1562,46 @@ img { display: block; max-width: 100%; }
   max-width: 420px;
   margin: 0 auto;
 }
+
+/* ── Bot Difficulty Picker ─────────────────── */
+.duel-separator {
+  display: flex; align-items: center; gap: 12px;
+  width: 100%; max-width: 360px; margin: 4px auto;
+}
+.duel-separator::before, .duel-separator::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+.duel-separator span { font-size: .8rem; color: var(--text-dim); }
+
+.duel-difficulty {
+  width: 100%; max-width: 360px; margin: 0 auto;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  animation: fadeIn .18s ease;
+}
+.duel-difficulty-label {
+  font-size: .75rem; font-weight: 700;
+  color: var(--text-muted); text-align: center;
+  margin: 0 0 10px;
+  text-transform: uppercase; letter-spacing: .08em;
+}
+.duel-difficulty-btns { display: flex; gap: 8px; }
+.diff-btn {
+  flex: 1; padding: 10px 4px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: .78rem; font-weight: 700; text-align: center;
+  cursor: pointer;
+  transition: border-color .15s, background .15s, transform .1s;
+}
+.diff-btn:hover  { border-color: var(--gold); background: rgba(201,151,28,.08); }
+.diff-btn:active { transform: scale(.95); }
+.diff-btn.selected {
+  border-color: var(--gold);
+  background: rgba(201,151,28,.15);
+  color: var(--gold);
+}

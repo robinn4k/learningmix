@@ -22,6 +22,7 @@ import {
   submitAnswer as rtdbSubmitAnswer, finishGame, leaveRoom
 } from './rivals.js';
 import { getLocalizedRounds } from './questions.js';
+import { getBotName, scheduleBotAnswer, DIFFICULTIES } from './bot.js';
 
 // ─── DOM helpers ─────────────────────────────────────────────
 const $ = id => document.getElementById(id);
@@ -1559,14 +1560,223 @@ function bindDuelEvents() {
 
   $('btn-start-duel').addEventListener('click', () => handleStartDuel());
 
+  // Bot rival
+  $('btn-bot-rival').addEventListener('click', () => {
+    $('duel-difficulty-picker').classList.toggle('hidden');
+  });
+  document.querySelectorAll('.diff-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $('duel-difficulty-picker').classList.add('hidden');
+      startBotDuel(btn.dataset.diff);
+    });
+  });
+
   $('btn-duel-rematch').addEventListener('click', () => {
+    resetBotDuelState();
     resetDuelState();
     goToDuelMenu();
   });
   $('btn-duel-home').addEventListener('click', () => {
+    resetBotDuelState();
     resetDuelState();
     goToDashboard();
   });
+}
+
+// ══════════════════════════════════════════════════════════════
+// ─── BOT DUEL MODE ────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════
+
+let botDuelState = {
+  questions: [],
+  currentQ: 0,
+  myScore: 0,
+  botScore: 0,
+  botName: '',
+  difficulty: 'medium',
+  humanTimer: null,
+  botTimer: null,
+  timeLeft: 20,
+  answered: false,
+  botScheduled: null, // { correct, answerTime }
+};
+
+function resetBotDuelState() {
+  clearInterval(botDuelState.humanTimer);
+  clearTimeout(botDuelState.botTimer);
+  botDuelState = {
+    questions: [], currentQ: 0, myScore: 0, botScore: 0,
+    botName: '', difficulty: 'medium',
+    humanTimer: null, botTimer: null,
+    timeLeft: 20, answered: false, botScheduled: null,
+  };
+}
+
+function startBotDuel(difficulty) {
+  resetBotDuelState();
+
+  const user = getCurrentUser();
+  const rounds = getLocalizedRounds(getLang());
+  const randomRound = rounds[Math.floor(Math.random() * rounds.length)];
+
+  botDuelState.questions = prepareDuelQuestions(randomRound);
+  botDuelState.difficulty = difficulty || 'medium';
+  botDuelState.botName = getBotName();
+  botDuelState.myScore = 0;
+  botDuelState.botScore = 0;
+
+  // Set up header names
+  $('duel-me-name').textContent = user.name;
+  $('duel-rival-name').textContent = botDuelState.botName;
+  $('duel-me-score').textContent = 0;
+  $('duel-rival-score').textContent = 0;
+
+  showView('view-duel-game');
+  renderBotQuestion();
+}
+
+function renderBotQuestion() {
+  const q = botDuelState.questions[botDuelState.currentQ];
+  if (!q) return;
+
+  botDuelState.answered = false;
+  botDuelState.timeLeft = 20;
+
+  // Schedule bot answer for this question
+  botDuelState.botScheduled = scheduleBotAnswer(botDuelState.difficulty);
+
+  // Progress bar & counter
+  const pct = (botDuelState.currentQ / QUESTIONS_PER_DUEL) * 100;
+  $('duel-progress-fill').style.width = pct + '%';
+  $('duel-q-num').textContent = botDuelState.currentQ + 1;
+
+  // Timer display
+  $('duel-timer-num').textContent = botDuelState.timeLeft;
+  $('duel-timer-num').classList.remove('urgent');
+
+  // Question text
+  $('duel-question').textContent = typeof q.question === 'object'
+    ? (q.question[getLang()] ?? q.question.en ?? q.question.es ?? '')
+    : q.question;
+
+  // Answer buttons — wired to bot handler
+  const grid = $('duel-answers');
+  grid.innerHTML = '';
+  const labels = ['A', 'B', 'C', 'D'];
+  q.answers.forEach((ans, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    const ansText = typeof ans === 'object' ? (ans[getLang()] ?? ans.en ?? ans.es ?? '') : ans;
+    btn.innerHTML = `<span class="answer-letter">${labels[i]}</span><span class="answer-text">${ansText}</span>`;
+    btn.addEventListener('click', () => handleBotPlayerAnswer(i));
+    grid.appendChild(btn);
+  });
+
+  // Scores
+  $('duel-me-score').textContent = botDuelState.myScore;
+  $('duel-rival-score').textContent = botDuelState.botScore;
+
+  // Start human countdown
+  startBotHumanTimer();
+
+  // Schedule bot's answer to arrive independently
+  const { answerTime } = botDuelState.botScheduled;
+  botDuelState.botTimer = setTimeout(() => {
+    // Bot answers — only update score display (human still has time)
+    if (!botDuelState.answered) {
+      applyBotAnswer(); // updates botScore, bumps rival display
+    }
+  }, answerTime * 1000);
+}
+
+function startBotHumanTimer() {
+  clearInterval(botDuelState.humanTimer);
+  botDuelState.humanTimer = setInterval(() => {
+    botDuelState.timeLeft--;
+    $('duel-timer-num').textContent = botDuelState.timeLeft;
+    if (botDuelState.timeLeft <= 5) $('duel-timer-num').classList.add('urgent');
+    if (botDuelState.timeLeft <= 0) {
+      clearInterval(botDuelState.humanTimer);
+      if (!botDuelState.answered) handleBotPlayerTimeout();
+    }
+  }, 1000);
+}
+
+function applyBotAnswer() {
+  const { correct } = botDuelState.botScheduled;
+  // Bot's timeLeft when it "answered" = 20 - answerTime (approximate, ≥ 0)
+  const botTimeLeft = Math.max(0, Math.round(20 - botDuelState.botScheduled.answerTime));
+  const points = correct ? 100 + botTimeLeft * 5 : 0;
+  botDuelState.botScore += points;
+
+  // Update rival score with bump animation
+  const scoreEl = $('duel-rival-score');
+  scoreEl.textContent = botDuelState.botScore;
+  scoreEl.classList.add('bump');
+  setTimeout(() => scoreEl.classList.remove('bump'), 200);
+
+  // Mark bot as having answered so we don't double-apply
+  botDuelState.botScheduled = { ...botDuelState.botScheduled, applied: true };
+}
+
+function handleBotPlayerAnswer(selectedIndex) {
+  if (botDuelState.answered) return;
+  clearInterval(botDuelState.humanTimer);
+  clearTimeout(botDuelState.botTimer);
+  botDuelState.answered = true;
+
+  // Apply bot answer if not yet done
+  if (!botDuelState.botScheduled?.applied) applyBotAnswer();
+
+  const q = botDuelState.questions[botDuelState.currentQ];
+  const correct = selectedIndex === q.correctIndex;
+  const points = correct ? 100 + botDuelState.timeLeft * 5 : 0;
+  botDuelState.myScore += points;
+
+  // Visual feedback
+  const btns = $('duel-answers').querySelectorAll('.answer-btn');
+  btns.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === q.correctIndex) btn.classList.add('correct');
+    else if (i === selectedIndex && !correct) btn.classList.add('wrong');
+  });
+
+  // Update my score with bump
+  const myScoreEl = $('duel-me-score');
+  myScoreEl.textContent = botDuelState.myScore;
+  myScoreEl.classList.add('bump');
+  setTimeout(() => myScoreEl.classList.remove('bump'), 200);
+
+  setTimeout(() => advanceBotQuestion(), 1200);
+}
+
+function handleBotPlayerTimeout() {
+  clearTimeout(botDuelState.botTimer);
+  botDuelState.answered = true;
+
+  if (!botDuelState.botScheduled?.applied) applyBotAnswer();
+
+  const q = botDuelState.questions[botDuelState.currentQ];
+  const btns = $('duel-answers').querySelectorAll('.answer-btn');
+  btns.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === q.correctIndex) btn.classList.add('correct');
+  });
+
+  setTimeout(() => advanceBotQuestion(), 1200);
+}
+
+function advanceBotQuestion() {
+  botDuelState.currentQ++;
+  if (botDuelState.currentQ >= QUESTIONS_PER_DUEL) {
+    showBotResult();
+    return;
+  }
+  renderBotQuestion();
+}
+
+function showBotResult() {
+  showDuelResult(botDuelState.myScore, botDuelState.botScore, botDuelState.botName);
 }
 
 // ─── SERVICE WORKER ───────────────────────────────────────────
