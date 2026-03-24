@@ -1,43 +1,52 @@
-const CACHE_LIST = [
-  "/",
-  "/index.html",
-  "/favicon.svg",
-  "/logo.svg",
-  "/css/style.css",
-  "/trivias/all.json",
-  "/trivias/general.json",
-  "/trivias/historia_cocteles.json",
-  "/trivias/quiensoy.json",
-  "/trivias/historia_iba_fabe.json",
-  "/flags/en.svg",
-  "/flags/es.svg",
+// Derive the base path from the SW's own scope so this works both locally
+// (scope = '/') and on GitHub Pages in a subdirectory (scope = '/Stirio/').
+const BASE = new URL(self.registration.scope).pathname;
+
+const CACHE_PATHS = [
+  '',           // root (e.g. /Stirio/ or /)
+  'index.html',
+  'favicon.svg',
+  'logo.svg',
+  'manifest.json',
+  'css/style.css',
+  'trivias/all.json',
+  'trivias/general.json',
+  'trivias/historia_cocteles.json',
+  'trivias/quiensoy.json',
+  'trivias/historia_iba_fabe.json',
+  'flags/en.svg',
+  'flags/es.svg',
   // JS modules
-  "/js/app.js",
-  "/js/rivals.js",
-  "/js/questions.js",
-  "/js/learn.js",
-  "/js/lang.js",
-  "/js/auth.js",
-  "/js/quiz.js",
-  "/js/leaderboard.js",
-  "/js/share.js",
-  "/js/achievements.js",
-  "/js/daily.js",
-  "/js/speed.js",
-  "/js/blind.js",
-  "/js/bot.js",
-  "/js/fichas.js",
-  "/js/cookies.js",
-  "/js/constructor.js",
-  "/js/firebase-config.js",
+  'js/app.js',
+  'js/rivals.js',
+  'js/questions.js',
+  'js/learn.js',
+  'js/lang.js',
+  'js/auth.js',
+  'js/quiz.js',
+  'js/leaderboard.js',
+  'js/share.js',
+  'js/achievements.js',
+  'js/daily.js',
+  'js/speed.js',
+  'js/blind.js',
+  'js/bot.js',
+  'js/fichas.js',
+  'js/cookies.js',
+  'js/constructor.js',
+  'js/firebase-config.js',
   // i18n question bundles (contain the icon fields for Learn cards)
-  "/js/i18n/questions_es.js",
-  "/js/i18n/questions_en.js",
-  "/js/i18n/questions_de.js",
-  "/js/i18n/questions_fr.js",
-  "/js/i18n/questions_pt.js"
+  'js/i18n/questions_es.js',
+  'js/i18n/questions_en.js',
+  'js/i18n/questions_de.js',
+  'js/i18n/questions_fr.js',
+  'js/i18n/questions_pt.js'
 ];
-const STATIC_CACHE_VERSION = `Stirio-v2.2`;
+
+// Build full pathnames like /Stirio/index.html or /index.html
+const CACHE_LIST = CACHE_PATHS.map(p => BASE + p);
+
+const STATIC_CACHE_VERSION = `Stirio-v2.3`;
 const DEBUG = false;
 
 self.addEventListener('install', function(event) {
@@ -45,7 +54,7 @@ self.addEventListener('install', function(event) {
     console.log(caches)
     console.log("SW Install Event: Is in the process");
   }
-    
+
   const onSuccessCachesOpen = (cache) => {
     if (DEBUG) {
       console.log(cache)
