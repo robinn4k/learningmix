@@ -1429,9 +1429,13 @@ function startDuelGame(roomData) {
     }
 
     const me = room.players?.[duelState.slot];
-    if (room.status === 'finished' && me && duelState.currentQ >= QUESTIONS_PER_DUEL) {
+    // Use Firebase me.currentQ as fallback: when the opponent finishes first and sets
+    // status='finished', our local duelState.currentQ may not yet be incremented
+    // (the 1.2s setTimeout hasn't fired), but Firebase already has our last answer.
+    const myProgress = Math.max(duelState.currentQ, me?.currentQ || 0);
+    if (room.status === 'finished' && me && myProgress >= QUESTIONS_PER_DUEL) {
       resultShown = true;
-      const myScore = me.score || 0;
+      const myScore = Math.max(duelState.score, me.score || 0);
       const oppScore = oppNow?.score || 0;
       const oppName = oppNow?.name || t('duel.waiting_opponent');
       stopDuelTimer();
