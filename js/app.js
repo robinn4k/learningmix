@@ -1454,7 +1454,12 @@ function startDuelGame(roomData) {
     // status='finished', our local duelState.currentQ may not yet be incremented
     // (the 1.2s setTimeout hasn't fired), but Firebase already has our last answer.
     const myProgress = Math.max(duelState.currentQ, me?.currentQ || 0);
-    if (room.status === 'finished' && me && myProgress >= QUESTIONS_PER_DUEL) {
+    const myFinished = myProgress >= QUESTIONS_PER_DUEL;
+    // Wait for the opponent's final answer to be synced before reading their score.
+    // Without this check, if we finish first we'd show the result immediately with
+    // the opponent's partial score (e.g. 485 instead of their eventual 885).
+    const oppFinished = (oppNow?.currentQ || 0) >= QUESTIONS_PER_DUEL;
+    if (room.status === 'finished' && me && myFinished && oppFinished) {
       resultShown = true;
       const myScore = Math.max(duelState.score, me.score || 0);
       const oppScore = oppNow?.score || 0;
