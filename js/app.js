@@ -1,7 +1,7 @@
 import { initFirebase, signInWithGoogle, signInAsGuest, signOutUser, restoreSession, getCurrentUser, updateGuestName } from './auth.js';
 import { startRound, startCustomRound, answerQuestion, abortRound, getRounds } from './quiz.js';
 import { saveScore, fetchLeaderboard, getUserStats } from './leaderboard.js';
-import { getLearnStats, getLevelInfo, getLearnRounds, startLesson, answerLesson, advanceLesson, abortLesson } from './learn.js';
+import { getLearnStats, getLevelInfo, getLearnRounds, startLesson, answerLesson, advanceLesson, advanceFromTheory, abortLesson, MASTERY_LEVELS, getMasteryLevel } from './learn.js';
 import { getDailyStatus, getDailyQuestions, saveDailyResult } from './daily.js';
 import { startSpeed, startSpeedTimer, answerSpeed, abortSpeed } from './speed.js';
 import { getAchievements, checkAchievements, updateStats, getStats } from './achievements.js';
@@ -708,20 +708,29 @@ function goToLearnHub() {
   const container = $('learn-lessons');
   container.innerHTML = '';
   getLearnRounds().forEach(r => {
-    const { completed, mastered } = r.progress;
+    const { sessionCount, masteryLevel, masteryKey, masteryIcon, masteryScore } = r.progress;
+    const masteryInfo = MASTERY_LEVELS[masteryLevel] || MASTERY_LEVELS[0];
+    const pips = [0, 1, 2].map(i =>
+      `<span class="mastery-pip${i < masteryLevel ? ' filled' : ''}"></span>`
+    ).join('');
+    const masteryPct = Math.round(masteryScore * 100);
+
     const card = document.createElement('div');
     card.className = 'lesson-card';
     card.style.setProperty('--round-color', r.color);
-    const progressPct = Math.min(100, completed * 10);
     card.innerHTML = `
-      ${mastered ? `<div class="lesson-card-badge">${t('learn.mastered')}</div>` : ''}
+      ${masteryLevel >= 2 ? `<div class="lesson-card-badge">${t('learn.mastered')}</div>` : ''}
       <div class="lesson-card-icon">${r.icon}</div>
       <div class="lesson-card-info">
         <div class="lesson-card-title">${t(r.title)}</div>
         <div class="lesson-card-sub">${t(r.subtitle)}</div>
         <div class="lesson-card-progress">
-          <div class="lesson-card-bar"><div class="lesson-card-bar-fill" style="width:${progressPct}%"></div></div>
-          <div class="lesson-card-count">${completed > 0 ? t('learn.times_completed', { n: completed }) : t('learn.not_completed')}</div>
+          <div class="lesson-card-bar"><div class="lesson-card-bar-fill" style="width:${masteryPct}%"></div></div>
+          <div class="lesson-card-count">${sessionCount > 0 ? t('learn.times_completed', { n: sessionCount }) : t('learn.not_completed')}</div>
+        </div>
+        <div class="lesson-card-mastery">
+          <span class="mastery-pips">${pips}</span>
+          <span class="mastery-label-text">${masteryInfo.icon} ${t('learn.mastery_' + masteryKey) || masteryKey}</span>
         </div>
       </div>
     `;
@@ -738,22 +747,43 @@ let currentLessonRoundId = null;
 
 function beginLesson(roundId) {
   currentLessonRoundId = roundId;
-  const q = startLesson(roundId);
-  if (!q) return;
+  const payload = startLesson(roundId);
+  if (!payload) return;
   showView('view-lesson');
   translateHTML();
-  renderLessonQuestion(q);
+  renderTheoryCard(payload);
 }
 
-function renderLessonQuestion({ index, total, question, answers, lives, maxLives }) {
-  $('lesson-q-counter').textContent = `${index + 1} / ${total}`;
-  $('lesson-question').textContent = t(question);
-  $('lesson-progress-fill').style.width = `${((index + 1) / total) * 100}%`;
+function renderTheoryCard({ theory, roundIcon, sessionProgress }) {
+  const { done, total } = sessionProgress;
+  const pct = total > 0 ? (done / total) * 100 : 0;
+  $('lesson-progress-fill').style.width = `${pct}%`;
+  $('lesson-phase-label').textContent = '📖 ' + t('lesson.phase_theory');
+  $('lesson-theory-icon').textContent = roundIcon || '🍸';
+  $('lesson-theory-text').textContent = theory || '';
 
-  // Lives
-  $('lesson-lives').innerHTML = Array.from({ length: maxLives }, (_, i) =>
-    `<span>${i < lives ? '❤️' : '🖤'}</span>`
-  ).join('');
+  // Show theory wrap, hide question body + feedback
+  $('lesson-theory-wrap').classList.remove('hidden');
+  $('lesson-body').classList.add('hidden');
+  const fb = $('lesson-feedback');
+  fb.className = 'lesson-feedback';
+}
+
+function renderLessonQuestion({ question, answers, sessionProgress }) {
+  const { done, total } = sessionProgress;
+  const pct = total > 0 ? ((done + 1) / total) * 100 : 0;
+  $('lesson-progress-fill').style.width = `${pct}%`;
+  $('lesson-phase-label').textContent = '❓ ' + t('lesson.phase_question');
+  $('lesson-q-counter').textContent = `${done + 1} / ${total}`;
+  $('lesson-question').textContent = t(question);
+
+  // Hide theory wrap, show question body with animation
+  $('lesson-theory-wrap').classList.add('hidden');
+  const body = $('lesson-body');
+  body.classList.remove('hidden', 'slide-in');
+  // Trigger reflow for animation
+  void body.offsetWidth;
+  body.classList.add('slide-in');
 
   // Answers
   const grid = $('lesson-answers');
@@ -768,77 +798,107 @@ function renderLessonQuestion({ index, total, question, answers, lives, maxLives
   });
 
   // Hide feedback panel
-  const fb = $('lesson-feedback');
-  fb.className = 'lesson-feedback';
+  $('lesson-feedback').className = 'lesson-feedback';
 }
 
 function handleLessonAnswer(selectedIndex) {
   const result = answerLesson(selectedIndex);
   if (!result) return;
+  const { correct, correctIndex, selectedIndex: si, explanation } = result;
 
-  const { correct, correctIndex, selectedIndex: si, explanation, lives, maxLives } = result;
-
-  // Mark buttons
+  // Mark answer buttons
   document.querySelectorAll('#lesson-answers .answer-btn').forEach((btn, i) => {
     btn.disabled = true;
     if (i === correctIndex) btn.classList.add('correct');
     else if (i === si && !correct) btn.classList.add('wrong');
   });
 
-  // Update lives display
-  const lv = $('lesson-lives');
-  if (lv) {
-    const icons = lv.querySelectorAll('span');
-    icons.forEach((sp, i) => { sp.textContent = i < lives ? '❤️' : '🖤'; });
-  }
-
   // Show feedback panel
-  const fb = $('lesson-feedback');
   $('lesson-feedback-icon').textContent = correct ? '✅' : '❌';
   $('lesson-feedback-label').textContent = correct ? t('lesson.correct') : t('lesson.incorrect');
   $('lesson-feedback-exp').textContent = explanation ? t(explanation) : '';
-  fb.className = `lesson-feedback show ${correct ? 'fb-correct' : 'fb-wrong'}`;
+  $('lesson-feedback').className = `lesson-feedback show ${correct ? 'fb-correct' : 'fb-wrong'}`;
 }
 
+/** Called from "theory continue" button → show question */
+function handleTheoryContinue() {
+  const result = advanceFromTheory();
+  if (!result) return;
+  renderLessonQuestion(result);
+}
+
+/** Called from "feedback continue" button → show next theory or result */
 function handleLessonContinue() {
   const result = advanceLesson();
   if (!result) return;
-
   if (result.done) {
     showLessonResult(result);
   } else {
-    renderLessonQuestion(result);
+    renderTheoryCard(result);
   }
 }
 
-function showLessonResult({ passed, correct, total, xp, lives, round }) {
-  $('lr-emoji').textContent = passed ? (correct === total ? '🏆' : '🎉') : '💔';
-  $('lr-title').textContent = passed ? t('lesson.completed') : t('lesson.no_lives');
+function showLessonResult({ xp, correct, total, round, masteryGains, masteryLevel, prevMasteryLevel, levelUp }) {
+  const masteryInfo = MASTERY_LEVELS[masteryLevel] || MASTERY_LEVELS[0];
+  const pct = Math.round((correct / total) * 100);
+
+  // Emoji + title
+  let emoji = '🎉', title = t('lesson.completed');
+  if (pct === 100) { emoji = '🏆'; title = t('lesson.perfect'); }
+  else if (pct < 50) { emoji = '📚'; title = t('lesson.keep_going'); }
+  $('lr-emoji').textContent = emoji;
+  $('lr-title').textContent = title;
+
+  // Mastery badge
+  $('lr-mastery-icon').textContent = masteryInfo.icon;
+  $('lr-mastery-label').textContent = t('learn.mastery_' + masteryInfo.key) || masteryInfo.key;
+  $('lr-mastery-badge').style.borderColor = masteryInfo.color;
+
+  // Level-up banner
+  const levelUpEl = $('lr-levelup');
+  if (levelUp) {
+    const prevInfo = MASTERY_LEVELS[prevMasteryLevel] || MASTERY_LEVELS[0];
+    $('lr-levelup-text').textContent = `${prevInfo.icon} → ${masteryInfo.icon} ${t('lesson.level_up')}`;
+    levelUpEl.classList.remove('hidden');
+  } else {
+    levelUpEl.classList.add('hidden');
+  }
+
+  // Stats
   $('lr-correct').textContent = `${correct}/${total}`;
-  $('lr-xp').textContent = passed ? `+${xp}` : '+0';
-  $('lr-lives').textContent = passed ? Array.from({ length: lives || 0 }, () => '❤️').join('') || '—' : '💀';
+  $('lr-xp').textContent = `+${xp}`;
+  $('lr-concepts').textContent = masteryGains.length;
+
+  // Concept gains list
+  const gainsEl = $('lr-gains');
+  gainsEl.innerHTML = '';
+  masteryGains.forEach(({ before, after }) => {
+    const tag = document.createElement('span');
+    tag.className = 'lr-gain-tag improved';
+    const stars = ['○○○', '●○○', '●●○', '●●●'];
+    tag.textContent = `${stars[before]} → ${stars[after]}`;
+    gainsEl.appendChild(tag);
+  });
 
   // Store round id for retry/next
   $('btn-lr-retry').dataset.roundId = currentLessonRoundId;
   $('btn-lr-continue').dataset.roundId = currentLessonRoundId;
 
-  // Update banner streak on dashboard
+  // Update dashboard streak banner
   const learnStats = getLearnStats();
   const bannerStreak = $('banner-streak');
   if (bannerStreak) bannerStreak.textContent = `🔥 ${learnStats.streak}`;
 
-  // Check lesson achievements
-  if (passed) {
-    const stats = getStats();
-    const lessonsCompleted = (stats.lessonsCompleted || 0) + 1;
-    const newly = checkAchievements({
-      lessonsCompleted,
-      perfectLesson: lives > 0 && lives === 3 ? true : stats.perfectLesson,
-      xp: learnStats.xp,
-      streak: learnStats.streak,
-    });
-    showNewAchievements(newly);
-  }
+  // Achievements
+  const stats = getStats();
+  const lessonsCompleted = (stats.lessonsCompleted || 0) + 1;
+  const newly = checkAchievements({
+    lessonsCompleted,
+    perfectLesson: pct === 100 ? true : stats.perfectLesson,
+    xp: learnStats.xp,
+    streak: learnStats.streak,
+  });
+  showNewAchievements(newly);
 
   showView('view-lesson-result');
   translateHTML();
@@ -1008,6 +1068,7 @@ function bindEvents() {
   $('btn-quit-lesson').addEventListener('click', () => {
     if (confirm(t('confirm.quit_lesson'))) { abortLesson(); goToLearnHub(); }
   });
+  $('btn-lesson-theory-continue').addEventListener('click', () => handleTheoryContinue());
   $('btn-lesson-continue').addEventListener('click', () => handleLessonContinue());
   $('btn-lr-retry').addEventListener('click', () => beginLesson(currentLessonRoundId));
   $('btn-lr-continue').addEventListener('click', () => {

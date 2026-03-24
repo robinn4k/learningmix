@@ -13,10 +13,12 @@ vi.stubGlobal('localStorage', {
 const mockRound = {
   id: 42,
   title: 'Learn Round',
+  icon: '🍸',
   questions: Array.from({ length: 5 }, (_, i) => ({
     q: `Q${i}`,
     a: [`Correct${i}`, `W1_${i}`, `W2_${i}`, `W3_${i}`],
-    exp: `Exp${i}`
+    exp: `Exp${i}`,
+    theory: `Theory${i}`
   }))
 };
 
@@ -30,15 +32,25 @@ vi.mock('../js/lang.js', () => ({
   t: (k) => k,
 }));
 
-const { getLevelInfo, getLearnStats, startLesson, answerLesson, advanceLesson, abortLesson } = await import('../js/learn.js');
+const {
+  getLevelInfo, getLearnStats,
+  startLesson, answerLesson, advanceLesson, advanceFromTheory, abortLesson,
+  getRoundMasteryScore, getMasteryLevel, MASTERY_LEVELS
+} = await import('../js/learn.js');
 
 // ─── Helpers ──────────────────────────────────────────────────
 function clearStorage() { localStorage.clear(); }
 
-function getCorrectIndex() {
-  // After startLesson the question has shuffled answers - find correct
-  // We cheat by calling advanceLesson-friendly helpers
-  return null; // resolved per test via startLesson payload
+/** Complete one full theory→question→feedback cycle answering correctly */
+function answerCorrectly(qPayload) {
+  const correctIdx = qPayload.answers.findIndex(a => a.startsWith('Correct'));
+  return answerLesson(correctIdx);
+}
+
+/** Complete one full theory→question→feedback cycle answering wrongly */
+function answerWrongly(qPayload) {
+  const wrongIdx = qPayload.answers.findIndex(a => a.startsWith('W1'));
+  return answerLesson(wrongIdx);
 }
 
 // ─── Level info ───────────────────────────────────────────────
@@ -63,9 +75,7 @@ describe('getLevelInfo', () => {
     expect(getLevelInfo(0).pct).toBe(0);
   });
 
-  it('pct is 100 at level end (capped)', () => {
-    // 100 xp = start of level 2, pct within level 2 is 0%
-    // Test the cap: xp far beyond last threshold stays at 100%
+  it('pct is 99 just before level 2', () => {
     expect(getLevelInfo(99).pct).toBe(99);
   });
 
@@ -97,15 +107,16 @@ describe('getLevelInfo', () => {
   });
 });
 
-// ─── Lesson flow ──────────────────────────────────────────────
+// ─── startLesson ──────────────────────────────────────────────
 describe('startLesson', () => {
-  it('returns first question payload', () => {
+  beforeEach(() => clearStorage());
+
+  it('returns a theory payload as first phase', () => {
     const payload = startLesson(42);
     expect(payload).not.toBeNull();
-    expect(payload.index).toBe(0);
-    expect(payload.total).toBe(5);
-    expect(payload.lives).toBe(3);
-    expect(payload.answers).toHaveLength(4);
+    expect(payload.phase).toBe('theory');
+    expect(payload.theory).toBeDefined();
+    expect(payload.sessionProgress).toBeDefined();
   });
 
   it('returns null for unknown roundId', () => {
@@ -113,87 +124,150 @@ describe('startLesson', () => {
   });
 });
 
-describe('answerLesson', () => {
-  beforeEach(() => { startLesson(42); });
+// ─── advanceFromTheory ────────────────────────────────────────
+describe('advanceFromTheory', () => {
+  beforeEach(() => { clearStorage(); startLesson(42); });
 
-  it('returns correct: true on right answer', () => {
-    const payload = startLesson(42);
-    const result = answerLesson(payload.answers.findIndex(a => a.startsWith('Correct')));
-    expect(result.correct).toBe(true);
+  it('transitions to question phase', () => {
+    const q = advanceFromTheory();
+    expect(q.phase).toBe('question');
+    expect(q.answers).toHaveLength(4);
+    expect(q.question).toBeDefined();
   });
 
-  it('returns correct: false on wrong answer', () => {
-    const payload = startLesson(42);
-    const wrongIndex = payload.answers.findIndex(a => a.startsWith('W1'));
-    const result = answerLesson(wrongIndex);
-    expect(result.correct).toBe(false);
-  });
-
-  it('reduces lives on wrong answer', () => {
-    const payload = startLesson(42);
-    const wrongIndex = payload.answers.findIndex(a => a.startsWith('W1'));
-    const result = answerLesson(wrongIndex);
-    expect(result.lives).toBe(2);
-  });
-
-  it('awards xp on correct answer', () => {
-    const payload = startLesson(42);
-    const correctIndex = payload.answers.findIndex(a => a.startsWith('Correct'));
-    const result = answerLesson(correctIndex);
-    expect(result.xp).toBe(10);
-  });
-
-  it('does not answer twice (guard)', () => {
-    const payload = startLesson(42);
-    const correctIndex = payload.answers.findIndex(a => a.startsWith('Correct'));
-    answerLesson(correctIndex);
-    expect(answerLesson(correctIndex)).toBeNull();
+  it('returns null if not in theory phase', () => {
+    advanceFromTheory(); // move to question
+    expect(advanceFromTheory()).toBeNull();
   });
 });
 
-describe('advanceLesson – game over (0 lives)', () => {
-  it('returns done:true passed:false after 3 wrong answers', () => {
-    let payload = startLesson(42);
+// ─── answerLesson ─────────────────────────────────────────────
+describe('answerLesson', () => {
+  beforeEach(() => { clearStorage(); startLesson(42); });
 
-    // Each wrong answer costs a life; after 3 wrongs game ends
-    for (let i = 0; i < 3; i++) {
-      const wrongIdx = payload.answers.findIndex(a => a.startsWith('W1'));
-      answerLesson(wrongIdx);
-      const r = advanceLesson();
-      if (r?.done) {
-        expect(r.passed).toBe(false);
-        return;
-      }
-      payload = r; // move to next question with updated lives
-    }
-    throw new Error('Should have ended with game over');
+  it('returns correct:true on right answer', () => {
+    const q = advanceFromTheory();
+    const result = answerCorrectly(q);
+    expect(result.correct).toBe(true);
+    expect(result.phase).toBe('feedback');
+  });
+
+  it('returns correct:false on wrong answer', () => {
+    const q = advanceFromTheory();
+    const result = answerWrongly(q);
+    expect(result.correct).toBe(false);
+  });
+
+  it('includes explanation in feedback', () => {
+    const q = advanceFromTheory();
+    const result = answerCorrectly(q);
+    expect(result.explanation).toBeDefined();
+  });
+
+  it('does not answer twice (guard)', () => {
+    const q = advanceFromTheory();
+    answerCorrectly(q);
+    expect(answerLesson(0)).toBeNull();
+  });
+
+  it('returns null before advancing to question phase', () => {
+    // Still in theory phase — answer should be null
+    expect(answerLesson(0)).toBeNull();
+  });
+});
+
+// ─── advanceLesson ────────────────────────────────────────────
+describe('advanceLesson – navigation', () => {
+  beforeEach(() => clearStorage());
+
+  it('returns next theory phase (or done) after answering a question', () => {
+    startLesson(42);
+    const q = advanceFromTheory(); // theory → question
+    answerCorrectly(q);
+    const next = advanceLesson(); // feedback → next theory or done
+    expect(next).not.toBeNull();
+    expect(next.phase === 'theory' || next.done === true).toBe(true);
+  });
+
+  it('returns null if called while in theory phase', () => {
+    startLesson(42);
+    // In theory phase — feedback advance is invalid
+    expect(advanceLesson()).toBeNull();
   });
 });
 
 describe('advanceLesson – completion', () => {
-  it('returns done:true passed:true after all questions answered correctly', () => {
-    let payload = startLesson(42);
+  beforeEach(() => clearStorage());
 
-    for (let i = 0; i < 5; i++) {
-      const correctIdx = payload.answers.findIndex(a => a.startsWith('Correct'));
-      answerLesson(correctIdx);
-      const result = advanceLesson();
-      if (result.done) {
-        expect(result.passed).toBe(true);
-        expect(result.correct).toBe(5);
-        return;
-      }
-      payload = result;
+  it('returns done:true after completing all session questions', () => {
+    startLesson(42);
+    let result = null;
+
+    // Cycle: theory phase → advanceFromTheory → question → answer → feedback → advanceLesson → repeat
+    for (let attempt = 0; attempt < 30; attempt++) {
+      const q = advanceFromTheory(); // must be called while in theory phase
+      if (!q) break;
+      answerCorrectly(q);
+      result = advanceLesson();
+      if (result?.done) break;
+      // result.phase === 'theory' → loop continues
     }
-    throw new Error('Lesson never completed');
+
+    expect(result).not.toBeNull();
+    expect(result.done).toBe(true);
+    expect(result.correct).toBeGreaterThan(0);
+    expect(result.xp).toBeGreaterThan(0);
   });
 });
 
+// ─── abortLesson ──────────────────────────────────────────────
 describe('abortLesson', () => {
   it('makes answerLesson return null after abort', () => {
     startLesson(42);
+    advanceFromTheory();
     abortLesson();
     expect(answerLesson(0)).toBeNull();
+  });
+});
+
+// ─── Mastery system ───────────────────────────────────────────
+describe('getMasteryLevel', () => {
+  it('returns novato at 0 score', () => {
+    expect(getMasteryLevel(0).level).toBe(0);
+    expect(getMasteryLevel(0).key).toBe('novato');
+  });
+
+  it('returns familiarizado at 0.33 score', () => {
+    expect(getMasteryLevel(0.33).level).toBe(1);
+    expect(getMasteryLevel(0.33).key).toBe('familiarizado');
+  });
+
+  it('returns maestro at 0.67 score', () => {
+    expect(getMasteryLevel(0.67).level).toBe(2);
+    expect(getMasteryLevel(0.67).key).toBe('maestro');
+  });
+
+  it('returns maestro at 1.0 score', () => {
+    expect(getMasteryLevel(1.0).level).toBe(2);
+  });
+});
+
+describe('getRoundMasteryScore', () => {
+  it('returns 0 with no concepts data', () => {
+    expect(getRoundMasteryScore(mockRound, {})).toBe(0);
+  });
+
+  it('returns 1.0 when all questions have 3+ hits', () => {
+    const concepts = {};
+    mockRound.questions.forEach((_, i) => { concepts[i] = { hits: 3, misses: 0 }; });
+    expect(getRoundMasteryScore(mockRound, { concepts })).toBe(1);
+  });
+
+  it('returns ~0.33 when all questions have 1 hit', () => {
+    const concepts = {};
+    mockRound.questions.forEach((_, i) => { concepts[i] = { hits: 1, misses: 0 }; });
+    const score = getRoundMasteryScore(mockRound, { concepts });
+    expect(score).toBeCloseTo(1 / 3, 5);
   });
 });
 
