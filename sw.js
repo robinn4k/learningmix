@@ -10,9 +10,34 @@ const CACHE_LIST = [
   "/trivias/quiensoy.json",
   "/trivias/historia_iba_fabe.json",
   "/flags/en.svg",
-  "/flags/es.svg"
+  "/flags/es.svg",
+  // JS modules
+  "/js/app.js",
+  "/js/rivals.js",
+  "/js/questions.js",
+  "/js/learn.js",
+  "/js/lang.js",
+  "/js/auth.js",
+  "/js/quiz.js",
+  "/js/leaderboard.js",
+  "/js/share.js",
+  "/js/achievements.js",
+  "/js/daily.js",
+  "/js/speed.js",
+  "/js/blind.js",
+  "/js/bot.js",
+  "/js/fichas.js",
+  "/js/cookies.js",
+  "/js/constructor.js",
+  "/js/firebase-config.js",
+  // i18n question bundles (contain the icon fields for Learn cards)
+  "/js/i18n/questions_es.js",
+  "/js/i18n/questions_en.js",
+  "/js/i18n/questions_de.js",
+  "/js/i18n/questions_fr.js",
+  "/js/i18n/questions_pt.js"
 ];
-const STATIC_CACHE_VERSION = `Stirio-v2.1`;
+const STATIC_CACHE_VERSION = `Stirio-v2.2`;
 const DEBUG = false;
 
 self.addEventListener('install', function(event) {

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Dark app background -->
+  <rect width="512" height="512" rx="80" ry="80" fill="#0d0508"/>
+  <!-- Glass bowl (filled, semi-transparent) -->
+  <path d="M 120 130 L 392 130 L 256 308 Z" fill="#c9971c" opacity="0.18"/>
+  <!-- Glass rim (top line) -->
+  <line x1="120" y1="130" x2="392" y2="130" stroke="#c9971c" stroke-width="18" stroke-linecap="round"/>
+  <!-- Left edge -->
+  <line x1="120" y1="130" x2="256" y2="308" stroke="#c9971c" stroke-width="18" stroke-linecap="round"/>
+  <!-- Right edge -->
+  <line x1="392" y1="130" x2="256" y2="308" stroke="#c9971c" stroke-width="18" stroke-linecap="round"/>
+  <!-- Stem -->
+  <line x1="256" y1="308" x2="256" y2="390" stroke="#c9971c" stroke-width="18" stroke-linecap="round"/>
+  <!-- Base -->
+  <line x1="188" y1="398" x2="324" y2="398" stroke="#c9971c" stroke-width="20" stroke-linecap="round"/>
+  <!-- Olive pick -->
+  <line x1="330" y1="130" x2="302" y2="182" stroke="#c9971c" stroke-width="8" stroke-linecap="round"/>
+  <!-- Olive -->
+  <circle cx="296" cy="192" r="17" fill="#c9971c"/>
+  <circle cx="296" cy="192" r="7" fill="#0d0508"/>
+</svg>

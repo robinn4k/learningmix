@@ -1182,6 +1182,12 @@ function showLobbySection(mode) {
   if (mode === 'random')       $('lobby-random-section').classList.remove('hidden');
 }
 
+function withTimeout(promise, ms) {
+  let id;
+  const t = new Promise((_, reject) => { id = setTimeout(() => reject(new Error('timeout')), ms); });
+  return Promise.race([promise, t]).finally(() => clearTimeout(id));
+}
+
 async function goToDuelLobby(mode) {
   if (!duelState.myUid) {
     toast(t('duel.no_connection'), 'error');
@@ -1198,7 +1204,7 @@ async function goToDuelLobby(mode) {
   if (mode === 'friend-host') {
     setLoading(true);
     try {
-      const { roomId, code } = await createFriendRoom(duelState.myUid, duelState.myName, setup);
+      const { roomId, code } = await withTimeout(createFriendRoom(duelState.myUid, duelState.myName, setup), 10_000);
       if (!duelState.myUid) { setLoading(false); return; } // user navigated away
       duelState.roomId = roomId;
       duelState.slot = 'p1';
@@ -1247,7 +1253,7 @@ async function goToDuelLobby(mode) {
   } else if (mode === 'random') {
     setLoading(true);
     try {
-      const result = await joinQueue(duelState.myUid, duelState.myName, setup);
+      const result = await withTimeout(joinQueue(duelState.myUid, duelState.myName, setup), 10_000);
       if (!duelState.myUid) { setLoading(false); return; } // user navigated away
 
       // Only transition to lobby after successful queue join
@@ -1321,7 +1327,7 @@ async function handleJoinByCode() {
 
   setLoading(true);
   try {
-    const result = await joinByCode(duelState.myUid, duelState.myName, code);
+    const result = await withTimeout(joinByCode(duelState.myUid, duelState.myName, code), 10_000);
     setLoading(false);
 
     if (result === null) { toast(t('duel.invalid_code'), 'error'); return; }
