@@ -30,14 +30,44 @@ export function isRivalsReady() {
   return !!db;
 }
 
-// ─── Anonymous Auth (for guest users) ────────────────────────
+// ─── Auth helpers ─────────────────────────────────────────────
 
+/**
+ * Wait for Firebase Auth to resolve its initial state from storage.
+ * onAuthStateChanged fires once immediately with the current user (or null).
+ * Returns the UID of the authenticated user, or null if not authenticated.
+ */
+export async function waitForFirebaseAuthUid() {
+  try {
+    const { getApp } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js');
+    const { getAuth } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js');
+    const auth = getAuth(getApp());
+    return await new Promise(resolve => {
+      const unsub = auth.onAuthStateChanged(u => { unsub(); resolve(u?.uid ?? null); });
+    });
+  } catch (e) {
+    return null;
+  }
+}
+
+/**
+ * Ensure the guest user has an active Firebase anonymous auth session.
+ * Waits for Firebase Auth to restore any persisted anonymous session before
+ * deciding whether to call signInAnonymously (avoids creating a new UID on
+ * every reload when a session already exists in IndexedDB).
+ */
 export async function ensureAnonymousAuth() {
   try {
     const { getApp } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js');
     const { getAuth, signInAnonymously } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js');
     const auth = getAuth(getApp());
-    if (auth.currentUser) return auth.currentUser.uid;
+    // Wait for Firebase Auth to restore any persisted session from IndexedDB.
+    // auth.currentUser is null until this resolves even if a session exists.
+    const uid = await new Promise(resolve => {
+      const unsub = auth.onAuthStateChanged(u => { unsub(); resolve(u?.uid ?? null); });
+    });
+    if (uid) return uid;
+    // No persisted session — create a new anonymous one
     const result = await signInAnonymously(auth);
     return result.user.uid;
   } catch (e) {
