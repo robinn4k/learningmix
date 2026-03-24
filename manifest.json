@@ -1,24 +1,30 @@
 {
-    "short_name": "Stirio",
-    "name": "Stirio",
-    "lang": "es",
-    "background_color": "#333333",
-    "theme_color": "#333333",
-    "display": "standalone",
-    "scope": "/",
-    "start_url": "/",
-    "icons": [
-        {
-            "src": "mt_pwa.svg",
-            "sizes": "48x48 72x72 96x96 114x144 128x128 256x256 512x512",
-    		"type": "image/svg+xml",
-			"purpose": "any"
-        },
-		{
-            "src": "splash.png",
-            "sizes": "512x512",
-    		"type": "image/png"
-        }
-    ],
-    "prefer_related_applications": false
+  "short_name": "Stirio",
+  "name": "Stirio",
+  "lang": "es",
+  "background_color": "#0d0508",
+  "theme_color": "#0d0508",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "icon_pwa.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon_pwa.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "splash.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "prefer_related_applications": false
 }
