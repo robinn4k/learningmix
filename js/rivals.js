@@ -3,6 +3,9 @@
  * Centralizes all real-time multiplayer logic.
  */
 
+import { getLocalizedRounds } from './questions.js';
+import { getLang } from './lang.js';
+
 const POINTS_PER_CORRECT = 100;
 const TIME_BONUS_PER_SECOND = 5;
 export const QUESTIONS_PER_DUEL = 10;
@@ -96,6 +99,31 @@ export function prepareDuelSetup(roundData) {
     return { idx: qi, answerPerm, correctIndex: answerPerm.indexOf(0) };
   });
   return { roundId: roundData.id, questions };
+}
+
+/**
+ * Reconstruct localized question objects from a language-agnostic room setup.
+ * Each player calls this independently using their own language setting.
+ * Handles Firebase serialization: arrays stored as {0:…,1:…} objects.
+ */
+export function loadDuelQuestionsFromSetup(setup, lang) {
+  const l = lang || getLang();
+  const rounds = getLocalizedRounds(l);
+  const round = rounds.find(r => r.id === setup.roundId);
+  if (!round) return [];
+  const setupQs = Array.isArray(setup.questions)
+    ? setup.questions
+    : Object.values(setup.questions);
+  return setupQs.map(({ idx, answerPerm, correctIndex }) => {
+    const q = round.questions[idx];
+    const perm = Array.isArray(answerPerm) ? answerPerm : Object.values(answerPerm);
+    return {
+      question: q.q,
+      answers: perm.map(ai => q.a[ai]),
+      correctIndex,
+      explanation: q.exp
+    };
+  });
 }
 
 export function calcScore(correct, timeLeft) {
