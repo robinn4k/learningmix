@@ -149,7 +149,7 @@ export function startLesson(roundId) {
     const shuffled = [...q.a].sort(() => Math.random() - 0.5);
     return {
       srcIndex:    i,
-      theory:      q.theory || '',
+      theory:      q.theory || q.exp || '',
       question:    q.q,
       answers:     shuffled,
       correctIndex: shuffled.indexOf(correct),
