@@ -1106,7 +1106,9 @@ let duelState = {
   timer: null,
   timeLeft: 20,
   answered: false,
+  gameStarted: false,  // guard: prevents startDuelGame from being called multiple times
   unsubRoom: null,
+  unsubLobby: null,    // separate unsub for the lobby listener in random mode
   unsubOnline: null,
   unsubMatch: null,
   matchTimeout: null,
@@ -1118,11 +1120,12 @@ function resetDuelState() {
   if (typeof duelState.unsubRoom === 'function') duelState.unsubRoom();
   if (typeof duelState.unsubOnline === 'function') duelState.unsubOnline();
   if (typeof duelState.unsubMatch === 'function') duelState.unsubMatch();
+  if (typeof duelState.unsubLobby === 'function') duelState.unsubLobby();
   duelState = {
     roomId: null, slot: null, myUid: null, myName: null,
     mode: null, code: null, questions: [], currentQ: 0, score: 0,
-    timer: null, timeLeft: 20, answered: false,
-    unsubRoom: null, unsubOnline: null, unsubMatch: null, matchTimeout: null,
+    timer: null, timeLeft: 20, answered: false, gameStarted: false,
+    unsubRoom: null, unsubLobby: null, unsubOnline: null, unsubMatch: null, matchTimeout: null,
   };
 }
 
@@ -1267,11 +1270,12 @@ async function goToDuelLobby(mode) {
       setLoading(false);
 
       if (!result.waiting) {
-        // Immediately matched
+        // Immediately matched — room is already 'playing'. Store lobby listener in
+        // unsubLobby so startDuelGame can cancel it independently of unsubRoom.
         duelState.roomId = result.roomId;
         duelState.slot = result.slot;
         await registerPlayerDisconnect(result.roomId, result.slot);
-        duelState.unsubRoom = await listenRoom(result.roomId, room => {
+        duelState.unsubLobby = await listenRoom(result.roomId, room => {
           if (!room) return;
           handleRandomRoomUpdate(room);
         });
@@ -1292,7 +1296,9 @@ async function goToDuelLobby(mode) {
           await clearMatchNotif(duelState.myUid);
           duelState.roomId = roomId;
           await registerPlayerDisconnect(roomId, 'p1');
-          duelState.unsubRoom = await listenRoom(roomId, room => {
+          // Room is already 'playing' when P1 gets the match notification.
+          // Store in unsubLobby so startDuelGame can cancel it independently.
+          duelState.unsubLobby = await listenRoom(roomId, room => {
             if (!room) return;
             handleRandomRoomUpdate(room);
           });
@@ -1400,10 +1406,19 @@ function loadDuelQuestionsFromSetup(setup) {
 }
 
 function startDuelGame(roomData) {
-  // Stop the lobby room listener
+  // Guard: Firebase onValue fires immediately, so this can be called before the
+  // outer await listenRoom() resolves (race condition in random mode). Only start once.
+  if (duelState.gameStarted) return;
+  duelState.gameStarted = true;
+
+  // Stop the lobby room listener (friend mode) and/or the random-mode lobby listener
   if (typeof duelState.unsubRoom === 'function') {
     duelState.unsubRoom();
     duelState.unsubRoom = null;
+  }
+  if (typeof duelState.unsubLobby === 'function') {
+    duelState.unsubLobby();
+    duelState.unsubLobby = null;
   }
 
   // Reconstruct questions locally in the player's own language
