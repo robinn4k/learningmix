@@ -129,7 +129,7 @@ async function goToDashboard() {
   $('stat-games').textContent = games;
   $('stat-best').textContent = best;
   $('stat-avg').textContent = avg;
-  $('stat-rounds').textContent = completedRounds;
+  if ($('stat-rounds')) $('stat-rounds').textContent = completedRounds;
   $('user-best').textContent = t('dashboard.best', { n: best });
 
   // Update learn banner streak
