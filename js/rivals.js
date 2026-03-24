@@ -66,9 +66,8 @@ function generateRoomId() {
 }
 
 /**
- * Prepare questions from a round for a duel.
- * Returns a serializable array (plain strings, no multilingual objects needed
- * since questions.js for es/en returns plain string questions already).
+ * Prepare questions from a round for a duel (bot mode only).
+ * Returns question objects with localized text already applied.
  */
 export function prepareDuelQuestions(roundData) {
   return shuffle(roundData.questions).slice(0, QUESTIONS_PER_DUEL).map(q => {
@@ -81,6 +80,22 @@ export function prepareDuelQuestions(roundData) {
       explanation: q.exp
     };
   });
+}
+
+/**
+ * Prepare a language-agnostic duel setup for multiplayer.
+ * Stores round ID + question/answer indices so each player can render
+ * questions in their own language from their local data.
+ */
+export function prepareDuelSetup(roundData) {
+  const allIdx = roundData.questions.map((_, i) => i);
+  const questionIndices = shuffle(allIdx).slice(0, QUESTIONS_PER_DUEL);
+  const questions = questionIndices.map(qi => {
+    // q.a[0] is always the correct answer; build a shuffled permutation of indices
+    const answerPerm = shuffle([0, 1, 2, 3].slice(0, roundData.questions[qi].a.length));
+    return { idx: qi, answerPerm, correctIndex: answerPerm.indexOf(0) };
+  });
+  return { roundId: roundData.id, questions };
 }
 
 export function calcScore(correct, timeLeft) {
@@ -114,7 +129,7 @@ export async function listenOnlineCount(cb) {
 
 // ─── Room: Friend Code ────────────────────────────────────────
 
-export async function createFriendRoom(uid, name, questions) {
+export async function createFriendRoom(uid, name, setup) {
   if (!db) throw new Error('RTDB no inicializado');
   const { ref, set, onDisconnect } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js');
   const roomId = generateRoomId();
@@ -123,7 +138,7 @@ export async function createFriendRoom(uid, name, questions) {
   await set(ref(db, `rooms/${roomId}`), {
     code,
     status: 'waiting',
-    questions,
+    setup,
     createdAt: Date.now(),
     players: {
       p1: { uid, name, score: 0, currentQ: 0, answers: {}, ready: false }
@@ -165,7 +180,7 @@ export async function joinByCode(uid, name, code) {
 
 // ─── Room: Matchmaking Queue ──────────────────────────────────
 
-export async function joinQueue(uid, name, questions) {
+export async function joinQueue(uid, name, setup) {
   if (!db) throw new Error('RTDB no inicializado');
   const { ref, get, set, remove, onDisconnect } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js');
 
@@ -182,7 +197,7 @@ export async function joinQueue(uid, name, questions) {
       await set(ref(db, `rooms/${roomId}`), {
         code: null,
         status: 'playing',
-        questions,
+        setup,
         createdAt: Date.now(),
         players: {
           p1: { uid: oppUid, name: opp.name, score: 0, currentQ: 0, answers: {}, ready: true },

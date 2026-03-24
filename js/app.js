@@ -15,7 +15,7 @@ import { showShareModal, closeShareModal } from './share.js';
 import {
   initRivals, isRivalsReady, ensureAnonymousAuth,
   setPresence, removePresence, listenOnlineCount,
-  prepareDuelQuestions, calcScore, QUESTIONS_PER_DUEL,
+  prepareDuelQuestions, prepareDuelSetup, calcScore, QUESTIONS_PER_DUEL,
   createFriendRoom, joinByCode,
   joinQueue, leaveQueue, listenForMatch, clearMatchNotif,
   listenRoom, startRoom, registerPlayerDisconnect,
@@ -27,6 +27,7 @@ import { getBotName, scheduleBotAnswer, DIFFICULTIES } from './bot.js';
 // ─── DOM helpers ─────────────────────────────────────────────
 const $ = id => document.getElementById(id);
 const showView = id => {
+  setLoading(false); // always clear any pending loading spinner on navigation
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   $(id).classList.add('active');
 };
@@ -1128,15 +1129,16 @@ async function goToDuelLobby(mode) {
 
   duelState.mode = mode;
 
-  // Prepare questions from a random round (before any async op)
+  // Prepare a language-agnostic setup from a random round
   const rounds = getLocalizedRounds(getLang());
   const randomRound = rounds[Math.floor(Math.random() * rounds.length)];
-  const questions = prepareDuelQuestions(randomRound);
+  const setup = prepareDuelSetup(randomRound);
 
   if (mode === 'friend-host') {
     setLoading(true);
     try {
-      const { roomId, code } = await createFriendRoom(duelState.myUid, duelState.myName, questions);
+      const { roomId, code } = await createFriendRoom(duelState.myUid, duelState.myName, setup);
+      if (!duelState.myUid) { setLoading(false); return; } // user navigated away
       duelState.roomId = roomId;
       duelState.slot = 'p1';
       duelState.code = code;
@@ -1184,7 +1186,8 @@ async function goToDuelLobby(mode) {
   } else if (mode === 'random') {
     setLoading(true);
     try {
-      const result = await joinQueue(duelState.myUid, duelState.myName, questions);
+      const result = await joinQueue(duelState.myUid, duelState.myName, setup);
+      if (!duelState.myUid) { setLoading(false); return; } // user navigated away
 
       // Only transition to lobby after successful queue join
       showView('view-duel-lobby');
@@ -1305,6 +1308,30 @@ async function handleStartDuel() {
 
 // ─── Duel Game ────────────────────────────────────────────────
 
+/**
+ * Reconstruct localized question objects from a language-agnostic room setup.
+ * Each player calls this independently using their own language setting.
+ */
+function loadDuelQuestionsFromSetup(setup) {
+  const lang = getLang();
+  const rounds = getLocalizedRounds(lang);
+  const round = rounds.find(r => r.id === setup.roundId);
+  if (!round) return [];
+  const setupQs = Array.isArray(setup.questions)
+    ? setup.questions
+    : Object.values(setup.questions);
+  return setupQs.map(({ idx, answerPerm, correctIndex }) => {
+    const q = round.questions[idx];
+    const perm = Array.isArray(answerPerm) ? answerPerm : Object.values(answerPerm);
+    return {
+      question: q.q,
+      answers: perm.map(ai => q.a[ai]),
+      correctIndex,
+      explanation: q.exp
+    };
+  });
+}
+
 function startDuelGame(roomData) {
   // Stop the lobby room listener
   if (typeof duelState.unsubRoom === 'function') {
@@ -1312,11 +1339,9 @@ function startDuelGame(roomData) {
     duelState.unsubRoom = null;
   }
 
-  // Load questions from room (shared by room creator)
-  if (roomData?.questions) {
-    duelState.questions = Array.isArray(roomData.questions)
-      ? roomData.questions
-      : Object.values(roomData.questions);
+  // Reconstruct questions locally in the player's own language
+  if (roomData?.setup) {
+    duelState.questions = loadDuelQuestionsFromSetup(roomData.setup);
   }
 
   // Set opponent name from room data
@@ -1622,6 +1647,7 @@ let botDuelState = {
   botScore: 0,
   botName: '',
   difficulty: 'medium',
+  lang: '',
   humanTimer: null,
   botTimer: null,
   timeLeft: 20,
@@ -1634,7 +1660,7 @@ function resetBotDuelState() {
   clearTimeout(botDuelState.botTimer);
   botDuelState = {
     questions: [], currentQ: 0, myScore: 0, botScore: 0,
-    botName: '', difficulty: 'medium',
+    botName: '', difficulty: 'medium', lang: '',
     humanTimer: null, botTimer: null,
     timeLeft: 20, answered: false, botScheduled: null,
   };
@@ -1644,11 +1670,13 @@ function startBotDuel(difficulty) {
   resetBotDuelState();
 
   const user = getCurrentUser();
-  const rounds = getLocalizedRounds(getLang());
+  const lang = getLang();
+  const rounds = getLocalizedRounds(lang);
   const randomRound = rounds[Math.floor(Math.random() * rounds.length)];
 
   botDuelState.questions = prepareDuelQuestions(randomRound);
   botDuelState.difficulty = difficulty || 'medium';
+  botDuelState.lang = lang;
   botDuelState.botName = getBotName();
   botDuelState.myScore = 0;
   botDuelState.botScore = 0;
@@ -1682,9 +1710,10 @@ function renderBotQuestion() {
   $('duel-timer-num').textContent = botDuelState.timeLeft;
   $('duel-timer-num').classList.remove('urgent');
 
-  // Question text
+  // Question text — use lang captured at game-start to match question data
+  const lang = botDuelState.lang || getLang();
   $('duel-question').textContent = typeof q.question === 'object'
-    ? (q.question[getLang()] ?? q.question.en ?? q.question.es ?? '')
+    ? (q.question[lang] ?? q.question.en ?? q.question.es ?? '')
     : q.question;
 
   // Answer buttons — wired to bot handler
@@ -1694,7 +1723,7 @@ function renderBotQuestion() {
   q.answers.forEach((ans, i) => {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
-    const ansText = typeof ans === 'object' ? (ans[getLang()] ?? ans.en ?? ans.es ?? '') : ans;
+    const ansText = typeof ans === 'object' ? (ans[lang] ?? ans.en ?? ans.es ?? '') : ans;
     btn.innerHTML = `<span class="answer-letter">${labels[i]}</span><span class="answer-text">${ansText}</span>`;
     btn.addEventListener('click', () => handleBotPlayerAnswer(i));
     grid.appendChild(btn);
