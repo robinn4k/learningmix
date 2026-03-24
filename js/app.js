@@ -13,7 +13,7 @@ import { loadAchievementsFromCloud } from './achievements.js';
 import { loadLearnFromCloud } from './learn.js';
 import { showShareModal, closeShareModal } from './share.js';
 import {
-  initRivals, isRivalsReady, ensureAnonymousAuth,
+  initRivals, isRivalsReady, ensureAnonymousAuth, waitForFirebaseAuthUid,
   setPresence, removePresence, listenOnlineCount,
   prepareDuelQuestions, prepareDuelSetup, loadDuelQuestionsFromSetup, calcScore, QUESTIONS_PER_DUEL,
   createFriendRoom, joinByCode,
@@ -1138,19 +1138,25 @@ async function goToDuelMenu() {
   }
 
   resetDuelState();
-  showView('view-duel');
 
   const user = getCurrentUser();
-  // Get or create a real Firebase UID (anonymous for guests)
+  // Resolve Firebase UID BEFORE showing the menu so buttons are never
+  // clickable while duelState.myUid is still null (race condition).
   let uid;
   if (user.isGuest) {
+    // For guests: create/restore an anonymous Firebase Auth session.
     uid = await ensureAnonymousAuth();
     if (!uid) { toast(t('duel.no_connection'), 'error'); return; }
   } else {
+    // For Google users: wait for Firebase Auth to restore the session token
+    // from IndexedDB before any RTDB operation (auth.currentUser is set async).
+    await waitForFirebaseAuthUid();
     uid = user.uid;
   }
   duelState.myUid = uid;
   duelState.myName = user.name;
+
+  showView('view-duel'); // shown only after UID is guaranteed set
 
   try {
     // Set presence
@@ -1245,6 +1251,7 @@ async function goToDuelLobby(mode) {
       });
     } catch (e) {
       setLoading(false);
+      console.error('[duel] friend-host lobby error:', e);
       toast(t('duel.no_connection'), 'error');
     }
 
@@ -1311,6 +1318,7 @@ async function goToDuelLobby(mode) {
       }
     } catch (e) {
       setLoading(false);
+      console.error('[duel] random lobby error:', e);
       toast(t('duel.no_connection'), 'error');
     }
   }
@@ -1371,6 +1379,7 @@ async function handleJoinByCode() {
     });
   } catch (e) {
     setLoading(false);
+    console.error('[duel] join-by-code error:', e);
     toast(t('duel.no_connection'), 'error');
   }
 }
@@ -1380,6 +1389,7 @@ async function handleStartDuel() {
   try {
     await startRoom(duelState.roomId);
   } catch (e) {
+    console.error('[duel] startRoom error:', e);
     toast(t('duel.no_connection'), 'error');
   }
 }
