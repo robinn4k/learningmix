@@ -1259,8 +1259,8 @@ async function goToDuelLobby(mode) {
     // Transition immediately — no async op until user submits a code
     showView('view-duel-lobby');
     showLobbySection('friend-join');
-    $('lobby-p1-name').textContent = duelState.myName;
-    $('lobby-p2-name').textContent = t('duel.waiting_opponent');
+    $('lobby-p1-name').textContent = t('duel.waiting_opponent');
+    $('lobby-p2-name').textContent = duelState.myName;
     $('lobby-p2-avatar').textContent = '❓';
     $('lobby-p2-name').closest('.lobby-player-slot').classList.remove('joined');
     $('btn-start-duel').classList.add('hidden');
@@ -1359,8 +1359,15 @@ async function handleJoinByCode() {
 
     await registerPlayerDisconnect(result, 'p2');
 
-    // Show lobby waiting for start signal
-    showLobbySection('friend-join');
+    // P2 joined — hide the code input and show the waiting-for-host state.
+    // Passing an unknown mode to showLobbySection hides all three sections so
+    // only the player slots remain visible. This prevents P2 from thinking the
+    // join failed (if the input were still shown) and navigating back.
+    showLobbySection('p2-waiting');
+    $('lobby-p2-name').textContent = duelState.myName;
+    $('lobby-p2-avatar').textContent = '👤';
+    $('lobby-p2-name').closest('.lobby-player-slot').classList.add('joined');
+
     duelState.unsubRoom = await listenRoom(result, room => {
       if (!room) return;
       const p1 = room.players?.p1;
