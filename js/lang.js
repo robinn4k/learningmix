@@ -161,6 +161,8 @@ const translations = {
     'duel.hard': '🔥 Difícil',
     'duel.or': 'o',
     'duel.no_rivals_found': 'No hay rivales disponibles. Inténtalo más tarde.',
+    'duel.create_room': '🎯 Crear sala',
+    'duel.join_code': '🔑 Tengo un código',
   },
   en: {
     'login.tagline': 'Master the art of cocktails',
@@ -319,6 +321,8 @@ const translations = {
     'duel.hard': '🔥 Hard',
     'duel.or': 'or',
     'duel.no_rivals_found': 'No rivals available. Try again later.',
+    'duel.create_room': '🎯 Create room',
+    'duel.join_code': '🔑 I have a code',
   },
   fr: {
     'login.tagline': "Maîtrisez l'art du cocktail",
@@ -477,6 +481,8 @@ const translations = {
     'duel.hard': '🔥 Difficile',
     'duel.or': 'ou',
     'duel.no_rivals_found': 'Aucun rival disponible. Réessayez plus tard.',
+    'duel.create_room': '🎯 Créer une salle',
+    'duel.join_code': '🔑 J\'ai un code',
   },
   pt: {
     'login.tagline': 'Domine a arte do cocktail',
@@ -635,6 +641,8 @@ const translations = {
     'duel.hard': '🔥 Difícil',
     'duel.or': 'ou',
     'duel.no_rivals_found': 'Nenhum rival disponível. Tente mais tarde.',
+    'duel.create_room': '🎯 Criar sala',
+    'duel.join_code': '🔑 Tenho um código',
   },
   de: {
     'login.tagline': 'Meistere die Kunst des Cocktails',
@@ -793,6 +801,8 @@ const translations = {
     'duel.hard': '🔥 Schwer',
     'duel.or': 'oder',
     'duel.no_rivals_found': 'Keine Rivalen verfügbar. Versuche es später.',
+    'duel.create_room': '🎯 Raum erstellen',
+    'duel.join_code': '🔑 Ich habe einen Code',
   },
 };
 

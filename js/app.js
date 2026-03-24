@@ -1168,6 +1168,7 @@ async function goToDuelMenu() {
 }
 
 async function leaveDuelMenu() {
+  $('friend-mode-picker').classList.add('hidden');
   if (duelState.myUid) await removePresence(duelState.myUid);
   resetDuelState();
   goToDashboard();
@@ -1196,6 +1197,10 @@ async function goToDuelLobby(mode) {
     toast(t('duel.no_connection'), 'error');
     return;
   }
+
+  // Cancel any existing lobby listeners before switching modes (e.g. host → join)
+  if (typeof duelState.unsubRoom === 'function') { duelState.unsubRoom(); duelState.unsubRoom = null; }
+  if (typeof duelState.unsubLobby === 'function') { duelState.unsubLobby(); duelState.unsubLobby = null; }
 
   duelState.mode = mode;
 
@@ -1631,8 +1636,16 @@ function bindDuelEvents() {
   $('btn-back-duel').addEventListener('click', () => leaveDuelMenu());
 
   $('btn-challenge-friend').addEventListener('click', () => {
-    // Show sub-mode choice: host or join
+    $('friend-mode-picker').classList.toggle('hidden');
+    $('duel-difficulty-picker').classList.add('hidden'); // close bot picker if open
+  });
+  $('btn-host-room').addEventListener('click', () => {
+    $('friend-mode-picker').classList.add('hidden');
     goToDuelLobby('friend-host');
+  });
+  $('btn-join-room').addEventListener('click', () => {
+    $('friend-mode-picker').classList.add('hidden');
+    goToDuelLobby('friend-join');
   });
 
   $('btn-random-rival').addEventListener('click', () => goToDuelLobby('random'));
@@ -1702,8 +1715,9 @@ function bindDuelEvents() {
   // Bot rival
   $('btn-bot-rival').addEventListener('click', () => {
     $('duel-difficulty-picker').classList.toggle('hidden');
+    $('friend-mode-picker').classList.add('hidden'); // close friend picker if open
   });
-  document.querySelectorAll('.diff-btn').forEach(btn => {
+  $('duel-difficulty-picker').querySelectorAll('.diff-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       $('duel-difficulty-picker').classList.add('hidden');
       startBotDuel(btn.dataset.diff);
