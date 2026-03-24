@@ -15,7 +15,7 @@ import { showShareModal, closeShareModal } from './share.js';
 import {
   initRivals, isRivalsReady, ensureAnonymousAuth,
   setPresence, removePresence, listenOnlineCount,
-  prepareDuelQuestions, prepareDuelSetup, calcScore, QUESTIONS_PER_DUEL,
+  prepareDuelQuestions, prepareDuelSetup, loadDuelQuestionsFromSetup, calcScore, QUESTIONS_PER_DUEL,
   createFriendRoom, joinByCode,
   joinQueue, leaveQueue, listenForMatch, clearMatchNotif,
   listenRoom, startRoom, registerPlayerDisconnect,
@@ -1385,30 +1385,6 @@ async function handleStartDuel() {
 }
 
 // ─── Duel Game ────────────────────────────────────────────────
-
-/**
- * Reconstruct localized question objects from a language-agnostic room setup.
- * Each player calls this independently using their own language setting.
- */
-function loadDuelQuestionsFromSetup(setup) {
-  const lang = getLang();
-  const rounds = getLocalizedRounds(lang);
-  const round = rounds.find(r => r.id === setup.roundId);
-  if (!round) return [];
-  const setupQs = Array.isArray(setup.questions)
-    ? setup.questions
-    : Object.values(setup.questions);
-  return setupQs.map(({ idx, answerPerm, correctIndex }) => {
-    const q = round.questions[idx];
-    const perm = Array.isArray(answerPerm) ? answerPerm : Object.values(answerPerm);
-    return {
-      question: q.q,
-      answers: perm.map(ai => q.a[ai]),
-      correctIndex,
-      explanation: q.exp
-    };
-  });
-}
 
 function startDuelGame(roomData) {
   // Guard: Firebase onValue fires immediately, so this can be called before the
