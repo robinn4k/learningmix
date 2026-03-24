@@ -235,7 +235,7 @@ img { display: block; max-width: 100%; }
 .user-name  { font-weight: 700; font-size: .95rem; color: var(--text); }
 .user-best  { font-size: .78rem; color: var(--gold); }
 
-.dashboard-body { padding: 0 16px 80px; overflow-y: auto; }
+.dashboard-body { padding: 16px 16px 80px; overflow-y: auto; }
 
 /* Stats bar */
 .stats-bar {
@@ -1235,8 +1235,8 @@ img { display: block; max-width: 100%; }
   position: fixed;
   bottom: 0; left: 0; right: 0;
   z-index: 100;
-  background: transparent;
-  padding: 4px 12px;
+  background: linear-gradient(to top, var(--bg) 60%, transparent);
+  padding: 8px 12px 4px;
   text-align: center;
   pointer-events: none;
 }
