@@ -1036,6 +1036,123 @@ img { display: block; max-width: 100%; }
 .lesson-result-actions { display: flex; flex-direction: column; gap: 10px; }
 
 /* ══════════════════════════════════════════════════
+   LESSON — THEORY CARD
+══════════════════════════════════════════════════ */
+.lesson-phase-label {
+  font-size: .72rem; font-weight: 700;
+  background: rgba(255,255,255,.08);
+  border-radius: 20px; padding: 4px 10px;
+  color: var(--text-muted); flex-shrink: 0;
+  letter-spacing: .04em;
+}
+
+.lesson-theory-wrap {
+  display: flex; flex-direction: column;
+  padding: 20px 16px 24px;
+  height: calc(100vh - 57px);
+  max-width: 580px; margin: 0 auto; width: 100%;
+  box-sizing: border-box;
+}
+.lesson-theory-wrap.hidden { display: none; }
+
+.lesson-theory-card {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 24px; text-align: center;
+  animation: slideInRight .3s ease;
+}
+.lesson-theory-icon {
+  font-size: 3rem; margin-bottom: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+.lesson-theory-text {
+  font-size: 1.05rem; line-height: 1.7;
+  color: var(--text); font-weight: 400;
+}
+
+.lesson-theory-btn {
+  margin-top: 16px; padding: 15px;
+  background: var(--gold); color: #0d0508;
+  border-radius: var(--radius);
+  font-size: 1rem; font-weight: 700; width: 100%;
+  transition: transform .12s, opacity .2s;
+}
+.lesson-theory-btn:active { transform: scale(.97); }
+
+/* Animate in from right (theory → question) */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.lesson-body.slide-in { animation: slideInLeft .3s ease; }
+
+/* Remove lives, replace with phase label */
+.lesson-lives { display: none; }
+
+/* ══════════════════════════════════════════════════
+   LESSON RESULT — MASTERY
+══════════════════════════════════════════════════ */
+.lr-mastery-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 22px; border-radius: 30px;
+  font-size: 1rem; font-weight: 700;
+  background: rgba(255,255,255,.07);
+  border: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+
+.lr-levelup {
+  background: linear-gradient(135deg, rgba(241,196,15,.12), rgba(241,196,15,.22));
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 10px 20px; margin-bottom: 16px;
+  font-size: .88rem; font-weight: 700; color: var(--gold);
+  animation: pulse 1.2s ease 2;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.03); }
+}
+
+.lr-gains {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  justify-content: center; margin: 0 0 24px;
+}
+.lr-gain-tag {
+  font-size: .72rem; padding: 4px 12px;
+  border-radius: 20px; border: 1px solid var(--border);
+  color: var(--text-muted); background: rgba(255,255,255,.04);
+}
+.lr-gain-tag.improved {
+  color: #7dcea0; border-color: rgba(39,174,96,.3);
+  background: rgba(39,174,96,.08);
+}
+
+/* ══════════════════════════════════════════════════
+   LESSON CARDS — MASTERY PIPS
+══════════════════════════════════════════════════ */
+.lesson-card-mastery {
+  display: flex; align-items: center; gap: 6px; margin-top: 5px;
+}
+.mastery-pips { display: flex; gap: 4px; }
+.mastery-pip {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--surface2); transition: background .3s;
+}
+.mastery-pip.filled { background: var(--gold); }
+.mastery-label-text {
+  font-size: .68rem; color: var(--text-dim);
+  font-weight: 600; letter-spacing: .04em;
+}
+
+/* ══════════════════════════════════════════════════
    SCROLLBAR (non-critical)
 ══════════════════════════════════════════════════ */
 ::-webkit-scrollbar { width: 4px; }

@@ -387,6 +387,7 @@
 
     <!-- ══ LESSON ══ -->
     <div id="view-lesson" class="view">
+      <!-- Header: progress bar + phase label -->
       <div class="lesson-header">
         <button class="icon-btn quit-btn" id="btn-quit-lesson">✕</button>
         <div class="lesson-progress-wrap">
@@ -394,15 +395,27 @@
             <div class="lesson-progress-fill" id="lesson-progress-fill"></div>
           </div>
         </div>
-        <div class="lesson-lives" id="lesson-lives"></div>
+        <div class="lesson-phase-label" id="lesson-phase-label">📖</div>
       </div>
-      <div class="lesson-body">
-        <div class="lesson-q-counter" id="lesson-q-counter">1 / 10</div>
+
+      <!-- ① Theory card (shown during 'theory' phase) -->
+      <div class="lesson-theory-wrap" id="lesson-theory-wrap">
+        <div class="lesson-theory-card" id="lesson-theory-card">
+          <div class="lesson-theory-icon" id="lesson-theory-icon">🍸</div>
+          <p class="lesson-theory-text" id="lesson-theory-text"></p>
+        </div>
+        <button class="lesson-theory-btn" id="btn-lesson-theory-continue" data-i18n="lesson.theory_ready">Listo, a practicar →</button>
+      </div>
+
+      <!-- ② Question (shown during 'question' and 'feedback' phases) -->
+      <div class="lesson-body hidden" id="lesson-body">
+        <div class="lesson-q-counter" id="lesson-q-counter">1 / 7</div>
         <div class="question-card">
           <p class="question-text" id="lesson-question"></p>
         </div>
         <div class="answers-grid" id="lesson-answers"></div>
       </div>
+
       <!-- Feedback panel slides from bottom -->
       <div class="lesson-feedback" id="lesson-feedback">
         <div class="lesson-feedback-top">
@@ -420,7 +433,19 @@
     <div id="view-lesson-result" class="view">
       <div class="lesson-result-body">
         <div class="lesson-result-emoji" id="lr-emoji">🎉</div>
-        <h2 class="lesson-result-title" id="lr-title">¡Lección completada!</h2>
+        <h2 class="lesson-result-title" id="lr-title">¡Sesión completada!</h2>
+
+        <!-- Mastery badge -->
+        <div class="lr-mastery-badge" id="lr-mastery-badge">
+          <span id="lr-mastery-icon">📖</span>
+          <span id="lr-mastery-label">Familiarizado</span>
+        </div>
+
+        <!-- Level-up banner (hidden by default) -->
+        <div class="lr-levelup hidden" id="lr-levelup">
+          <span id="lr-levelup-text">¡Subiste de nivel!</span>
+        </div>
+
         <div class="lesson-result-stats">
           <div class="lr-stat">
             <div class="lr-stat-val" id="lr-correct">0</div>
@@ -428,13 +453,17 @@
           </div>
           <div class="lr-stat">
             <div class="lr-stat-val" id="lr-xp">+0</div>
-            <div class="lr-stat-label" data-i18n="lesson.xp_earned">⭐ XP ganado</div>
+            <div class="lr-stat-label" data-i18n="lesson.xp_earned">⭐ XP</div>
           </div>
           <div class="lr-stat">
-            <div class="lr-stat-val" id="lr-lives"></div>
-            <div class="lr-stat-label" data-i18n="lesson.lives_remaining">Vidas restantes</div>
+            <div class="lr-stat-val" id="lr-concepts">0</div>
+            <div class="lr-stat-label" data-i18n="lesson.concepts_improved">🧠 Conceptos</div>
           </div>
         </div>
+
+        <!-- Concept gains list -->
+        <div class="lr-gains" id="lr-gains"></div>
+
         <div class="lesson-result-actions">
           <button class="btn-primary" id="btn-lr-continue" data-i18n="lesson.next">Siguiente lección</button>
           <button class="btn-secondary" id="btn-lr-retry" data-i18n="lesson.retry">Repetir lección</button>
