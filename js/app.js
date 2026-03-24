@@ -48,7 +48,9 @@ async function init() {
   updateLangToggle();
   await initFirebase();
   await initRivals();
-  const user = restoreSession();
+  // getCurrentUser() is set by initFirebase() if returning from a Google redirect.
+  // Fall back to restoreSession() for previously saved sessions (guest or Google).
+  const user = getCurrentUser() || restoreSession();
   if (user) {
     await Promise.all([loadAchievementsFromCloud(), loadLearnFromCloud()]);
     await goToDashboard();
@@ -87,17 +89,17 @@ function bindLoginEvents() {
   $('btn-google-login').addEventListener('click', async () => {
     setLoading(true);
     try {
+      // signInWithGoogle() calls signInWithRedirect() — the page will navigate
+      // away to Google. The result is handled by getRedirectResult() in initFirebase()
+      // when the app loads again after the redirect.
       await signInWithGoogle();
-      await Promise.all([loadAchievementsFromCloud(), loadLearnFromCloud()]);
-      await goToDashboard();
+      // If we reach here the redirect has not fired yet (e.g. unsupported browser
+      // fallback) — keep the spinner; the page will reload anyway.
     } catch (e) {
       const msg = e?.code === 'auth/unauthorized-domain'
         ? t('error.unauthorized_domain')
-        : e?.code === 'auth/popup-blocked'
-        ? t('error.popup_blocked')
         : t('error.google_signin');
       toast(msg, 'error');
-    } finally {
       setLoading(false);
     }
   });

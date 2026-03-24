@@ -9,11 +9,27 @@ async function initFirebase() {
   if (!FIREBASE_ENABLED) return false;
   try {
     const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js');
-    const { getAuth } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js');
+    const { getAuth, getRedirectResult } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js');
     const { getFirestore } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
     const app = initializeApp(firebaseConfig);
     auth = getAuth(app);
     db = getFirestore(app);
+
+    // Handle the result of signInWithRedirect (called on every page load after redirect)
+    const result = await getRedirectResult(auth);
+    if (result) {
+      const user = result.user;
+      currentUser = {
+        uid: user.uid,
+        name: user.displayName || user.email?.split('@')[0] || 'Jugador Google',
+        email: user.email,
+        photo: user.photoURL,
+        provider: 'google',
+        isGuest: false
+      };
+      saveUserLocal(currentUser);
+    }
+
     return true;
   } catch (e) {
     console.warn('Firebase no disponible, usando modo local:', e);
@@ -21,25 +37,15 @@ async function initFirebase() {
   }
 }
 
-// Login con Google Sign In via Firebase (GRATIS)
+// Login con Google usando redirect (compatible con GitHub Pages COOP headers)
 async function signInWithGoogle() {
   if (!auth) throw new Error('Firebase no configurado. Configura firebase-config.js primero.');
-  const { GoogleAuthProvider, signInWithPopup } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js');
+  const { GoogleAuthProvider, signInWithRedirect } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js');
   const provider = new GoogleAuthProvider();
   provider.addScope('profile');
   provider.addScope('email');
-  const result = await signInWithPopup(auth, provider);
-  const user = result.user;
-  currentUser = {
-    uid: user.uid,
-    name: user.displayName || user.email?.split('@')[0] || 'Jugador Google',
-    email: user.email,
-    photo: user.photoURL,
-    provider: 'google',
-    isGuest: false
-  };
-  saveUserLocal(currentUser);
-  return currentUser;
+  // Redirects the page to Google — result is handled by getRedirectResult in initFirebase()
+  await signInWithRedirect(auth, provider);
 }
 
 // Login como invitado
